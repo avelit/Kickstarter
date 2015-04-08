@@ -1,12 +1,12 @@
 <web-app>
   <servlet>
-    <servlet-name>projects</servlet-name>
-    <servlet-class>projectsservlet</servlet-class>
+    <servlet-name>categories</servlet-name>
+    <servlet-class>servlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>projects</servlet-name>
-    <url-pattern>/projects</url-pattern>
+    <servlet-name>categories</servlet-name>
+    <url-pattern>/categories</url-pattern>
   </servlet-mapping>
 
 </web-app>

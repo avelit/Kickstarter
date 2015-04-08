@@ -8,13 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class projectsservlet extends HttpServlet {
+public class servlet extends HttpServlet {
 
-  public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    PrintWriter pw = resp.getWriter();
+    PrintWriter pw = response.getWriter();
     pw.println("<B>projects</B>");
     pw.println("<table border=1>");
+    pw.println(request.getContextPath());
     pw.println("</table>");
   }
 }
