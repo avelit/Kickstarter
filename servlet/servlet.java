@@ -15,10 +15,13 @@ public class servlet extends HttpServlet {
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    String[] segments = request.getRequestURI().split("/");
+    String idCategory = segments[segments.length-1];
+    
     PrintWriter pw = response.getWriter();
     pw.println("<B>projects</B>");
     pw.println("<table border=1>");
-    pw.println((new View()).getHtml("music"));
+    pw.println((new View()).getHtml(idCategory));
     pw.println("</table>");
   }
 }

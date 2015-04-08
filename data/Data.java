@@ -9,13 +9,13 @@ import java.util.Map;
 public class Data {
     private Map<String, List<String>> projects = new HashMap<String,List<String>>() {
       {
-        List<String> list = new ArrayList<>();
-        Collections.addAll(list, "guitar","baraban");
-        put("music",list);
+        List<String> listMusic = new ArrayList<>();
+        Collections.addAll(listMusic, "guitar","baraban");
+        put("music",listMusic);
 
-        list.clear();
-        Collections.addAll(list, "heart","knee","head");
-        put("medicine",list);
+        List<String> listMedicine = new ArrayList<>();
+        Collections.addAll(listMedicine, "heart","knee","head");
+        put("medicine",listMedicine);
       }
     };
     

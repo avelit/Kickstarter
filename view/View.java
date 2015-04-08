@@ -7,12 +7,15 @@ import service.DataService;
 public class View {
   public String getHtml(String category){
     List<String> list = (new DataService()).getListByCategory(category);
+    
+    if (list == null) {return "";}
+    
     String result = "";
-    result += "<tr>";
+    result += "<table>";
     for (String element : list) {
-      result += "<td>" + element+ "</td>";
+      result += "<tr>" + element+ "</tr>";
     }
-    result += "</tr>";
+    result += "</table>";
     return result;
   }
 }
