@@ -5,9 +5,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Data {
-    private Map<String, List<String>> projects = new HashMap<String,List<String>>() {
+ 
+  private Map<String, List<String>> projects = new HashMap<String,List<String>>() {
+      private static final long serialVersionUID = 4630444610336634592L;
+
       {
         List<String> listMusic = new ArrayList<>();
         Collections.addAll(listMusic, "guitar","baraban");
@@ -19,7 +23,11 @@ public class Data {
       }
     };
     
-    public Map<String, List<String>> getMap(){
-      return projects;
+    public List<String> getListByCategory(String category){
+      return projects.get(category);
+    }
+
+    public Set<String> getListOfCategories() {
+      return projects.keySet();
     }
 }
