@@ -11,7 +11,7 @@ public class DataService {
     return (new Data()).getListByCategory(category);
   }
   
-  public Set<String> getListOfCategories(){
-    return (new Data()).getListOfCategories();
+  public Set<String> getCategories(){
+    return (new Data()).getCategories();
   }
 }

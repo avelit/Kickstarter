@@ -28,7 +28,7 @@ public class Data {
       return projects.get(category);
     }
 
-    public Set<String> getListOfCategories() {
+    public Set<String> getCategories() {
       return projects.keySet();
     }
 }

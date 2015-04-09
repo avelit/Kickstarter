@@ -20,6 +20,6 @@ public class servlet extends HttpServlet {
     
     PrintWriter pw = response.getWriter();
     pw.println("<B>projects</B>");
-    pw.println((new View()).getCategoryHtml(idCategory));
+    pw.println((new View()).getHtml(idCategory));
   }
 }
