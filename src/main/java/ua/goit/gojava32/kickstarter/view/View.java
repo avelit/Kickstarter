@@ -1,9 +1,9 @@
-package view;
+package ua.goit.gojava32.kickstarter.view;
 
 import java.util.List;
 import java.util.Set;
 
-import service.DataService;
+import ua.goit.gojava32.kickstarter.service.DataService;
 
 public class View {
   public String getCategoryHtml(String category){

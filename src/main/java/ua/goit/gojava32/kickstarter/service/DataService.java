@@ -1,9 +1,9 @@
-package service;
+package ua.goit.gojava32.kickstarter.service;
 
 import java.util.List;
 import java.util.Set;
 
-import data.Data;
+import ua.goit.gojava32.kickstarter.data.Data;
 
 public class DataService {
 

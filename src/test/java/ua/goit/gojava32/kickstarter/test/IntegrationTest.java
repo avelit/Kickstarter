@@ -1,9 +1,9 @@
-package test;
+package ua.goit.gojava32.kickstarter.test;
 
 import org.junit.Test;
 
-import service.DataService;
-import view.View;
+import ua.goit.gojava32.kickstarter.service.DataService;
+import ua.goit.gojava32.kickstarter.view.View;
 
 public class IntegrationTest {
   @Test

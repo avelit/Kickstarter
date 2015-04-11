@@ -1,4 +1,4 @@
-package data;
+package ua.goit.gojava32.kickstarter.data;
 
 import java.util.ArrayList;
 import java.util.Collections;
