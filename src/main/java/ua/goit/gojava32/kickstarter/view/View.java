@@ -6,21 +6,19 @@ import java.util.Set;
 import ua.goit.gojava32.kickstarter.service.DataService;
 
 public class View {
-  public String getCategoryHtml(String category){
+  public static String getCategoryHtml(String category){
     List<String> list = (new DataService()).getListByCategory(category);
     
     if (list == null) {return "";}
     
-    String result = "";
-    result += "<table border = 1>";
+    StringBuilder result = new StringBuilder();
     for (String element : list) {
-      result += "<tr>" + element+ "</tr>";
+      result.append(element).append("<br>");
     }
-    result += "</table>";
-    return result;
+   return result.toString();
   }
 
-  public String getHtml(String idCategory) {
+  public static String getHtml(String idCategory) {
     String resultHtml = "";
     if ("categories".equals(idCategory)){
       resultHtml = getCategoriesHtml();
@@ -30,17 +28,15 @@ public class View {
     return resultHtml;
   }
 
-  private String getCategoriesHtml() {
+  private static String getCategoriesHtml() {
     Set<String> set = (new DataService()).getCategories();
     
     if (set == null) {return "";}
     
-    String result = "";
-    result += "<table border = 1>";
+    StringBuilder result = new StringBuilder();
     for (String element : set) {
-      result += "<tr><a href = ./categories/" + element + ">" + element+ "</a></tr>";
+      result.append("<a href = ./categories/").append(element).append(">").append(element).append("</a><br>");
     }
-    result += "</table>";
-    return result;
+    return result.toString();
   }
 }
