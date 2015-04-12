@@ -5,7 +5,7 @@ import java.util.Set;
 
 import ua.goit.gojava32.kickstarter.data.Data;
 
-public class DataService {
+public class DataProvider {
 
   public List<String> getListByCategory(String category){
     return (new Data()).getListByCategory(category);

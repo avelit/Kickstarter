@@ -9,10 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ua.goit.gojava32.kickstarter.view.View;
+import ua.goit.gojava32.kickstarter.view.HtmlGenerator;
+
 
 @WebServlet("/categories/*")
-public class KickStarterServlet extends HttpServlet {
+public class KickstarterServlet extends HttpServlet {
 
   private static final long serialVersionUID = -5152327662872804857L;
 
@@ -22,6 +23,6 @@ public class KickStarterServlet extends HttpServlet {
     String idCategory = segments[segments.length-1];
     
     PrintWriter pw = response.getWriter();
-    pw.println(View.getHtml(idCategory));
+    pw.println(HtmlGenerator.getHtml(idCategory));
   }
 }

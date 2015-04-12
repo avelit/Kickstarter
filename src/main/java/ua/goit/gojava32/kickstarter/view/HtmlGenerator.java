@@ -3,11 +3,11 @@ package ua.goit.gojava32.kickstarter.view;
 import java.util.List;
 import java.util.Set;
 
-import ua.goit.gojava32.kickstarter.service.DataService;
+import ua.goit.gojava32.kickstarter.service.DataProvider;
 
-public class View {
+public class HtmlGenerator {
   public static String getCategoryHtml(String category){
-    List<String> list = (new DataService()).getListByCategory(category);
+    List<String> list = (new DataProvider()).getListByCategory(category);
     
     if (list == null) {return "";}
     
@@ -29,7 +29,7 @@ public class View {
   }
 
   private static String getCategoriesHtml() {
-    Set<String> set = (new DataService()).getCategories();
+    Set<String> set = (new DataProvider()).getCategories();
     
     if (set == null) {return "";}
     
