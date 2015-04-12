@@ -18,7 +18,7 @@ public class Data {
         put("music",listMusic);
 
         List<String> listMedicine = new ArrayList<>();
-        Collections.addAll(listMedicine, "heart","knee","head","arm");
+        Collections.addAll(listMedicine, "heart","knee","head","arm","leg");
         put("medicine",listMedicine);
       }
 
