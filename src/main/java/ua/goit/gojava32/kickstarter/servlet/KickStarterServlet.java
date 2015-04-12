@@ -19,10 +19,9 @@ public class KickstarterServlet extends HttpServlet {
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    String[] segments = request.getRequestURI().split("/");
-    String idCategory = segments[segments.length-1];
-    
     PrintWriter pw = response.getWriter();
-    pw.println(HtmlGenerator.getHtml(idCategory));
+    pw.println("<html><body>");
+    pw.println(HtmlGenerator.getHtml(request.getRequestURI()));
+    pw.println("</body></html>");
   }
 }

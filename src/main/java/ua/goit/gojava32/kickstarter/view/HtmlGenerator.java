@@ -18,7 +18,11 @@ public class HtmlGenerator {
    return result.toString();
   }
 
-  public static String getHtml(String idCategory) {
+  public static String getHtml(String URI) {
+ 
+    String[] segments = URI.split("/");
+    String idCategory = segments[segments.length-1];
+    
     String resultHtml = "";
     if ("categories".equals(idCategory)){
       resultHtml = getCategoriesHtml();
