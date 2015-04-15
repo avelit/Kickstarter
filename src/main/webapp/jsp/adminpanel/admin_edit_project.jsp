@@ -4,6 +4,17 @@
     <title></title>
 </head>
 <body>
+<%
+    String login = request.getParameter("login");
+    String pass = request.getParameter("pass");
+
+    String jspUrl = request.getContextPath();
+    if (login != "admin" || pass != "") {
+
+    }
+%>
+
+
 <div class="add_project">
     <form name="myform" action="<%= request.getContextPath() %>/addProject" method="post">
     <p>Catagory name:</p>
