@@ -1,4 +1,4 @@
-package ua.goit.gojava32.kickstarter.view;
+package ua.goit.gojava32.kickstarter.controller;
 
 import java.util.List;
 import java.util.Set;

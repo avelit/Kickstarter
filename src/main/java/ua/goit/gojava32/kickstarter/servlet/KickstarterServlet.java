@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ua.goit.gojava32.kickstarter.view.HtmlGenerator;
+import ua.goit.gojava32.kickstarter.controller.HtmlGenerator;
 
 
 @WebServlet("/categories/*")

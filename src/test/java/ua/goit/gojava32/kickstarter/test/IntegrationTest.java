@@ -3,7 +3,7 @@ package ua.goit.gojava32.kickstarter.test;
 import org.junit.Test;
 
 import ua.goit.gojava32.kickstarter.service.DataProvider;
-import ua.goit.gojava32.kickstarter.view.HtmlGenerator;
+import ua.goit.gojava32.kickstarter.controller.HtmlGenerator;
 
 public class IntegrationTest {
   @Test
