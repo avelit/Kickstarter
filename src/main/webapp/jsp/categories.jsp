@@ -4,6 +4,9 @@
 <%@ page  %>
 <html>
 <head>
+    <style>
+        <%@include file='../css/categoriescss.css' %>
+    </style>
     <title>Discover Projects</title>
 </head>
 <body>
