@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CategoryManager implements CategoryService{
 
-    List<Category> categories = new ArrayList<Category>();
+    private List<Category> categories = new ArrayList<Category>();
 
     @Override
     public Category add(Category category) {
