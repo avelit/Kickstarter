@@ -3,6 +3,11 @@ package ua.goit.gojava32.kickstarter.model;
 import java.util.List;
 
 public class Category {
-  String name;
-  List<Project> projects;
+    private String name;
+    private List<Project> projects;
+
+    public Object getName() {
+        return name;
+    }
+
 }
