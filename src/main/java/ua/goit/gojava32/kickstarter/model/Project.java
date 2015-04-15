@@ -1,5 +1,9 @@
 package ua.goit.gojava32.kickstarter.model;
 
-public class Project {
+import java.util.List;
 
+public class Project {
+  String name;
+  Category category;
+  List<String> comment;
 }
