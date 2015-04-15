@@ -3,9 +3,11 @@
 <head>
     <title>Kickstarter</title>
 </head>
-<h1>
+<body>
 
-<h1></h1><a href="categories.jsp">Categories</a></h1>
+<div class="main_page">
+    <h1><a href="categories.jsp">Categories</a></h1>
+</div>
 
 </body>
 </html>
