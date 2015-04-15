@@ -28,7 +28,7 @@ public class CategoryManager implements CategoryService{
 
     @Override
     public List<Category> findAll() {
-        return null;
+        return categories;
     }
 
     @Override
@@ -38,6 +38,11 @@ public class CategoryManager implements CategoryService{
 
     @Override
     public List<Project> findAllProjects(Integer id) {
+        for (Category cat : categories) {
+            if (cat.getId() == id) {
+                return cat.getProjects();
+            }
+        }
         return null;
     }
 
