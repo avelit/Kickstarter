@@ -16,7 +16,7 @@
 %>
 
   <div class="category-container">
-      <%= category.getName() %>
+  <%= "<a href = ./categories/" + category.getName() + ".jsp>" %>
   </div>
 
 <%
