@@ -8,6 +8,11 @@ public class Project {
   private List<String> comment;
   private Integer id;
 
+  Project (Integer id, String name){
+    this.name = name;
+    this.id = id;
+  }
+
   public String getName(){
     return name;
   }
@@ -22,5 +27,13 @@ public class Project {
 
   public Integer getId () {
     return id;
+  }
+
+  public void setCategory (Category category) {
+    this.category = category;
+  }
+
+  public void setComment (List<String> comment){
+    this.comment = comment;
   }
 }
