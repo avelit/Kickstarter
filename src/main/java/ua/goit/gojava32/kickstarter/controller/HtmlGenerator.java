@@ -24,7 +24,7 @@ public class HtmlGenerator {
     String idCategory = segments[segments.length-1];
     
     String resultHtml = "";
-    if (idCategory.equals("categories")){
+    if (idCategory != null && idCategory.equals("categories")){
       resultHtml = getCategoriesHtml();
     } else {
       resultHtml = getCategoryHtml(idCategory);

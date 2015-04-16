@@ -5,5 +5,9 @@
 </head>
 <body>
 
+<div class="main_page">
+    <h1><a href="categories.jsp">Categories</a></h1>
+</div>
+
 </body>
 </html>
