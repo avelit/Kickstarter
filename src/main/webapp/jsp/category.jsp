@@ -3,10 +3,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>${name}</title>
+    <title>${category_name}</title>
 </head>
 <body>
-<h1>Category: ${name}</h1>
+<h1>Category: ${category_name}</h1>
 
 <%
     List<String> projects = (List<String>)request.getAttribute("projects");
@@ -15,7 +15,7 @@
 %>
 
 <div class="category-container">
-    <a href="/categories/${name}/<%= p %>"> <%= p %> </a>
+    <a href="/categories/${category_name}/<%= p %>"> <%= p %> </a>
 </div>
 
 <%
