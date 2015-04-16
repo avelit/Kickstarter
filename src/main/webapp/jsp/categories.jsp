@@ -10,12 +10,12 @@
 <body>
 
 <%
-    Set<String> categories = (Set<String>)request.getAttribute("categories");
+  Set<String> categories = (Set<String>)request.getAttribute("categories");
   for(String s: categories) {
 %>
 
   <div class="category-container">
-      <%= s %>
+      <a href="/category"> <%= s %> </a>
   </div>
 
 <%
