@@ -10,21 +10,54 @@ import javax.servlet.http.HttpServletResponse;
 
 public class HtmlController {
 
-  public static void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String uri = request.getRequestURI();
-    String[] segments = uri.split("/");
-    String jspUrl = request.getContextPath() + "/jsp";
+  private HttpServletRequest request;
+  private HttpServletResponse response;
+  private String[] uriSegments;
 
-    if (uri.equals("/categories")) {
-      jspUrl += "/categories.jsp";
-      request.setAttribute("categories", (new DataProvider()).getCategories());
-    } else {
-      jspUrl += "/category.jsp";
-      String categoryName = segments[segments.length - 1];
-      request.setAttribute("projects", (new DataProvider()).getListByCategory(categoryName));
-    }
+  public HtmlController(HttpServletRequest request, HttpServletResponse response) {
+    this.request = request;
+    this.response = response;
+    uriSegments = request.getRequestURI().split("/");
+  }
+
+  public void handleRequest() throws ServletException, IOException {
+    String jspUrl = request.getContextPath() + "/jsp/";
+    jspUrl += getJspName();
 
     RequestDispatcher dispatcher = request.getRequestDispatcher(jspUrl);
     dispatcher.forward(request, response);
+  }
+
+  private String getJspName() {
+    String jspName = "";
+
+    if (uriSegments[1].equals("categories") && uriSegments.length == 2) {
+      jspName = "categories.jsp";
+      request.setAttribute("categories", (new DataProvider()).getCategories());
+    } else if (uriSegments[1].equals("categories") && uriSegments.length > 2) {
+      jspName = processCategories();
+    }
+    return jspName;
+  }
+
+  private String processCategories() {
+    String jspName = "";
+
+    if (uriSegments.length == 3) {
+      jspName = "category.jsp";
+      String categoryName = uriSegments[2];
+      request.setAttribute("projects", (new DataProvider()).getListByCategory(categoryName));
+    } else {
+      jspName = processProjects();
+    }
+    return jspName;
+  }
+
+  private String processProjects() {
+    String jspName = "";
+    if (uriSegments.length == 4) {
+      jspName = "project.jsp";
+    }
+    return jspName;
   }
 }

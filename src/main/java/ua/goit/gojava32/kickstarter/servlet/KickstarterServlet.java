@@ -15,6 +15,6 @@ public class KickstarterServlet extends HttpServlet {
   private static final long serialVersionUID = -5152327662872804857L;
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    HtmlController.handleRequest(request, response);
+    (new HtmlController(request, response)).handleRequest();
   }
 }
