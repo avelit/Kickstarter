@@ -1,5 +1,3 @@
-<%@ page import="ua.goit.gojava32.kickstarter.model.Category" %>
-<%@ page import="java.util.List" %>
 <%@ page import="java.util.Set" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
