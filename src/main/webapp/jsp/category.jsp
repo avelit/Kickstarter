@@ -3,10 +3,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>${category_name}</title>
+    <title><%=request.getAttribute("category_name")%></title>
 </head>
 <body>
-<h1>Category: ${category_name}</h1>
+<h1>Category: <%=request.getAttribute("category_name")%></h1>
 
 <%
     List<String> projects = (List<String>)request.getAttribute("projects");
