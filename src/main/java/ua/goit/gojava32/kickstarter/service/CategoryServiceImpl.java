@@ -6,7 +6,7 @@ import ua.goit.gojava32.kickstarter.model.Project;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryManager implements CategoryService{
+public class CategoryServiceImpl implements CategoryService{
 
     private List<Category> categories = new ArrayList<Category>();
 
@@ -18,11 +18,6 @@ public class CategoryManager implements CategoryService{
 
     @Override
     public Category update(Category category) {
-        for (int i = 0; i < categories.size(); i++){
-            if (categories.get(i).getName().equals(category.getName())){
-                categories.set(i, category);
-            }
-        }
         return category;
     }
 

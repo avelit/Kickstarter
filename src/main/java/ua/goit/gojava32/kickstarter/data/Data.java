@@ -21,10 +21,9 @@ public class Data {
         Collections.addAll(listMedicine, "heart","knee","head","arm","leg");
         put("medicine",listMedicine);
       }
-
     };
     
-    public List<String> getListByCategory(String category){
+    public List<String> getListByCategory(String category) {
       return projects.get(category);
     }
 

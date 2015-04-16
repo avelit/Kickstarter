@@ -5,7 +5,7 @@ import ua.goit.gojava32.kickstarter.model.Project;
 
 import java.util.List;
 
-public class ProjectManager implements ProjectService {
+public class ProjectServiceImpl implements ProjectService {
 
 
     @Override
