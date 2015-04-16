@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>Project name: <font color="#d2691e">${name}</font> </h1>
+<h1>Project name: <font color="#d2691e"><%=request.getAttribute("project_name")%></font> </h1>
 <h2>Category:  <%=request.getAttribute("category_name")%></h2>  <%-- add link to category--%>
 
 <%
