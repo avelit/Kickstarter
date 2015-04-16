@@ -57,6 +57,7 @@ public class HtmlController {
   private String processProjects() {
     String jspName = "";
     if (uriSegments.length == 4) {
+      request.setAttribute("project_name", uriSegments[3]);
       jspName = "project.jsp";
     }
     return jspName;
