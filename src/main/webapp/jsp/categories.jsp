@@ -15,7 +15,7 @@
 %>
 
   <div class="category-container">
-      <a href="/category/<%= s %>"> <%= s %> </a>
+      <a href="/categories/<%= s %>"> <%= s %> </a>
   </div>
 
 <%
