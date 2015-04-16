@@ -11,13 +11,15 @@
 
 <%
     List<String> comments = (List<String>)request.getAttribute("comments");
-    for(String comment: comments) {
+    if (comments != null) {
+        for(String comment: comments) {
 %>
-    <p>
-    <div class="comments">
-        <%= comments %>
-    </div>
+<p>
+<div class="comments">
+    <%= comments %>
+</div>
 <%
+        }
     }
 %>
 
