@@ -31,7 +31,9 @@ public class HtmlController {
   private String getJspName() {
     String jspName = "";
 
-    if (uriSegments[1].equals("categories") && uriSegments.length == 2) {
+    if (uriSegments.length == 1) {
+      jspName = "index.jsp";
+    } else if (uriSegments[1].equals("categories") && uriSegments.length == 2) {
       jspName = "categories.jsp";
       request.setAttribute("categories", (new DataProvider()).getCategories());
     } else if (uriSegments[1].equals("categories") && uriSegments.length > 2) {
