@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ua.goit.gojava32.kickstarter.controller.HtmlController;
-import ua.goit.gojava32.kickstarter.service.DataProvider;
 
 @WebServlet("/categories/*")
 public class KickstarterServlet extends HttpServlet {
