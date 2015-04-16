@@ -48,7 +48,7 @@ public class HtmlController {
       jspName = "category.jsp";
       request.setAttribute("projects", (new DataProvider()).getListByCategory(categoryName));
     } else {
-      request.setAttribute("category_name", categoryName);
+      request.setAttribute("name", categoryName);
       jspName = processProjects();
     }
     return jspName;
