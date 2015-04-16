@@ -1,4 +1,5 @@
 <%@ page import="java.util.Set" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,7 +9,7 @@
 <h1>Category: ${name}</h1>
 
 <%
-    Set<String> projects = (Set<String>)request.getAttribute("projects");
+    List<String> projects = (List<String>)request.getAttribute("projects");
     for(String p: projects) {
 %>
 
