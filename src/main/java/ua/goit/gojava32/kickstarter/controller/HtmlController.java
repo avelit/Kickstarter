@@ -60,8 +60,7 @@ public class HtmlController {
   }
   */
 
-  public static void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String URI = request.getRequestURI();
+  public static String getJspUrl(HttpServletRequest request, String URI) throws ServletException, IOException {
     String[] segments = URI.split("/");
     String jspUrl = request.getContextPath() + "/jsp";
 
@@ -73,8 +72,6 @@ public class HtmlController {
       String categoryName = segments[segments.length - 1];
       request.setAttribute("projects", (new DataProvider()).getListByCategory(categoryName));
     }
-
-    RequestDispatcher dispatcher = request.getRequestDispatcher(jspUrl);
-    dispatcher.forward(request, response);
+    return jspUrl;
   }
 }
