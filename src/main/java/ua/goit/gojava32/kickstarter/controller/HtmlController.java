@@ -42,12 +42,13 @@ public class HtmlController {
 
   private String processCategories() {
     String jspName = "";
+    String categoryName = uriSegments[2];
 
     if (uriSegments.length == 3) {
       jspName = "category.jsp";
-      String categoryName = uriSegments[2];
       request.setAttribute("projects", (new DataProvider()).getListByCategory(categoryName));
     } else {
+      request.setAttribute("category_name", categoryName);
       jspName = processProjects();
     }
     return jspName;
