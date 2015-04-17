@@ -7,27 +7,30 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import ua.goit.gojava32.kickstarter.model.Category;
+import ua.goit.gojava32.kickstarter.model.Project;
+
 public class Data {
  
-  private Map<String, List<String>> projects = new HashMap<String,List<String>>() {
+  private Map<Category, List<Project>> projects = new HashMap<Category, List<Project>>() {
       private static final long serialVersionUID = 4630444610336634592L;
 
       {
-        List<String> listMusic = new ArrayList<>();
-        Collections.addAll(listMusic, "guitar","baraban");
-        put("music",listMusic);
+        List<Project> listMusic = new ArrayList<>();
+        Collections.addAll(listMusic, new Project(1,"guitar"),new Project(2,"baraban"));
+        put(new Category(1, "music"),listMusic);
 
-        List<String> listMedicine = new ArrayList<>();
-        Collections.addAll(listMedicine, "heart","knee","head","arm","leg");
-        put("medicine",listMedicine);
+        List<Project> listMedicine = new ArrayList<>();
+        Collections.addAll(listMedicine, new Project(3,"heart"),new Project(4,"knee"),new Project(5,"head"),new Project(6,"arm"),new Project(7,"leg"));
+        put(new Category(2, "medicine"),listMedicine);
       }
     };
     
-    public List<String> getListByCategory(String category) {
+    public List<Project> getListByCategory(Category category) {
       return projects.get(category);
     }
 
-    public Set<String> getCategories() {
+    public Set<Category> getCategories() {
       return projects.keySet();
     }
 }

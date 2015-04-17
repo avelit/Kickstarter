@@ -7,7 +7,7 @@ public class Category {
     private List<Project> projects;
     private Integer id;
 
-    Category(Integer id, String name){
+    public Category(Integer id, String name){
         this.id = id;
         this.name = name;
     }

@@ -1,5 +1,7 @@
 package ua.goit.gojava32.kickstarter.service;
 
+import ua.goit.gojava32.kickstarter.data.CategoruDAOImpl;
+import ua.goit.gojava32.kickstarter.data.CategoryDAO;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 
@@ -8,7 +10,7 @@ import java.util.List;
 
 public class CategoryServiceImpl implements CategoryService{
 
-    private List<Category> categories = new ArrayList<Category>();
+    private CategoryDAO categories = new CategoruDAOImpl();
 
     @Override
     public Category add(Category category) {
@@ -55,5 +57,15 @@ public class CategoryServiceImpl implements CategoryService{
             }
         }
         return null;
+    }
+
+    @Override
+    public Category get(String name) {
+      for (Category cat : categories) {
+        if (cat.getName() == name){
+            return cat;
+        }
+    }
+      return null;
     }
 }

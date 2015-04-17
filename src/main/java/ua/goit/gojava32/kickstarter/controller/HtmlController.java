@@ -1,7 +1,11 @@
 package ua.goit.gojava32.kickstarter.controller;
 
 import java.io.IOException;
-import ua.goit.gojava32.kickstarter.service.DataProvider;
+
+import ua.goit.gojava32.kickstarter.service.CategoryService;
+import ua.goit.gojava32.kickstarter.service.CategoryServiceImpl;
+import ua.goit.gojava32.kickstarter.service.ProjectService;
+import ua.goit.gojava32.kickstarter.service.ProjectServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +17,9 @@ public class HtmlController {
   private HttpServletRequest request;
   private HttpServletResponse response;
   private String[] uriSegments;
+  
+  private CategoryService categoryService = new CategoryServiceImpl();
+  private ProjectService projectService = new ProjectServiceImpl();
 
   public HtmlController(HttpServletRequest request, HttpServletResponse response) {
     this.request = request;
@@ -35,7 +42,7 @@ public class HtmlController {
       jspName = "index.jsp";
     } else if (uriSegments[1].equals("categories") && uriSegments.length == 2) {
       jspName = "categories.jsp";
-      request.setAttribute("categories", (new DataProvider()).getCategories());
+      request.setAttribute("categories", categoryService.findAll());
     } else if (uriSegments[1].equals("categories") && uriSegments.length > 2) {
       jspName = processCategories();
     }
@@ -49,7 +56,7 @@ public class HtmlController {
 
     if (uriSegments.length == 3) {
       jspName = "category.jsp";
-      request.setAttribute("projects", (new DataProvider()).getListByCategory(categoryName));
+      request.setAttribute("projects", categoryService.findAllProjects(categoryService.get(categoryName)));
     } else {
       jspName = processProjects();
     }

@@ -1,4 +1,5 @@
-<%@ page import="java.util.Set" %>
+<%@ page import="java.util.List" %>
+<%@ page import="ua.goit.gojava32.kickstarter.model.Category" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -10,12 +11,12 @@
 <body>
 
 <%
-  Set<String> categories = (Set<String>)request.getAttribute("categories");
-  for(String s: categories) {
+  List<Category> categories = (List<Category>)request.getAttribute("categories");
+  for(Category s: categories) {
 %>
 
   <div class="category-container">
-      <a href="/categories/<%= s %>"> <%= s %> </a>
+      <a href="/categories/<%= s.getName() %>"> <%= s.getName() %> </a>
   </div>
 
 <%

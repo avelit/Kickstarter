@@ -13,4 +13,5 @@ public interface CategoryService {
   List<Project> findAllProjects(Integer id);
   Category delete(Category category);
   Category get(Integer id);
+  Category get(String name);
 }

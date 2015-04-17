@@ -8,7 +8,7 @@ public class Project {
   private List<String> comment;
   private Integer id;
 
-  Project (Integer id, String name){
+  public Project (Integer id, String name){
     this.name = name;
     this.id = id;
   }

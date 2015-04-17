@@ -1,3 +1,4 @@
+<%@page import="ua.goit.gojava32.kickstarter.model.Project"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -9,9 +10,9 @@
 <h1>Category: <%=request.getAttribute("category_name")%></h1>
 
 <%
-    List<String> projects = (List<String>)request.getAttribute("projects");
+    List<Project> projects = (List<Project>)request.getAttribute("projects");
     if (projects != null) {
-        for(String p: projects) {
+        for(Project p: projects) {
 %>
 
 <div class="category-container">

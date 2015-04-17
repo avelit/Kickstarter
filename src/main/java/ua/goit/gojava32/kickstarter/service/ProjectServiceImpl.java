@@ -1,12 +1,15 @@
 package ua.goit.gojava32.kickstarter.service;
 
+import ua.goit.gojava32.kickstarter.data.ProjectDAO;
+import ua.goit.gojava32.kickstarter.data.ProjectDAOImpl;
 import ua.goit.gojava32.kickstarter.model.Project;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectServiceImpl implements ProjectService {
 
-    private List<Project> projects = new ArrayList<Project>();
+    private ProjectDAO projectDAO = new ProjectDAOImpl();
 
     @Override
     public Project add(Project project) {
