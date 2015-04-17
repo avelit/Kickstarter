@@ -12,18 +12,18 @@ public class ProjectServiceImpl implements ProjectService {
     private ProjectDAO projectDAO = new ProjectDAOImpl();
 
     @Override
-    public Project add(Project project) {
-        return projectDAO.add(project);
+    public void add(Project project) {
+        projectDAO.add(project);
     }
 
     @Override
-    public Project update(Project project) {
-        return projectDAO.update(project);
+    public void update(Project project) {
+        projectDAO.update(project);
     }
 
     @Override
-    public Project delete(Project project) {
-        return projectDAO.delete(project);
+    public void delete(Project project) {
+        projectDAO.delete(project);
     }
 
     @Override

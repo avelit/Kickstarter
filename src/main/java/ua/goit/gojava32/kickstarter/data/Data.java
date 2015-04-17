@@ -12,7 +12,7 @@ import ua.goit.gojava32.kickstarter.model.Project;
 
 public class Data {
  
-  public Map<Category, List<Project>> projects = new HashMap<Category, List<Project>>() {
+  public static Map<Category, List<Project>> projects = new HashMap<Category, List<Project>>() {
       private static final long serialVersionUID = 4630444610336634592L;
 
       {

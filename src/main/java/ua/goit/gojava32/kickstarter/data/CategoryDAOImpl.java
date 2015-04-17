@@ -1,6 +1,8 @@
 package ua.goit.gojava32.kickstarter.data;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
@@ -8,67 +10,65 @@ import ua.goit.gojava32.kickstarter.model.Project;
 public class CategoryDAOImpl implements CategoryDAO {
 
   @Override
-  public Category add(Category category) {
-    // TODO Auto-generated method stub
-    return null;
+  public void add(Category category) {
+    if (!Data.projects.containsKey(category)) {
+      Data.projects.put(category, new ArrayList<Project>());
+    }
   }
 
   @Override
-  public Category update(Category category) {
-    // TODO Auto-generated method stub
-    return null;
+  public void update(Category category) {
+    if (Data.projects.keySet().contains(category)) {
+      for (Category cat : Data.projects.keySet()) {
+        if (cat.getId() == category.getId()) { //!!!Check condition!!!
+          cat.setName(category.getName());
+        }
+      }
+    }
   }
 
   @Override
-  public List<Category> findAll() {
-    // TODO Auto-generated method stub
-    return null;
+  public Set<Category> findAll() {
+    return Data.projects.keySet();
   }
 
   @Override
   public List<Project> findAllProjects(Category category) {
-    // TODO Auto-generated method stub
-    return null;
+    return Data.projects.get(category);
   }
 
   @Override
   public List<Project> findAllProjects(Integer id) {
-    for (Category cat : categories) {
+    for (Category cat : Data.projects.keySet()) {
       if (cat.getId() == id) {
-          return cat.getProjects();
+        return cat.getProjects();
       }
-  }
-  return null;
-   // TODO Auto-generated method stub
+    }
     return null;
   }
 
   @Override
-  public Category delete(Category category) {
-    // TODO Auto-generated method stub
-    return null;
+  public void delete(Category category) {
+    Data.projects.remove(category);
   }
 
   @Override
   public Category get(Integer id) {
-    for (Category cat : categories) {
-      if (cat.getId() == id){
-          return cat;
+    for (Category cat : Data.projects.keySet()) {
+      if (cat.getId() == id) {
+        return cat;
       }
-  }
-  return null;
+    }
     return null;
   }
 
   @Override
   public Category get(String name) {
-    for (Category cat : categories) {
-      if (cat.getName() == name){
-          return cat;
+    for (Category cat : Data.projects.keySet()) {
+      if (cat.getName().equals(name)) {
+        return cat;
       }
-  }
+    }
     return null;
   }
-} }
-
 }

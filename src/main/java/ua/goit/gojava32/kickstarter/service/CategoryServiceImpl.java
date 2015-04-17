@@ -8,23 +8,24 @@ import ua.goit.gojava32.kickstarter.model.Project;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class CategoryServiceImpl implements CategoryService{
 
     private CategoryDAO categoryDAO = new CategoryDAOImpl();
 
     @Override
-    public Category add(Category category) {
-        return categoryDAO.add(category);
+    public void add(Category category) {
+        categoryDAO.add(category);
     }
 
     @Override
-    public Category update(Category category) {
-        return categoryDAO.update(category);
+    public void update(Category category) {
+        categoryDAO.update(category);
     }
 
     @Override
-    public List<Category> findAll() {
+    public Set<Category> findAll() {
         return categoryDAO.findAll();
     }
 
@@ -39,8 +40,8 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public Category delete(Category category) {
-      return categoryDAO.delete(category);
+    public void delete(Category category) {
+      categoryDAO.delete(category);
     }
 
     @Override
