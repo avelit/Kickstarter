@@ -16,7 +16,7 @@
 %>
 
 <div class="category-container">
-    <a href="/categories/<%=request.getAttribute("category_name")%>/<%= p %>"> <%= p %> </a>
+    <a href="/categories/<%=request.getAttribute("category_name")%>/<%= p.getName() %>"> <%= p.getName() %> </a>
 </div>
 
 <%
