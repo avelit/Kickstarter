@@ -2,6 +2,7 @@ package ua.goit.gojava32.kickstarter.controller;
 
 import java.io.IOException;
 
+import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
 import ua.goit.gojava32.kickstarter.service.CategoryServiceImpl;
 import ua.goit.gojava32.kickstarter.service.ProjectService;
@@ -12,7 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class HtmlController {
+public class Controller {
 
   private HttpServletRequest request;
   private HttpServletResponse response;
@@ -21,7 +22,7 @@ public class HtmlController {
   private CategoryService categoryService = new CategoryServiceImpl();
   private ProjectService projectService = new ProjectServiceImpl();
 
-  public HtmlController(HttpServletRequest request, HttpServletResponse response) {
+  public Controller(HttpServletRequest request, HttpServletResponse response) {
     this.request = request;
     this.response = response;
     uriSegments = request.getRequestURI().split("/");
@@ -31,6 +32,11 @@ public class HtmlController {
     String jspUrl = request.getContextPath() + "/jsp/";
     jspUrl += getJspName();
 
+    if ("addCategory".equals(uriSegments[uriSegments.length-1])) {
+      categoryService.add(new Category(5, request.getParameter("category_name")));
+      jspUrl = request.getContextPath() + "/categories";
+    }
+    
     RequestDispatcher dispatcher = request.getRequestDispatcher(jspUrl);
     dispatcher.forward(request, response);
   }

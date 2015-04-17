@@ -16,7 +16,7 @@
 
 
 <div class="add_project">
-    <form name="myform" action="<%= request.getContextPath() %>/addProject" method="post">
+    <form name="myform" action="<%= request.getContextPath() %>/categories/addProject" method="post">
     <p>Catagory name:</p>
     <input type="text" name="project_name">
     <p>Description:</p>
