@@ -1,9 +1,5 @@
 package ua.goit.gojava32.kickstarter.data;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 
@@ -21,7 +17,7 @@ public class ProjectDAOImpl implements ProjectDAO {
 
   @Override
   public void delete(Project project) {
-    // TODO Auto-generated method stub
+    Data.projects.values().remove(project);
   }
 
   @Override
