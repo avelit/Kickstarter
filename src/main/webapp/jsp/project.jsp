@@ -2,8 +2,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title><%=request.getAttribute("project_name")%>
-    </title>
+    <title><%=request.getAttribute("project_name")%></title>
+    <%@include file='header.jsp' %>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/signin.css" rel="stylesheet">
 </head>
 <body>
 

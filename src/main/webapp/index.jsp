@@ -2,6 +2,9 @@
 <html>
 <head>
     <title>Kickstarter</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/signin.css" rel="stylesheet">
+    <%@include file='jsp/header.jsp' %>
 </head>
 <body>
 

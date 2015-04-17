@@ -3,10 +3,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <style>
-        <%@include file='../css/categoriescss.css' %>
-    </style>
     <title>Discover Projects</title>
+    <%@include file='header.jsp' %>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/signin.css" rel="stylesheet">
 </head>
 <body>
 

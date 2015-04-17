@@ -2,10 +2,9 @@
 <html>
 <head>
     <title>Sign in</title>
-    <%--<%@include file='../css/bootstrap.min.css' %>--%>
-    <%--<%@include file='../css/signin.css' %>--%>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/signin.css" rel="stylesheet">
+    <%@include file='header.jsp' %>
 </head>
 <body>
 

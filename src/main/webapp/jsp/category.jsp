@@ -4,8 +4,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title><%=request.getAttribute("category_name")%>
-    </title>
+    <title><%=request.getAttribute("category_name")%></title>
+    <%@include file='header.jsp' %>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/signin.css" rel="stylesheet">
 </head>
 <body>
 <h1>Category: <%=request.getAttribute("category_name")%>
