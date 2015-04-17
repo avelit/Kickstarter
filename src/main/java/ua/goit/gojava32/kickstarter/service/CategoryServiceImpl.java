@@ -1,7 +1,8 @@
 package ua.goit.gojava32.kickstarter.service;
 
-import ua.goit.gojava32.kickstarter.data.CategoruDAOImpl;
 import ua.goit.gojava32.kickstarter.data.CategoryDAO;
+import ua.goit.gojava32.kickstarter.data.CategoryDAOImpl;
+import ua.goit.gojava32.kickstarter.data.Data;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 
@@ -10,62 +11,46 @@ import java.util.List;
 
 public class CategoryServiceImpl implements CategoryService{
 
-    private CategoryDAO categories = new CategoruDAOImpl();
+    private CategoryDAO categoryDAO = new CategoryDAOImpl();
 
     @Override
     public Category add(Category category) {
-        categories.add(category);
-        return category;
+        return categoryDAO.add(category);
     }
 
     @Override
     public Category update(Category category) {
-        return category;
+        return categoryDAO.update(category);
     }
 
     @Override
     public List<Category> findAll() {
-        return categories;
+        return categoryDAO.findAll();
     }
 
     @Override
     public List<Project> findAllProjects(Category category) {
-        return category.getProjects();
+        return categoryDAO.findAllProjects(category);
     }
 
     @Override
     public List<Project> findAllProjects(Integer id) {
-        for (Category cat : categories) {
-            if (cat.getId() == id) {
-                return cat.getProjects();
-            }
-        }
-        return null;
+      return categoryDAO.findAllProjects(id);
     }
 
     @Override
     public Category delete(Category category) {
-        categories.remove(category);
-        return category;
+      return categoryDAO.delete(category);
     }
 
     @Override
     public Category get(Integer id) {
-        for (Category cat : categories) {
-            if (cat.getId() == id){
-                return cat;
-            }
-        }
-        return null;
+      return categoryDAO.get(id);
     }
 
     @Override
     public Category get(String name) {
-      for (Category cat : categories) {
-        if (cat.getName() == name){
-            return cat;
-        }
+      return categoryDAO.get(name);  
     }
-      return null;
-    }
+ 
 }
