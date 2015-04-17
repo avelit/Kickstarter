@@ -1,13 +1,15 @@
 package ua.goit.gojava32.kickstarter.data;
 
+import java.util.Collections;
+
 import ua.goit.gojava32.kickstarter.model.Project;
 
 public class ProjectDAOImpl implements ProjectDAO {
 
   @Override
   public Project add(Project project) {
-    // TODO Auto-generated method stub
-    return null;
+    Collections.addAll(project.getCategory(), project);
+    return project;
   }
 
   @Override
