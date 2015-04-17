@@ -13,23 +13,21 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Project add(Project project) {
-        projects.add(project);
-        return project;
+        return projectDAO.add(project);
     }
 
     @Override
     public Project update(Project project) {
-        return project;
+        return projectDAO.update(project);
     }
 
     @Override
     public Project delete(Project project) {
-        projects.remove(project);
-        return project;
+        return projectDAO.delete(project);
     }
 
     @Override
     public Project get(Integer id) {
-        return projects.get(id);
+        return projectDAO.get(id);
     }
 }
