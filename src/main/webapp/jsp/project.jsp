@@ -11,8 +11,7 @@
 
 <h1>Project name: <%=request.getAttribute("project_name")%></h1>
 
-<h2>Category:  <%=request.getAttribute("category_name")%>
-</h2> <%-- add link to category--%>
+<h2>Category:  <%=request.getAttribute("category_name")%></h2>
 
 <%
     List<String> comments = (List<String>) request.getAttribute("comments");

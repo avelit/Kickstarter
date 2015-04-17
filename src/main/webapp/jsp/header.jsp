@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link href="../css/header.css" rel="stylesheet">
+<link href="/css/header.css" rel="stylesheet">
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/"><img class="logo" src="../resource/Kickstarter-logo-light.png"> </a>
+      <a class="navbar-brand" href="/"><img class="logo" src="/resource/Kickstarter-logo-light.png"> </a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
