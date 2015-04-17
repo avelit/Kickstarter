@@ -11,13 +11,14 @@
 <body>
 
 <%
-  Set<Category> categories = (Set<Category>)request.getAttribute("categories");
-  for(Category s: categories) {
+    Set<Category> categories = (Set<Category>) request.getAttribute("categories");
+    for (Category s : categories) {
 %>
 
-  <div class="category-container">
-      <a href="/categories/<%= s.getName() %>"> <%= s.getName() %> </a>
-  </div>
+<div class="category-container">
+    <a href="/categories/<%= s.getName() %>"><%= s.getName() %>
+    </a>
+</div>
 
 <%
     }

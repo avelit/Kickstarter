@@ -17,12 +17,13 @@
 
 <div class="add_project">
     <form name="myform" action="<%= request.getContextPath() %>/categories/addProject" method="post">
-    <p>Catagory name:</p>
-    <input type="text" name="project_name">
-    <p>Description:</p>
-    <input type="text" name="project_description">
-    <br>
-    <input type="submit">
+        <p>Catagory name:</p>
+        <input type="text" name="project_name">
+
+        <p>Description:</p>
+        <input type="text" name="project_description">
+        <br>
+        <input type="submit">
     </form>
 </div>
 </body>

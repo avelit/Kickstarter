@@ -1,9 +1,10 @@
-package ua.goit.gojava32.kickstarter.data;
+package ua.goit.gojava32.kickstarter.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import ua.goit.gojava32.kickstarter.data.Data;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 
@@ -20,7 +21,7 @@ public class CategoryDAOImpl implements CategoryDAO {
   public void update(Category category) {
     if (Data.projects.keySet().contains(category)) {
       for (Category cat : Data.projects.keySet()) {
-        if (cat.getId() == category.getId()) { //!!!Check condition!!!
+        if (cat.getId().equals(category.getId())) { //!!!Check condition!!!
           cat.setName(category.getName());
         }
       }
@@ -40,7 +41,7 @@ public class CategoryDAOImpl implements CategoryDAO {
   @Override
   public List<Project> findAllProjects(Integer id) {
     for (Category cat : Data.projects.keySet()) {
-      if (cat.getId() == id) {
+      if (cat.getId().equals(id)) {
         return cat.getProjects();
       }
     }
@@ -55,7 +56,7 @@ public class CategoryDAOImpl implements CategoryDAO {
   @Override
   public Category get(Integer id) {
     for (Category cat : Data.projects.keySet()) {
-      if (cat.getId() == id) {
+      if (cat.getId().equals(id)) {
         return cat;
       }
     }

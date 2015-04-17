@@ -16,14 +16,14 @@
 
 
 <div class="add_category">
-<form name="add_category" action="<%= request.getContextPath() %>/categories/addCategory" method="get">
-    Catagory name:
-    <input type="text" name="category_name">
-    Description:
-    <input type="text" name="category_description">
-    <br>
-    <input type="submit">
-</form>
+    <form name="add_category" action="<%= request.getContextPath()%>/categories/addCategory" method="post">
+        Catagory name:
+        <input type="text" name="category_name">
+        Description:
+        <input type="text" name="category_description">
+        <br>
+        <input type="submit">
+    </form>
 </div>
 
 </body>

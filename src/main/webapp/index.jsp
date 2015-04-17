@@ -6,7 +6,7 @@
 <body>
 
 <div class="main_page">
-    <h1> <a href="/categories/">Categories</a></h1>
+    <h1><a href="/categories/">Categories</a></h1>
 </div>
 
 </body>

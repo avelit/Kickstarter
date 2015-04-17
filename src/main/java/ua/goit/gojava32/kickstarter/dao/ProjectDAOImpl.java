@@ -1,5 +1,6 @@
-package ua.goit.gojava32.kickstarter.data;
+package ua.goit.gojava32.kickstarter.dao;
 
+import ua.goit.gojava32.kickstarter.data.Data;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 
@@ -24,7 +25,7 @@ public class ProjectDAOImpl implements ProjectDAO {
   public Project get(Integer id) {
     for (Category cat : Data.projects.keySet()) {
       for (Project project : cat.getProjects()) {
-        if (project.getId() == id) {
+        if (project.getId().equals(id)) {
           return project;
         }
       }

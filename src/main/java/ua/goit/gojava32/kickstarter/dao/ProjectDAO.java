@@ -1,4 +1,4 @@
-package ua.goit.gojava32.kickstarter.data;
+package ua.goit.gojava32.kickstarter.dao;
 
 import ua.goit.gojava32.kickstarter.model.Project;
 
