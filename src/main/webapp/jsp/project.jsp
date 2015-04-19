@@ -8,11 +8,20 @@
     <link href="/css/signin.css" rel="stylesheet">
 </head>
 <body>
-
-<h1>Project name: <%=request.getAttribute("project_name")%></h1>
-
-<h2>Category:  <%=request.getAttribute("category_name")%></h2>
-
+<center>
+<table border=0>
+<tr>
+<td>
+<center><h1>Project name: <%=request.getAttribute("project_name")%></h1></center>
+</td>
+</tr>
+<tr>
+<td>
+<center><h2>Category:  <%=request.getAttribute("category_name")%></h2></center>
+</td>
+</tr>
+<tr>
+<td>
 <%
     List<String> comments = (List<String>) request.getAttribute("comments");
     if (comments != null) {
@@ -31,8 +40,19 @@
 <p>
 
 <form name="comments_form">
-    <textarea name="comment" wrap="soft" rows="5"></textarea>
+    <font size="2">Enter you name: </font><br>
+    <input type=text name=firstname>
+    <br>
+    <br>
+    <font size="2">Enter you comment: </font>
+    <br>
+    <textarea name="comment" wrap="soft" rows="5" cols="50"></textarea>
+    </td>
+    <td>
+    <center>&nbsp &nbsp<input name="submit" value="Send" type="submit"  class="btn btn-success" onClick="output(comment.value)"></center>
+    </td>
 </form>
-
+</tr>
+</table>
 </body>
 </html>
