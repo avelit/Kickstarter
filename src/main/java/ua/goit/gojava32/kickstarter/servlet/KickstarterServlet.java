@@ -17,4 +17,8 @@ public class KickstarterServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     (new Controller(request, response)).handleRequest();
   }
+
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    (new Controller(request, response)).handleRequest();
+  }
 }
