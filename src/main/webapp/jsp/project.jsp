@@ -42,12 +42,11 @@
 <form name="comments_form">
     <font size="2">Enter your name: </font>
     <br>
-    <input type=text name="firstname">
-    <br>
+    <input type="text" class="form-control" id="exampleInputName2" placeholder="Your name">
     <br>
     <font size="2">Enter your comment: </font>
     <br>
-    <textarea name="comment" wrap="soft" rows="5" cols="50"></textarea>
+    <textarea class="form-control" rows="3" name="comment"></textarea>
     </td>
     <td>
     <center>&nbsp &nbsp<input name="submit" value="Send" type="submit"  class="btn btn-success" onClick="output(comment.value)"></center>

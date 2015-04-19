@@ -25,14 +25,10 @@
 <td>
     <form name="add_category" action="<%= request.getContextPath()%>/categories/addCategory" method="post">
         <font size="2">Catagory name: </font>
-        <br>
-        <input type="text" name="category_name">
-        <br>
+        <input type="text" name="category_name" class="form-control" id="exampleInputName2" placeholder="Music">
         <br>
         <font size="2">Description: </font>
-        <br>
-        <input type="text" name="category_description">
-        <br>
+        <input type="text" name="category_description" class="form-control" id="exampleInputName2" placeholder="Music">
         <br>
         <center><input type="submit" class="btn btn-success"></center>
     </form>

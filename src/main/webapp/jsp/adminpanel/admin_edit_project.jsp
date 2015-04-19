@@ -25,16 +25,12 @@
 <div class="add_project">
     <form name="myform" action="<%= request.getContextPath() %>/categories/addProject" method="post">
         <font size="2">Catagory name: </font>
-        <br>
-        <input type="text" name="project_name">
-        <br>
+        <input type="text" name="project_name" class="form-control" id="exampleInputName2" placeholder="Violin">
         <br>
         <font size="2">Description: </font>
+        <input type="text" name="project_description" class="form-control" id="exampleInputName2" placeholder="Musical instrument">
         <br>
-        <input type="text" name="project_description">
-        <br>
-        <br>
-        <center><input type="submit"  class="btn btn-success" ></center>
+        <center><input type="submit" class="btn btn-success" ></center>
     </form>
 </div>
 </td>
