@@ -42,7 +42,7 @@
 <form name="comments_form">
     <font size="2">Enter your name: </font>
     <br>
-    <input type=text name=firstname>
+    <input type=text name="firstname">
     <br>
     <br>
     <font size="2">Enter your comment: </font>
