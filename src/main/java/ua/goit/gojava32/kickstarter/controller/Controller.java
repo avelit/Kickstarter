@@ -1,13 +1,9 @@
 package ua.goit.gojava32.kickstarter.controller;
 
 import java.io.IOException;
-
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
 import ua.goit.gojava32.kickstarter.service.CategoryServiceImpl;
-import ua.goit.gojava32.kickstarter.service.ProjectService;
-import ua.goit.gojava32.kickstarter.service.ProjectServiceImpl;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +16,6 @@ public class Controller {
   private String[] uriSegments;
   
   private CategoryService categoryService = new CategoryServiceImpl();
-  private ProjectService projectService = new ProjectServiceImpl();
 
   public Controller(HttpServletRequest request, HttpServletResponse response) {
     this.request = request;
@@ -44,9 +39,7 @@ public class Controller {
   private String getJspName() {
     String jspName = "";
 
-    if (uriSegments.length == 1) {
-      jspName = "index.jsp";
-    } else if (uriSegments[1].equals("categories") && uriSegments.length == 2) {
+    if (uriSegments[1].equals("categories") && uriSegments.length == 2) {
       jspName = "categories.jsp";
       request.setAttribute("categories", categoryService.findAll());
     } else if (uriSegments[1].equals("categories") && uriSegments.length > 2) {
