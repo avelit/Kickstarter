@@ -40,11 +40,12 @@
 <p>
 
 <form name="comments_form">
-    <font size="2">Enter you name: </font><br>
+    <font size="2">Enter your name: </font>
+    <br>
     <input type=text name=firstname>
     <br>
     <br>
-    <font size="2">Enter you comment: </font>
+    <font size="2">Enter your comment: </font>
     <br>
     <textarea name="comment" wrap="soft" rows="5" cols="50"></textarea>
     </td>
