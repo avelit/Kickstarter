@@ -27,4 +27,9 @@ public class ProjectServiceImpl implements ProjectService {
     public Project get(Integer id) {
         return projectDAO.get(id);
     }
+
+    @Override
+    public Project get(String name) {
+      return projectDAO.get(name);
+    }
 }

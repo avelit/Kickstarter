@@ -1,58 +1,35 @@
-<%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <html>
 <head>
-    <title><%=request.getAttribute("project_name")%></title>
-    <%@include file='header.jsp' %>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/signin.css" rel="stylesheet">
+<title><c:out value="${project.name}" /></title>
+<%@include file='header.jsp'%>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/signin.css" rel="stylesheet">
 </head>
 <body>
-<center>
-<table border=0>
-<tr>
-<td>
-<center><h1>Project name: <%=request.getAttribute("project_name")%></h1></center>
-</td>
-</tr>
-<tr>
-<td>
-<center><h2>Category:  <%=request.getAttribute("category_name")%></h2></center>
-</td>
-</tr>
-<tr>
-<td>
-<%
-    List<String> comments = (List<String>) request.getAttribute("comments");
-    if (comments != null) {
-        for (String comment : comments) {
-%>
-<p>
+	<div class="category-container">
+<h1>
+		Project name:
+		<c:out value="${project.name}" />
+		<br> Category:
+		<c:out value="${category_name}" />
+		</h1>
 
-<div class="comments">
-    <%= comments %>
-</div>
-<%
-        }
-    }
-%>
-
-<p>
-
-<form name="comments_form">
-    <font size="2">Enter your name: </font>
-    <br>
-    <input type="text" class="form-control" id="exampleInputName2" placeholder="Your name">
-    <br>
-    <font size="2">Enter your comment: </font>
-    <br>
-    <textarea class="form-control" rows="3" name="comment"></textarea>
-    </td>
-    <td>
-    <center>&nbsp &nbsp<input name="submit" value="Send" type="submit"  class="btn btn-success" onClick="output(comment.value)"></center>
-    </td>
-</form>
-</tr>
-</table>
+		<br>Comments:
+		<c:forEach var="c" items="${project.comment}">
+			<div class="comments">
+				<c:out value="${c}" />
+			</div>
+		</c:forEach>
+		<br>
+		<div>
+			<form action="/categories/addProjectComment" method="post">
+				<input type="text" name="comment"></input>
+				<input type="hidden" name = "project" value="<c:out value="${project.name}"/>"/> 
+				<input type="hidden" name = "category" value="<c:out value="${category_name}"/>"/> 
+				<input class="btn btn-default" type="submit" title="add comment"></input>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

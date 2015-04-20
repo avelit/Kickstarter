@@ -1,5 +1,6 @@
 package ua.goit.gojava32.kickstarter.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
@@ -11,6 +12,7 @@ public class Project {
   public Project (Integer id, String name){
     this.name = name;
     this.id = id;
+    this.comment = new ArrayList<String>();
   }
 
   public String getName(){
@@ -35,5 +37,9 @@ public class Project {
 
   public void setComment (List<String> comment){
     this.comment = comment;
+  }
+
+  public void addComment (String comment){
+    this.comment.add(comment);
   }
 }

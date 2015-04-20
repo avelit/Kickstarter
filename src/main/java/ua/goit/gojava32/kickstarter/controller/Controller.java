@@ -1,9 +1,14 @@
 package ua.goit.gojava32.kickstarter.controller;
 
 import java.io.IOException;
+
 import ua.goit.gojava32.kickstarter.model.Category;
+import ua.goit.gojava32.kickstarter.model.Project;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
 import ua.goit.gojava32.kickstarter.service.CategoryServiceImpl;
+import ua.goit.gojava32.kickstarter.service.ProjectService;
+import ua.goit.gojava32.kickstarter.service.ProjectServiceImpl;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +21,7 @@ public class Controller {
   private String[] uriSegments;
   
   private CategoryService categoryService = new CategoryServiceImpl();
+  private ProjectService projectService = new ProjectServiceImpl();
 
   public Controller(HttpServletRequest request, HttpServletResponse response) {
     this.request = request;
@@ -24,14 +30,22 @@ public class Controller {
   }
 
   public void handleRequest() throws ServletException, IOException {
-    String jspUrl = request.getContextPath() + "/jsp/";
-    jspUrl += getJspName();
 
     if ("addCategory".equals(uriSegments[uriSegments.length-1])) {
       categoryService.add(new Category(5, request.getParameter("category_name")));
-      jspUrl = request.getContextPath() + "/categories";
+      response.sendRedirect(request.getContextPath() + "/categories");
     }
     
+    if ("addProjectComment".equals(uriSegments[uriSegments.length-1])) {
+      Project project = projectService.get(request.getParameter("project"));
+      project.addComment(request.getParameter("comment"));
+      projectService.update(project);
+      response.sendRedirect(request.getContextPath() + "/categories/" + request.getParameter("category") + "/" + request.getParameter("project"));
+    }
+
+    String jspUrl = request.getContextPath() + "/jsp/";
+    jspUrl += getJspName();
+
     RequestDispatcher dispatcher = request.getRequestDispatcher(jspUrl);
     dispatcher.forward(request, response);
   }
@@ -65,7 +79,7 @@ public class Controller {
   private String processProjects() {
     String jspName = "";
     if (uriSegments.length == 4) {
-      request.setAttribute("project_name", uriSegments[3]);
+      request.setAttribute("project", projectService.get(uriSegments[3].trim()));
       jspName = "project.jsp";
     }
     return jspName;

@@ -27,4 +27,8 @@ public class Category {
   public List<Project> getProjects () {
     return projects;
   }
+
+  public void setProjects (List<Project> projects) {
+    this.projects = projects;
+  }
 }

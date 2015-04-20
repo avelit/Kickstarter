@@ -18,11 +18,15 @@ public class Data {
       {
         List<Project> listMusic = new ArrayList<>();
         Collections.addAll(listMusic, new Project(1,"guitar"),new Project(2,"baraban"));
-        put(new Category(1, "music"),listMusic);
+        Category categoryMusic = new Category(1, "music");
+        categoryMusic.setProjects(listMusic);
+        put(categoryMusic,listMusic);
 
         List<Project> listMedicine = new ArrayList<>();
         Collections.addAll(listMedicine, new Project(3,"heart"),new Project(4,"knee"),new Project(5,"head"),new Project(6,"arm"),new Project(7,"leg"));
-        put(new Category(2, "medicine"),listMedicine);
+        Category categoryMedicine = new Category(1, "medicine");
+        categoryMedicine.setProjects(listMedicine);
+        put(categoryMedicine,listMedicine);
       }
     };
     

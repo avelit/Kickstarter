@@ -7,4 +7,5 @@ public interface ProjectService {
   void update(Project project);
   void delete(Project project);
   Project get(Integer id);
+  Project get(String name);
 }
