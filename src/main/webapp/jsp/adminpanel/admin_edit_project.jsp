@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="add_project">
-    <form name="myform" action="<%= request.getContextPath() %>/categories/addProject" method="post">
+    <form name="myform" action="/categories/<c:out value="${category_name}"/>/addProject" method="post">
         <font size="2">Catagory name: </font>
         <input type="text" name="project_name" class="form-control" id="exampleInputName2" placeholder="Violin">
         <br>
