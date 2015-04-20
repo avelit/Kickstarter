@@ -28,6 +28,9 @@
         }
     }
 %>
+<br>
+Add project:
+<%@include file='/jsp/adminpanel/admin_edit_project.jsp'%>
 
 </body>
 </html>

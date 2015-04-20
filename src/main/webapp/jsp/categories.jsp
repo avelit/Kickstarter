@@ -23,6 +23,8 @@
 <%
     }
 %>
-
+<br>
+Add category:
+<%@include file='/jsp/adminpanel/admin_edit_category.jsp'%>
 </body>
 </html>
