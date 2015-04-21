@@ -48,11 +48,11 @@ public class Controller {
       response.sendRedirect("/categories/" + request.getParameter("category") + "/" + request.getParameter("project"));
     }
     else {
-    String jspUrl = "/jsp/";
-    jspUrl += getJspName();
+      String jspUrl = "/jsp/";
+      jspUrl += getJspName();
 
-    RequestDispatcher dispatcher = request.getRequestDispatcher(jspUrl);
-    dispatcher.forward(request, response);
+      RequestDispatcher dispatcher = request.getRequestDispatcher(jspUrl);
+      dispatcher.forward(request, response);
     }
   }
 

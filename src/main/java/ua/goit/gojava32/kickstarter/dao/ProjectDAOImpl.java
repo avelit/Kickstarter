@@ -8,7 +8,9 @@ public class ProjectDAOImpl implements ProjectDAO {
 
   @Override
   public void add(Project project) {
-    Data.projects.get(project.getCategory()).add(project);
+    Category category = project.getCategory();
+    Data.projects.get(category).add(project);
+    category.addProject(project);
   }
 
   @Override
