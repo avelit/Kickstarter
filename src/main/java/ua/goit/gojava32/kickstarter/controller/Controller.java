@@ -19,7 +19,7 @@ public class Controller {
   private HttpServletRequest request;
   private HttpServletResponse response;
   private String[] uriSegments;
-  
+
   private CategoryService categoryService = new CategoryServiceImpl();
   private ProjectService projectService = new ProjectServiceImpl();
 
@@ -31,33 +31,29 @@ public class Controller {
 
   public void handleRequest() throws ServletException, IOException {
 
-    if ("addCategory".equals(uriSegments[uriSegments.length-1])) {
+    if ("addCategory".equals(uriSegments[uriSegments.length - 1])) {
       Category category = new Category(5, request.getParameter("category_name"));
       category.setDescription(request.getParameter("category_description"));
       categoryService.add(category);
       response.sendRedirect("/categories");
-    }
-    else if ("addProject".equals(uriSegments[uriSegments.length-1])) {
+    } else if ("addProject".equals(uriSegments[uriSegments.length - 1])) {
       Project project = new Project(5, request.getParameter("project_name"));
       project.setDescription(request.getParameter("project_description"));
       project.setCategory(categoryService.get(request.getParameter("category_name")));
       projectService.add(project);
       response.sendRedirect("/categories/" + request.getParameter("category_name"));
-    }
-    else if ("addProjectComment".equals(uriSegments[uriSegments.length-1])) {
+    } else if ("addProjectComment".equals(uriSegments[uriSegments.length - 1])) {
       Project project = projectService.get(request.getParameter("project"));
       project.addComment(request.getParameter("comment"));
       projectService.update(project);
       response.sendRedirect("/categories/" + request.getParameter("category") + "/" + request.getParameter("project"));
-    } else if ("login_page".equals(uriSegments[uriSegments.length-1])) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login_page.jsp");
-        dispatcher.forward(request, response);
-    }
-    else if ("registration_page".equals(uriSegments[uriSegments.length-1])) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/registration.jsp");
-        dispatcher.forward(request, response);
-    }
-    else {
+    } else if ("login_page".equals(uriSegments[uriSegments.length - 1])) {
+      RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login_page.jsp");
+      dispatcher.forward(request, response);
+    } else if ("registration_page".equals(uriSegments[uriSegments.length - 1])) {
+      RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/registration.jsp");
+      dispatcher.forward(request, response);
+    } else {
       String jspUrl = "/jsp/";
       jspUrl += getJspName();
 
