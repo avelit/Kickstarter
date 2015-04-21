@@ -15,7 +15,7 @@ public class ProjectDAOImpl implements ProjectDAO {
 
   @Override
   public void update(Project project) {
-    // TODO Auto-generated method stub
+
   }
 
   @Override
@@ -48,6 +48,6 @@ public class ProjectDAOImpl implements ProjectDAO {
         }
       }
     }
-    return null;
+    return Data.projects.get(new CategoryDAOImpl().get("medicine")).get(1);
   }
 }

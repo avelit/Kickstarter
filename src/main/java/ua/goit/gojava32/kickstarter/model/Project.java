@@ -9,7 +9,7 @@ public class Project {
   private Category category;
   private List<String> comment;
   private Integer id;
-  public String description;
+  private String description;
 
   public Project (Integer id, String name){
     this.name = name;
