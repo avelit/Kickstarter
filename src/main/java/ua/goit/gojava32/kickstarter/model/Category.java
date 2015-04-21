@@ -3,6 +3,7 @@ package ua.goit.gojava32.kickstarter.model;
 import java.util.List;
 
 public class Category {
+
   private String name;
   private List<Project> projects;
   private Integer id;
@@ -31,4 +32,10 @@ public class Category {
   public void setProjects (List<Project> projects) {
     this.projects = projects;
   }
+
+  @Override
+  public String toString() {
+    return "Category [name=" + name + "]";
+  }
+
 }

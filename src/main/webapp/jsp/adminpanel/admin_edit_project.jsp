@@ -19,22 +19,17 @@
 
 
 
-<center><table border=0>
-<tr>
-<td>
 <div class="add_project">
     <form name="myform" action="/categories/<c:out value="${category_name}"/>/addProject" method="post">
-        <font size="2">Catagory name: </font>
-        <input type="text" name="project_name" class="form-control" id="exampleInputName2" placeholder="Violin">
+        <font size="2">Project name: </font>
+        <input type="text" name="project_name" class="form-control" id="exampleInputName2" placeholder="Violin" width="30%">
         <br>
         <font size="2">Description: </font>
-        <input type="text" name="project_description" class="form-control" id="exampleInputName2" placeholder="Musical instrument">
+        <input type="text" name="project_description" class="form-control" id="exampleInputName2" placeholder="Musical instrument" width="30%">
         <br>
-        <center><input type="submit" class="btn btn-success" ></center>
+        <input type="hidden" name = "category_name" value="<c:out value="${category_name}"/>"/> 
+        <input type="submit" class="btn btn-success" >
     </form>
 </div>
-</td>
-</tr>
-</table>
 </body>
 </html>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
+
   private String name;
   private Category category;
   private List<String> comment;
@@ -42,4 +43,10 @@ public class Project {
   public void addComment (String comment){
     this.comment.add(comment);
   }
+
+  @Override
+  public String toString() {
+    return "Project [name=" + name + ", category=" + category + "]";
+  }
+
 }

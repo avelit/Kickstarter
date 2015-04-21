@@ -19,22 +19,17 @@
 
 
 
-<center><table border=0>
+
 <div class="add_category">
-<tr>
-<td>
-    <form name="add_category" action="<%= request.getContextPath()%>/categories/addCategory" method="post">
+    <form name="add_category" action="/categories/addCategory" method="post">
         <font size="2">Catagory name: </font>
-        <input type="text" name="category_name" class="form-control" id="exampleInputName2" placeholder="Music">
+        <input type="text" name="category_name" class="form-control" id="exampleInputName2" placeholder="Music" width="30%">
         <br>
         <font size="2">Description: </font>
-        <input type="text" name="category_description" class="form-control" id="exampleInputName2" placeholder="Music">
+        <input type="text" name="category_description" class="form-control" id="exampleInputName2" placeholder="Music" width="30%">
         <br>
-        <center><input type="submit" class="btn btn-success"></center>
+        <input type="submit" class="btn btn-success">
     </form>
 </div>
-</td>
-<tr>
-<table>
 </body>
 </html>
