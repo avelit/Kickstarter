@@ -35,26 +35,25 @@ public class Controller {
       categoryService.add(new Category(5, request.getParameter("category_name")));
       response.sendRedirect("/categories");
     }
-    
-    if ("addProject".equals(uriSegments[uriSegments.length-1])) {
+    else if ("addProject".equals(uriSegments[uriSegments.length-1])) {
       Project project = new Project(5, request.getParameter("project_name"));
       project.setCategory(categoryService.get(request.getParameter("category_name")));
       projectService.add(project);
       response.sendRedirect("/categories/" + request.getParameter("category_name"));
     }
-
-    if ("addProjectComment".equals(uriSegments[uriSegments.length-1])) {
+    else if ("addProjectComment".equals(uriSegments[uriSegments.length-1])) {
       Project project = projectService.get(request.getParameter("project"));
       project.addComment(request.getParameter("comment"));
       projectService.update(project);
       response.sendRedirect("/categories/" + request.getParameter("category") + "/" + request.getParameter("project"));
     }
-
+    else {
     String jspUrl = "/jsp/";
     jspUrl += getJspName();
 
     RequestDispatcher dispatcher = request.getRequestDispatcher(jspUrl);
     dispatcher.forward(request, response);
+    }
   }
 
   private String getJspName() {
