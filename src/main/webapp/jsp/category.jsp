@@ -11,6 +11,8 @@
 </head>
 <body>
 <h1>Category: <%=request.getAttribute("category_name")%>
+<br>
+Description: <%=request.getAttribute("category_description")%>
 </h1>
 
 <%
