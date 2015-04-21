@@ -49,6 +49,13 @@ public class Controller {
       project.addComment(request.getParameter("comment"));
       projectService.update(project);
       response.sendRedirect("/categories/" + request.getParameter("category") + "/" + request.getParameter("project"));
+    } else if ("login_page".equals(uriSegments[uriSegments.length-1])) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login_page.jsp");
+        dispatcher.forward(request, response);
+    }
+    else if ("registration_page".equals(uriSegments[uriSegments.length-1])) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/registration.jsp");
+        dispatcher.forward(request, response);
     }
     else {
       String jspUrl = "/jsp/";

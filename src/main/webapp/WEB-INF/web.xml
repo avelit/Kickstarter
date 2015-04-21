@@ -4,4 +4,19 @@
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+
+    <servlet>
+        <servlet-name>KickstarterServlet</servlet-name>
+        <servlet-class>ua.goit.gojava32.kickstarter.servlet.KickstarterServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>KickstarterServlet</servlet-name>
+        <url-pattern>/login_page</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>KickstarterServlet</servlet-name>
+        <url-pattern>/registration_page</url-pattern>
+    </servlet-mapping>
 </web-app>
