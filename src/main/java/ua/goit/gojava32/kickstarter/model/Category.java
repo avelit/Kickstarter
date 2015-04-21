@@ -8,6 +8,7 @@ public class Category {
   private String name;
   private List<Project> projects;
   private Integer id;
+  public String description;
 
   public Category(Integer id, String name){
     this.id = id;
@@ -37,6 +38,14 @@ public class Category {
 
   public void addProject (Project project) {
     this.projects.add(project);
+  }
+
+  public void setDescription(String description){
+    this.description = description;
+  }
+
+  public String getDescription(){
+    return description;
   }
 
   @Override

@@ -9,6 +9,7 @@ public class Project {
   private Category category;
   private List<String> comment;
   private Integer id;
+  public String description;
 
   public Project (Integer id, String name){
     this.name = name;
@@ -42,6 +43,14 @@ public class Project {
 
   public void addComment (String comment){
     this.comment.add(comment);
+  }
+
+  public void setDescription(String description){
+    this.description = description;
+  }
+
+  public String getDescription(){
+    return description;
   }
 
   @Override
