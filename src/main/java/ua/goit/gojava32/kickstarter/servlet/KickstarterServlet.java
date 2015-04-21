@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ua.goit.gojava32.kickstarter.controller.Controller;
 
-@WebServlet("/categories/*")
+//@WebServlet("/categories/*")
 public class KickstarterServlet extends HttpServlet {
   private static final long serialVersionUID = -5152327662872804857L;
 
