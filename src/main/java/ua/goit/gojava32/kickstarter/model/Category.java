@@ -8,7 +8,7 @@ public class Category {
   private String name;
   private List<Project> projects;
   private Integer id;
-  private String description;
+  private String description = "";
 
   public Category(String name){
     this.name = name;
