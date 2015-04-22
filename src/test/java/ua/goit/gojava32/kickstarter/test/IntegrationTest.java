@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import factory.FactoryDB;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
@@ -17,16 +18,42 @@ public class IntegrationTest {
   private ProjectService projectService = new ProjectServiceImpl();
 
   @Test
-  public void categoryCRUDadd(){
-    Category category = categoryService.add("testCategoryAdd");
-    assertEquals("testCategoryAdd", category.getName());
+  public void categoryCRUD(){
+    String name = "testCategoryAdd";
+    String nameChanged = "testCategoryAddChanged";
+    
+    Category category = categoryService.add(name);
+    assertEquals(name, category.getName());
+    
+    category.setName(nameChanged);
+    assertNull(categoryService.get(name));
+    assertSame(nameChanged, categoryService.get(nameChanged).getName());
+    
+    categoryService.delete(category);
+    assertNull(categoryService.get(nameChanged));
   }
 
   @Test
-  public void projectCRUDadd(){
-    Category category = categoryService.add("testProjectAdd");
-    Project project = projectService.add("testProjectAdd", category);
-    assertEquals("testProjectAdd", project.getName());
+  public void projectCRUD(){
+    
+    //FactoryDB.createDB();
+    
+    String name = "testProjectAdd";
+    String nameChanged = "testProjectAddChanged";
+
+    Category category = categoryService.add(name);
+    
+    Project project = projectService.add(name,category);
+    assertEquals(name, project.getName());
+    
+    project.setName(nameChanged);
+    assertNull(projectService.get(name));
+    assertSame(nameChanged, projectService.get(nameChanged).getName());
+    
+    projectService.delete(project);
+    assertNull(projectService.get(nameChanged));
+    
+    categoryService.delete(category);
   }
   
 }

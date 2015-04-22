@@ -25,6 +25,10 @@ public class Project {
     this.comment = new ArrayList<String>();
   }
 
+  public void setName(String name){
+    this.name = name;
+  }
+
   public String getName(){
     return name;
   }

@@ -48,6 +48,6 @@ public class ProjectDAOImpl implements ProjectDAO {
         }
       }
     }
-    return Data.projects.get(new CategoryDAOImpl().get("medicine")).get(1);
+    return null;
   }
 }

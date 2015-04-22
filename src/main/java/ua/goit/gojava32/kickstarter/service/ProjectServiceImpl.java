@@ -30,6 +30,7 @@ public class ProjectServiceImpl implements ProjectService {
   @Override
   public void delete(Project project) {
     projectDAO.delete(project);
+    project = null;
   }
 
   @Override
