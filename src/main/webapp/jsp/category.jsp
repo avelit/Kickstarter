@@ -1,6 +1,4 @@
-<%@page import="ua.goit.gojava32.kickstarter.model.Project" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -10,26 +8,27 @@
     <link href="/css/signin.css" rel="stylesheet">
 </head>
 <body>
-<h1>Category: <%=request.getAttribute("category_name")%>
+<h3>Category: <c:out value="${category_name}"/>
 <br>
-Description: <%=request.getAttribute("category_description")%>
-</h1>
+Description: <c:out value="${category_description}"/>
+</h3>
+	<div class="row">
+		<c:forEach var="c" items="${projects}">
+			<div class="col-md-2">
+				<div class="thumbnail">
+					<a href="#">
+						<div class="caption">
+							<h3>
+								<a href="/categories/<c:out value="${category_name}"/>/<c:out value="${c.name}"/>"><c:out value="${c.name}" /></a>
+							</h3>
+						</div>
+					</a>
+				</div>
+			</div>
+		</c:forEach>
+	</div>
 
-<%
-    List<Project> projects = (List<Project>) request.getAttribute("projects");
-    if (projects != null) {
-        for (Project p : projects) {
-%>
 
-<div class="category-container">
-    <a href="/categories/<%=request.getAttribute("category_name")%>/<%= p.getName() %>"><%= p.getName() %>
-    </a>
-</div>
-
-<%
-        }
-    }
-%>
 <br>
 Add project:
 <%@include file='/jsp/adminpanel/admin_edit_project.jsp'%>
