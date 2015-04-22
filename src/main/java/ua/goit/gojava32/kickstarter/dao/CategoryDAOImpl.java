@@ -1,7 +1,6 @@
 package ua.goit.gojava32.kickstarter.dao;
 
-import java.sql.Connection;
-import java.util.ArrayList;
+import java.sql.*;
 import java.util.List;
 import java.util.Set;
 
@@ -15,9 +14,17 @@ public class CategoryDAOImpl implements CategoryDAO {
   @Override
   public void add(Category category) {
     Connection con = ConnectionPool.getConnection();
-
-    if (!Data.projects.containsKey(category)) {
-      Data.projects.put(category, new ArrayList<Project>());
+    String queryCheck = "SELECT * FROM categories WHERE name = ?";
+    try (Statement st = con.createStatement(); PreparedStatement ps = con.prepareStatement(queryCheck)) {
+      ps.setString(1, category.getName());
+      ResultSet resultSet = ps.executeQuery();
+      if (resultSet == null) {
+        String sql = String.format("INSERT INTO categories (name,description) VALUES ('%s', '%s')",
+                category.getName(), category.getDescription());
+        st.executeUpdate(sql);
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
     }
     ConnectionPool.releaseConnection(con);
   }
