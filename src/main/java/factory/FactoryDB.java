@@ -9,17 +9,24 @@ public class FactoryDB {
   public static void createDB() {
 
     try (Connection conn = DriverManager.getConnection("jdbc:sqlite:kickstarter.db"); Statement stmt = conn.createStatement();) {
-      String sql = "CREATE TABLE categories " +
-          "(id INT PRIMARY KEY     NOT NULL," +
-          " name           TEXT    NOT NULL, " + 
-          " description    TEXT    )"; 
+      String sql = "CREATE TABLE IF NOT EXISTS categories " +
+          "(id INT PRIMARY KEY," +
+          "name           TEXT, " + 
+          "description    TEXT)"; 
       stmt.executeUpdate(sql);  
       
-      sql = "CREATE TABLE project " +
-          "(id INT PRIMARY KEY     NOT NULL," +
-          " name           TEXT    NOT NULL, " +
-          "id_category     INT ," +//FOREIGN KEY  REFERENCES categories(id)," +
-          "description    TEXT    )"; 
+      sql = "insert into categories (name,description) values ('Music','Music')";
+      stmt.executeUpdate(sql);  
+      sql = "insert into categories (name,description) values ('Medicine','Medicine')";
+      stmt.executeUpdate(sql);  
+
+      sql = "CREATE TABLE IF NOT EXISTS project " +
+          "(id INT PRIMARY KEY," +
+          "name           TEXT, " +
+          "id_category     INT," +
+          "description    TEXT,"+
+          "FOREIGN KEY(id_category)  REFERENCES categories(id))" +
+           
       stmt.executeUpdate(sql);
       
     } catch ( Exception e ) {

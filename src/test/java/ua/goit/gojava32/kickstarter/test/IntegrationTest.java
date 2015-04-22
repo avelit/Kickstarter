@@ -36,7 +36,7 @@ public class IntegrationTest {
   @Test
   public void projectCRUD(){
     
-    //FactoryDB.createDB();
+    FactoryDB.createDB();
     
     String name = "testProjectAdd";
     String nameChanged = "testProjectAddChanged";
