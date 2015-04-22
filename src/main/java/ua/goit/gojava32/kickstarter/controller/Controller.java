@@ -36,18 +36,12 @@ public class Controller {
       category.setDescription(request.getParameter("category_description"));
       response.sendRedirect("/categories");
     } else if ("addProject".equals(uriSegments[uriSegments.length - 1])) {
-      
-      System.out.println(request.getAttribute("category"));
-      
-      Category category = (Category)request.getAttribute("category");
-      
-      System.out.println(category);
-      
+      Category category = (Category)request.getSession().getAttribute("category");
       Project project = projectService.add(request.getParameter("project_name"),category);
       project.setDescription(request.getParameter("project_description"));
       response.sendRedirect("/categories/" + request.getParameter("category_name"));
     } else if ("addProjectComment".equals(uriSegments[uriSegments.length - 1])) {
-      Project project = (Project)request.getAttribute("project");
+      Project project = (Project)request.getSession().getAttribute("project");
       project.addComment(request.getParameter("comment"));
       projectService.update(project);
       response.sendRedirect("/categories/" + request.getParameter("category") + "/" + request.getParameter("project"));
@@ -83,8 +77,7 @@ public class Controller {
     String categoryName = uriSegments[2];
     request.setAttribute("category_name", categoryName);
     Category category = categoryService.get(categoryName);
-    System.out.println(category);
-    request.setAttribute("category", category);
+    request.getSession().setAttribute("category", category);
 
     if (uriSegments.length == 3) {
       jspName = "category.jsp";
@@ -98,7 +91,7 @@ public class Controller {
   private String processProjects() {
     String jspName = "";
     if (uriSegments.length == 4) {
-      request.setAttribute("project", projectService.get(uriSegments[3].trim()));
+      request.getSession().setAttribute("project", projectService.get(uriSegments[3].trim()));
       jspName = "project.jsp";
     }
     return jspName;
