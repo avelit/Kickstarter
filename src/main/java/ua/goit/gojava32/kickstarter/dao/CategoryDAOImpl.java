@@ -12,6 +12,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 
   @Override
   public void add(Category category) {
+
     if (!Data.projects.containsKey(category)) {
       Data.projects.put(category, new ArrayList<Project>());
     }
