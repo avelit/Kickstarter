@@ -6,10 +6,10 @@ import java.util.List;
 public class Project {
   private Integer id;
   private String name;
-  private String description;
+  private String description = "";
   private Category category;
   private List<String> comment;
-  private String blogUrl;
+  private String blogUrl = "";
 
   public Project (String name, Category category){
     this.name = name;

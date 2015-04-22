@@ -19,7 +19,8 @@
 
 
 
-
+<div class="col-md-4">
+<br> Add category:
 <div class="add_category">
     <form name="add_category" action="/categories/addCategory" method="post">
         <font size="2">Catagory name: </font>
@@ -30,6 +31,7 @@
         <br>
         <input type="submit" class="btn btn-success">
     </form>
+</div>
 </div>
 </body>
 </html>
