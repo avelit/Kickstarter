@@ -8,6 +8,8 @@ import ua.goit.gojava32.kickstarter.model.Project;
 import java.util.List;
 import java.util.Set;
 
+import factory.FactoryModel;
+
 public class CategoryServiceImpl implements CategoryService{
 
     private CategoryDAO categoryDAO = new CategoryDAOImpl();
@@ -17,6 +19,12 @@ public class CategoryServiceImpl implements CategoryService{
         categoryDAO.add(category);
     }
 
+    @Override
+    public Category add(String name) {
+      Category category = FactoryModel.createCategory(name);
+      categoryDAO.add(category);
+      return categoryDAO.get(name);
+    }
     @Override
     public void update(Category category) {
         categoryDAO.update(category);

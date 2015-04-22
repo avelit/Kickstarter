@@ -32,18 +32,22 @@ public class Controller {
   public void handleRequest() throws ServletException, IOException {
 
     if ("addCategory".equals(uriSegments[uriSegments.length - 1])) {
-      Category category = new Category(5, request.getParameter("category_name"));
+      Category category = categoryService.add(request.getParameter("category_name"));
       category.setDescription(request.getParameter("category_description"));
-      categoryService.add(category);
       response.sendRedirect("/categories");
     } else if ("addProject".equals(uriSegments[uriSegments.length - 1])) {
-      Project project = new Project(5, request.getParameter("project_name"));
+      
+      System.out.println(request.getAttribute("category"));
+      
+      Category category = (Category)request.getAttribute("category");
+      
+      System.out.println(category);
+      
+      Project project = projectService.add(request.getParameter("project_name"),category);
       project.setDescription(request.getParameter("project_description"));
-      project.setCategory(categoryService.get(request.getParameter("category_name")));
-      projectService.add(project);
       response.sendRedirect("/categories/" + request.getParameter("category_name"));
     } else if ("addProjectComment".equals(uriSegments[uriSegments.length - 1])) {
-      Project project = projectService.get(request.getParameter("project"));
+      Project project = (Project)request.getAttribute("project");
       project.addComment(request.getParameter("comment"));
       projectService.update(project);
       response.sendRedirect("/categories/" + request.getParameter("category") + "/" + request.getParameter("project"));
@@ -78,10 +82,13 @@ public class Controller {
     String jspName = "";
     String categoryName = uriSegments[2];
     request.setAttribute("category_name", categoryName);
+    Category category = categoryService.get(categoryName);
+    System.out.println(category);
+    request.setAttribute("category", category);
 
     if (uriSegments.length == 3) {
       jspName = "category.jsp";
-      request.setAttribute("projects", categoryService.findAllProjects(categoryService.get(categoryName)));
+      request.setAttribute("projects", categoryService.findAllProjects(category));
     } else {
       jspName = processProjects();
     }

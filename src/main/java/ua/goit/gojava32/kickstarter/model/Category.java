@@ -10,6 +10,11 @@ public class Category {
   private Integer id;
   private String description;
 
+  public Category(String name){
+    this.name = name;
+    this.projects = new ArrayList<Project>();
+  }
+  
   public Category(Integer id, String name){
     this.id = id;
     this.name = name;

@@ -5,15 +5,23 @@ import java.util.List;
 
 public class Project {
 
+  private Integer id;
   private String name;
+  private String description;
   private Category category;
   private List<String> comment;
-  private Integer id;
-  private String description;
+  private String blogUrl;
 
-  public Project (Integer id, String name){
+  public Project (String name, Category category){
+    this.name = name;
+    this.category = category;
+    this.comment = new ArrayList<String>();
+  }
+
+  public Project (Integer id, String name, Category category){
     this.name = name;
     this.id = id;
+    this.category = category;
     this.comment = new ArrayList<String>();
   }
 

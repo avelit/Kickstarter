@@ -7,8 +7,8 @@ import ua.goit.gojava32.kickstarter.model.Project;
 public class ProjectDAOImpl implements ProjectDAO {
 
   @Override
-  public void add(Project project) {
-    Category category = project.getCategory();
+  public void add(Project project,Category category) {
+    project.setCategory(category);
     Data.projects.get(category).add(project);
     category.addProject(project);
   }
