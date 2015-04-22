@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
-
   private Integer id;
   private String name;
   private String description;

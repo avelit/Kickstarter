@@ -14,30 +14,20 @@ public class CategoryDAOImpl implements CategoryDAO {
   @Override
   public void add(Category category) {
     Connection con = ConnectionPool.getConnection();
-    String queryCheck = "SELECT * FROM categories WHERE name = ?";
-    try (Statement st = con.createStatement(); PreparedStatement ps = con.prepareStatement(queryCheck)) {
-      ps.setString(1, category.getName());
-      ResultSet resultSet = ps.executeQuery();
-      if (resultSet == null) {
-        String sql = String.format("INSERT INTO categories (name,description) VALUES ('%s', '%s')",
-                category.getName(), category.getDescription());
-        st.executeUpdate(sql);
-      }
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
+    String queryCheck = String.format("SELECT * FROM categories WHERE name = '%s'", category.getName());
+    String query = String.format("INSERT INTO categories (name,description) VALUES ('%s', '%s')",
+            category.getName(), category.getDescription());
+    AbstractDAO.executeAdd(con, queryCheck, query);
     ConnectionPool.releaseConnection(con);
   }
 
   @Override
   public void update(Category category) {
-    if (Data.projects.keySet().contains(category)) {
-      for (Category cat : Data.projects.keySet()) {
-        if (cat.getId().equals(category.getId())) {
-          cat.setName(category.getName());
-        }
-      }
-    }
+    Connection con = ConnectionPool.getConnection();
+    String query = String.format("UPDATE categories SET name = '%s' description = '%s' WHERE id = '%d'",
+            category.getName(), category.getDescription(), category.getId());
+    AbstractDAO.executeUpdate(con, query);
+    ConnectionPool.releaseConnection(con);
   }
 
   @Override
