@@ -34,6 +34,7 @@ public class FactoryDB {
       }
     } catch (Exception e) {
       System.err.println(e.getClass().getName() + ": " + e.getMessage());
+      throw new RuntimeException(e);
     }
   }
 }
