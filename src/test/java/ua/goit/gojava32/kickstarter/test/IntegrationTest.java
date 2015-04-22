@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import factory.FactoryDB;
+import ua.goit.gojava32.kickstarter.factory.FactoryDB;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
@@ -34,7 +34,7 @@ public class IntegrationTest {
     assertNull(categoryService.get(nameChanged));
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void projectCRUD(){
     

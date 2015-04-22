@@ -1,4 +1,4 @@
-package factory;
+package ua.goit.gojava32.kickstarter.factory;
 
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;

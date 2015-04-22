@@ -2,13 +2,12 @@ package ua.goit.gojava32.kickstarter.service;
 
 import ua.goit.gojava32.kickstarter.dao.CategoryDAO;
 import ua.goit.gojava32.kickstarter.dao.CategoryDAOImpl;
+import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 
 import java.util.List;
 import java.util.Set;
-
-import factory.FactoryModel;
 
 public class CategoryServiceImpl implements CategoryService{
 

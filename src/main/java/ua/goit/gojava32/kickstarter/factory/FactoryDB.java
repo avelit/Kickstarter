@@ -1,4 +1,4 @@
-package factory;
+package ua.goit.gojava32.kickstarter.factory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
