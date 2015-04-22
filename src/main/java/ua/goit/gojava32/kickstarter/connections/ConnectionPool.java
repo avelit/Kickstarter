@@ -6,15 +6,12 @@ import java.sql.SQLException;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class ConnectionPool {
+public abstract class ConnectionPool {
   private static final int STANDARD_POOL_SIZE = 100;
   private static int size = STANDARD_POOL_SIZE;
   private static int connectionsCreated;
   private static int connectionsUsed;
   private static Deque<Connection> connections = new LinkedList<>();
-
-  private ConnectionPool() {
-  }
 
   public static void setConnectionPoolSize(int size) {
      ConnectionPool.size = size;

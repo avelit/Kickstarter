@@ -22,7 +22,7 @@ public class CategoryDAOImpl implements CategoryDAO {
   public void update(Category category) {
     if (Data.projects.keySet().contains(category)) {
       for (Category cat : Data.projects.keySet()) {
-        if (cat.getId().equals(category.getId())) { //!!!Check condition!!!
+        if (cat.getId().equals(category.getId())) {
           cat.setName(category.getName());
         }
       }
