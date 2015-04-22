@@ -18,6 +18,7 @@ public class IntegrationTest {
   private CategoryService categoryService = new CategoryServiceImpl();
   private ProjectService projectService = new ProjectServiceImpl();
 
+  @Ignore
   @Test
   public void categoryCRUD(){
     String name = "testCategoryAdd";
@@ -34,7 +35,7 @@ public class IntegrationTest {
     assertNull(categoryService.get(nameChanged));
   }
 
-  //@Ignore
+  @Ignore
   @Test
   public void projectCRUD(){
     
