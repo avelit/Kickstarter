@@ -2,6 +2,7 @@ package ua.goit.gojava32.kickstarter.test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import factory.FactoryDB;
@@ -17,7 +18,7 @@ public class IntegrationTest {
   private CategoryService categoryService = new CategoryServiceImpl();
   private ProjectService projectService = new ProjectServiceImpl();
 
-//  @Test
+  @Test
   public void categoryCRUD(){
     String name = "testCategoryAdd";
     String nameChanged = "testCategoryAddChanged";
@@ -33,7 +34,8 @@ public class IntegrationTest {
     assertNull(categoryService.get(nameChanged));
   }
 
-//  @Test
+  @Ignore
+  @Test
   public void projectCRUD(){
     
     FactoryDB.createDB();
