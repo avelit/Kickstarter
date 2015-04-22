@@ -17,7 +17,7 @@ public class IntegrationTest {
   private CategoryService categoryService = new CategoryServiceImpl();
   private ProjectService projectService = new ProjectServiceImpl();
 
-  @Test
+//  @Test
   public void categoryCRUD(){
     String name = "testCategoryAdd";
     String nameChanged = "testCategoryAddChanged";
@@ -33,7 +33,7 @@ public class IntegrationTest {
     assertNull(categoryService.get(nameChanged));
   }
 
-  @Test
+//  @Test
   public void projectCRUD(){
     
     FactoryDB.createDB();

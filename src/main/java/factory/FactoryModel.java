@@ -12,5 +12,4 @@ public class FactoryModel {
   public static Project createProject(String name,Category category){
     return new Project(name, category);
   }
-
 }
