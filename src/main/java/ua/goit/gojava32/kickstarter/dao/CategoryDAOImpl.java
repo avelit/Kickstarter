@@ -1,9 +1,11 @@
 package ua.goit.gojava32.kickstarter.dao;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import ua.goit.gojava32.kickstarter.connections.ConnectionPool;
 import ua.goit.gojava32.kickstarter.data.Data;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
@@ -12,10 +14,12 @@ public class CategoryDAOImpl implements CategoryDAO {
 
   @Override
   public void add(Category category) {
+    Connection con = ConnectionPool.getConnection();
 
     if (!Data.projects.containsKey(category)) {
       Data.projects.put(category, new ArrayList<Project>());
     }
+    ConnectionPool.releaseConnection(con);
   }
 
   @Override

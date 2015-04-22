@@ -38,7 +38,7 @@ public abstract class ConnectionPool {
     }
   }
 
-  public static void release(Connection con) {
+  public static void releaseConnection(Connection con) {
     connections.remove(con);
     connectionsUsed--;
     connections.offerFirst(con);
