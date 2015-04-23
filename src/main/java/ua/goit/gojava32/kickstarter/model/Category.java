@@ -1,12 +1,8 @@
 package ua.goit.gojava32.kickstarter.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Category {
 
   private String name;
-  private List<Project> projects;
   private Integer id;
   private String description = "";
 
@@ -31,18 +27,6 @@ public class Category {
 
   public String getName() {
     return name;
-  }
-
-  public List<Project> getProjects() {
-    return projects;
-  }
-
-  public void setProjects(List<Project> projects) {
-    this.projects = projects;
-  }
-
-  public void addProject(Project project) {
-    this.projects.add(project);
   }
 
   public void setDescription(String description) {

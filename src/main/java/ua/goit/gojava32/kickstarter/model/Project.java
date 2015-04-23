@@ -8,14 +8,12 @@ public class Project {
   private String name;
   private String description = "";
   private Category category;
-  private List<String> comment;
   private String blogUrl = "";
 
   public Project (String name, Category category, String description){
     this.name = name;
     this.category = category;
     this.description = description;
-    this.comment = new ArrayList<String>();
   }
 
   public Project (Integer id, String name, Category category){
@@ -40,24 +38,12 @@ public class Project {
     return category;
   }
 
-  public List<String> getComment () {
-    return comment;
-  }
-
   public Integer getId () {
     return id;
   }
 
   public void setCategory (Category category) {
     this.category = category;
-  }
-
-  public void setComment (List<String> comment){
-    this.comment = comment;
-  }
-
-  public void addComment (String comment){
-    this.comment.add(comment);
   }
 
   public void setDescription(String description){

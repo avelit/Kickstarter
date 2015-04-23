@@ -22,7 +22,7 @@ public class IntegrationTest {
   private CategoryService categoryService = new CategoryServiceImpl();
   private ProjectService projectService = new ProjectServiceImpl();
 
-  //@Ignore
+//  @Ignore
   @Test
   public void categoryCRUD(){
 
@@ -48,7 +48,7 @@ public class IntegrationTest {
     assertNull(categoryService.get(nameChanged));
   }
 
-  @Ignore
+//  @Ignore
   @Test
   public void projectCRUD(){
     
@@ -62,8 +62,9 @@ public class IntegrationTest {
     assertEquals(name, project.getName());
     
     project.setName(nameChanged);
+    projectService.update(project);
     assertNull(projectService.get(name));
-    assertSame(nameChanged, projectService.get(nameChanged).getName());
+    assertEquals(nameChanged, projectService.get(nameChanged).getName());
     
     projectService.delete(project);
     assertNull(projectService.get(nameChanged));
