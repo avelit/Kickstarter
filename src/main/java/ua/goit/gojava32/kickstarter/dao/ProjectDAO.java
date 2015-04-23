@@ -8,6 +8,6 @@ public interface ProjectDAO {
   void update(Project project);
   void delete(Integer id);
   void delete(Project project);
-    Project get(Integer id);
+  Project get(Integer id);
   Project get(String name);
 }

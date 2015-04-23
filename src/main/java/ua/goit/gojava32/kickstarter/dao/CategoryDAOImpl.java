@@ -16,16 +16,9 @@ public class CategoryDAOImpl implements CategoryDAO {
   @Override
   public void add(Category category) {
     Connection con = ConnectionPool.getConnection();
-    String queryCheck = String.format("SELECT * FROM categories WHERE name = '%s'", category.getName());
     String query = String.format("INSERT INTO categories (name,description) VALUES ('%s', '%s')", category.getName(), category.getDescription());
-    try (Statement st1 = con.createStatement(); Statement st2 = con.createStatement()) {
-      ResultSet resultSet = st2.executeQuery(queryCheck);
-      if (!resultSet.next()) {
-        st1.executeUpdate(query);
-      }
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
+    String queryCheck = String.format("SELECT * FROM categories WHERE name = '%s'", category.getName());
+    AbstractDAO.executeAdd(con, query, queryCheck);
     ConnectionPool.releaseConnection(con);
   }
 
@@ -34,11 +27,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("UPDATE categories SET name = '%s', description = '%s' WHERE id = '%d'",
             category.getName(), category.getDescription(), category.getId());
-    try (Statement st = con.createStatement()) {
-      st.executeUpdate(query);
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
+    AbstractDAO.executeUpdate(con, query);
     ConnectionPool.releaseConnection(con);
   }
 
