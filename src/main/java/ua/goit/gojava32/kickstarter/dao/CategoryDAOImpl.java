@@ -72,7 +72,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     Connection con = ConnectionPool.getConnection();
     List<Project> projectList = new ArrayList<>();
     try (Statement st = con.createStatement()) {
-      String query = "SELECT * FROM projects WHERE id_category = '" + categoryId + "'";
+      String query = String.format("SELECT * FROM projects WHERE id_category = '%d'", categoryId);
       ResultSet result = st.executeQuery(query);
       while (result.next()) {
         Integer id = result.getInt("id");
@@ -90,7 +90,7 @@ public class CategoryDAOImpl implements CategoryDAO {
   @Override
   public void delete(Integer id) {
     Connection con = ConnectionPool.getConnection();
-    String query = "DELETE FROM categories WHERE id = '" + id + "'";
+    String query = String.format("DELETE FROM categories WHERE id = '%d'", id);
     try (Statement st = con.createStatement()) {
       st.executeUpdate(query);
     } catch (SQLException e) {
@@ -106,19 +106,15 @@ public class CategoryDAOImpl implements CategoryDAO {
 
   @Override
   public Category get(Integer id) {
-
-    String query = "SELECT * FROM categories WHERE id = '" + id + "'";
+    String query = String.format("SELECT * FROM categories WHERE id = '%d'", id);
     Category category = getCategory(query);
-
     return category;
   }
 
   @Override
   public Category get(String name) {
-    
-    String query = "SELECT * FROM categories WHERE name = '" + name + "'";
+    String query = String.format("SELECT * FROM categories WHERE name = '%s'", name);
     Category category = getCategory(query);
-    
     return category;
   }
   
