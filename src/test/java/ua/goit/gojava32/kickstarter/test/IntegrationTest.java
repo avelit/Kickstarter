@@ -30,12 +30,13 @@ public class IntegrationTest {
     
     String name = "testCategoryAdd";
     String nameChanged = "testCategoryAddChanged";
-    
+    String description = "test description";
+
     Set<Category> allCategiries = categoryService.findAll();
     
     System.out.println(Arrays.deepToString(allCategiries.toArray()));
     
-    Category category = categoryService.add(name);
+    Category category = categoryService.add(name, description);
     assertEquals(name, category.getName());
     
     category.setName(nameChanged);
@@ -53,8 +54,9 @@ public class IntegrationTest {
     
     String name = "testProjectAdd";
     String nameChanged = "testProjectAddChanged";
+    String description = "test description";
 
-    Category category = categoryService.add(name);
+    Category category = categoryService.add(name, description);
     
     Project project = projectService.add(name,category);
     assertEquals(name, project.getName());

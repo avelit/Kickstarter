@@ -10,18 +10,14 @@ public class Category {
   private Integer id;
   private String description = "";
 
-  public Category(String name){
+  public Category(String name, String description) {
     this.name = name;
-    this.projects = new ArrayList<Project>();
-  }
-  
-  public Category(Integer id, String name){
-    this(name);
-    this.id = id;
+    this.description = description;
   }
 
   public Category(Integer id, String name, String description) {
-    this(id, name);
+    this.name = name;
+    this.id = id;
     this.description = description;
   }
 
@@ -37,23 +33,23 @@ public class Category {
     return name;
   }
 
-  public List<Project> getProjects () {
+  public List<Project> getProjects() {
     return projects;
   }
 
-  public void setProjects (List<Project> projects) {
+  public void setProjects(List<Project> projects) {
     this.projects = projects;
   }
 
-  public void addProject (Project project) {
+  public void addProject(Project project) {
     this.projects.add(project);
   }
 
-  public void setDescription(String description){
+  public void setDescription(String description) {
     this.description = description;
   }
 
-  public String getDescription(){
+  public String getDescription() {
     return description;
   }
 

@@ -6,8 +6,8 @@ import ua.goit.gojava32.kickstarter.service.CategoryServiceImpl;
 
 public class FactoryModel {
 
-  public static Category createCategory(String name){
-    return new Category(name);
+  public static Category createCategory(String name, String description){
+    return new Category(name, description);
   }
 
   public static Category createCategory(Integer id, String name, String description){

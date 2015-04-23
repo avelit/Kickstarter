@@ -8,7 +8,7 @@ import ua.goit.gojava32.kickstarter.model.Project;
 
 public interface CategoryService {
   void add(Category category);
-  Category add(String name);
+  Category add(String name, String description);
   void update(Category category);
   Set<Category> findAll();
   List<Project> findAllProjects(Category category);

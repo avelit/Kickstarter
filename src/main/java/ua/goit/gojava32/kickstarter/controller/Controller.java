@@ -32,7 +32,9 @@ public class Controller {
   public void handleRequest() throws ServletException, IOException {
 
     if ("addCategory".equals(uriSegments[uriSegments.length - 1])) {
-      Category category = categoryService.add(request.getParameter("category_name"));
+      String categoryName = request.getParameter("category_name");
+      String description  = request.getParameter("category_description");
+      Category category = categoryService.add(categoryName, description);
       category.setDescription(request.getParameter("category_description"));
       response.sendRedirect("/categories");
     } else if ("addProject".equals(uriSegments[uriSegments.length - 1])) {
