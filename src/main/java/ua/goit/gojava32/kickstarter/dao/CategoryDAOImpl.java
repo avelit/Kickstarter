@@ -80,11 +80,7 @@ public class CategoryDAOImpl implements CategoryDAO {
   public void delete(Integer id) {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("DELETE FROM categories WHERE id = '%d'", id);
-    try (Statement st = con.createStatement()) {
-      st.executeUpdate(query);
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
+    AbstractDAO.executeUpdate(con, query);
     ConnectionPool.releaseConnection(con);
   }
 
@@ -106,8 +102,8 @@ public class CategoryDAOImpl implements CategoryDAO {
     Category category = getCategory(query);
     return category;
   }
-  
-  public static Category getCategory(String query) {
+
+  private static Category getCategory(String query) {
     Connection con = ConnectionPool.getConnection();
     Category category = null;
     try (Statement st = con.createStatement()) {
@@ -124,4 +120,4 @@ public class CategoryDAOImpl implements CategoryDAO {
     ConnectionPool.releaseConnection(con);
     return category;
   }
-} 
+}
