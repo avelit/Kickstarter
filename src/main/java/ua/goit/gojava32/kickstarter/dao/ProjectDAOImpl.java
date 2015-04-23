@@ -15,7 +15,7 @@ public class ProjectDAOImpl implements ProjectDAO {
   @Override
   public void add(Project project, Category category) {
     Connection con = ConnectionPool.getConnection();
-    String queryCheck = String.format("SELECT * FROM projects WHERE category_id = '%d', name = '%s'", category.getId(), project.getName());
+    String queryCheck = String.format("SELECT * FROM projects WHERE id_category = '%d' AND name = '%s'", category.getId(), project.getName());
     String query = String.format("INSERT INTO projects (name, id_category, description) VALUES ('%s', '%d', '%s')",
             project.getName(), category.getId(), project.getDescription());
     AbstractDAO.executeAdd(con, query, queryCheck);
