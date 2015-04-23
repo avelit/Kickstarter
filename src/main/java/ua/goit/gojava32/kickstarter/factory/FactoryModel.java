@@ -22,5 +22,4 @@ public class FactoryModel {
     Category category = (new CategoryServiceImpl()).get(idcategory);
     return new Project(id, name, category, description);
   }
-
 }

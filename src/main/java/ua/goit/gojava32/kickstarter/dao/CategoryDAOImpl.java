@@ -78,7 +78,7 @@ public class CategoryDAOImpl implements CategoryDAO {
         Integer id = result.getInt("id");
         String name = result.getString("name");
         String description = result.getString("description");
-        projectList.add(new Project(id, name, description, categoryId));
+        projectList.add(FactoryModel.createProject(id, name, description, categoryId));
       }
     } catch (SQLException e) {
       throw new RuntimeException(e);

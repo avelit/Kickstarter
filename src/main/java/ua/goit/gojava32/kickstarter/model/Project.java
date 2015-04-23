@@ -8,7 +8,6 @@ public class Project {
   private String name;
   private String description = "";
   private Category category;
-  private Integer categoryId;
   private List<String> comment;
   private String blogUrl = "";
 
@@ -28,23 +27,12 @@ public class Project {
     this.description = description;
   }
 
-  public Project(Integer id, String name, String description, Integer categoryId) {
-    this.id = id;
-    this.name = name;
-    this.categoryId = categoryId;
-    this.description = description;
-  }
-
   public void setName(String name){
     this.name = name;
   }
 
   public String getName(){
     return name;
-  }
-
-  public Integer getCategoryId() {
-    return categoryId;
   }
 
   public Category getCategory () {
