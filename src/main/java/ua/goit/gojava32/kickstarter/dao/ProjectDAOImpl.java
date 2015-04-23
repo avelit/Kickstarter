@@ -19,6 +19,11 @@ public class ProjectDAOImpl implements ProjectDAO {
   }
 
   @Override
+  public void delete(Integer id) {
+
+  }
+
+  @Override
   public void delete(Project project) {
     Data.projects.values().remove(project);
   }
