@@ -7,6 +7,7 @@
 <link href="/css/signin.css" rel="stylesheet">
 </head>
 <body>
+<div class="container">
 	<div class="category-container">
 <h1>
 		Project name:
@@ -24,12 +25,13 @@
 		<br>
 		<div>
 			<form action="/categories/addProjectComment" method="post">
-				<input type="text" name="comment"></input>
+				<input type="text" name="comment"/>
 				<input type="hidden" name = "project" value="<c:out value="${project.name}"/>"/> 
 				<input type="hidden" name = "category" value="<c:out value="${category_name}"/>"/> 
-				<input class="btn btn-default" type="submit" title="add comment"></input>
+				<input class="btn btn-default" type="submit" title="add comment"/>
 			</form>
 		</div>
 	</div>
+</div>
 </body>
 </html>

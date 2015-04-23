@@ -8,7 +8,8 @@
 <link href="/css/signin.css" rel="stylesheet">
 </head>
 <body>
-	<div class="row">
+<div class="container">
+<div class="row">
 		<c:forEach var="c" items="${categories}">
 			<div class="col-md-4">
 				<div class="thumbnail">
@@ -24,6 +25,9 @@
 			</div>
 		</c:forEach>
 	</div>
+	</div>
+<div class="container">
 	<%@include file='/jsp/adminpanel/admin_edit_category.jsp'%>
+	</div>
 </body>
 </html>

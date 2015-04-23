@@ -8,6 +8,8 @@
     <link href="/css/signin.css" rel="stylesheet">
 </head>
 <body>
+<div class="container">
+
 <h3>Category: <c:out value="${category_name}"/>
 <br>
 Description: <c:out value="${category_description}"/>
@@ -28,10 +30,9 @@ Description: <c:out value="${category_description}"/>
 		</c:forEach>
 	</div>
 
-
 <br>
 Add project:
 <%@include file='/jsp/adminpanel/admin_edit_project.jsp'%>
-
+</div>
 </body>
 </html>
