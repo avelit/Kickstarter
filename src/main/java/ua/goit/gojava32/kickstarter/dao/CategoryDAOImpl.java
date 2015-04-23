@@ -1,13 +1,10 @@
 package ua.goit.gojava32.kickstarter.dao;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import ua.goit.gojava32.kickstarter.connections.ConnectionPool;
-import ua.goit.gojava32.kickstarter.data.Data;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 
