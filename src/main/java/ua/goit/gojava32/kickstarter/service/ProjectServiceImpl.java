@@ -16,8 +16,8 @@ public class ProjectServiceImpl implements ProjectService {
   }
 
   @Override
-  public Project add(String name, Category category) {
-    Project project = FactoryModel.createProject(name, category);
+  public Project add(String name, String description, Category category) {
+    Project project = FactoryModel.createProject(name, category, description);
     projectDAO.add(project,category);
     return projectDAO.get(name);
   }

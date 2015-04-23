@@ -58,7 +58,7 @@ public class IntegrationTest {
 
     Category category = categoryService.add(name, description);
     
-    Project project = projectService.add(name,category);
+    Project project = projectService.add(name,description,category);
     assertEquals(name, project.getName());
     
     project.setName(nameChanged);

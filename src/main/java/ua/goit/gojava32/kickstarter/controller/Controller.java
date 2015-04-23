@@ -39,8 +39,9 @@ public class Controller {
       response.sendRedirect("/categories");
     } else if ("addProject".equals(uriSegments[uriSegments.length - 1])) {
       Category category = (Category)request.getSession().getAttribute("category");
-      Project project = projectService.add(request.getParameter("project_name"),category);
-      project.setDescription(request.getParameter("project_description"));
+      String projectName = request.getParameter("project_name");
+      String projectDescription = request.getParameter("project_description");
+      Project project = projectService.add(projectName, projectDescription, category);
       response.sendRedirect("/categories/" + request.getParameter("category_name"));
     } else if ("addProjectComment".equals(uriSegments[uriSegments.length - 1])) {
       Project project = (Project)request.getSession().getAttribute("project");

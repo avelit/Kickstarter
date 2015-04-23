@@ -11,14 +11,15 @@ public class Project {
   private List<String> comment;
   private String blogUrl = "";
 
-  public Project (String name, Category category){
+  public Project (String name, Category category, String description){
     this.name = name;
     this.category = category;
+    this.description = description;
     this.comment = new ArrayList<String>();
   }
 
   public Project (Integer id, String name, Category category){
-    this(name, category);
+    this(name, category, "");
     this.id = id;
   }
 

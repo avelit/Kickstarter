@@ -14,8 +14,8 @@ public class FactoryModel {
     return new Category(id, name, description);
   }
 
-  public static Project createProject(String name,Category category){
-    return new Project(name, category);
+  public static Project createProject(String name,Category category, String description){
+    return new Project(name, category, description);
   }
 
   public static Project createProject(Integer id, String name, String description, Integer idcategory){
