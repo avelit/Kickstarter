@@ -1,4 +1,4 @@
-<jsp:forward page="/categories/"/> 
+<jsp:forward page="/categories/"/>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
