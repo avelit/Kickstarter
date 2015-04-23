@@ -8,6 +8,7 @@ public class Project {
   private String name;
   private String description = "";
   private Category category;
+  private Integer categoryId;
   private List<String> comment;
   private String blogUrl = "";
 
@@ -18,10 +19,20 @@ public class Project {
   }
 
   public Project (Integer id, String name, Category category){
-    this.name = name;
+    this(name, category);
     this.id = id;
-    this.category = category;
-    this.comment = new ArrayList<String>();
+  }
+
+  public Project(Integer id, String name, Category category, String description) {
+    this(id, name, category);
+    this.description = description;
+  }
+
+  public Project(Integer id, String name, String description, Integer categoryId) {
+    this.id = id;
+    this.name = name;
+    this.categoryId = categoryId;
+    this.description = description;
   }
 
   public void setName(String name){
@@ -30,6 +41,10 @@ public class Project {
 
   public String getName(){
     return name;
+  }
+
+  public Integer getCategoryId() {
+    return categoryId;
   }
 
   public Category getCategory () {

@@ -16,9 +16,13 @@ public class Category {
   }
   
   public Category(Integer id, String name){
+    this(name);
     this.id = id;
-    this.name = name;
-    this.projects = new ArrayList<Project>();
+  }
+
+  public Category(Integer id, String name, String description) {
+    this(id, name);
+    this.description = description;
   }
 
   public Integer getId() {

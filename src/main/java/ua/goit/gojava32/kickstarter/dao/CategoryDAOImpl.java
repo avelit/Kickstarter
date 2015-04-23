@@ -1,6 +1,8 @@
 package ua.goit.gojava32.kickstarter.dao;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -24,7 +26,7 @@ public class CategoryDAOImpl implements CategoryDAO {
   @Override
   public void update(Category category) {
     Connection con = ConnectionPool.getConnection();
-    String query = String.format("UPDATE categories SET name = '%s' description = '%s' WHERE id = '%d'",
+    String query = String.format("UPDATE categories SET name = '%s', description = '%s' WHERE id = '%d'",
             category.getName(), category.getDescription(), category.getId());
     AbstractDAO.executeUpdate(con, query);
     ConnectionPool.releaseConnection(con);
@@ -32,46 +34,57 @@ public class CategoryDAOImpl implements CategoryDAO {
 
   @Override
   public Set<Category> findAll() {
-    return Data.projects.keySet();
+    Connection con = ConnectionPool.getConnection();
+    Set<Category> categorySet = AbstractDAO.getAllCategories(con);
+    ConnectionPool.releaseConnection(con);
+    return categorySet;
   }
 
   @Override
   public List<Project> findAllProjects(Category category) {
-    return Data.projects.get(category);
+    return findAllProjects(category.getId());
   }
 
   @Override
   public List<Project> findAllProjects(Integer id) {
-    for (Category cat : Data.projects.keySet()) {
-      if (cat.getId().equals(id)) {
-        return cat.getProjects();
-      }
+    Connection con = ConnectionPool.getConnection();
+    List<Project> projectList = AbstractDAO.getAllProjects(con, id);
+    ConnectionPool.releaseConnection(con);
+    return projectList;
+  }
+
+  @Override
+  public void delete(Integer id) {
+    Connection con = ConnectionPool.getConnection();
+    String query = "DELETE FROM categories WHERE id = " + id;
+    try (Statement st = con.createStatement()) {
+      st.executeUpdate(query);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
     }
-    return null;
+    ConnectionPool.releaseConnection(con);
   }
 
   @Override
   public void delete(Category category) {
-    Data.projects.remove(category);
+    delete(category.getId());
   }
 
   @Override
   public Category get(Integer id) {
-    for (Category cat : Data.projects.keySet()) {
-      if (cat.getId().equals(id)) {
-        return cat;
-      }
-    }
-    return null;
+    Connection con = ConnectionPool.getConnection();
+    String query = "SELECT * FROM categories WHERE id = " + id;
+    Category category = AbstractDAO.getCategory(con, query);
+    ConnectionPool.releaseConnection(con);
+    return category;
   }
 
   @Override
   public Category get(String name) {
-    for (Category cat : Data.projects.keySet()) {
-      if (cat.getName().equals(name)) {
-        return cat;
-      }
-    }
-    return null;
+    Connection con = ConnectionPool.getConnection();
+    String query = "SELECT * FROM categories WHERE name = " + name;
+    Category category = AbstractDAO.getCategory(con, query);
+    ConnectionPool.releaseConnection(con);
+    return category;
   }
 }
