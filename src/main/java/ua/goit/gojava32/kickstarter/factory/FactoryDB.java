@@ -25,7 +25,7 @@ public class FactoryDB {
         sql = "insert into categories (name,description) values ('Medicine','Medicine')";
         stmt.executeUpdate(sql);
 
-        sql = "CREATE TABLE IF NOT EXISTS project " +
+        sql = "CREATE TABLE IF NOT EXISTS projects " +
             "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
             "name           TEXT, " +
             "id_category     INTEGER," +
