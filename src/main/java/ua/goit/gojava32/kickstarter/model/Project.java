@@ -81,7 +81,7 @@ public class Project {
 
   @Override
   public String toString() {
-    return "Project [name=" + name + ", category=" + category + "]";
+    return "id=" + id + ",name=" + name + ",description=" + description + ", category=" + category.getName() ;
   }
 
 }

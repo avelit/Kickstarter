@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.Deque;
 import java.util.LinkedList;
 
+import ua.goit.gojava32.kickstarter.factory.FactoryDB;
+
 public abstract class ConnectionPool {
   private static final int STANDARD_POOL_SIZE = 100;
   private static int size = STANDARD_POOL_SIZE;
@@ -25,7 +27,7 @@ public abstract class ConnectionPool {
       return con;
     } else if (connectionsCreated < size) {
       try {
-        Connection con = DriverManager.getConnection("jdbc:sqlite:kickstarter.db");
+        Connection con = DriverManager.getConnection(FactoryDB.CONNECTION_STRING);
         connectionsCreated++;
         connectionsUsed++;
         connections.offer(con);

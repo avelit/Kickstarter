@@ -2,6 +2,10 @@ package ua.goit.gojava32.kickstarter.test;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Set;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -18,18 +22,26 @@ public class IntegrationTest {
   private CategoryService categoryService = new CategoryServiceImpl();
   private ProjectService projectService = new ProjectServiceImpl();
 
-  @Ignore
+  //@Ignore
   @Test
   public void categoryCRUD(){
+
+    FactoryDB.createDB();
+    
     String name = "testCategoryAdd";
     String nameChanged = "testCategoryAddChanged";
+    
+    Set<Category> allCategiries = categoryService.findAll();
+    
+    System.out.println(Arrays.deepToString(allCategiries.toArray()));
     
     Category category = categoryService.add(name);
     assertEquals(name, category.getName());
     
     category.setName(nameChanged);
+    categoryService.update(category);
     assertNull(categoryService.get(name));
-    assertSame(nameChanged, categoryService.get(nameChanged).getName());
+    assertEquals(nameChanged, categoryService.get(nameChanged).getName());
     
     categoryService.delete(category);
     assertNull(categoryService.get(nameChanged));
@@ -38,8 +50,6 @@ public class IntegrationTest {
   @Ignore
   @Test
   public void projectCRUD(){
-    
-    FactoryDB.createDB();
     
     String name = "testProjectAdd";
     String nameChanged = "testProjectAddChanged";
