@@ -1,8 +1,11 @@
 package ua.goit.gojava32.kickstarter.model;
 
+import user.User;
+
 public class Project {
   private Integer id;
   private String name;
+  private User user;
   private String description = "";
   private Category category;
 

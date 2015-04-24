@@ -29,7 +29,9 @@ public class FactoryDB {
             "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
             "name           TEXT, " +
             "id_category     INTEGER," +
+            "id_author     INTEGER," +
             "description    TEXT," +
+            "FOREIGN KEY(id_author)  REFERENCES users(id)," + 
             "FOREIGN KEY(id_category)  REFERENCES categories(id))";
 
         stmt.executeUpdate(sql);
