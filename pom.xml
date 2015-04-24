@@ -9,6 +9,8 @@
 	<properties>
 		<tomcat.version>7.0.57</tomcat.version>
 	</properties>
+
+
 	<dependencies>
 
 		<!-- <dependency> <groupId>org.apache.tomcat.embed</groupId> <artifactId>tomcat-embed-core</artifactId> 
@@ -21,6 +23,12 @@
 			<version>${tomcat.version}</version> </dependency> <dependency> <groupId>org.apache.tomcat</groupId> 
 			<artifactId>tomcat-jsp-api</artifactId> <version>${tomcat.version}</version> 
 			</dependency> -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.3</version>
+        </dependency>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
