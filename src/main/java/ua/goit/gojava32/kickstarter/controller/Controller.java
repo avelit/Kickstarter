@@ -14,8 +14,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 public class Controller {
 
+  private Logger logger = Logger.getLogger(Controller.class);
+  
   private HttpServletRequest request;
   private HttpServletResponse response;
   private String[] uriSegments;
@@ -45,8 +49,11 @@ public class Controller {
       response.sendRedirect("/categories/" + request.getParameter("category_name"));
     } else if ("addProjectComment".equals(uriSegments[uriSegments.length - 1])) {
       Project project = (Project)request.getSession().getAttribute("project");
-//      project.addComment(request.getParameter("comment"));
-      projectService.update(project);
+      projectService.addComment(request.getParameter("comment"),project);
+      response.sendRedirect("/categories/" + request.getParameter("category") + "/" + request.getParameter("project"));
+    } else if ("addProjectBlog".equals(uriSegments[uriSegments.length - 1])) {
+      Project project = (Project)request.getSession().getAttribute("project");
+      projectService.addBlog(request.getParameter("comment"),project);
       response.sendRedirect("/categories/" + request.getParameter("category") + "/" + request.getParameter("project"));
     } else if ("login_page".equals(uriSegments[uriSegments.length - 1])) {
       RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login_page.jsp");

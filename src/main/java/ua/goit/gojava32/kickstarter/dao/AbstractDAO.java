@@ -18,6 +18,14 @@ public abstract class AbstractDAO {
     }
   }
 
+  public static void executeAdd(Connection con, String query) {
+    try (Statement stUpdate = con.createStatement()) {
+       stUpdate.executeUpdate(query);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
   public static void executeUpdate(Connection con, String query) {
     try (Statement st = con.createStatement()) {
       st.executeUpdate(query);

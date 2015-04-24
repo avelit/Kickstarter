@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -22,12 +23,14 @@ public class IntegrationTest {
   private CategoryService categoryService = new CategoryServiceImpl();
   private ProjectService projectService = new ProjectServiceImpl();
 
-  @Ignore
+  @Before
+  public void createDB() {
+    FactoryDB.createDB();
+  }
+  
   @Test
   public void categoryCRUD(){
 
-    FactoryDB.createDB();
-    
     String name = "testCategoryAdd";
     String nameChanged = "testCategoryAddChanged";
     String description = "test description";
@@ -48,7 +51,6 @@ public class IntegrationTest {
     assertNull(categoryService.get(nameChanged));
   }
 
-  @Ignore
   @Test
   public void projectCRUD(){
     

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectDAOImpl implements ProjectDAO {
@@ -80,13 +81,48 @@ public class ProjectDAOImpl implements ProjectDAO {
 
   @Override
   public List<String> getComments(Project project) {
-    // TODO Auto-generated method stub
-    return null;
+    return getList("comments", project);
   }
 
   @Override
   public List<String> getBlogs(Project project) {
-    // TODO Auto-generated method stub
-    return null;
+    return getList("blogs", project);
   }
+
+  private List<String> getList(String table, Project project) {
+    List<String> comments = new ArrayList<>();
+    Connection con = ConnectionPool.getConnection();
+    String query = String.format("SELECT * FROM " + table + " WHERE id_project = '%s'", project.getId());
+    try (Statement st = con.createStatement()) {
+      ResultSet rs = st.executeQuery(query);
+      while (rs.next()) {
+        String author = rs.getString("author");
+        String comment = rs.getString("comment");
+        comments.add(comment);
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    ConnectionPool.releaseConnection(con);
+    return comments;
+  }
+
+  @Override
+  public void addComment(String comment,Project project) {
+    addToList(comment, "comments", project);
+  }
+
+  @Override
+  public void addBlog(String comment,Project project) {
+    addToList(comment, "blogs", project);
+  }
+  
+  private void addToList(String comment, String table, Project project) {
+    Connection con = ConnectionPool.getConnection();
+    String query = String.format("INSERT INTO " + table + " (id_project, comment) VALUES ('%s', '%s')",
+            project.getId(), comment);
+    AbstractDAO.executeAdd(con, query);
+    ConnectionPool.releaseConnection(con);
+  }
+
 }
