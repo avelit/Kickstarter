@@ -13,10 +13,10 @@ import javax.mail.internet.MimeMessage;
 
 public class SendMail {
 
-    private static final String username = "kickstartergoit32@gmail.com";
-    private static final String password = "i76jxk*6^&Xwxy";
+  private static final String username = "kickstartergoit32@gmail.com";
+  private static final String password = "i76jxk*6^&Xwxy";
 
-    public static void send(String to, String head, String body){
+  public static void send(String to, String head, String body) {
 
     Properties props = new Properties();
     props.put("mail.smtp.auth", "true");
@@ -25,24 +25,24 @@ public class SendMail {
     props.put("mail.smtp.port", "587");
 
     Session session = Session.getInstance(props,
-        new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
+            new Authenticator() {
+              protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
-            }
-        });
+              }
+            });
 
     try {
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(username));
-        message.setRecipients(Message.RecipientType.TO,
-                InternetAddress.parse(to));
-        message.setSubject(head);
-        message.setText(body);
-        Transport.send(message);
+      Message message = new MimeMessage(session);
+      message.setFrom(new InternetAddress(username));
+      message.setRecipients(Message.RecipientType.TO,
+              InternetAddress.parse(to));
+      message.setSubject(head);
+      message.setText(body);
+      Transport.send(message);
 
     } catch (MessagingException e) {
-            throw new RuntimeException(e);
-        }
+      throw new RuntimeException(e);
     }
+  }
 
 }
