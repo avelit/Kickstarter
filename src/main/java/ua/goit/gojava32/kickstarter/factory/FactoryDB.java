@@ -43,6 +43,14 @@ public class FactoryDB {
 
         stmt.executeUpdate(sql);
         
+        sql = "CREATE TABLE IF NOT EXISTS blogs " +
+            "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "author           TEXT, " +
+            "id_project     INTEGER," +
+            "comment    TEXT," +
+            "FOREIGN KEY(id_project)  REFERENCES projects(id))";
+
+        stmt.executeUpdate(sql);
       }
     } catch (Exception e) {
       System.err.println(e.getClass().getName() + ": " + e.getMessage());

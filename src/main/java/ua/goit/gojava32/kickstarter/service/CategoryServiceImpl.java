@@ -14,11 +14,6 @@ public class CategoryServiceImpl implements CategoryService {
   private CategoryDAO categoryDAO = new CategoryDAOImpl();
 
   @Override
-  public void add(Category category) {
-    categoryDAO.add(category);
-  }
-
-  @Override
   public Category add(String name, String description) {
     Category category = FactoryModel.createCategory(name, description);
     categoryDAO.add(category);

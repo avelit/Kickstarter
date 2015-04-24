@@ -1,13 +1,12 @@
 package ua.goit.gojava32.kickstarter.dao;
 
+import java.util.List;
+
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 
-public interface ProjectDAO {
+public interface ProjectDAO extends GenericCRUDDAO<Project>{
   void add(Project project, Category category);
-  void update(Project project);
-  void delete(Integer id);
-  void delete(Project project);
-  Project get(Integer id);
-  Project get(String name);
+  List<String> getComments(Project project);
+  List<String> getBlogs(Project project);
 }

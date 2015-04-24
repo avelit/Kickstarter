@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public class ProjectDAOImpl implements ProjectDAO {
 
@@ -75,5 +76,17 @@ public class ProjectDAOImpl implements ProjectDAO {
     }
     ConnectionPool.releaseConnection(con);
     return project;
+  }
+
+  @Override
+  public List<String> getComments(Project project) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public List<String> getBlogs(Project project) {
+    // TODO Auto-generated method stub
+    return null;
   }
 }

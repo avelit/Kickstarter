@@ -94,7 +94,10 @@ public class Controller {
   private String processProjects() {
     String jspName = "";
     if (uriSegments.length == 4) {
-      request.getSession().setAttribute("project", projectService.get(uriSegments[3].trim()));
+      Project project = projectService.get(uriSegments[3].trim());
+      request.getSession().setAttribute("project", project);
+      request.getSession().setAttribute("comments", projectService.getComments(project));
+      request.getSession().setAttribute("blogs", projectService.getBlogs(project));
       jspName = "project.jsp";
     }
     return jspName;

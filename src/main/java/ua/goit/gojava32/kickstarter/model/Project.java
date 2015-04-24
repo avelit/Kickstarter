@@ -1,14 +1,10 @@
 package ua.goit.gojava32.kickstarter.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Project {
   private Integer id;
   private String name;
   private String description = "";
   private Category category;
-  private String blogUrl = "";
 
   public Project (String name, Category category, String description){
     this.name = name;
