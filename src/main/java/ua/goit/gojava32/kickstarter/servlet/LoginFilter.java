@@ -8,6 +8,8 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 public class LoginFilter implements Filter{
 
@@ -17,6 +19,7 @@ public class LoginFilter implements Filter{
 
   @Override
   public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
+    Cookie[] cookies = ((HttpServletRequest)req).getCookies();
     chain.doFilter(req, resp);
   }
 
