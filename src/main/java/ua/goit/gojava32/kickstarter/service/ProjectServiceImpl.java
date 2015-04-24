@@ -48,5 +48,15 @@ public class ProjectServiceImpl implements ProjectService {
   public List<String> getBlogs(Project project) {
     return projectDAO.getBlogs(project);
   }
+
+  @Override
+  public void addComment(String comment, Project project) {
+    projectDAO.addComment(comment, project);
+  }
+
+  @Override
+  public void addBlog(String comment, Project project) {
+    projectDAO.addBlog(comment, project);
+  }
 }
 

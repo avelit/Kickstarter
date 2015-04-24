@@ -51,6 +51,15 @@ public class FactoryDB {
             "FOREIGN KEY(id_project)  REFERENCES projects(id))";
 
         stmt.executeUpdate(sql);
+
+        sql = "CREATE TABLE IF NOT EXISTS users " +
+            "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "user           TEXT, " +
+            "token     TEXT," +
+            "comment    TEXT," +
+            "active    INTEGER)";
+
+        stmt.executeUpdate(sql);
       }
     } catch (Exception e) {
       System.err.println(e.getClass().getName() + ": " + e.getMessage());

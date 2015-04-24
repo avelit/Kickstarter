@@ -9,4 +9,6 @@ public interface ProjectDAO extends GenericCRUDDAO<Project>{
   void add(Project project, Category category);
   List<String> getComments(Project project);
   List<String> getBlogs(Project project);
+  void addComment(String comment, Project project);
+  void addBlog(String comment, Project project);
 }
