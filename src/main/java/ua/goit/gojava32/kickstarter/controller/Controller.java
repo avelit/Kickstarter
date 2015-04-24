@@ -14,8 +14,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 public class Controller {
 
+  private Logger logger = Logger.getLogger(Controller.class);
+  
   private HttpServletRequest request;
   private HttpServletResponse response;
   private String[] uriSegments;
