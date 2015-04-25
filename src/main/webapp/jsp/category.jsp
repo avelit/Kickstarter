@@ -32,7 +32,7 @@ Description: <c:out value="${category_description}"/>
 
 <br>
 Add project:
-<%@include file='/jsp/adminpanel/admin_edit_project.jsp'%>
+<%--<%@include file='/jsp/admin_edit_project.jsp'%>--%>
 </div>
 </body>
 </html>

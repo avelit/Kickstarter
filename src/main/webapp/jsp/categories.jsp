@@ -27,7 +27,7 @@
 	</div>
 	</div>
 <div class="container">
-	<%@include file='/jsp/adminpanel/admin_edit_category.jsp'%>
+	<%--<%@include file='/jsp/admin_edit_category.jsp'%>--%>
 	</div>
 </body>
 </html>
