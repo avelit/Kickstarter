@@ -9,4 +9,8 @@ public class ControllerMap {
       put("/addProject",new ControllerAddProject());
     }
   };
+
+  public Controller getController(String command){
+    return controllerMap.get(command);
+  }
 }
