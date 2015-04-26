@@ -17,6 +17,12 @@
             <hr>
             <form name="myform"
                   action="/categories/<c:out value="${category_name}"/>/addProject" method="post">
+                <h4>Category:</h4>
+                <select name="category_name" class="form-control">
+                    <c:forEach var="c" items="${categories}">
+                        <option value="<c:out value="${c.name}"/>"><c:out value="${c.name}"/></option>
+                    </c:forEach>
+                </select>
             <h4>Project name: </h4>
             <input type="text"
                    name="project_name" class="form-control" id="input_name"
