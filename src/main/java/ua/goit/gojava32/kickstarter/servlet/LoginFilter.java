@@ -1,5 +1,6 @@
 package ua.goit.gojava32.kickstarter.servlet;
 
+import ua.goit.gojava32.kickstarter.model.User;
 import ua.goit.gojava32.kickstarter.service.UserServiceImpl;
 
 import java.io.IOException;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class LoginFilter implements Filter{
 
-  private String TOKEN = "token";
+  private final String TOKEN = "token";
 
   @Override
   public void destroy() {
@@ -27,7 +28,8 @@ public class LoginFilter implements Filter{
     Cookie[] cookies = ((HttpServletRequest)req).getCookies();
     for (int i = 0; i < cookies.length; i++) {
       if (cookies[i].getName().equals(TOKEN)){
-        //User user = UserServiceImpl.findUserByToken(cookies[i].getValue());
+        User user = (new UserServiceImpl()).findUserByToken(cookies[i].getValue());
+        req.setAttribute("user", user);
         break;
       }
     }

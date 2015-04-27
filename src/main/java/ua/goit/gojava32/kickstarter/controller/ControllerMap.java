@@ -11,8 +11,8 @@ public class ControllerMap {
       put("post_addProject", new ControllerAddProject());
       put("post_addProjectComment", new ControllerAddProjectComment());
       put("post_addProjectBlog", new ControllerAddProjectBlog());
-      put("post_registration_page", new ControllerRegister());
-      put("post_login_page", new ControllerLogin());
+      put("get_registration_page", new ControllerRegisterPage());
+      put("get_login_page", new ControllerLoginPage());
       put("get_categories", new ControllerCommon());
     }
   };

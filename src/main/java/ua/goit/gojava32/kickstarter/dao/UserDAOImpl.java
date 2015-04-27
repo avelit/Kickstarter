@@ -9,6 +9,11 @@ public class UserDAOImpl implements UserDAO {
   }
 
   @Override
+  public User findUserByToken(String token) {
+    return new User("QQQ","fff",true);
+  }
+
+  @Override
   public void update(Object val) {
 
   }
