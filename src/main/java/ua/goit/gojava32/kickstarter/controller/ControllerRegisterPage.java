@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 public class ControllerRegisterPage implements Controller {
   @Override
   public ViewModel process(HttpServletRequest request) {
-//    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/registration.jsp");
-//    dispatcher.forward(request, response);
-    return null;
+    ViewModel vm = new ViewModel("/jsp/registration.jsp", "forward", null);
+    return vm;
   }
 }

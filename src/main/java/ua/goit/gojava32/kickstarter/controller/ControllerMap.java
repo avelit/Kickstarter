@@ -13,11 +13,16 @@ public class ControllerMap {
       put("post_addProjectBlog", new ControllerAddProjectBlog());
       put("get_registration_page", new ControllerRegisterPage());
       put("get_login_page", new ControllerLoginPage());
+      put("post_registration_page", new ControllerRegister());
+      put("post_login_page", new ControllerLogin());
       put("get_categories", new ControllerCommon());
     }
   };
 
   public static Controller getController(String request) {
+
+    System.out.println(request);
+
     Controller controller = controllerMap.get(request);
     if (controller == null){
       controller = new ControllerCommon();
