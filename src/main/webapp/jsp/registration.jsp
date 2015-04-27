@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <form class="form-signin" action="/login" method="post">
+        <form class="form-signin" action="/registration" method="post">
             <h2 class="form-signin-heading">Sigh up</h2>
             <input name="name" class="form-control" id="focusedInput" type="text" placeholder="Name" required autofocus>
             <p></p>

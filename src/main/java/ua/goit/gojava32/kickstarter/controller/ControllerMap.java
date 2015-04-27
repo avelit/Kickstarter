@@ -13,8 +13,8 @@ public class ControllerMap {
       put("post_addProjectBlog", new ControllerAddProjectBlog());
       put("get_registration_page", new ControllerRegisterPage());
       put("get_login_page", new ControllerLoginPage());
-      put("post_registration_page", new ControllerRegister());
-      put("post_login_page", new ControllerLogin());
+      put("post_registration", new ControllerRegister());
+      put("post_login", new ControllerLogin());
       put("get_categories", new ControllerCommon());
     }
   };
