@@ -10,8 +10,8 @@ public class UserServiceImpl implements UserService{
   UserDAO userDAO = new UserDAOImpl();
 
   @Override
-  public User add(String name, String email, String pass, Boolean isActive) {
-    User user = FactoryModel.createUser(name, email, pass, isActive);
+  public User add(String name, String email, String token, Boolean isActive) {
+    User user = FactoryModel.createUser(name, email, token, isActive);
     userDAO.add(user);
     return user;
   }
