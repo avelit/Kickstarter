@@ -6,6 +6,7 @@ import ua.goit.gojava32.kickstarter.service.UserService;
 import ua.goit.gojava32.kickstarter.service.UserServiceImpl;
 import ua.goit.gojava32.kickstarter.view.ViewModel;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 public class ControllerLogin implements Controller{
@@ -19,6 +20,9 @@ public class ControllerLogin implements Controller{
     User user = userService.findUserByToken(token);
 
     request.setAttribute("user", user);
-    return new ViewModel("/categories", "forward", null);
+
+    ViewModel vm = new ViewModel("/categories", "forward", null);
+    vm.addCookie(new Cookie("token", token));
+    return vm;
   }
 }

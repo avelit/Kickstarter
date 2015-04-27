@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +28,11 @@ public class KickstarterServlet extends HttpServlet {
     String[] uriSegments = request.getRequestURI().split("/");
     Controller controller = ControllerMap.getController(request.getMethod().toLowerCase() + "_" + uriSegments[uriSegments.length - 1]);
     ViewModel vm = controller.process(request);
+
+    Cookie newCookie = vm.getNewCookie();
+    if (newCookie != null) {
+      response.addCookie(newCookie);
+    }
 
     if (vm.getCommand().equals("sendRedirect")) {
       response.sendRedirect(vm.getView());
