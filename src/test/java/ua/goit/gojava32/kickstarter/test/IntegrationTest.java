@@ -11,8 +11,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import ua.goit.gojava32.kickstarter.factory.FactoryDB;
+import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
+import ua.goit.gojava32.kickstarter.model.User;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
 import ua.goit.gojava32.kickstarter.service.CategoryServiceImpl;
 import ua.goit.gojava32.kickstarter.service.ProjectService;
@@ -73,5 +75,17 @@ public class IntegrationTest {
     
     categoryService.delete(category);
   }
-  
+
+  @Test
+  public void userCRUD() {
+    String name = "test";
+    String email = "test@test.com";
+    String token = "123321";
+
+//    User user = FactoryModel
+
+
+  }
+
+
 }

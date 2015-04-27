@@ -2,14 +2,18 @@ package ua.goit.gojava32.kickstarter.service;
 
 import ua.goit.gojava32.kickstarter.dao.UserDAO;
 import ua.goit.gojava32.kickstarter.dao.UserDAOImpl;
+import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.User;
 
 public class UserServiceImpl implements UserService{
 
   UserDAO userDAO = new UserDAOImpl();
+
   @Override
-  public User add() {
-    return null;
+  public User add(String name, String email, String pass, Boolean isActive) {
+    User user = FactoryModel.createUser(name, email, pass, isActive);
+    userDAO.add(user);
+    return user;
   }
 
   @Override
@@ -35,4 +39,5 @@ public class UserServiceImpl implements UserService{
   public User findUserByToken(String token){
     return userDAO.findUserByToken(token);
   }
+
 }

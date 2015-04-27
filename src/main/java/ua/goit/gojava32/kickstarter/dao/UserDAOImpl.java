@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.IntSummaryStatistics;
 
 public class UserDAOImpl implements UserDAO {
 
@@ -15,7 +14,7 @@ public class UserDAOImpl implements UserDAO {
   public void add(User user) {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("INSERT INTO users (user,token,email) VALUES ('%s','%s','%s')",
-            user.getName(), user.getToken(),user.getEmail());
+            user.getName(), user.getPass(),user.getEmail());
     AbstractDAO.executeAdd(con, query);
     ConnectionPool.releaseConnection(con);
   }
