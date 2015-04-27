@@ -16,8 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginFilter implements Filter{
 
   private String TOKEN = "token";
+
   @Override
   public void destroy() {
+
   }
 
   @Override
