@@ -8,6 +8,11 @@ public class ControllerMap {
   private static Map<String,Controller> controllerMap = new HashMap<String,Controller>(){
     {
       put("/addProject", new ControllerAddProject());
+      put("/addCategory", null);
+      put("/addProjectComment", null);
+      put("/", null);
+      put("/login_page", null);
+      put("/registration_page", null);
     }
   };
 
