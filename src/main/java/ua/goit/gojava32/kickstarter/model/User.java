@@ -4,17 +4,20 @@ public class User {
   private Integer id;
   private String name;
   private String token;
+  private String email;
   private boolean isActive;
 
-  public User(String name, String token, Boolean isActive) {
+  public User(String name, String email, String token, Boolean isActive) {
     this.name = name;
     this.token = token;
+    this.email = email;
     this.isActive = isActive;
   }
-  public User(Integer id, String name, String token, Boolean isActive) {
+  public User(Integer id, String name, String email, String token, Boolean isActive) {
     this.id = id;
     this.name = name;
     this.token = token;
+    this.email = email;
     this.isActive = isActive;
   }
 
@@ -30,7 +33,12 @@ public class User {
     return token;
   }
 
+  public String getEmail() {
+    return email;
+  }
+
   public boolean isActive() {
     return isActive;
   }
+
 }

@@ -58,6 +58,7 @@ public class FactoryDB {
             "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
             "user           TEXT, " +
             "token     TEXT," +
+            "email     TEXT," +
             "comment    TEXT," +
             "active    INTEGER)";
 

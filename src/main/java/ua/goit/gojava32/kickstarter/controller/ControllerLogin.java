@@ -8,10 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 public class ControllerLogin implements Controller{
   @Override
   public ViewModel process(HttpServletRequest request) {
-    //TODO check authorization
-    request.setAttribute("user", new User("ddd","fff",true));
+    request.setAttribute("user", new User("ddd","fff","fff",true));
     ViewModel vm = new ViewModel("/categories", "forward", null);
     return vm;
-
   }
 }

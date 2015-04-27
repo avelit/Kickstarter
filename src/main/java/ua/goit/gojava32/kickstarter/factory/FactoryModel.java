@@ -24,11 +24,11 @@ public class FactoryModel {
     return new Project(id, name, category, description);
   }
 
-  public static User createUser(String name, String token, Boolean isActive){
-    return new User(name, token, isActive);
+  public static User createUser(String name, String token, String email, Boolean isActive){
+    return new User(name, email, token, isActive);
   }
 
-  public static User createUser(Integer id, String name, String token, Boolean isActive){
-    return new User(id, name, token, isActive);
+  public static User createUser(Integer id, String name, String email, String token, Boolean isActive){
+    return new User(id, name, email, token, isActive);
   }
 }
