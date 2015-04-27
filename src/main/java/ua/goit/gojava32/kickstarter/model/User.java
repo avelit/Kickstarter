@@ -17,4 +17,20 @@ public class User {
     this.token = token;
     this.isActive = isActive;
   }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getToken() {
+    return token;
+  }
+
+  public boolean isActive() {
+    return isActive;
+  }
 }

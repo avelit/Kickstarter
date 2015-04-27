@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <link href="/css/header.css" rel="stylesheet">
 
 <nav class="navbar navbar-default">
@@ -18,8 +19,16 @@
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/registration_page">Sign up</a></li>
-                <li><a href="/login_page">Log in</a></li>
+                <c:choose>
+                    <c:when test="${user == null}">
+                        <li><a href="/registration_page">Sign up</a></li>
+                        <li><a href="/login_page">Log in</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li><a href="/profile"><c:out value="${user.name}" /></a></li>
+                    </c:otherwise>
+                </c:choose>
+
             </ul>
         </div>
     </div>

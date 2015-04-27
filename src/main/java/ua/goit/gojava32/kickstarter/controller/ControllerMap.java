@@ -21,8 +21,6 @@ public class ControllerMap {
 
   public static Controller getController(String request) {
 
-    System.out.println(request);
-
     Controller controller = controllerMap.get(request);
     if (controller == null){
       controller = new ControllerCommon();
