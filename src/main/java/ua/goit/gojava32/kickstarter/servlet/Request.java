@@ -11,6 +11,7 @@ import java.util.Map;
 public class Request {
   String method;
   String URI;
+  String lastSegment;
   Map<String,String> parameters = new HashMap<>();
   public CategoryService categoryService = new CategoryServiceImpl();
   public ProjectService projectService = new ProjectServiceImpl();
@@ -18,11 +19,17 @@ public class Request {
   public Request(String method, String URI, Map<String, String> parameters) {
     this.method = method;
     this.URI = URI;
+    String[] segments = URI.split("/");
+    this.lastSegment = segments[segments.length - 1];
     this.parameters = parameters;
   }
 
   public static Request create(String method, String URI){
     return new Request(method,URI,null);
+  }
+
+  public String getLastSegment() {
+    return lastSegment;
   }
 
   public String getURI() {
