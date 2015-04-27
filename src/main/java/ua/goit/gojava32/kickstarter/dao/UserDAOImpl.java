@@ -23,8 +23,7 @@ public class UserDAOImpl implements UserDAO {
   public User findUserByToken(String token) {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("SELECT * FROM users WHERE token='%s'", token);
-    User user = createUser(con, query);
-    return user;
+    return createUser(con, query);
   }
 
   @Override
@@ -58,8 +57,8 @@ public class UserDAOImpl implements UserDAO {
         String email = result.getString("email");
         String token = result.getString("token");
         Integer active = result.getInt("active");
-        boolean isActive = ((active==1) ? true : false);
-        FactoryModel.createUser(id, name, email, token, isActive);
+        boolean isActive = ((active == 1));
+        user = FactoryModel.createUser(id, name, email, token, isActive);
       }
     } catch (SQLException e) {
       e.printStackTrace();

@@ -1,10 +1,9 @@
 package ua.goit.gojava32.kickstarter.controller;
 
-import ua.goit.gojava32.kickstarter.model.User;
+import org.apache.commons.codec.digest.DigestUtils;
 import ua.goit.gojava32.kickstarter.service.UserService;
 import ua.goit.gojava32.kickstarter.service.UserServiceImpl;
 import ua.goit.gojava32.kickstarter.view.ViewModel;
-
 import javax.servlet.http.HttpServletRequest;
 
 public class ControllerRegister implements Controller {
@@ -15,10 +14,9 @@ public class ControllerRegister implements Controller {
     String name = request.getParameter("name");
     String pass = request.getParameter("password");
     String email =  request.getParameter("email");
+    String token = DigestUtils.md5Hex(email + ":" + pass);
 
-    User user = userService.add(name, pass, email, false);
-    ViewModel vm = new ViewModel("/categories", "forward", null);
-
-    return vm;
+    userService.add(name, token, email, false);
+    return new ViewModel("/categories", "forward", null);
   }
 }
