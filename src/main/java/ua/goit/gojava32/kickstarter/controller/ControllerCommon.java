@@ -50,6 +50,7 @@ public class ControllerCommon implements Controller{
     String categoryName = uriSegments[2];
     request.setAttribute("category_name", categoryName);
     Category category = categoryService.get(categoryName);
+    request.setAttribute("category_description", category.getDescription());
     request.getSession().setAttribute("category", category);
 
     if (uriSegments.length == 3) {
