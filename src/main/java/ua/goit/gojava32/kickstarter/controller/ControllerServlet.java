@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import ua.goit.gojava32.kickstarter.servlet.Request;
 import ua.goit.gojava32.kickstarter.view.ViewModel;
 
 public class ControllerServlet {
@@ -17,17 +16,18 @@ public class ControllerServlet {
 
   private HttpServletRequest request;
   private HttpServletResponse response;
+  String[] uriSegments;
 
   public ControllerServlet(HttpServletRequest request, HttpServletResponse response) {
     this.request = request;
     this.response = response;
+    uriSegments = request.getRequestURI().split("/");
   }
 
   public void handleRequest() throws ServletException, IOException {
 
-    Request req = Request.create(request.getMethod(), request.getRequestURI());
-    Controller controller = ControllerMap.getController(req);
-    ViewModel vm = controller.process(req);
+    Controller controller = ControllerMap.getController(request.getMethod().toLowerCase() + uriSegments[uriSegments.length - 1]);
+    ViewModel vm = controller.process(request,response);
 
     if (vm.getCommand().equals("sendRedirect")) {
       response.sendRedirect(vm.getView());

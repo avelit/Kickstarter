@@ -1,10 +1,10 @@
 package ua.goit.gojava32.kickstarter.controller;
 
-import ua.goit.gojava32.kickstarter.servlet.Request;
 import ua.goit.gojava32.kickstarter.view.ViewModel;
 
-import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public interface Controller {
-  public ViewModel process(Request request);
+  public ViewModel process(HttpServletRequest request, HttpServletResponse response);
 }

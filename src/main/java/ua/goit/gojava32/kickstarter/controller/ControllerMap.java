@@ -1,25 +1,23 @@
 package ua.goit.gojava32.kickstarter.controller;
 
-import ua.goit.gojava32.kickstarter.servlet.Request;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class ControllerMap {
 
-  private static Map<Request,Controller> controllerMap = new HashMap<Request,Controller>(){
+  private static Map<String,Controller> controllerMap = new HashMap<String ,Controller>(){
     {
-      put(Request.create("post", "addCategory"), new ControllerAddCategory());
-      put(Request.create("post", "addProject"), new ControllerAddProject());
-      put(Request.create("post", "addProjectComment"), new ControllerAddProjectComment());
-      put(Request.create("post", "addProjectBlog"), new ControllerAddProjectBlog());
-      put(Request.create("post", "login_page"), new ControllerLogin());
-      put(Request.create("post", "registration_page"), new ControllerRegister());
-      put(Request.create("get", "categories"), new ControllerCommon());
+      put("post_addCategory", new ControllerAddCategory());
+      put("post_addProject", new ControllerAddProject());
+      put("post_addProjectComment", new ControllerAddProjectComment());
+      put("post_addProjectBlog", new ControllerAddProjectBlog());
+      put("post_registration_page", new ControllerRegister());
+      put("post_login_page", new ControllerLogin());
+      put("get_categories", new ControllerCommon());
     }
   };
 
-  public static Controller getController(Request request) {
+  public static Controller getController(String request) {
     Controller controller = controllerMap.get(request);
     if (controller == null){
       controller = new ControllerCommon();
