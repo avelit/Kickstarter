@@ -9,12 +9,13 @@ public class ControllerMap {
 
   private static Map<Request,Controller> controllerMap = new HashMap<Request,Controller>(){
     {
-      put(Request.create("get", "addCategory"), new ControllerAddCategory());
-      put(Request.create("get", "addProject"), new ControllerAddProject());
-      put(Request.create("get", "addProjectComment"), new ControllerAddProjectComment());
-      put(Request.create("get", "addProjectBlog"), new ControllerAddProjectBlog());
-      put(Request.create("get", "login_page"), new ControllerLogin());
-      put(Request.create("get", "registration_page"), new ControllerRegister());
+      put(Request.create("post", "addCategory"), new ControllerAddCategory());
+      put(Request.create("post", "addProject"), new ControllerAddProject());
+      put(Request.create("post", "addProjectComment"), new ControllerAddProjectComment());
+      put(Request.create("post", "addProjectBlog"), new ControllerAddProjectBlog());
+      put(Request.create("post", "login_page"), new ControllerLogin());
+      put(Request.create("post", "registration_page"), new ControllerRegister());
+      put(Request.create("get", "categories"), new ControllerCommon());
     }
   };
 
