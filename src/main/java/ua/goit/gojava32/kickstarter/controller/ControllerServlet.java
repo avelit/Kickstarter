@@ -27,7 +27,7 @@ public class ControllerServlet {
   public void handleRequest() throws ServletException, IOException {
 
     Controller controller = ControllerMap.getController(request.getMethod().toLowerCase() + uriSegments[uriSegments.length - 1]);
-    ViewModel vm = controller.process(request,response);
+    ViewModel vm = controller.process(request);
 
     if (vm.getCommand().equals("sendRedirect")) {
       response.sendRedirect(vm.getView());

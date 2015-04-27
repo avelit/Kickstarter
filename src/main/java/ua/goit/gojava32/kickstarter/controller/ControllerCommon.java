@@ -2,16 +2,33 @@ package ua.goit.gojava32.kickstarter.controller;
 
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
-import ua.goit.gojava32.kickstarter.servlet.Request;
+import ua.goit.gojava32.kickstarter.service.CategoryService;
+import ua.goit.gojava32.kickstarter.service.CategoryServiceImpl;
+import ua.goit.gojava32.kickstarter.service.ProjectService;
+import ua.goit.gojava32.kickstarter.service.ProjectServiceImpl;
 import ua.goit.gojava32.kickstarter.view.ViewModel;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class ControllerCommon implements Controller{
+
+  String[] uriSegments;
+
+  HttpServletRequest request;
+
+  CategoryService categoryService = new CategoryServiceImpl();
+  ProjectService projectService= new ProjectServiceImpl();
+
   @Override
-  public ViewModel process(Request request) {
-    
+  public ViewModel process(HttpServletRequest request) {
+
+    this.request = request;
+    String URI = request.getRequestURI();
+    uriSegments = URI.split("/");
+
     String jspUrl = "/jsp/" + getJspName();
 
-    ViewModel vm = new ViewModel("jspUrl", "forward", null);
+    ViewModel vm = new ViewModel(jspUrl, "forward", null);
 
     return vm;
   }
@@ -19,7 +36,7 @@ public class ControllerCommon implements Controller{
   private String getJspName() {
     String jspName = "";
 
-    if (uriSegments[1].equals("categories") && uriSegments.length == 2) {
+    if (uriSegments.length == 2) {
       jspName = "categories.jsp";
       request.setAttribute("categories", categoryService.findAll());
     } else if (uriSegments[1].equals("categories") && uriSegments.length > 2) {
