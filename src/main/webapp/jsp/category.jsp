@@ -30,27 +30,5 @@ Description: <c:out value="${category_description}"/>
 		</c:forEach>
 	</div>
 </div>
-<div class="container">
-	<div class="row">
-		<div class="col-sm-6">
-			<h1>Add project:</h1>
-			<hr>
-			<div class="add_project">
-				<form name="add_project" action="/categories/addProject" method="post">
-					<h4>Project name:</h4>
-
-					<input type="hidden" name="category_id" value="<c:out value="${category.id}"/>">
-					<input type="text" name="project_name" class="form-control" id="project_name" placeholder="Name"
-						   width="30%">
-					<h4>Description:</h4>
-					<input type="text" name="project_description" class="form-control" id="description"
-						   placeholder="Description" width="30%">
-					<br>
-					<input type="submit" class="btn btn-success">
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
 </body>
 </html>

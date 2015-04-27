@@ -8,3 +8,4 @@
         <li><a href="/admin/edit_project"><h4>Edit project</h4></a> </li>
       </ul>
     </div>
+
