@@ -13,7 +13,7 @@ public class UserDAOImpl implements UserDAO {
   @Override
   public void add(User user) {
     Connection con = ConnectionPool.getConnection();
-    String query = String.format("INSERT INTO users (user,token,email) VALUES ('%s','%s','%s')",
+    String query = String.format("INSERT INTO users (name,token,email) VALUES ('%s','%s','%s')",
             user.getName(), user.getToken(),user.getEmail());
     AbstractDAO.executeAdd(con, query);
     ConnectionPool.releaseConnection(con);
@@ -62,7 +62,7 @@ public class UserDAOImpl implements UserDAO {
       ResultSet result = statement.executeQuery(query);
       while (result.next()) {
         Integer id  = result.getInt("id");
-        String name = result.getString("user");
+        String name = result.getString("name");
         String email = result.getString("email");
         String token = result.getString("token");
         Integer active = result.getInt("active");

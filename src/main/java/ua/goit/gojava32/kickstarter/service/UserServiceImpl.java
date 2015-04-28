@@ -13,7 +13,7 @@ public class UserServiceImpl implements UserService{
   public User add(String name, String email, String token, Boolean isActive) {
     User user = FactoryModel.createUser(name, email, token, isActive);
     userDAO.add(user);
-    return user;
+    return userDAO.get(name);
   }
 
   @Override

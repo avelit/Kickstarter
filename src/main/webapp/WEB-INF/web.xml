@@ -17,6 +17,7 @@
         <url-pattern>/registration</url-pattern>
         <url-pattern>/categories/*</url-pattern>
         <url-pattern>/admin/*</url-pattern>
+        <url-pattern>/userActivate</url-pattern>
     </servlet-mapping>
 
 

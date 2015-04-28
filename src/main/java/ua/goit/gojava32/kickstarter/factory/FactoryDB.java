@@ -56,7 +56,7 @@ public class FactoryDB {
 
         sql = "CREATE TABLE IF NOT EXISTS users " +
             "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "user           TEXT, " +
+            "name           TEXT, " +
             "token     TEXT," +
             "email     TEXT," +
             "comment    TEXT," +

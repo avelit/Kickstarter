@@ -20,7 +20,7 @@ public class ControllerLogin implements Controller{
     User user = userService.findUserByToken(token);
 
     ViewModel vm;
-    if (user == null){
+    if (user == null  || !user.isActive()){
       vm = new ViewModel("/login_page", "sendRedirect", null);
     } else {
       request.setAttribute("user", user);
