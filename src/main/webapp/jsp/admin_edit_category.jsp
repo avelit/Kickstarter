@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Edit category</title>
-    <%@include file='header.jsp' %>
+
     <link href="/css/signin.css" rel="stylesheet">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>

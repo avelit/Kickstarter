@@ -43,7 +43,6 @@ public class CategoryServiceImpl implements CategoryService {
   @Override
   public void delete(Category category) {
     categoryDAO.delete(category);
-    category = null;
   }
 
   @Override

@@ -26,8 +26,8 @@
 		</c:forEach>
 	</div>
 	</div>
-<%--<div class="container">--%>
-	<%--<%@include file='/jsp/admin_edit_category.jsp'%>--%>
-	<%--</div>--%>
+<div class="container">
+	<%@include file='/jsp/admin_edit_category.jsp'%>
+	</div>
 </body>
 </html>

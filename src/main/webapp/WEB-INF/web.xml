@@ -7,7 +7,18 @@
     <servlet>
         <servlet-name>KickstarterServlet</servlet-name>
         <servlet-class>ua.goit.gojava32.kickstarter.servlet.KickstarterServlet</servlet-class>
-
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>KickstarterServlet</servlet-name>
+        <url-pattern>/login_page</url-pattern>
+        <url-pattern>/registration_page</url-pattern>
+        <url-pattern>/login</url-pattern>
+        <url-pattern>/registration</url-pattern>
+        <url-pattern>/categories/*</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
+        <url-pattern>/userActivate</url-pattern>
+    </servlet-mapping>
+    <servlet>
 
         <servlet-name>log4j-init</servlet-name>
         <servlet-class>ua.goit.gojava32.kickstarter.servlet.Log4jInit</servlet-class>
@@ -19,18 +30,10 @@
 
         <load-on-startup>1</load-on-startup>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>KickstarterServlet</servlet-name>
-        <url-pattern>/login_page</url-pattern>
-        <url-pattern>/registration_page</url-pattern>
-        <url-pattern>/login</url-pattern>
-        <url-pattern>/registration</url-pattern>
-        <url-pattern>/categories/*</url-pattern>
-        <url-pattern>/admin/*</url-pattern>
-        <url-pattern>/userActivate</url-pattern>
+        <servlet-name>log4j-init</servlet-name>
+        <url-pattern>/logger</url-pattern>
     </servlet-mapping>
-
 
     <filter>
 		<filter-name>LoginFilter</filter-name>

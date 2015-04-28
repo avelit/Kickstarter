@@ -13,5 +13,4 @@ public class Log4jInit extends HttpServlet {
       PropertyConfigurator.configure(prefix + file);
     }
   }
-
 }
