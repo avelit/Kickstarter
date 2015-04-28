@@ -1,6 +1,5 @@
 package ua.goit.gojava32.kickstarter.service;
 
-import a.c.u;
 import ua.goit.gojava32.kickstarter.dao.UserDAO;
 import ua.goit.gojava32.kickstarter.dao.UserDAOImpl;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
