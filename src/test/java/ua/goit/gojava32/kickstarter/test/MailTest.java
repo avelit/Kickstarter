@@ -7,9 +7,9 @@ import ua.goit.gojava32.kickstarter.service.SendMail;
 public class MailTest {
 
 //  @Ignore
-//  @Test
+  @Test
   public void SendEmailTest() {
-    SendMail.send("your@email", "press for register", "/userActivate?token=");
+    SendMail.send("warrax_net@ukr.net", "press for register", "/userActivate?token=");
 
   }
 }
