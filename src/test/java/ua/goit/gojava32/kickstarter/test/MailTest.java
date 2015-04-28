@@ -6,6 +6,6 @@ public class MailTest {
 
     @Test
     public void SendEmailTest(){
-        SendMail.send("warrax_net@ukr.net","It`s fucking work!", "It`s fucking work!");
+        SendMail.send("kickstartergoit32@gmail.com","It`s fucking work!", "It`s fucking work!");
     }
 }
