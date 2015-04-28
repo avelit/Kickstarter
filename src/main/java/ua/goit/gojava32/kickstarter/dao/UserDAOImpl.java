@@ -21,32 +21,41 @@ public class UserDAOImpl implements UserDAO {
 
   @Override
   public User findUserByToken(String token) {
-    Connection con = ConnectionPool.getConnection();
     String query = String.format("SELECT * FROM users WHERE token='%s'", token);
-    return createUser(con, query);
+    return getUser(query);
   }
 
   @Override
-  public void update(Object val) {
-
+  public void update(User user) {
+    Connection con = ConnectionPool.getConnection();
+    String query = String.format("UPDATE users SET name = '%s', active = '%d' WHERE id = '%d'",
+            user.getName(), user.isActive()?1:0, user.getId());
+    AbstractDAO.executeUpdate(con, query);
+    ConnectionPool.releaseConnection(con);
   }
 
   @Override
-  public void delete(Object val) {
-
+  public void delete(User user) {
+    Connection con = ConnectionPool.getConnection();
+    String query = String.format("DELETE FROM users WHERE id = '%d'", user.getId());
+    AbstractDAO.executeUpdate(con, query);
+    ConnectionPool.releaseConnection(con);
   }
 
   @Override
-  public Object get(Integer id) {
-    return null;
+  public User get(Integer id) {
+    String query = String.format("SELECT * FROM users WHERE id='%s'", id);
+    return getUser(query);
   }
 
   @Override
-  public Object get(String name) {
-    return null;
+  public User get(String name) {
+    String query = String.format("SELECT * FROM users WHERE name='%s'", name);
+    return getUser(query);
   }
 
-  private User createUser(Connection con, String query) {
+  private User getUser(String query) {
+    Connection con = ConnectionPool.getConnection();
     User user = null;
     try {
       Statement statement = con.createStatement();
@@ -63,6 +72,7 @@ public class UserDAOImpl implements UserDAO {
     } catch (SQLException e) {
       e.printStackTrace();
     }
+    ConnectionPool.releaseConnection(con);
     return user;
   }
 }

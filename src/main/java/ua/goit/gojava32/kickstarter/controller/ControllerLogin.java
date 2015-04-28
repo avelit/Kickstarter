@@ -19,10 +19,14 @@ public class ControllerLogin implements Controller{
     UserService userService = new UserServiceImpl();
     User user = userService.findUserByToken(token);
 
-    request.setAttribute("user", user);
-
-    ViewModel vm = new ViewModel("/categories", "forward", null);
-    vm.addCookie(new Cookie("token", token));
+    ViewModel vm;
+    if (user == null){
+      vm = new ViewModel("/login_page", "sendRedirect", null);
+    } else {
+      request.setAttribute("user", user);
+      vm = new ViewModel("/categories", "forward", null);
+      vm.addCookie(new Cookie("token", token));
+    }
     return vm;
   }
 }

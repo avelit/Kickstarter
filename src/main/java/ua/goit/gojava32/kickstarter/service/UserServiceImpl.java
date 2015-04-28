@@ -1,5 +1,6 @@
 package ua.goit.gojava32.kickstarter.service;
 
+import a.c.u;
 import ua.goit.gojava32.kickstarter.dao.UserDAO;
 import ua.goit.gojava32.kickstarter.dao.UserDAOImpl;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
@@ -17,23 +18,23 @@ public class UserServiceImpl implements UserService{
   }
 
   @Override
-  public void update(Object val) {
-
+  public void update(User user) {
+    userDAO.update(user);
   }
 
   @Override
-  public void delete(Object val) {
-
+  public void delete(User user) {
+    userDAO.delete(user);
   }
 
   @Override
-  public Object get(Integer id) {
-    return null;
+  public User get(Integer id) {
+    return userDAO.get(id);
   }
 
   @Override
-  public Object get(String name) {
-    return null;
+  public User get(String name) {
+    return userDAO.get(name);
   }
 
   public User findUserByToken(String token){

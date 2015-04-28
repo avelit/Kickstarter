@@ -15,15 +15,13 @@ import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 import ua.goit.gojava32.kickstarter.model.User;
-import ua.goit.gojava32.kickstarter.service.CategoryService;
-import ua.goit.gojava32.kickstarter.service.CategoryServiceImpl;
-import ua.goit.gojava32.kickstarter.service.ProjectService;
-import ua.goit.gojava32.kickstarter.service.ProjectServiceImpl;
+import ua.goit.gojava32.kickstarter.service.*;
 
 public class IntegrationTest {
   
   private CategoryService categoryService = new CategoryServiceImpl();
   private ProjectService projectService = new ProjectServiceImpl();
+  private UserService userService = new UserServiceImpl();
 
   @Before
   public void createDB() {
@@ -38,8 +36,6 @@ public class IntegrationTest {
     String description = "test description";
 
     Set<Category> allCategiries = categoryService.findAll();
-    
-    System.out.println(Arrays.deepToString(allCategiries.toArray()));
     
     Category category = categoryService.add(name, description);
     assertEquals(name, category.getName());
@@ -82,9 +78,11 @@ public class IntegrationTest {
     String email = "test@test.com";
     String token = "123321";
 
-//    User user = FactoryModel
+    User user = userService.add(name, email, token, true);
+    assertEquals(name, user.getName());
 
-
+    userService.delete(user);
+    assertNull(userService.get(user.getId()));
   }
 
 
