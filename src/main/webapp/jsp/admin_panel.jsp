@@ -9,7 +9,5 @@
       </ul>
     </div>
 <c:out value="${param.test}"/>
-<jsp:include page="category.jsp">
-    <jsp:param name="test" value="Guest Ltd." />
-    </jsp:include>
+
 

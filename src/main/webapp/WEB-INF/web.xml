@@ -19,13 +19,12 @@
         <url-pattern>/userActivate</url-pattern>
     </servlet-mapping>
     <servlet>
-
         <servlet-name>log4j-init</servlet-name>
-        <servlet-class>ua.goit.gojava32.kickstarter.servlet.Log4jInit</servlet-class>
+        <servlet-class>ua.goit.gojava32.kickstarter.servlet.Log4jInitServlet</servlet-class>
 
         <init-param>
             <param-name>log4j-init-file</param-name>
-            <param-value>WEB-INF/log4j.properties</param-value>
+            <param-value>\WEB-INF\log4j.properties</param-value>
         </init-param>
 
         <load-on-startup>1</load-on-startup>
