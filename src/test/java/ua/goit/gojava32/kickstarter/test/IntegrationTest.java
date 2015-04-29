@@ -24,7 +24,7 @@ public class IntegrationTest {
   private ProjectService projectService = new ProjectServiceImpl();
   private UserService userService = new UserServiceImpl();
 
-  @BeforeClass
+  @Before
   public void createDB() {
     FactoryDB.createDB();
   }

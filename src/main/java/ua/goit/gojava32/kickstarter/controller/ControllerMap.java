@@ -16,7 +16,7 @@ public class ControllerMap {
       put("post_registration", new ControllerRegister());
       put("post_login", new ControllerLogin());
       put("get_categories", new ControllerCommon());
-      put("get_userActivate", new ControllerUserActivate());
+      put("get_activate", new ControllerUserActivate());
     }
   };
 
