@@ -6,7 +6,7 @@ import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 
 public interface ProjectDAO extends GenericCRUDDAO<Project>{
-  void add(Project project, Category category);
+  Project add(Project project);
   List<String> getComments(Project project);
   List<String> getBlogs(Project project);
   void addComment(String comment, Project project);

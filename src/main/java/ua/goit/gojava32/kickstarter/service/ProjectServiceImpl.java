@@ -12,10 +12,11 @@ public class ProjectServiceImpl implements ProjectService {
 
   private ProjectDAO projectDAO = new ProjectDAOImpl();
 
+
   @Override
   public Project add(String name, String description, Category category) {
     Project project = FactoryModel.createProject(name, category, description);
-    projectDAO.add(project,category);
+    projectDAO.add(project);
     return projectDAO.get(name);
   }
 
@@ -37,6 +38,11 @@ public class ProjectServiceImpl implements ProjectService {
   @Override
   public Project get(String name) {
     return projectDAO.get(name);
+  }
+
+  @Override
+  public Project add(Project val) {
+    return null;
   }
 
   @Override

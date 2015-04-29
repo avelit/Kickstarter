@@ -11,12 +11,13 @@ import java.sql.Statement;
 public class UserDAOImpl implements UserDAO {
 
   @Override
-  public void add(User user) {
+  public User add(User user) {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("INSERT INTO users (name,token,email) VALUES ('%s','%s','%s')",
             user.getName(), user.getToken(),user.getEmail());
     AbstractDAO.executeAdd(con, query);
     ConnectionPool.releaseConnection(con);
+    return user;
   }
 
   @Override

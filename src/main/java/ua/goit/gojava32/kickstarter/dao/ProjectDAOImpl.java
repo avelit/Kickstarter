@@ -16,13 +16,16 @@ import java.util.List;
 public class ProjectDAOImpl implements ProjectDAO {
 
   @Override
-  public void add(Project project, Category category) {
+
+  public Project add(Project project) {
+    Category category = project.getCategory();
     Connection con = ConnectionPool.getConnection();
     String queryCheck = String.format("SELECT * FROM projects WHERE id_category = '%d' AND name = '%s'", category.getId(), project.getName());
     String query = String.format("INSERT INTO projects (name, id_category, description) VALUES ('%s', '%d', '%s')",
             project.getName(), category.getId(), project.getDescription());
     AbstractDAO.executeAdd(con, query, queryCheck);
     ConnectionPool.releaseConnection(con);
+    return project;
   }
 
   @Override
@@ -120,7 +123,7 @@ public class ProjectDAOImpl implements ProjectDAO {
   
   private void addToList(String comment, String table, Project project) {
     Logger logger = Logger.getLogger(this.getClass());
-    logger.debug("Add comment:" + comment +" project="  +  project);
+    logger.debug("Add comment:" + comment + " project=" + project);
     Connection con = ConnectionPool.getConnection();
     String query = String.format("INSERT INTO " + table + " (id_project, comment) VALUES ('%s', '%s')",
             project.getId(), comment);

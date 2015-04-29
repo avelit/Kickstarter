@@ -14,12 +14,13 @@ import ua.goit.gojava32.kickstarter.model.Project;
 public class CategoryDAOImpl implements CategoryDAO {
 
   @Override
-  public void add(Category category) {
+  public Category add(Category category) {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("INSERT INTO categories (name,description) VALUES ('%s', '%s')", category.getName(), category.getDescription());
     String queryCheck = String.format("SELECT * FROM categories WHERE name = '%s'", category.getName());
     AbstractDAO.executeAdd(con, query, queryCheck);
     ConnectionPool.releaseConnection(con);
+    return category;
   }
 
   @Override
