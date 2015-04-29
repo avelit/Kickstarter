@@ -17,7 +17,7 @@ import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 import ua.goit.gojava32.kickstarter.model.User;
 import ua.goit.gojava32.kickstarter.service.*;
-@Ignore
+//@Ignore
 public class IntegrationTest {
   
   private CategoryService categoryService = new CategoryServiceImpl();

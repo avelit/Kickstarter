@@ -41,6 +41,7 @@ public class FactoryDB {
             "author           TEXT, " +
             "id_project     INTEGER," +
             "comment    TEXT," +
+            "created    DATE," +
             "FOREIGN KEY(id_project)  REFERENCES projects(id))";
 
         stmt.executeUpdate(sql);
@@ -50,6 +51,7 @@ public class FactoryDB {
             "author           TEXT, " +
             "id_project     INTEGER," +
             "comment    TEXT," +
+            "created    DATE," +
             "FOREIGN KEY(id_project)  REFERENCES projects(id))";
 
         stmt.executeUpdate(sql);
