@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class ControllerMap {
 
-  private static Map<String,Controller> controllerMap = new HashMap<String ,Controller>(){
+  private static Map<String, Controller> controllerMap = new HashMap<String, Controller>() {
     {
       put("post_addCategory", new ControllerAddCategory());
       put("post_addProject", new ControllerAddProject());
@@ -23,7 +23,7 @@ public class ControllerMap {
   public static Controller getController(String request) {
 
     Controller controller = controllerMap.get(request);
-    if (controller == null){
+    if (controller == null) {
       controller = new ControllerCommon();
     }
     return controller;
