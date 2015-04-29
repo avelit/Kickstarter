@@ -5,19 +5,54 @@
   <%@include file='header.jsp' %>
   <link href="/css/bootstrap.min.css" rel="stylesheet">
   <link href="/css/signin.css" rel="stylesheet">
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script
+    src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+  <script>$(document).ready(function () {
+    /* Automagically jump on good tab based on anchor; for page reloads or links */
+    if (location.hash) {
+      $('a[href=' + location.hash + ']').tab('show');
+    }
+  })
+  </script>
 </head>
 <body>
 <div class="container">
-  <div class="category-container">
-    <h3>
-      Project name:
-      <c:out value="${project.name}"/>
-      <br> Category:
-      <c:out value="${category_name}"/>
-    </h3>
+
+  <h3>
+    Project name:
+    <c:out value="${project.name}"/>
+    <br> Category:
+    <c:out value="${category_name}"/>
+  </h3>
 
 
-    <div class="row">
+  <div role="tabpanel">
+    <ul class="nav nav-tabs" role="tablist" id="tabs">
+      <li role="presentation" class="active"><a href="#project" aria-controls="project"
+                                                role="tab" data-toggle="tab">Project</a>
+      </li>
+      <li role="presentation"><a href="#comments" aria-controls="comments" role="tab"
+                                 data-toggle="tab">Comments</a></li>
+      <li role="presentation"><a href="#blogposts" aria-controls="blogposts" role="tab"
+                                 data-toggle="tab">Blog Posts</a></li>
+    </ul>
+  </div>
+
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="project">
+      <div class="col-md-6">
+        Project name:
+        <c:out value="${project.name}"/>
+        <br> Category:
+        <c:out value="${category_name}"/>
+      </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="comments">
       <div class="col-md-6">
         <br>Comments:
         <c:forEach var="c" items="${comments}">
@@ -38,6 +73,10 @@
           </form>
         </div>
       </div>
+
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="blogposts">
       <div class="col-md-6">
         <br>Blog:
         <c:forEach var="c" items="${blogs}">
