@@ -22,9 +22,9 @@ public class ControllerRegister implements Controller {
 
     userService.add(name, token, email, false);
 
-    //SendMail.send(email,"press for register",request.getContextPath() + "/userActivate?token=" + token);
+    SendMail.send(email,"press for register",request.getContextPath() + "/userActivate?token=" + token);
 
-    logger.info(request.getContextPath() + "/activateUser?token=" + token);
+    logger.info("Activating user " + email);
 
     return new ViewModel("/categories", "forward", null);
   }
