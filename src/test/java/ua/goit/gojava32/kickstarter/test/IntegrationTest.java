@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Set;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -23,7 +24,7 @@ public class IntegrationTest {
   private ProjectService projectService = new ProjectServiceImpl();
   private UserService userService = new UserServiceImpl();
 
-  @Before
+  @BeforeClass
   public void createDB() {
     FactoryDB.createDB();
   }
@@ -72,8 +73,7 @@ public class IntegrationTest {
     categoryService.delete(category);
   }
 
-//  @Ignore
-//  @Test
+  @Test
   public void userCRUD() {
     String name = "test";
     String email = "test@test.com";
