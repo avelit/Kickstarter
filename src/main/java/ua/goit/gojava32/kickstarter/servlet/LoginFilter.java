@@ -28,11 +28,13 @@ public class LoginFilter implements Filter{
 
   private void doFilterCookie(ServletRequest req) {
     Cookie[] cookies = ((HttpServletRequest)req).getCookies();
-    for (Cookie cookie : cookies) {
-      if (cookie.getName().equals(TOKEN)){
-        User user = (new UserServiceImpl()).findUserByToken(cookie.getValue());
-        req.setAttribute("user", user);
-        break;
+    if (cookies != null) {
+      for (Cookie cookie : cookies) {
+        if (cookie.getName().equals(TOKEN)) {
+          User user = (new UserServiceImpl()).findUserByToken(cookie.getValue());
+          req.setAttribute("user", user);
+          break;
+        }
       }
     }
   }

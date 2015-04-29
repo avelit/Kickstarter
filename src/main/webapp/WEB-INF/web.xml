@@ -16,7 +16,7 @@
         <url-pattern>/registration</url-pattern>
         <url-pattern>/categories/*</url-pattern>
         <url-pattern>/admin/*</url-pattern>
-        <url-pattern>/userActivate</url-pattern>
+        <url-pattern>/activate</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>log4j-init</servlet-name>

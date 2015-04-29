@@ -22,7 +22,9 @@ public class ControllerRegister implements Controller {
 
     userService.add(name, token, email, false);
 
-    SendMail.send(email,"press for register",request.getContextPath() + "/userActivate?token=" + token);
+    String domain = request.getRequestURL().toString();
+    domain = domain.substring(0,domain.length() - 13);///registration
+    SendMail.send(email,"press link below for activating " + name, domain + "/activate?token=" + token);
 
     logger.info("Activating user " + email);
 
