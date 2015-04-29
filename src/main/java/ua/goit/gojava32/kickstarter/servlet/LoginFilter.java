@@ -1,5 +1,6 @@
 package ua.goit.gojava32.kickstarter.servlet;
 
+import ua.goit.gojava32.kickstarter.factory.FactoryDB;
 import ua.goit.gojava32.kickstarter.model.User;
 import ua.goit.gojava32.kickstarter.service.UserServiceImpl;
 import java.io.IOException;
@@ -41,5 +42,13 @@ public class LoginFilter implements Filter{
 
   @Override
   public void init(FilterConfig arg0) throws ServletException {
+    try {
+      Class.forName("org.sqlite.JDBC");
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    }
+
+    FactoryDB.createDB();
+
   }
 }
