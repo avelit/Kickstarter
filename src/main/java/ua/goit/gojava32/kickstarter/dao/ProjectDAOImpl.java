@@ -1,5 +1,6 @@
 package ua.goit.gojava32.kickstarter.dao;
 
+import org.apache.log4j.Logger;
 import ua.goit.gojava32.kickstarter.connections.ConnectionPool;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.Category;
@@ -118,6 +119,8 @@ public class ProjectDAOImpl implements ProjectDAO {
   }
   
   private void addToList(String comment, String table, Project project) {
+    Logger logger = Logger.getLogger(this.getClass());
+    logger.debug("Add comment:" + comment +" project="  +  project);
     Connection con = ConnectionPool.getConnection();
     String query = String.format("INSERT INTO " + table + " (id_project, comment) VALUES ('%s', '%s')",
             project.getId(), comment);
