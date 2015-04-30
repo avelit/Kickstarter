@@ -15,6 +15,7 @@ public class ControllerMap {
       put("get_login_page", new ControllerLoginPage());
       put("post_registration", new ControllerRegister());
       put("post_login", new ControllerLogin());
+      put("get_logout", new ControllerLogout());
       put("get_categories", new ControllerCommon());
       put("get_activate", new ControllerUserActivate());
     }

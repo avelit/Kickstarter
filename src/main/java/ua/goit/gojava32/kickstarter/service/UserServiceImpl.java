@@ -45,4 +45,7 @@ public class UserServiceImpl implements UserService{
     return userDAO.findUserByToken(token);
   }
 
+  public User findUserByEmail(String email){
+    return userDAO.findUserByEmail(email);
+  }
 }

@@ -5,4 +5,5 @@ import ua.goit.gojava32.kickstarter.service.GenericCRUDService;
 
 public interface UserDAO extends GenericCRUDService<User>{
   User findUserByToken(String token);
+  User findUserByEmail(String email);
 }

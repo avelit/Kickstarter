@@ -27,6 +27,12 @@ public class UserDAOImpl implements UserDAO {
   }
 
   @Override
+  public User findUserByEmail(String email) {
+    String query = String.format("SELECT * FROM users WHERE email='%s'", email);
+    return getUser(query);
+  }
+
+  @Override
   public void update(User user) {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("UPDATE users SET name = '%s', active = '%d' WHERE id = '%d'",

@@ -13,6 +13,7 @@
         <url-pattern>/login_page</url-pattern>
         <url-pattern>/registration_page</url-pattern>
         <url-pattern>/login</url-pattern>
+        <url-pattern>/logout</url-pattern>
         <url-pattern>/registration</url-pattern>
         <url-pattern>/categories/*</url-pattern>
         <url-pattern>/admin/*</url-pattern>

@@ -2,6 +2,7 @@ package ua.goit.gojava32.kickstarter.controller;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
+import ua.goit.gojava32.kickstarter.model.User;
 import ua.goit.gojava32.kickstarter.service.SendMail;
 import ua.goit.gojava32.kickstarter.service.UserService;
 import ua.goit.gojava32.kickstarter.service.UserServiceImpl;
@@ -20,14 +21,17 @@ public class ControllerRegister implements Controller {
     String email =  request.getParameter("email");
     String token = DigestUtils.md5Hex(email + ":" + pass);
 
-    userService.add(name, token, email, false);
+    User user = userService.findUserByEmail(email);
+    if (user == null) {
+      userService.add(name, token, email, false);
+      String domain = request.getRequestURL().toString();
+      domain = domain.substring(0, domain.length() - 13);///registration
+      SendMail.send(email, "press link below for activating " + name, domain + "/activate?token=" + token);
 
-    String domain = request.getRequestURL().toString();
-    domain = domain.substring(0,domain.length() - 13);///registration
-    SendMail.send(email,"press link below for activating " + name, domain + "/activate?token=" + token);
+      logger.info("Activating user " + email);
+      return new ViewModel("/categories", "sendRedirect", null);
+    }
 
-    logger.info("Activating user " + email);
-
-    return new ViewModel("/categories", "forward", null);
+    return new ViewModel("/registration_page", "sendRedirect", null);
   }
 }

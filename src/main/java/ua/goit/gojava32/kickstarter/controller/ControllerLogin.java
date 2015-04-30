@@ -24,7 +24,7 @@ public class ControllerLogin implements Controller{
       vm = new ViewModel("/login_page", "sendRedirect", null);
     } else {
       request.setAttribute("user", user);
-      vm = new ViewModel("/categories", "forward", null);
+      vm = new ViewModel("/categories", "sendRedirect", null);
       vm.addCookie(new Cookie("token", token));
     }
     return vm;

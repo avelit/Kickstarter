@@ -26,6 +26,7 @@
                     </c:when>
                     <c:otherwise>
                         <li><a href="/profile"><c:out value="${user.name}" /></a></li>
+                        <li><a href="/logout">Log out</a></li>
                     </c:otherwise>
                 </c:choose>
 
