@@ -7,13 +7,13 @@ import java.util.Map;
 public class ViewModel {
   private String view;
   private String command;
-  private Map<String,Object> atributes = new HashMap<>();
+  private Map<String,Object> attributes = new HashMap<>();
   private Cookie newCookie;
 
-  public ViewModel(String view, String command, Map<String, Object> atributes) {
+  public ViewModel(String view, String command, Map<String, Object> attributes) {
     this.view = view;
     this.command = command;
-    this.atributes = atributes;
+    this.attributes = attributes;
   }
 
   public String getView() {
@@ -32,12 +32,12 @@ public class ViewModel {
     this.command = command;
   }
 
-  public Map<String, Object> getAtributes() {
-    return atributes;
+  public Map<String, Object> getAttributes() {
+    return attributes;
   }
 
   public void addAtribute(String key, Object value) {
-    this.atributes.put(key,value);
+    this.attributes.put(key, value);
   }
 
   public void addCookie(Cookie newCookie) {
