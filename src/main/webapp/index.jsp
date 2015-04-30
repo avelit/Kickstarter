@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:forward page="/categories/"/>
+<jsp:forward page="/jsp/categories.jsp"/>
 <html>
 <head>
     <title>Kickstarter</title>
