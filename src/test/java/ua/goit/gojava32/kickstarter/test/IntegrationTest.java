@@ -1,23 +1,22 @@
 package ua.goit.gojava32.kickstarter.test;
 
 import static org.junit.Assert.*;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Set;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import ua.goit.gojava32.kickstarter.factory.FactoryDB;
-import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 import ua.goit.gojava32.kickstarter.model.User;
 import ua.goit.gojava32.kickstarter.service.*;
-//@Ignore
+
 public class IntegrationTest {
   
   private CategoryService categoryService = new CategoryServiceImpl();
@@ -28,16 +27,24 @@ public class IntegrationTest {
   public void createDB() {
     FactoryDB.createDB();
   }
-  
+
   @Test
-  public void categoryCRUD(){
+  public void check_add_service_with_any_argument() {
+    Category category = new Category("test","test");
+    CategoryService categoryServiceMock = mock(CategoryServiceImpl.class);
+    when(categoryServiceMock.add(anyString(), anyString())).thenReturn(category);
+    categoryServiceMock.add("test","test");
+    verify(categoryServiceMock).add(anyString(), anyString());
+    assertEquals(category.getName(), "test");
+  }
+
+  @Test
+  public void categoryCRUD() {
 
     String name = "testCategoryAdd";
     String nameChanged = "testCategoryAddChanged";
     String description = "test description";
 
-    Set<Category> allCategiries = categoryService.findAll();
-    
     Category category = categoryService.add(name, description);
     assertEquals(name, category.getName());
     
@@ -51,7 +58,7 @@ public class IntegrationTest {
   }
 
   @Test
-  public void projectCRUD(){
+  public void projectCRUD() {
     
     String name = "testProjectAdd";
     String nameChanged = "testProjectAddChanged";
