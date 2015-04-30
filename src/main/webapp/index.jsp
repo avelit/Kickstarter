@@ -1,11 +1,10 @@
-<jsp:forward page="/categories/"/>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:forward page="/categories/"/>
 <html>
 <head>
     <title>Kickstarter</title>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/signin.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/signin.css" rel="stylesheet">
     <%@include file='jsp/header.jsp' %>
 </head>
 <body>
