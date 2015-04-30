@@ -8,7 +8,6 @@ public class ControllerAdminPanel implements Controller{
 
   @Override
   public ViewModel process(HttpServletRequest request) {
-
     return null;
   }
 }

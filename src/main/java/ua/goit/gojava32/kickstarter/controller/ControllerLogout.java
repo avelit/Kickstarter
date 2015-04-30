@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 public class ControllerLogout implements Controller{
   @Override
   public ViewModel process(HttpServletRequest request) {
-
     final String TOKEN = "token";
 
     ViewModel vm;

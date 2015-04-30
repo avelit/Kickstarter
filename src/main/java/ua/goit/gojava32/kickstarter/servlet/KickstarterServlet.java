@@ -37,14 +37,13 @@ public class KickstarterServlet extends HttpServlet {
   }
 
   private void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     Logger logger = Logger.getLogger(this.getClass());
-    logger.info("query for URL:" + request.getRequestURI());
+    String Uri = request.getRequestURI();
+    logger.info("query for URL:" + Uri);
 
-    String[] uriSegments = request.getRequestURI().split("/");
+    String[] uriSegments = Uri.split("/");
     Controller controller = ControllerMap.getController(request.getMethod().toLowerCase() + "_" + uriSegments[uriSegments.length - 1]);
     ViewModel vm = controller.process(request);
-
 
     Cookie newCookie = vm.getNewCookie();
     if (newCookie != null) {
