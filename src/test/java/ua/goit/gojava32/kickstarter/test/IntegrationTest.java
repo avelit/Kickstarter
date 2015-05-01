@@ -47,36 +47,36 @@ public class IntegrationTest {
 
     Category category = categoryService.add(name, description);
     assertEquals(name, category.getName());
-    
+
     category.setName(nameChanged);
     categoryService.update(category);
     assertNull(categoryService.get(name));
     assertEquals(nameChanged, categoryService.get(nameChanged).getName());
-    
+
     categoryService.delete(category);
     assertNull(categoryService.get(nameChanged));
   }
 
   @Test
   public void projectCRUD() {
-    
+
     String name = "testProjectAdd";
     String nameChanged = "testProjectAddChanged";
     String description = "test description";
 
     Category category = categoryService.add(name, description);
-    
+
     Project project = projectService.add(name,description,category);
     assertEquals(name, project.getName());
-    
+
     project.setName(nameChanged);
     projectService.update(project);
     assertNull(projectService.get(name));
     assertEquals(nameChanged, projectService.get(nameChanged).getName());
-    
+
     projectService.delete(project);
     assertNull(projectService.get(nameChanged));
-    
+
     categoryService.delete(category);
   }
 
