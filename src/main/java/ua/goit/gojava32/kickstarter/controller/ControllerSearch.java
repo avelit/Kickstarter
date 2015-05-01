@@ -1,5 +1,13 @@
 package ua.goit.gojava32.kickstarter.controller;
 
-public class ControllerSearch {
+import ua.goit.gojava32.kickstarter.view.ViewModel;
 
+import javax.servlet.http.HttpServletRequest;
+
+public class ControllerSearch implements Controller {
+
+  @Override
+  public ViewModel process(HttpServletRequest request) {
+    return null;
+  }
 }
