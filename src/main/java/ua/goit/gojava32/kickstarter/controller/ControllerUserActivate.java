@@ -14,7 +14,7 @@ public class ControllerUserActivate implements Controller {
     UserService userService = ServiceModel.getUserService();
     String token = request.getParameter("token");
     User user = userService.findUserByToken(token);
-    ViewModel vm = new ViewModel("/categories", "forward", null);;
+    ViewModel vm = new ViewModel("/categories", "sendRedirect", null);
     if (user != null){
       user.setIsActive(true);
       userService.update(user);
