@@ -5,14 +5,14 @@
     <groupId>Kickstarter</groupId>
     <artifactId>Kickstarter</artifactId>
     <version>0.1</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>Kickstarter</name>
     <properties>
         <tomcat.version>7.0.57</tomcat.version>
     </properties>
 
     <dependencies>
-        <!--<dependency>
+        <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
             <version>${tomcat.version}</version>
@@ -41,7 +41,7 @@
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-jsp-api</artifactId>
             <version>${tomcat.version}</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
@@ -125,7 +125,7 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-            <!--<plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>appassembler-maven-plugin</artifactId>
                 <version>1.1.1</version>
@@ -146,7 +146,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 </project>
