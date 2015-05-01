@@ -19,6 +19,7 @@
         <url-pattern>/admin/*</url-pattern>
         <url-pattern>/activate</url-pattern>
         <url-pattern>/profile</url-pattern>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>log4j-init</servlet-name>
