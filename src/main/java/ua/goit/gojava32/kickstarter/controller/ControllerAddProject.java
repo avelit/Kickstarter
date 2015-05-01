@@ -18,17 +18,18 @@ public class ControllerAddProject  implements Controller{
     CategoryService categoryService = ServiceModel.getCategoryService();
     ProjectService projectService = ServiceModel.getProjectService();
 
-    String categoryId = request.getParameter("category_id");
+    Integer categoryId = Integer.parseInt(request.getParameter("category_id"));
     Category category = categoryService.get(categoryId);
+
     String projectName = request.getParameter("project_name");
     String projectDescription = request.getParameter("project_description");
-    Project project = projectService.add(projectName, projectDescription, category);
+    Project newProject = projectService.add(projectName, projectDescription, category);
 
     Map<String,Object> atributes = new HashMap<>();
-    atributes.put("category",category);
+    atributes.put("category", category);
 
-    ViewModel vm = new ViewModel("/categories/" + request.getParameter("category_id"), "sendRedirect", atributes);
-
+    String uri = "/categories/" + category.getName() + "/" + newProject.getName();
+    ViewModel vm = new ViewModel(uri, "sendRedirect", atributes);
     return vm;
   }
 }

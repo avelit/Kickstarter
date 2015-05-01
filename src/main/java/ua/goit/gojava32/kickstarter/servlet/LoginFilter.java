@@ -3,7 +3,6 @@ package ua.goit.gojava32.kickstarter.servlet;
 import ua.goit.gojava32.kickstarter.factory.FactoryDB;
 import ua.goit.gojava32.kickstarter.factory.ServiceModel;
 import ua.goit.gojava32.kickstarter.model.User;
-import ua.goit.gojava32.kickstarter.service.UserServiceImpl;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
