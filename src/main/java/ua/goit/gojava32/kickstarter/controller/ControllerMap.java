@@ -21,6 +21,7 @@ public class ControllerMap {
       put("get_edit_category", new ControllerAdminPanelCategory());
       put("get_edit_project", new ControllerAdminPanelProject());
       put("get_profile", new ControllerUserProfile());
+      put("get_error", new ControllerErrorPage());
     }
   };
 

@@ -1,38 +1,36 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title><%=request.getAttribute("category_name")%>
-    </title>
-    <%@include file='header.jsp' %>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <title><%=request.getAttribute("category_name")%></title>
+
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<%@include file='header.jsp' %>
 <div class="container">
 
-    <div class="row"><h2>Category: <c:out value="${category_name}"/></h2>
-        <br>
-        <div class="col-md-10">
-            <c:out value="${category_description}"/>
-        </div>
-    </div>
-    <div class="row">
-        <c:forEach var="c" items="${projects}">
-            <div class="col-lg-4">
-                <div class="thumbnail">
-                    <a href="#">
-                        <div class="caption">
-                            <h3>
-                                <a href="/categories/<c:out value="${category_name}"/>/<c:out value="${c.name}"/>"><c:out
-                                        value="${c.name}"/></a>
-                            </h3>
-                            <h4><c:out value="${c.description}"/></h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </c:forEach>
-    </div>
+<h3>Category: <c:out value="${category_name}"/>
+<br>
+Description: <c:out value="${category_description}"/>
+</h3>
+	<div class="row">
+		<c:forEach var="c" items="${projects}">
+			<div class="col-md-2">
+				<div class="thumbnail">
+					<a href="#">
+						<div class="caption">
+							<h3>
+								<a href="/categories/<c:out value="${category_name}"/>/<c:out value="${c.name}"/>"><c:out value="${c.name}" /></a>
+							</h3>
+						</div>
+					</a>
+				</div>
+			</div>
+		</c:forEach>
+	</div>
+	<%@include file='footer.jsp' %>
 </div>
+
 </body>
 </html>
