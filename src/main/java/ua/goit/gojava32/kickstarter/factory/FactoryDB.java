@@ -31,6 +31,9 @@ public class FactoryDB {
             "id_category     INTEGER," +
             "id_author     INTEGER," +
             "description    TEXT," +
+            "moneyNeed     INTEGER," +
+            "moneyHas     INTEGER," +
+            "video    TEXT," +
             "FOREIGN KEY(id_author)  REFERENCES users(id)," + 
             "FOREIGN KEY(id_category)  REFERENCES categories(id))";
 
