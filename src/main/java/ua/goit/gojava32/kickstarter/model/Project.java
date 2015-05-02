@@ -6,6 +6,9 @@ public class Project {
   private User user;
   private String description = "";
   private Category category;
+  private Integer moneyNeed;
+  private Integer moneyHas;
+  private String video;
 
   public Project (String name, Category category, String description){
     this.name = name;
@@ -56,4 +59,27 @@ public class Project {
     return "id=" + id + ",name=" + name + ",description=" + description + ", category=" + category.getName() ;
   }
 
+  public int getMoneyNeed() {
+    return moneyNeed;
+  }
+
+  public void setMoneyNeed(int moneyNeed) {
+    this.moneyNeed = moneyNeed;
+  }
+
+  public int getMoneyHas() {
+    return moneyHas;
+  }
+
+  public void setMoneyHas(int moneyHas) {
+    this.moneyHas = moneyHas;
+  }
+
+  public String getVideo() {
+    return video;
+  }
+
+  public void setVideo(String video) {
+    this.video = video;
+  }
 }

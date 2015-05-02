@@ -39,7 +39,7 @@ public class KickstarterServlet extends HttpServlet {
   private void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     Logger logger = Logger.getLogger(this.getClass());
     String Uri = request.getRequestURI();
-    logger.info("query for URL:" + Uri);
+    logger.info("query for URL: " + Uri);
 
     String[] uriSegments = Uri.split("/");
     Controller controller = ControllerMap.getController(request.getMethod().toLowerCase() + "_" + uriSegments[uriSegments.length - 1]);

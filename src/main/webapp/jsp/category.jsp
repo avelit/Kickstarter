@@ -3,13 +3,12 @@
 <html>
 <head>
     <title><%=request.getAttribute("category_name")%></title>
-    <%@include file='header.jsp' %>
-	<link href="/css/signin.css" rel="stylesheet">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="wrapper">
+<%@include file='header.jsp' %>
 <div class="container">
-
 <h3>Category: <c:out value="${category_name}"/>
 <br>
 Description: <c:out value="${category_description}"/>
@@ -30,5 +29,7 @@ Description: <c:out value="${category_description}"/>
 		</c:forEach>
 	</div>
 </div>
+</div>
+<%@include file='footer.jsp' %>
 </body>
 </html>

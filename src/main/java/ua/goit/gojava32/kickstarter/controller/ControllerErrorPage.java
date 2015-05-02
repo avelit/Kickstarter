@@ -4,10 +4,10 @@ import ua.goit.gojava32.kickstarter.view.ViewModel;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class ControllerAdminPanel implements Controller{
-
+public class ControllerErrorPage implements Controller{
   @Override
   public ViewModel process(HttpServletRequest request) {
-    return null;
+    ViewModel vm = new ViewModel("/jsp/error_page.jsp", "forward", null);
+    return vm;
   }
 }
