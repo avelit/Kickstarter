@@ -1,5 +1,5 @@
 <html>
 <head>
-    <meta http-equiv="refresh" content="1;URL=/categories/" />
+    <meta http-equiv="refresh" content="0;URL=/categories/" />
 </head>
 </html>

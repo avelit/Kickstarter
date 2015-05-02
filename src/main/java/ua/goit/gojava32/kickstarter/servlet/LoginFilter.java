@@ -1,5 +1,6 @@
 package ua.goit.gojava32.kickstarter.servlet;
 
+import org.apache.log4j.Logger;
 import ua.goit.gojava32.kickstarter.factory.FactoryDB;
 import ua.goit.gojava32.kickstarter.factory.ServiceModel;
 import ua.goit.gojava32.kickstarter.model.User;
@@ -27,6 +28,11 @@ public class LoginFilter implements Filter{
   }
 
   private void doFilterCookie(ServletRequest req) {
+    HttpServletRequest request = ((HttpServletRequest) req);
+    String Uri = request.getRequestURI();
+    Logger logger = Logger.getLogger(this.getClass());
+    logger.info("filter login: " + Uri);
+
     Cookie[] cookies = ((HttpServletRequest)req).getCookies();
     if (cookies != null) {
       for (Cookie cookie : cookies) {
