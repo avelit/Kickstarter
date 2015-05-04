@@ -12,12 +12,30 @@
             <ul class="nav navbar-nav">
                 <li><a href="/categories/">Discover</a></li>
             </ul>
+
+<!--
+ <script>
+  (function() {
+    var cx = '014356314791577599297:apyzhozly5e';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<div width:150px><gcse:search></gcse:search></div>
+-->
             <form class="navbar-form navbar-left" role="search" action="/search">
                 <div class="form-group">
                     <input name="search_text" type="text" class="form-control" placeholder="Search">
                 </div>
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
+
+
             <ul class="nav navbar-nav navbar-right">
                 <c:choose>
                     <c:when test="${user == null}">

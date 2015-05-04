@@ -6,8 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 
 public class ControllerSearch implements Controller {
 
+  ViewModel vm;
   @Override
   public ViewModel process(HttpServletRequest request) {
-    return null;
+    vm = new ViewModel("/jsp/search.jsp", "sendRedirect", null);
+    String searchRequest = request.getParameter("search_text");
+
+    return vm;
   }
 }
