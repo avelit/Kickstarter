@@ -14,7 +14,6 @@ public class ControllerAddProjectComment implements Controller {
   @Override
   public ViewModel process(HttpServletRequest request) {
 
-
     ProjectService projectService= ServiceModel.getProjectService();
     CommentService commentService = ServiceModel.getCommentService();
     String textComment= request.getParameter("comment");
@@ -30,7 +29,6 @@ public class ControllerAddProjectComment implements Controller {
 
     Logger logger = Logger.getLogger(this.getClass());
     logger.info("Request params: textComment=" +textComment+ " projectId="+projectId+ " categoryName=" + categoryName);
-
 
     commentService.add(newComment);
     ViewModel vm = new ViewModel("/categories/" + categoryName + "/" + project.getName(), "sendRedirect", null);

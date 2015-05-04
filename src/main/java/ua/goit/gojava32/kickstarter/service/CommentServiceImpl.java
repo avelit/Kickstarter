@@ -1,8 +1,13 @@
 package ua.goit.gojava32.kickstarter.service;
 
+import ua.goit.gojava32.kickstarter.dao.CommentDAO;
+import ua.goit.gojava32.kickstarter.dao.CommentDAOImpl;
 import ua.goit.gojava32.kickstarter.model.Comment;
 
 public class CommentServiceImpl implements CommentService {
+
+  CommentDAO commentDAO = new CommentDAOImpl();
+
   @Override
   public void update(Comment val) {
   }
@@ -24,7 +29,7 @@ public class CommentServiceImpl implements CommentService {
 
   @Override
   public Comment add(Comment val) {
-    return null;
+    return commentDAO.add(val);
   }
 
 }
