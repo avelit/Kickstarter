@@ -9,9 +9,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <h3><center>Found in categories</center></h3>
-        <c:choose>
-        <c:when test="${resultCategoriesSearch.size() !=0}">
+        <h3><center><c:out value="${resultCategoriesSearch.size()}"/> results found in categories</center></h3>
         <c:forEach var="c" items="${resultCategoriesSearch}">
             <div class="col-md-4">
                 <div class="thumbnail">
@@ -26,14 +24,9 @@
                 </div>
             </div>
         </c:forEach>
-        </c:when>
-        <c:otherwise><font color=red><center>No results found</center></font></c:otherwise>
-        </c:choose>
     </div>
     <div class="row">
-        <h3><center>Found in projects</center></h3>
-        <c:choose>
-        <c:when test="${resultProjectsSearch.size() !=0}">
+        <h3><center><c:out value="${resultProjectsSearch.size()}"/> results found in projects</center></h3>
         <c:forEach var="c" items="${resultProjectsSearch}">
             <div class="col-md-4">
                <div class="thumbnail">
@@ -48,9 +41,6 @@
                 </div>
            </div>
         </c:forEach>
-        </c:when>
-        <c:otherwise><font color=red><center>No results found</center></font></c:otherwise>
-        </c:choose>
     </div>
 </div>
 </body>
