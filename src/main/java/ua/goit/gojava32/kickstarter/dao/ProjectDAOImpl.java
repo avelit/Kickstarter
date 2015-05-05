@@ -11,7 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ProjectDAOImpl implements ProjectDAO {
 
@@ -122,11 +124,24 @@ public class ProjectDAOImpl implements ProjectDAO {
   }
 
   @Override
-  public List<Project> findFrom(String requestSearch) {
-    String query = String.format("SELECT * FROM projects WHERE name LIKE %s", "'%"+requestSearch+"%'");
-    List<Project> result = new ArrayList<>();
-    result.add(getProject(query));
-    return result;
+  public Set<Project> findFrom(String requestSearch) {
+    Connection con = ConnectionPool.getConnection();
+    Set<Project> resultSearch = new HashSet<>();
+    try (Statement st = con.createStatement()) {
+      String query = String.format("SELECT * FROM projects WHERE name LIKE '%s'", "%"+requestSearch+"%");
+      ResultSet result = st.executeQuery(query);
+      while (result.next()) {
+        Integer id = result.getInt("id");
+        String name = result.getString("name");
+        String description = result.getString("description");
+        Integer categoryID = result.getInt("id_category");
+        resultSearch.add(FactoryModel.createProject(id, name, description,categoryID));
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    ConnectionPool.releaseConnection(con);
+    return resultSearch;
   }
 
   private void addToList(String comment, String table, Project project) {

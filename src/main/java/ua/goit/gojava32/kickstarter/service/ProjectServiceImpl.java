@@ -1,6 +1,7 @@
 package ua.goit.gojava32.kickstarter.service;
 
 import java.util.List;
+import java.util.Set;
 
 import ua.goit.gojava32.kickstarter.dao.ProjectDAO;
 import ua.goit.gojava32.kickstarter.dao.ProjectDAOImpl;
@@ -65,7 +66,7 @@ public class ProjectServiceImpl implements ProjectService {
   }
 
   @Override
-  public List<Project> findFrom(String searchRequest) {
+  public Set<Project> findFrom(String searchRequest) {
     return projectDAO.findFrom(searchRequest);
   }
 }

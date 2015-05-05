@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <div class="row">
-    <h3>Search result in categories</h3>
+        <h3>Search result in categories</h3>
         <c:forEach var="c" items="${resultCategoriesSearch}">
             <div class="col-md-4">
                 <div class="thumbnail">
@@ -25,23 +25,23 @@
             </div>
         </c:forEach>
     </div>
-        <div class="row">
+    <div class="row">
         <h3>Search result in projects</h3>
-            <c:forEach var="c" items="${resultProjectsSearch}">
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <div class="caption">
-                                <h3>
-                                    <a href="/categories/<c:out value="${c.category.name}"/>/<c:out value="${c.name}"/>"><c:out
+        <c:forEach var="c" items="${resultProjectsSearch}">
+            <div class="col-md-4">
+               <div class="thumbnail">
+                    <a href="#">
+                        <div class="caption">
+                            <h3>
+                                <a href="/categories/<c:out value="${c.category.name}"/>/<c:out value="${c.name}"/>"><c:out
                                             value="${c.name}"/></a>
-                                </h3>
-                            </div>
-                        </a>
-                    </div>
+                            </h3>
+                        </div>
+                    </a>
                 </div>
-            </c:forEach>
-        </div>
+           </div>
+        </c:forEach>
+    </div>
 </div>
 </body>
 </html>

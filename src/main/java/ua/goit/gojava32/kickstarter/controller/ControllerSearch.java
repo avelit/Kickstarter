@@ -6,6 +6,7 @@ import ua.goit.gojava32.kickstarter.service.ProjectService;
 import ua.goit.gojava32.kickstarter.view.ViewModel;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashSet;
 
 public class ControllerSearch implements Controller {
 
@@ -18,6 +19,7 @@ public class ControllerSearch implements Controller {
     String requestSearch = request.getParameter("search_text");
     request.setAttribute("resultCategoriesSearch", categoryService.findFrom(requestSearch));
     request.setAttribute("resultProjectsSearch", projectService.findFrom(requestSearch));
+
     return vm;
   }
 }
