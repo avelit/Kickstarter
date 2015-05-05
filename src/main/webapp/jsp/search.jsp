@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <h3>Search result in categories</h3>
+        <h3>Found in categories</h3>
         <c:forEach var="c" items="${resultCategoriesSearch}">
             <div class="col-md-4">
                 <div class="thumbnail">
@@ -26,7 +26,7 @@
         </c:forEach>
     </div>
     <div class="row">
-        <h3>Search result in projects</h3>
+        <h3>Found in projects</h3>
         <c:forEach var="c" items="${resultProjectsSearch}">
             <div class="col-md-4">
                <div class="thumbnail">
