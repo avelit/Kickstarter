@@ -120,7 +120,15 @@ public class ProjectDAOImpl implements ProjectDAO {
   public void addBlog(String comment,Project project) {
     addToList(comment, "blogs", project);
   }
-  
+
+  @Override
+  public List<Project> findFrom(String searchRequest) {
+    String query = String.format("SELECT * FROM projects WHERE name = '%s'", searchRequest);
+    List<Project> result = new ArrayList<>();
+    result.add(getProject(query));
+    return result;
+  }
+
   private void addToList(String comment, String table, Project project) {
     Logger logger = Logger.getLogger(this.getClass());
     logger.debug("Add comment:" + comment + " project=" + project);

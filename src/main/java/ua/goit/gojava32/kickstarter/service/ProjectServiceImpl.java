@@ -63,5 +63,10 @@ public class ProjectServiceImpl implements ProjectService {
   public void addBlog(String comment, Project project) {
     projectDAO.addBlog(comment, project);
   }
+
+  @Override
+  public List<Project> findFrom(String searchRequest) {
+    return projectDAO.findFrom(searchRequest);
+  }
 }
 
