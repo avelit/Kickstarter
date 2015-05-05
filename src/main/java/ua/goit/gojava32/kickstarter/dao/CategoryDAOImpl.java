@@ -56,7 +56,7 @@ public class CategoryDAOImpl implements CategoryDAO {
   @Override
   public Set<Category> findFrom(String requestSearch) {
     Connection con = ConnectionPool.getConnection();
-    String query = String.format("SELECT * FROM categories WHERE name = '%s'", requestSearch);
+    String query = String.format("SELECT * FROM categories WHERE name LIKE %s", "'%"+requestSearch+"%'");
     Set<Category> result = new HashSet<>();
     try (Statement st = con.createStatement()) {
       ResultSet rs = st.executeQuery(query);

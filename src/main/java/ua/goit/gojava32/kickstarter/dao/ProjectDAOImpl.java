@@ -122,8 +122,8 @@ public class ProjectDAOImpl implements ProjectDAO {
   }
 
   @Override
-  public List<Project> findFrom(String searchRequest) {
-    String query = String.format("SELECT * FROM projects WHERE name = '%s'", searchRequest);
+  public List<Project> findFrom(String requestSearch) {
+    String query = String.format("SELECT * FROM projects WHERE name LIKE %s", "'%"+requestSearch+"%'");
     List<Project> result = new ArrayList<>();
     result.add(getProject(query));
     return result;
