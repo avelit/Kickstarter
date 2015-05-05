@@ -5,6 +5,7 @@ import ua.goit.gojava32.kickstarter.factory.FactoryDB;
 import ua.goit.gojava32.kickstarter.factory.ServiceModel;
 import ua.goit.gojava32.kickstarter.model.User;
 import java.io.IOException;
+import java.util.Date;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class LoginFilter implements Filter{
   private final String TOKEN = "token";
+  private Logger logger = Logger.getLogger(this.getClass());
 
   @Override
   public void destroy() {
@@ -23,15 +25,19 @@ public class LoginFilter implements Filter{
 
   @Override
   public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
+
+    HttpServletRequest request = ((HttpServletRequest) req);
+    String Uri = request.getRequestURI();
+    logger.info("filter login: " + Uri);
+    long startTime = System.currentTimeMillis();
+
     doFilterCookie(req);
     chain.doFilter(req, resp);
+
+    logger.info("duration: " + Uri + " " + (System.currentTimeMillis() - startTime) + " ms.");
   }
 
   private void doFilterCookie(ServletRequest req) {
-    HttpServletRequest request = ((HttpServletRequest) req);
-    String Uri = request.getRequestURI();
-    Logger logger = Logger.getLogger(this.getClass());
-    logger.info("filter login: " + Uri);
 
     Cookie[] cookies = ((HttpServletRequest)req).getCookies();
     if (cookies != null) {

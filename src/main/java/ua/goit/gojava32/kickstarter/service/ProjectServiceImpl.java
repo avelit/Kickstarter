@@ -12,7 +12,6 @@ public class ProjectServiceImpl implements ProjectService {
 
   private ProjectDAO projectDAO = new ProjectDAOImpl();
 
-
   @Override
   public Project add(String name, String description, Category category) {
     Project project = FactoryModel.createProject(name, category, description);
@@ -63,6 +62,11 @@ public class ProjectServiceImpl implements ProjectService {
   @Override
   public void addBlog(String comment, Project project) {
     projectDAO.addBlog(comment, project);
+  }
+
+  @Override
+  public List<Project> findFrom(String searchRequest) {
+    return projectDAO.findFrom(searchRequest);
   }
 }
 

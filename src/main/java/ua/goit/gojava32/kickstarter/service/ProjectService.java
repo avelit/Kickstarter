@@ -12,5 +12,6 @@ public interface ProjectService extends GenericCRUDService<Project>{
   List<String> getBlogs(Project project);
   void addComment(String comment, Project project);
   void addBlog(String comment, Project project);
+  List<Project> findFrom(String searchRequest);
 
 }

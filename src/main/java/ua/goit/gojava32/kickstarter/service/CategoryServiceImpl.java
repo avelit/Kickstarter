@@ -42,6 +42,11 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
+  public Set<Category> findFrom(String requestSearch) {
+    return categoryDAO.findFrom(requestSearch);
+  }
+
+  @Override
   public List<Project> findAllProjects(Integer id) {
     return categoryDAO.findAllProjects(id);
   }

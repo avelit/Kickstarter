@@ -30,6 +30,8 @@ public class ErrorFilter implements Filter{
       request.getRequestDispatcher("/error").forward(request, response);
     }
 
+    filterChain.doFilter(request, response);
+
   }
 
   @Override

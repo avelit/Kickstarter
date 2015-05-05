@@ -12,7 +12,9 @@ public class AdminFilter implements Filter{
   }
 
   @Override
-  public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+  public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
+
+    filterChain.doFilter(request, response);
 
   }
 

@@ -10,4 +10,5 @@ public interface CategoryDAO extends GenericCRUDDAO<Category>{
   Set<Category> findAll();
   List<Project> findAllProjects(Category category);
   List<Project> findAllProjects(Integer id);
+  public Set<Category> findFrom(String requestSearch);
 }

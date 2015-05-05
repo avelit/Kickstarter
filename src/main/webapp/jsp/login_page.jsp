@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Sign in</title>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/signin.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/signin.css" rel="stylesheet">
     <%@include file='header.jsp' %>
 </head>
 <body>
@@ -11,6 +11,7 @@
 <div class="container">
     <form class="form-signin" action="/login" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
+        <h3 class="alert"><c:out value="${text_failed}"/></h3>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         <br>

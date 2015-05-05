@@ -21,7 +21,8 @@ public class ControllerLogin implements Controller{
 
     ViewModel vm;
     if (user == null  || !user.isActive()){
-      vm = new ViewModel("/login_page", "sendRedirect", null);
+      request.setAttribute("text_failed", "Wrong user or password or user not active.");
+      vm = new ViewModel("/jsp/login_page.jsp", "forward", null);
     } else {
       request.setAttribute("user", user);
       vm = new ViewModel("/categories", "sendRedirect", null);
