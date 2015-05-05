@@ -31,7 +31,7 @@ public class ControllerRegister implements Controller {
       logger.info("Activating user " + email);
       return new ViewModel("/categories", "sendRedirect", null);
     }
-
-    return new ViewModel("/registration_page", "sendRedirect", null);
+    request.setAttribute("text_failed", "User with email " + email + " exist.");
+    return new ViewModel("/jsp/registration.jsp", "forward", null);
   }
 }

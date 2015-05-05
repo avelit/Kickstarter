@@ -26,18 +26,18 @@ public class LoginFilter implements Filter{
   @Override
   public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
 
+    HttpServletRequest request = ((HttpServletRequest) req);
+    String Uri = request.getRequestURI();
+    logger.info("filter login: " + Uri);
     long startTime = System.currentTimeMillis();
 
     doFilterCookie(req);
     chain.doFilter(req, resp);
 
-    logger.info("duration: " + (System.currentTimeMillis() - startTime));
+    logger.info("duration: " + Uri + " " + (System.currentTimeMillis() - startTime) + " ms.");
   }
 
   private void doFilterCookie(ServletRequest req) {
-    HttpServletRequest request = ((HttpServletRequest) req);
-    String Uri = request.getRequestURI();
-    logger.info("filter login: " + Uri);
 
     Cookie[] cookies = ((HttpServletRequest)req).getCookies();
     if (cookies != null) {
