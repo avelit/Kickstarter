@@ -9,7 +9,9 @@
 <body>
 <div class="container">
     <div class="row">
-        <h3>Found in categories</h3>
+        <h3><center>Found in categories</center></h3>
+        <c:choose>
+        <c:when test="${resultCategoriesSearch.size() !=0}">
         <c:forEach var="c" items="${resultCategoriesSearch}">
             <div class="col-md-4">
                 <div class="thumbnail">
@@ -24,9 +26,14 @@
                 </div>
             </div>
         </c:forEach>
+        </c:when>
+        <c:otherwise><font color=red><center>No results found</center></font></c:otherwise>
+        </c:choose>
     </div>
     <div class="row">
-        <h3>Found in projects</h3>
+        <h3><center>Found in projects</center></h3>
+        <c:choose>
+        <c:when test="${resultProjectsSearch.size() !=0}">
         <c:forEach var="c" items="${resultProjectsSearch}">
             <div class="col-md-4">
                <div class="thumbnail">
@@ -41,6 +48,9 @@
                 </div>
            </div>
         </c:forEach>
+        </c:when>
+        <c:otherwise><font color=red><center>No results found</center></font></c:otherwise>
+        </c:choose>
     </div>
 </div>
 </body>
