@@ -29,9 +29,10 @@ public class ControllerRegister implements Controller {
       SendMail.send(email, "press link below for activating " + name, domain + "/activate?token=" + token);
 
       logger.info("Activating user " + email);
-      return new ViewModel("/categories", "sendRedirect", null);
+      request.setAttribute("text_failed", "Check you mail for activating.");
+    } else {
+      request.setAttribute("text_failed", "User with email " + email + " exist.");
     }
-    request.setAttribute("text_failed", "User with email " + email + " exist.");
     return new ViewModel("/jsp/registration.jsp", "forward", null);
   }
 }
