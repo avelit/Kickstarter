@@ -9,6 +9,7 @@
     <name>Kickstarter</name>
     <properties>
         <tomcat.version>7.0.57</tomcat.version>
+        <spring.version>4.1.6.RELEASE</spring.version>
     </properties>
 
     <dependencies>
@@ -63,6 +64,17 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.9.5</version>
+        </dependency>
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
         </dependency>
     </dependencies>
     <build>
