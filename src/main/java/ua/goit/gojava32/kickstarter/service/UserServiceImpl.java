@@ -1,13 +1,15 @@
 package ua.goit.gojava32.kickstarter.service;
 
+import org.springframework.stereotype.Component;
 import ua.goit.gojava32.kickstarter.dao.UserDAO;
 import ua.goit.gojava32.kickstarter.dao.UserDAOImpl;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.User;
 
+//@Component("userService")//not work
 public class UserServiceImpl implements UserService{
 
-  UserDAO userDAO = new UserDAOImpl();
+  private UserDAO userDAO = new UserDAOImpl();
 
   @Override
   public User add(String name, String email, String token, Boolean isActive) {
