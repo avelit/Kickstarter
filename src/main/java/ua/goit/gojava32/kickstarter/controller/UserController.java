@@ -27,8 +27,6 @@ public class UserController {
   @ResponseBody
   public ModelAndView login(){
     return new ModelAndView("login_page");
-
-
   }
 
 
@@ -113,6 +111,14 @@ public class UserController {
     }
     return vm;
   }
-}
 
+  @RequestMapping(value = "/profile", method = RequestMethod.GET)
+  @ResponseBody
+  public ModelAndView profile(HttpServletRequest request){
+    User user = (User) request.getAttribute("user");
+    ModelAndView mv =new ModelAndView("user_profile");
+    mv.addObject("user_name", user.getName());
+    return mv;
+  }
+}
 
