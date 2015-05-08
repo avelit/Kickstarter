@@ -7,23 +7,24 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-       <context:property-placeholder location="WEB-INF/database.properties" />
-       <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
-             destroy-method="close">
-              <property name="driverClassName" value="${driver}" />
-              <property name="url" value="${url}" />
-              <property name="username" value="${user}" />
-              <property name="password" value="${password}" />
-              <property name="initialSize" value="5" />
-              <property name="maxActive" value="10" />
-              <property name="maxIdle" value="5" />
-              <property name="minIdle" value="2" />
-       </bean>
+    <context:property-placeholder location="WEB-INF/database.properties"/>
+    <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${user}"/>
+        <property name="password" value="${password}"/>
+        <property name="initialSize" value="5"/>
+        <property name="maxActive" value="10"/>
+        <property name="maxIdle" value="5"/>
+        <property name="minIdle" value="2"/>
+    </bean>
 
-       <bean id="userService" class="ua.goit.gojava32.kickstarter.service.UserServiceImpl"/>
+    <bean id="userService"
+          class="ua.goit.gojava32.kickstarter.service.UserServiceImpl"/>
 
-       <context:annotation-config/>
-       <context:component-scan base-package="ua.goit.gojava32.kickstarter.service" />
-       <context:component-scan base-package="ua.goit.gojava32.kickstarter.controller" />
-    <context:component-scan base-package="ua.goit.gojava32.kickstarter.connections" />
+    <context:annotation-config/>
+
+    <context:component-scan base-package="ua.goit.gojava32.kickstarter"/>
+
 </beans>
