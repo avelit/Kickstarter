@@ -12,7 +12,7 @@ public class ControllerMap {
       put("post_addProjectComment", new ControllerAddProjectComment());
       put("post_addProjectBlog", new ControllerAddProjectBlog());
       put("get_registration_page", new ControllerRegisterPage());
-      put("get_login_page", new ControllerLoginPage());
+      //put("get_login_page", new ControllerLoginPage());
       put("post_registration", new ControllerRegister());
       put("post_login", new ControllerLogin());
       put("get_logout", new ControllerLogout());

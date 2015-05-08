@@ -1,13 +1,18 @@
 package ua.goit.gojava32.kickstarter.controller;
 
-import ua.goit.gojava32.kickstarter.view.ViewModel;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
+@Controller
+@RequestMapping("/login_page")
+public class ControllerLoginPage{
 
-public class ControllerLoginPage implements Controller {
-  @Override
-  public ViewModel process(HttpServletRequest request) {
-    ViewModel vm = new ViewModel("/jsp/login_page.jsp", "forward", null);
+  @RequestMapping()
+  @ResponseBody
+  public ModelAndView process() {
+    ModelAndView vm = new ModelAndView("login_page");
     return vm;
   }
 }
