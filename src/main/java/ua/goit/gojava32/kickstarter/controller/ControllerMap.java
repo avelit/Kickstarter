@@ -7,7 +7,7 @@ public class ControllerMap {
 
   private static Map<String, Controller> controllerMap = new HashMap<String, Controller>() {
     {
-      put("post_addCategory", new ControllerAddCategory());
+
       put("post_addProject", new ControllerAddProject());
       put("post_addProjectComment", new ControllerAddProjectComment());
       put("post_addProjectBlog", new ControllerAddProjectBlog());
@@ -16,7 +16,6 @@ public class ControllerMap {
       put("post_registration", new ControllerRegister());
       put("post_login", new ControllerLogin());
       put("get_logout", new ControllerLogout());
-      put("get_categories", new ControllerCommon());
       put("get_activate", new ControllerUserActivate());
       put("get_edit_category", new ControllerAdminPanelCategory());
       put("get_edit_project", new ControllerAdminPanelProject());
@@ -30,7 +29,7 @@ public class ControllerMap {
 
     Controller controller = controllerMap.get(request);
     if (controller == null) {
-      controller = new ControllerCommon();
+
     }
     return controller;
   }

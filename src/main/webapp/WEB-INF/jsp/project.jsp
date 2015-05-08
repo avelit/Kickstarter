@@ -75,7 +75,7 @@
         <br>
 
         <div>
-          <form action="/categories/addProjectComment" method="post">
+          <form action="/comment/add" method="post">
             <input type="text" name="comment"/>
             <input type="hidden" name="project_id"
                    value="<c:out value="${project.id}"/>"/>
