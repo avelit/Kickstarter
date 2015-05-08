@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import ua.goit.gojava32.kickstarter.model.User;
 import ua.goit.gojava32.kickstarter.service.SendMail;
 import ua.goit.gojava32.kickstarter.service.UserService;
-import ua.goit.gojava32.kickstarter.view.ViewModel;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
