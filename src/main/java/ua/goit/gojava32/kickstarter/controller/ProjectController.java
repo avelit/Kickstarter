@@ -30,8 +30,8 @@ public class ProjectController {
     vm.addObject("project", project);
     vm.addObject("category", project.getCategory());
 
-    vm.addObject("comments", commentService.getByProject(project));
-    //vm.addObject("blogs", projectService.getBlogs(project));
+    vm.addObject("comments", projectService.getProjectComments(project));
+    vm.addObject("blogs", projectService.getProjectBlogPosts(project));
 
     return vm;
   }

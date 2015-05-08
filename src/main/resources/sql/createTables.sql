@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS comments
   id         INTEGER PRIMARY KEY AUTOINCREMENT,
   author     TEXT,
   id_project INTEGER,
-  comment    TEXT,
+  text    TEXT,
   created    DATE,
   FOREIGN KEY (id_project) REFERENCES projects (id)
 );
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS blogs
   id         INTEGER PRIMARY KEY AUTOINCREMENT,
   author     TEXT,
   id_project INTEGER,
-  comment    TEXT,
+  text    TEXT,
   created    DATE,
   FOREIGN KEY (id_project) REFERENCES projects (id)
 );

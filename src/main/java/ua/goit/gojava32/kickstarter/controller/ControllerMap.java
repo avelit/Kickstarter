@@ -9,7 +9,6 @@ public class ControllerMap {
     {
 
       put("post_addProject", new ControllerAddProject());
-      put("post_addProjectComment", new ControllerAddProjectComment());
       put("post_addProjectBlog", new ControllerAddProjectBlog());
       put("get_registration_page", new ControllerRegisterPage());
       //put("get_login_page", new ControllerLoginPage());

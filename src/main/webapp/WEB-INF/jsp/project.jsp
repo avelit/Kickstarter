@@ -23,12 +23,12 @@
 
   <h3>
     Category:
-    <a href="/category/<c:out value="${category.id}"/>" ><c:out value="${category.name}"/></a>
+    <a href="/category/<c:out value="${category.id}"/>"><c:out
+      value="${category.name}"/></a>
     <br>
     Project name:
     <c:out value="${project.name}"/>
   </h3>
-
 
   <div role="tabpanel">
     <ul class="nav nav-tabs" role="tablist" id="tabs">
@@ -42,10 +42,9 @@
     </ul>
   </div>
 
-
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="project">
-      <div class="col-md-6">
+      <div class="col-md-12">
 
         Project id:
         <c:out value="${project.id}"/>
@@ -58,25 +57,20 @@
 
       </div>
     </div>
-
     <div role="tabpanel" class="tab-pane" id="comments">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <br>Comments:
-
         <table class="table">
           <c:forEach var="c" items="${comments}">
-          <tr>
-            <td><c:out value="${c.created}"/></td>
-            <td><c:out value="${c.comment}"/></td>
-          </tr>
+            <tr>
+              <td><c:out value="${c.createdSimpleFormat}"/></td>
+              <td><c:out value="${c.text}"/></td>
+            </tr>
           </c:forEach>
         </table>
-
-        <br>
-
         <div>
           <form action="/comment/add" method="post">
-            <input type="text" name="comment"/>
+            <input type="text" name="text"/>
             <input type="hidden" name="project_id"
                    value="<c:out value="${project.id}"/>"/>
             <input type="hidden" name="category"
@@ -85,27 +79,30 @@
           </form>
         </div>
       </div>
-
     </div>
-
     <div role="tabpanel" class="tab-pane" id="blogposts">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <br>Blog:
-        <c:forEach var="c" items="${blogs}">
-          <div class="comments">
-            <c:out value="${c}"/>
-          </div>
-        </c:forEach>
+        <table class="table">
+          <c:forEach var="blog" items="${blogs}">
+            <tr>
+              <td><c:out value="${blog.createdSimpleFormat}"/></td>
+              <td><c:out value="${blog.text}"/></td>
+            </tr>
+          </c:forEach>
+        </table>
         <br>
 
         <div>
-          <form action="/categories/addProjectBlog" method="post">
-            <input type="text" name="comment"/> <input type="hidden"
-                                                       name="project"
-                                                       value="<c:out value="${project.name}"/>"/>
+          <form action="/blogpost/add" method="post">
+            <input type="text" name="text"/>
+            <input type="hidden" name="project" value="<c:out value="${project.name}"/>"/>
             <input
               type="hidden" name="category"
-              value="<c:out value="${category_name}"/>"/> <input
+              value="<c:out value="${category_name}"/>"/>
+            <input type="hidden" name="project_id"
+                   value="<c:out value="${project.id}"/>"/>
+            <input
             class="btn btn-default" type="submit" title="add comment"/>
           </form>
         </div>
@@ -113,5 +110,6 @@
     </div>
   </div>
 </div>
+
 </body>
 </html>
