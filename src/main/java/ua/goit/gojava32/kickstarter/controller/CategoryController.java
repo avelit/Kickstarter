@@ -32,7 +32,7 @@ public class CategoryController {
   }
 
 
-  @RequestMapping(value = "/category")
+  @RequestMapping(value = {"/category", "/"})
   @ResponseBody
   public ModelAndView listAllCategories(){
     Logger logger = Logger.getLogger(this.getClass());

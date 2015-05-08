@@ -46,16 +46,13 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="project">
       <div class="col-md-6">
-        Category:
-        <c:out value="${category.name}"/>
-        <br>
+
         Project id:
         <c:out value="${project.id}"/>
         <br>
         Project name:
         <c:out value="${project.name}"/>
-        <br> Category:
-        <c:out value="${category.name}"/>
+
         <br> Description:
         <c:out value="${project.description}"/>
 
@@ -66,7 +63,7 @@
       <div class="col-md-6">
         <br>Comments:
 
-        <table>
+        <table class="table">
           <c:forEach var="c" items="${comments}">
           <tr>
             <td><c:out value="${c.created}"/></td>
