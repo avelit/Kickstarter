@@ -6,11 +6,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import ua.goit.gojava32.kickstarter.connections.ConnectionPool;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 
+@Repository
 public class CategoryDAOImpl implements CategoryDAO {
 
   @Override

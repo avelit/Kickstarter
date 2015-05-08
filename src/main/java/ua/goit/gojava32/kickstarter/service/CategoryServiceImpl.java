@@ -1,6 +1,8 @@
 package ua.goit.gojava32.kickstarter.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ua.goit.gojava32.kickstarter.dao.CategoryDAO;
 import ua.goit.gojava32.kickstarter.dao.CategoryDAOImpl;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
@@ -9,10 +11,13 @@ import ua.goit.gojava32.kickstarter.model.Project;
 
 import java.util.List;
 import java.util.Set;
-@Component
+@Service
 public class CategoryServiceImpl implements CategoryService {
 
-  private CategoryDAO categoryDAO = new CategoryDAOImpl();
+  //@Autowired  not working
+  //private CategoryDAO categoryDAO;
+
+  private CategoryDAO categoryDAO =new CategoryDAOImpl();
 
   @Override
   public Category add(String name, String description) {

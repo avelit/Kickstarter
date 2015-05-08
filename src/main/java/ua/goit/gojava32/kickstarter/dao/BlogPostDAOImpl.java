@@ -1,14 +1,15 @@
 package ua.goit.gojava32.kickstarter.dao;
 
+import org.springframework.stereotype.Repository;
 import ua.goit.gojava32.kickstarter.connections.ConnectionPool;
 import ua.goit.gojava32.kickstarter.model.BlogPost;
-
 import ua.goit.gojava32.kickstarter.model.Project;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class BlogPostDAOImpl implements BlogPostDAO{
 
   @Override

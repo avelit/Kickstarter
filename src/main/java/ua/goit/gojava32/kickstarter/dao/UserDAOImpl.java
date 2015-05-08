@@ -1,13 +1,15 @@
 package ua.goit.gojava32.kickstarter.dao;
 
+import org.springframework.stereotype.Repository;
 import ua.goit.gojava32.kickstarter.connections.ConnectionPool;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.User;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+@Repository
 public class UserDAOImpl implements UserDAO {
 
   @Override

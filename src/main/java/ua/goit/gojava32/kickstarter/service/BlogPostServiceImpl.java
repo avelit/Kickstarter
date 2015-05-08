@@ -1,13 +1,14 @@
 package ua.goit.gojava32.kickstarter.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ua.goit.gojava32.kickstarter.dao.BlogPostDAO;
-import ua.goit.gojava32.kickstarter.dao.BlogPostDAOImpl;
 import ua.goit.gojava32.kickstarter.model.BlogPost;
 
-@Component
+@Service
 public class BlogPostServiceImpl implements BlogPostService {
-  private BlogPostDAO blogPostDAO = new BlogPostDAOImpl();
+  @Autowired
+  private BlogPostDAO blogPostDAO;
 
   @Override
   public void addProjectBlog(BlogPost blogPost) {

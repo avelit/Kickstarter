@@ -3,19 +3,24 @@ package ua.goit.gojava32.kickstarter.service;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ua.goit.gojava32.kickstarter.dao.*;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.BlogPost;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Comment;
 import ua.goit.gojava32.kickstarter.model.Project;
-@Component
+@Service
 public class ProjectServiceImpl implements ProjectService {
 
-  private ProjectDAO projectDAO = new ProjectDAOImpl();
-  private CommentDAO commentDAO = new CommentDAOImpl();
-  private BlogPostDAO blogPostDAO = new BlogPostDAOImpl();
+  @Autowired
+  private ProjectDAO projectDAO;
+  @Autowired
+  private CommentDAO commentDAO;
+  @Autowired
+  private BlogPostDAO blogPostDAO;
 
   @Override
   public Project add(String name, String description, Category category) {
