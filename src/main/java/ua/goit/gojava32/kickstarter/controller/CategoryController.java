@@ -1,5 +1,6 @@
 package ua.goit.gojava32.kickstarter.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,9 @@ public class CategoryController {
   @RequestMapping(value = "/category")
   @ResponseBody
   public ModelAndView listAllCategories(){
+    Logger logger = Logger.getLogger(this.getClass());
+    logger.trace("listAllCategories");
+
 
     ModelAndView vm = new ModelAndView("categories");
     vm.addObject("categories", categoryService.findAll());
