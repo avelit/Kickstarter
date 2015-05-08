@@ -9,9 +9,13 @@
 <div class="wrapper">
 <%@include file='header.jsp' %>
 <div class="container">
-<h3>Category: <c:out value="${category_name}"/>
-<br>
-Description: <c:out value="${category_description}"/>
+
+<h3>
+  Id: <c:out value="${category.id}"/>
+  <br>
+  Category: <c:out value="${category.name}"/>
+  <br>
+  Description: <c:out value="${category.description}"/>
 </h3>
 	<div class="row">
 		<c:forEach var="c" items="${projects}">

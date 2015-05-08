@@ -19,10 +19,10 @@ public class CategoryController {
   }
 
   @Autowired
-  CategoryService categoryService;
+  private CategoryService categoryService;
 
   @Autowired
-  ProjectService projectService;
+  private ProjectService projectService;
 
   @RequestMapping(value = "/category", method = RequestMethod.POST)
   @ResponseBody
@@ -41,8 +41,6 @@ public class CategoryController {
   public ModelAndView listAllCategories(){
     Logger logger = Logger.getLogger(this.getClass());
     logger.trace("listAllCategories");
-
-
     ModelAndView vm = new ModelAndView("categories");
     vm.addObject("categories", categoryService.findAll());
     return vm;
@@ -54,6 +52,7 @@ public class CategoryController {
     Category category = categoryService.get(id);
     ModelAndView vm = new ModelAndView("category");
     vm.addObject("category", category);
+    vm.addObject("projects", categoryService.findAllProjects(category));
     return vm;
   }
 
