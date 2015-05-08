@@ -3,12 +3,13 @@ package ua.goit.gojava32.kickstarter.service;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.stereotype.Component;
 import ua.goit.gojava32.kickstarter.dao.ProjectDAO;
 import ua.goit.gojava32.kickstarter.dao.ProjectDAOImpl;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
-
+@Component
 public class ProjectServiceImpl implements ProjectService {
 
   private ProjectDAO projectDAO = new ProjectDAOImpl();

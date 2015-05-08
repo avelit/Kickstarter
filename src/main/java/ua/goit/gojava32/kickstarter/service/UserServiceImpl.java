@@ -1,6 +1,6 @@
 package ua.goit.gojava32.kickstarter.service;
 
-import org.springframework.stereotype.Component;
+
 import ua.goit.gojava32.kickstarter.dao.UserDAO;
 import ua.goit.gojava32.kickstarter.dao.UserDAOImpl;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;

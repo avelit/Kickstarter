@@ -1,5 +1,6 @@
 package ua.goit.gojava32.kickstarter.service;
 
+import org.springframework.stereotype.Component;
 import ua.goit.gojava32.kickstarter.dao.CategoryDAO;
 import ua.goit.gojava32.kickstarter.dao.CategoryDAOImpl;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
@@ -8,7 +9,7 @@ import ua.goit.gojava32.kickstarter.model.Project;
 
 import java.util.List;
 import java.util.Set;
-
+@Component
 public class CategoryServiceImpl implements CategoryService {
 
   private CategoryDAO categoryDAO = new CategoryDAOImpl();
