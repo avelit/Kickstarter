@@ -21,7 +21,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <c:choose>
                     <c:when test="${user == null}">
-                        <li><a href="/registration_page">Sign up</a></li>
+                        <li><a href="/registration">Sign up</a></li>
                         <li><a href="/login_page">Log in</a></li>
                     </c:when>
                     <c:otherwise>

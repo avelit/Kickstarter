@@ -26,6 +26,10 @@ public class Project {
     this.description = description;
   }
 
+  public Project() {
+
+  }
+
   public void setName(String name){
     this.name = name;
   }

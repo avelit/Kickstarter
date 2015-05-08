@@ -11,8 +11,8 @@ import ua.goit.gojava32.kickstarter.model.User;
 //@Component("userService")//not work
 @Service
 public class UserServiceImpl implements UserService{
-  @Autowired
-  private UserDAO userDAO;
+  //@Autowired //not work
+  private UserDAO userDAO = new UserDAOImpl();
 
   @Override
   public User add(String name, String email, String token, Boolean isActive) {
