@@ -5,12 +5,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import ua.goit.gojava32.kickstarter.factory.ServiceModel;
+import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
+import ua.goit.gojava32.kickstarter.service.CategoryService;
 import ua.goit.gojava32.kickstarter.service.CommentService;
 import ua.goit.gojava32.kickstarter.service.ProjectService;
+import ua.goit.gojava32.kickstarter.view.ViewModel;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class ProjectController {
@@ -19,6 +28,9 @@ public class ProjectController {
   ProjectService projectService;
   @Autowired
   CommentService commentService;
+
+  @Autowired
+  CategoryService categoryService;
 
 
   @RequestMapping(value = "/project/{id}")
@@ -35,5 +47,25 @@ public class ProjectController {
 
     return vm;
   }
+
+  @RequestMapping(value = "/project/add")
+  @ResponseBody
+  public ModelAndView addProject(
+      @RequestParam("category_id") String strCategoryId,
+      @RequestParam("project_description") String projectDescription,
+      @RequestParam("project_name") String projectName){
+
+    Integer categoryId = Integer.parseInt(strCategoryId);
+    Category category = categoryService.get(categoryId);
+    Project project = new Project();
+    project.setCategory(category);
+    project.setDescription(projectDescription);
+    project.setName(projectName);
+    project = projectService.add(project);
+    ModelAndView vm = new ModelAndView("redirect:project/" + project.getId());
+    return vm;
+  }
+
+
 
 }
