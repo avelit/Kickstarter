@@ -22,7 +22,7 @@
                 <c:choose>
                     <c:when test="${user == null}">
                         <li><a href="/registration">Sign up</a></li>
-                        <li><a href="/login_page">Log in</a></li>
+                        <li><a href="/login">Log in</a></li>
                     </c:when>
                     <c:otherwise>
                         <li><a href="/profile"><c:out value="${user.name}" /></a></li>

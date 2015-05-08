@@ -23,6 +23,14 @@ public class UserController {
   @Autowired
   UserService userService;
 
+  @RequestMapping(value = "/login", method = RequestMethod.GET)
+  @ResponseBody
+  public ModelAndView login(){
+    return new ModelAndView("login_page");
+
+
+  }
+
 
   @RequestMapping(value = "/login", method = RequestMethod.POST)
   @ResponseBody
@@ -42,6 +50,15 @@ public class UserController {
       vm.addObject("user", user);
       response.addCookie(new Cookie("token", token));
     }
+    return vm;
+  }
+
+  @RequestMapping(value = "/logout", method = RequestMethod.GET)
+  @ResponseBody
+  public ModelAndView logout(HttpServletResponse response) {
+
+    ModelAndView vm = new ModelAndView("redirect:/category");
+    response.addCookie(new Cookie("token", ""));
     return vm;
   }
 
