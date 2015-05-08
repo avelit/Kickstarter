@@ -6,9 +6,31 @@ import java.sql.SQLException;
 import java.util.Deque;
 import java.util.LinkedList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import ua.goit.gojava32.kickstarter.factory.FactoryDB;
 
+//import javax.sql.DataSource;
+
 public abstract class ConnectionPool {
+
+//  @Autowired
+//  static DataSource dataSource;
+//
+//  public static Connection getConnection() {
+//    try {
+//      return dataSource.getConnection();
+//     } catch (SQLException e) {
+//       throw new RuntimeException(e);
+//     }
+//  }
+//  public static void releaseConnection(Connection con) {
+//    try {
+//      con.close();
+//    } catch (SQLException e) {
+//      throw new RuntimeException(e);
+//    }
+//  }
+
   private static final int STANDARD_POOL_SIZE = 100;
   private static int size = STANDARD_POOL_SIZE;
   private static int connectionsCreated;
