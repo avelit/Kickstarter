@@ -55,11 +55,6 @@ public class UserDAOImpl implements UserDAO {
     return getUser(query);
   }
 
-  @Override
-  public User get(String name) {
-    String query = String.format("SELECT * FROM users WHERE name='%s'", name);
-    return getUser(query);
-  }
 
   private User getUser(String query) {
     Connection con = ConnectionPool.getConnection();

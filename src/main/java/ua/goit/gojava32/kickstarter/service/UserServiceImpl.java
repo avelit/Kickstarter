@@ -14,8 +14,7 @@ public class UserServiceImpl implements UserService{
   @Override
   public User add(String name, String email, String token, Boolean isActive) {
     User user = FactoryModel.createUser(name, email, token, isActive);
-    userDAO.add(user);
-    return userDAO.get(name);
+    return userDAO.add(user);
   }
 
   @Override
@@ -33,10 +32,6 @@ public class UserServiceImpl implements UserService{
     return userDAO.get(id);
   }
 
-  @Override
-  public User get(String name) {
-    return userDAO.get(name);
-  }
 
   @Override
   public User add(User val) {

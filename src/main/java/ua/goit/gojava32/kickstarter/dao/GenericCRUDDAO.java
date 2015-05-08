@@ -5,7 +5,6 @@ public interface GenericCRUDDAO<T> {
   void delete(Integer id);
   void delete(T val);
   T get(Integer id);
-  T get(String name);
   T add(T val);
 
 }

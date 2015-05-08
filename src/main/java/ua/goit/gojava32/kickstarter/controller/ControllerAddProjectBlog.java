@@ -11,7 +11,7 @@ public class ControllerAddProjectBlog implements Controller {
   public ViewModel process(HttpServletRequest request) {
     Project project = (Project)request.getSession().getAttribute("project");
     ProjectService projectService = ServiceModel.getProjectService();
-    projectService.addBlog(request.getParameter("comment"),project);
+ //   projectService.addBlog(request.getParameter("comment"),project);
     ViewModel vm = new ViewModel("/categories/" + request.getParameter("category") + "/" + request.getParameter("project"), "sendRedirect", null);
     return vm;
   }

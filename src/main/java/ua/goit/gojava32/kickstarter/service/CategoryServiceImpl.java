@@ -18,7 +18,7 @@ public class CategoryServiceImpl implements CategoryService {
   public Category add(String name, String description) {
     Category category = FactoryModel.createCategory(name, description);
     categoryDAO.add(category);
-    return categoryDAO.get(name);
+    return category;
   }
   @Override
   public Category add(Category category) {
@@ -60,11 +60,6 @@ public class CategoryServiceImpl implements CategoryService {
   @Override
   public Category get(Integer id) {
     return categoryDAO.get(id);
-  }
-
-  @Override
-  public Category get(String name) {
-    return categoryDAO.get(name);
   }
 
 }

@@ -6,7 +6,7 @@ import java.util.Date;
 public class Comment implements Comparable {
 
   private Integer id;
-  private String text;
+  private String comment;
   private Date created;
   private Project project;
 
@@ -14,9 +14,9 @@ public class Comment implements Comparable {
 
   }
 
-  public Comment(Integer id, String text, Date dateOfCreation, Project project) {
+  public Comment(Integer id, String comment, Date dateOfCreation, Project project) {
     this.id = id;
-    this.text = text;
+    this.comment = comment;
     this.created = dateOfCreation;
     this.project = project;
   }
@@ -29,7 +29,7 @@ public class Comment implements Comparable {
     Comment comment = (Comment) o;
 
     if (id != comment.id) return false;
-    if (getText() != null ? !getText().equals(comment.getText()) : comment.getText() != null)
+    if (getComment() != null ? !getComment().equals(comment.getComment()) : comment.getComment() != null)
       return false;
     return !(created != null ? !created.equals(comment.created) : comment.created != null);
 
@@ -38,7 +38,7 @@ public class Comment implements Comparable {
   @Override
   public int hashCode() {
     int result = (int) (id ^ (id >>> 32));
-    result = 31 * result + (getText() != null ? getText().hashCode() : 0);
+    result = 31 * result + (getComment() != null ? getComment().hashCode() : 0);
     result = 31 * result + (created != null ? created.hashCode() : 0);
     return result;
   }
@@ -46,7 +46,7 @@ public class Comment implements Comparable {
   @Override
   public String toString() {
     SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy hh:mm");
-    return "(" + format.format(getCreated()) + ") " + getText();
+    return "(" + format.format(getCreated()) + ") " + getComment();
   }
 
 
@@ -62,12 +62,12 @@ public class Comment implements Comparable {
     this.created = created;
   }
 
-  public String getText() {
-    return text;
+  public String getComment() {
+    return comment;
   }
 
-  public void setText(String text) {
-    this.text = text;
+  public void setComment(String text) {
+    this.comment = text;
   }
 
   public Project getProject() {

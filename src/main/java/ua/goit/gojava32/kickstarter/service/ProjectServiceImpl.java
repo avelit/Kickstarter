@@ -17,8 +17,8 @@ public class ProjectServiceImpl implements ProjectService {
   @Override
   public Project add(String name, String description, Category category) {
     Project project = FactoryModel.createProject(name, category, description);
-    projectDAO.add(project);
-    return projectDAO.get(name);
+
+    return  projectDAO.add(project);
   }
 
   @Override
@@ -36,35 +36,13 @@ public class ProjectServiceImpl implements ProjectService {
     return projectDAO.get(id);
   }
 
-  @Override
-  public Project get(String name) {
-    return projectDAO.get(name);
-  }
+
 
   @Override
   public Project add(Project val) {
     return null;
   }
 
-  @Override
-  public List<String> getComments(Project project) {
-    return projectDAO.getComments(project);
-  }
-
-  @Override
-  public List<String> getBlogs(Project project) {
-    return projectDAO.getBlogs(project);
-  }
-
-  @Override
-  public void addComment(String comment, Project project) {
-    projectDAO.addComment(comment, project);
-  }
-
-  @Override
-  public void addBlog(String comment, Project project) {
-    projectDAO.addBlog(comment, project);
-  }
 
   @Override
   public Set<Project> findFrom(String searchRequest) {

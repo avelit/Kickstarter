@@ -120,13 +120,6 @@ public class CategoryDAOImpl implements CategoryDAO {
     return category;
   }
 
-  @Override
-  public Category get(String name) {
-    String query = String.format("SELECT * FROM categories WHERE name = '%s'", name);
-    Category category = getCategory(query);
-    return category;
-  }
-
   private static Category getCategory(String query) {
     Connection con = ConnectionPool.getConnection();
     Category category = null;

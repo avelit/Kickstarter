@@ -59,12 +59,7 @@ public class ProjectDAOImpl implements ProjectDAO {
     return project;
   }
 
-  @Override
-  public Project get(String name) {
-    String query = String.format("SELECT * FROM projects WHERE name = '%s'", name);
-    Project project = getProject(query);
-    return project;
-  }
+
 
   private Project getProject(String query) {
     Connection con = ConnectionPool.getConnection();

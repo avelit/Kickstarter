@@ -23,7 +23,7 @@ public class ControllerAddProjectComment implements Controller {
     Project project = projectService.get(Integer.parseInt(projectId));
 
     Comment newComment = new Comment();
-    newComment.setText(textComment);
+    newComment.setComment(textComment);
     newComment.setProject(project);
     newComment.setCreated(new Date());
 
