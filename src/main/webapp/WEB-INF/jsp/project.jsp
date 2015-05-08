@@ -22,10 +22,11 @@
 <div class="container">
 
   <h3>
+    Category:
+    <a href="/category/<c:out value="${category.id}"/>" ><c:out value="${category.name}"/></a>
+    <br>
     Project name:
     <c:out value="${project.name}"/>
-    <br> Category:
-    <c:out value="${category_name}"/>
   </h3>
 
 
@@ -48,7 +49,7 @@
         Project name:
         <c:out value="${project.name}"/>
         <br> Category:
-        <c:out value="${category_name}"/>
+        <c:out value="${category.name}"/>
       </div>
     </div>
 

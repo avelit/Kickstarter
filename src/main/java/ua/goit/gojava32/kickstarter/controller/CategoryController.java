@@ -14,15 +14,11 @@ import ua.goit.gojava32.kickstarter.service.ProjectService;
 @Controller
 public class CategoryController {
 
-
   public CategoryController() {
   }
 
   @Autowired
   private CategoryService categoryService;
-
-  @Autowired
-  private ProjectService projectService;
 
   @RequestMapping(value = "/category", method = RequestMethod.POST)
   @ResponseBody
