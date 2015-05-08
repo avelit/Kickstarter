@@ -17,7 +17,10 @@ public class CategoryController {
   public CategoryController() {
   }
 
+  @Autowired
   CategoryService categoryService;
+
+  @Autowired
   ProjectService projectService;
 
   @RequestMapping(value = "/category", method = RequestMethod.POST)
@@ -50,14 +53,5 @@ public class CategoryController {
     return vm;
   }
 
-
-  @Autowired
-  public void setCategoryService(CategoryService categoryService) {
-    this.categoryService = categoryService;
-  }
-  @Autowired
-   public void setProjectService(ProjectService projectService) {
-    this.projectService = projectService;
-  }
 }
 
