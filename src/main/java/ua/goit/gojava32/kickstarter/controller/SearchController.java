@@ -8,9 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 import ua.goit.gojava32.kickstarter.factory.ServiceModel;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
 import ua.goit.gojava32.kickstarter.service.ProjectService;
-
-
 import javax.servlet.http.HttpServletRequest;
+
 
 @Controller
 public class SearchController {

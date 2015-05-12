@@ -3,10 +3,7 @@ package ua.goit.gojava32.kickstarter.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import ua.goit.gojava32.kickstarter.model.Category;
@@ -42,7 +39,7 @@ public class ProjectController {
     return vm;
   }
 
-  @RequestMapping(value = "/project/add")
+  @RequestMapping(value = "/project/add", method = RequestMethod.POST)
   @ResponseBody
   public ModelAndView addProject(
       @RequestParam("category_id") String strCategoryId,
@@ -56,9 +53,10 @@ public class ProjectController {
     project.setDescription(projectDescription);
     project.setName(projectName);
     project = projectService.add(project);
-    ModelAndView vm = new ModelAndView("redirect:project/" + project.getId());
+    ModelAndView vm = new ModelAndView("redirect:/project/" + project.getId());
     return vm;
   }
+
 
 
 

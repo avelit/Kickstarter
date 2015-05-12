@@ -28,7 +28,8 @@ public class ProjectDAOImpl implements ProjectDAO {
     String queryCheck = String.format("SELECT * FROM projects WHERE id_category = '%d' AND name = '%s'", category.getId(), project.getName());
     String query = String.format("INSERT INTO projects (name, id_category, description) VALUES ('%s', '%d', '%s')",
             project.getName(), category.getId(), project.getDescription());
-    AbstractDAO.executeAdd(con, query, queryCheck);
+    Integer id =  AbstractDAO.executeAdd(con, query, queryCheck);
+    project.setId(id);
     ConnectionPool.releaseConnection(con);
     return project;
   }

@@ -13,7 +13,7 @@
         <div class="col-sm-6">
             <h1>Add project:</h1>
             <hr>
-            <form name="add_project" action="/categories/addProject" method="post">
+            <form name="add_project" action="/project/add" method="post">
 
                 <h4>Category:</h4>
                 <select name="category_id" class="form-control">

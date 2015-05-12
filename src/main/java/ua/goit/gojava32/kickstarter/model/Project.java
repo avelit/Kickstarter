@@ -86,4 +86,24 @@ public class Project {
   public void setVideo(String video) {
     this.video = video;
   }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public void setMoneyNeed(Integer moneyNeed) {
+    this.moneyNeed = moneyNeed;
+  }
+
+  public void setMoneyHas(Integer moneyHas) {
+    this.moneyHas = moneyHas;
+  }
 }

@@ -16,14 +16,14 @@ public class CategoryController {
   @Autowired
   private CategoryService categoryService;
 
-  @RequestMapping(value = "/category", method = RequestMethod.POST)
+  @RequestMapping(value = "/category/add", method = RequestMethod.POST)
   @ResponseBody
   public ModelAndView addCategory(
       @RequestParam("category_name") String categoryName,
       @RequestParam("category_description") String description) {
 
     categoryService.add(categoryName, description);
-    ModelAndView vm = new ModelAndView("redirect:/categories");
+    ModelAndView vm = new ModelAndView("redirect:/category");
     return vm;
   }
 

@@ -13,7 +13,7 @@
             <h1>Add category:</h1>
             <hr>
             <div class="add_category">
-                <form name="add_category" action="/categories/addCategory" method="post">
+                <form name="add_category" action="/category/add" method="post">
                     <h4>Catagory name:</h4>
                     <input type="text" name="category_name" class="form-control" placeholder="Name"
                            width="30%">

@@ -21,7 +21,8 @@ public class CategoryDAOImpl implements CategoryDAO {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("INSERT INTO categories (name,description) VALUES ('%s', '%s')", category.getName(), category.getDescription());
     String queryCheck = String.format("SELECT * FROM categories WHERE name = '%s'", category.getName());
-    AbstractDAO.executeAdd(con, query, queryCheck);
+    Integer id =  AbstractDAO.executeAdd(con, query, queryCheck);
+    category.setId(id);
     ConnectionPool.releaseConnection(con);
     return category;
   }
