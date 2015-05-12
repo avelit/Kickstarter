@@ -9,17 +9,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import ua.goit.gojava32.kickstarter.factory.ServiceModel;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
 import ua.goit.gojava32.kickstarter.service.CommentService;
 import ua.goit.gojava32.kickstarter.service.ProjectService;
-import ua.goit.gojava32.kickstarter.view.ViewModel;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 public class ProjectController {
