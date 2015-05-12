@@ -22,7 +22,7 @@ public class UserController {
   @Autowired
   UserService userService;
 
-  @RequestMapping(value = "/login", method = RequestMethod.GET)
+  @RequestMapping(value = {"/login","/login_page"}, method = RequestMethod.GET)
   @ResponseBody
   public ModelAndView login(){
     return new ModelAndView("login_page");
@@ -40,7 +40,7 @@ public class UserController {
 
     ModelAndView vm;
     if (user == null || !user.isActive()) {
-      vm = new ModelAndView("redirect:/login_page");
+      vm = new ModelAndView("login_page");
       vm.addObject("text_failed", "Wrong user or password or user not active.");
     } else {
       vm = new ModelAndView("redirect:/category");

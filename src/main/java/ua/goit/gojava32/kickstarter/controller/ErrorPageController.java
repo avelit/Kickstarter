@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class ErrorPageController{
-  @RequestMapping(value = "/error", method = RequestMethod.GET)
+  @RequestMapping(value = "/error")
   @ResponseBody
   public ModelAndView error(HttpServletRequest request) {
     ModelAndView mv = new ModelAndView("error_page");
