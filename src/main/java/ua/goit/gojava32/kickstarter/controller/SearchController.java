@@ -3,13 +3,12 @@ package ua.goit.gojava32.kickstarter.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import ua.goit.gojava32.kickstarter.factory.ServiceModel;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
 import ua.goit.gojava32.kickstarter.service.ProjectService;
-import javax.servlet.http.HttpServletRequest;
-
 
 @Controller
 public class SearchController {
@@ -19,13 +18,10 @@ public class SearchController {
 
   @RequestMapping(value = "/search", method = RequestMethod.GET)
   @ResponseBody
-
-  public ModelAndView search(HttpServletRequest request) {
+  public ModelAndView search(@RequestParam("search_text") String searchText) {
     ModelAndView vm = new ModelAndView("search");
-    String requestSearch = request.getParameter("search_text");
-    vm.addObject("resultCategoriesSearch", categoryService.findFrom(requestSearch));
-    vm.addObject("resultProjectsSearch", projectService.findFrom(requestSearch));
-
+    vm.addObject("resultCategoriesSearch", categoryService.findFrom(searchText));
+    vm.addObject("resultProjectsSearch", projectService.findFrom(searchText));
     return vm;
   }
 }

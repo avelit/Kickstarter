@@ -16,8 +16,7 @@
                     <a href="#">
                         <div class="caption">
                             <h3>
-                                <a href="/categories/<c:out value="${c.name}"/>"><c:out
-                                        value="${c.name}"/></a>
+                                <a href="/category/<c:out value="${c.id}"/>"><c:out value="${c.name}"/></a>
                             </h3>
                         </div>
                     </a>
@@ -33,8 +32,7 @@
                     <a href="#">
                         <div class="caption">
                             <h3>
-                                <a href="/categories/<c:out value="${c.category.name}"/>/<c:out value="${c.name}"/>"><c:out
-                                            value="${c.name}"/></a>
+                                <a href="/project/<c:out value="${c.id}"/>"><c:out value="${c.name}"/></a>
                             </h3>
                         </div>
                     </a>
