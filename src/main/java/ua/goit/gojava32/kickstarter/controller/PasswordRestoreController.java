@@ -30,9 +30,9 @@ public class PasswordRestoreController {
         ModelAndView vm = new ModelAndView("search_by_email_page");
         User findUser = userService.findUserByEmail(searchMail);
         if (findUser == null){
-            vm.addObject("result_search", "User with such e-mail was not found");
+            vm.addObject("result_search", "Can't find that email, sorry.");
         } else {
-            vm.addObject("result_search", "Check you e-mail");
+            vm.addObject("result_search", "Check you e-mail for reset you password");
         }
         return vm;
     }
