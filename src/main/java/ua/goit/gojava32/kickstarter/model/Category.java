@@ -1,9 +1,16 @@
 package ua.goit.gojava32.kickstarter.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Category {
 
-  private String name;
+  @Id
+  @GeneratedValue
   private Integer id;
+  private String name;
   private String description = "";
 
   public Category(String name, String description) {
