@@ -9,11 +9,11 @@
 <body>
 
 <div class="container">
-    <form class="form-signin" action="/find_mail" method="post">
-        <label for="inputEmail" class="sr-only">Enter you e-mail address</label>
-        <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <form class="form-signin" action="/search_by_email_page" method="get">
+    <h5>Forgot your account's password? Enter your email address and we'll send you a recovery link.</h5>
+        <input name="search_mail" type="email" id="inputEmail" class="form-control" placeholder="Enter you e-mail address" required autofocus>
         <br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Send recovery email</button>
     </form>
 </div>
 </body>
