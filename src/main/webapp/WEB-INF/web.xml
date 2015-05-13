@@ -3,8 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns:mvc="http://www.springframework.org/schema/mvc"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-                  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         version="2.5">
+                  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
 
 
   <welcome-file-list>
