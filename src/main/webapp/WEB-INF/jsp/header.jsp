@@ -10,7 +10,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/">Discover</a></li>
+                <li><a href="/category">Discover</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search" action="/search">
                 <div class="form-group">
