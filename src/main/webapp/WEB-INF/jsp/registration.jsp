@@ -16,7 +16,7 @@
             <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
             <p></p>
             <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            <button class="btn btn-signup btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-signup btn-lg btn-primary btn-block" type="submit">Sign up</button>
         </form>
     </div>
 </div>
