@@ -40,18 +40,18 @@ public class BlogPostDAOImpl implements BlogPostDAO{
 
 
   @Override
-  public void update(BlogPost val) {
-
+  public BlogPost update(BlogPost val) {
+    return null;
   }
 
   @Override
-  public void delete(Integer id) {
-
+  public BlogPost delete(Integer id) {
+    return null;
   }
 
   @Override
-  public void delete(BlogPost val) {
-
+  public BlogPost delete(BlogPost val) {
+    return null;
   }
 
   @Override

@@ -21,19 +21,20 @@ public class CategoryDAOImpl implements CategoryDAO {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("INSERT INTO categories (name,description) VALUES ('%s', '%s')", category.getName(), category.getDescription());
     String queryCheck = String.format("SELECT * FROM categories WHERE name = '%s'", category.getName());
-    Integer id =  AbstractDAO.executeAdd(con, query, queryCheck);
-    category.setId(id);
+    //Integer id =  AbstractDAO.executeAdd(con, query, queryCheck);
+    //category.setId(id);
     ConnectionPool.releaseConnection(con);
     return category;
   }
 
   @Override
-  public void update(Category category) {
+  public Category update(Category category) {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("UPDATE categories SET name = '%s', description = '%s' WHERE id = '%d'",
             category.getName(), category.getDescription(), category.getId());
-    AbstractDAO.executeUpdate(con, query);
+    //AbstractDAO.executeUpdate(con, query);
     ConnectionPool.releaseConnection(con);
+    return category;
   }
 
   @Override
@@ -105,16 +106,18 @@ public class CategoryDAOImpl implements CategoryDAO {
   }
 
   @Override
-  public void delete(Integer id) {
+  public Category delete(Integer id) {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("DELETE FROM categories WHERE id = '%d'", id);
-    AbstractDAO.executeUpdate(con, query);
+    //AbstractDAO.executeUpdate(con, query);
     ConnectionPool.releaseConnection(con);
+    return null;
   }
 
   @Override
-  public void delete(Category category) {
+  public Category delete(Category category) {
     delete(category.getId());
+    return category;
   }
 
   @Override

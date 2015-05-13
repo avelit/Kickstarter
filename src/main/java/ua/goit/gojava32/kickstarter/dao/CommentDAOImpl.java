@@ -11,18 +11,18 @@ import java.util.List;
 @Repository
 public class CommentDAOImpl implements CommentDAO{
   @Override
-  public void update(Comment val) {
-
+  public Comment update(Comment val) {
+    return null;
   }
 
   @Override
-  public void delete(Integer id) {
-
+  public Comment delete(Integer id) {
+    return null;
   }
 
   @Override
-  public void delete(Comment val) {
-
+  public Comment delete(Comment val) {
+    return null;
   }
 
   @Override
