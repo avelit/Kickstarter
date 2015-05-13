@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <link href="/css/header.css" rel="stylesheet">
 
 <nav class="navbar navbar-default">
@@ -19,16 +20,29 @@
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <c:choose>
-                    <c:when test="${user == null}">
-                        <li><a href="/registration">Sign up</a></li>
-                        <li><a href="/login">Log in</a></li>
-                    </c:when>
-                    <c:otherwise>
-                        <li><a href="/profile"><c:out value="${user.name}" /></a></li>
-                        <li><a href="/logout">Log out</a></li>
-                    </c:otherwise>
-                </c:choose>
+                <%--<c:choose>--%>
+                    <%--<c:when test="${user == null}">--%>
+                        <%--<li><a href="/registration">Sign up</a></li>--%>
+                        <%--<li><a href="/login">Log in</a></li>--%>
+                    <%--</c:when>--%>
+                    <%--<c:otherwise>--%>
+                        <%--<li><a href="/profile"><c:out value="${user.name}" /></a></li>--%>
+                        <%--<li><a href="/logout">Log out</a></li>--%>
+                    <%--</c:otherwise>--%>
+                <%--</c:choose>--%>
+
+
+
+                <sec:authorize access="hasRole('supervisor')">
+                    <li><a href="/profile"><sec:authentication property="principal.username" /></a></li>
+                    <li><a href="/logout">Log out</a></li>
+                </sec:authorize>
+
+                <sec:authorize access="!isAuthenticated()">
+                    <li><a href="/registration">Sign up</a></li>
+                    <li><a href="/login">Log in</a></li>
+                </sec:authorize>
+
 
             </ul>
         </div>

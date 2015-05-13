@@ -31,24 +31,26 @@ public class LoginFilter implements Filter{
     logger.info("filter login: " + Uri);
     long startTime = System.currentTimeMillis();
 
-    doFilterCookie(req);
+//    doFilterCookie(req);
     chain.doFilter(req, resp);
 
     logger.info("duration: " + Uri + " " + (System.currentTimeMillis() - startTime) + " ms.");
+
   }
 
   private void doFilterCookie(ServletRequest req) {
 
-    Cookie[] cookies = ((HttpServletRequest)req).getCookies();
-    if (cookies != null) {
-      for (Cookie cookie : cookies) {
-        if (cookie.getName().equals(TOKEN)) {
-          User user = ServiceModel.getUserService().findUserByToken(cookie.getValue());
-          req.setAttribute("user", user);
-          break;
-        }
-      }
-    }
+//    Cookie[] cookies = ((HttpServletRequest)req).getCookies();
+//    if (cookies != null) {
+//      for (Cookie cookie : cookies) {
+//        if (cookie.getName().equals(TOKEN)) {
+//          User user = ServiceModel.getUserService().findUserByToken(cookie.getValue());
+//          req.setAttribute("user", user);
+//          break;
+//        }
+//      }
+//    }
+
   }
 
   @Override

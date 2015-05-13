@@ -9,17 +9,24 @@
 <body>
 
 <div class="container">
-    <form class="form-signin" action="/login" method="post">
+    <c:url value="/j_spring_security_check" var="loginUrl" />
+    <form class="form-signin" action="${loginUrl}" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <h3 class="alert"><c:out value="${text_failed}"/></h3>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <br>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+        <input name="j_username" type="text" class="form-control" placeholder="Email address" required autofocus>
+        <input name="j_password" type="password" class="form-control" placeholder="Password" required>
+
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+
+
+
         <a class="btn btn-signup btn-lg btn-primary btn-block" href="/registration">Sign up</a>
-        <center><a href="/forgot_password">Forgot password</a></center>
+
+
+
+        <a class="btn btn-warning btn-lg btn-primary btn-block" href="/restore_page">Forgot password</a>
     </form>
 </div>
 </body>

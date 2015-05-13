@@ -21,6 +21,12 @@ public class UserServiceImpl implements UserService{
   }
 
   @Override
+  public User getUser(String name) {
+    User user = new User("test", "test@test.ru", "123", true);
+    return user;
+  }
+
+  @Override
   public void update(User user) {
     userDAO.update(user);
   }
@@ -30,11 +36,11 @@ public class UserServiceImpl implements UserService{
     userDAO.delete(user);
   }
 
+
   @Override
   public User get(Integer id) {
     return userDAO.get(id);
   }
-
 
   @Override
   public User add(User val) {

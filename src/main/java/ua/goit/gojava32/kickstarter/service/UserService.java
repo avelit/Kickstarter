@@ -6,4 +6,5 @@ public interface UserService extends GenericCRUDService<User>{
   User add(String name, String email, String token, Boolean isActive);
   User findUserByToken(String token);
   User findUserByEmail(String email);
+  User getUser(String name);
 }
