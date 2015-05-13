@@ -1,6 +1,7 @@
 package ua.goit.gojava32.kickstarter.dao;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -23,38 +24,23 @@ public class ProjectDAOImpl extends AbstractDAO<Project> implements ProjectDAO {
 
   @Override
   public List<String> getComments(Project project) {
-    Session session = getSession();
-
     return getList("comments", project);
   }
 
   @Override
   public List<String> getBlogs(Project project) {
-    Session session = getSession();
-
     return getList("blogs", project);
   }
 
   private List<String> getList(String table, Project project) {
-    List<String> comments = new ArrayList<>();
-    Connection con = ConnectionPool.getConnection();
-    String query = String.format("SELECT * FROM " + table + " WHERE id_project = '%s'", project.getId());
-    try (Statement st = con.createStatement()) {
-      ResultSet rs = st.executeQuery(query);
-      while (rs.next()) {
-        String author = rs.getString("author");
-        String comment = rs.getString("comment");
-        comments.add(comment);
-      }
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
-    ConnectionPool.releaseConnection(con);
+    Session session = getSession();
+    Query query = session.createQuery("SELECT comment FROM " + table + " WHERE id_project = " + project.getId());
+    List<String> comments = query.list();
     return comments;
   }
 
   @Override
-  public void addComment(String comment,Project project) {
+  public void addComment(String comment, Project project) {
     addToList(comment, "comments", project);
   }
 

@@ -9,34 +9,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 @Repository
-public class CommentDAOImpl implements CommentDAO{
-  @Override
-  public Comment update(Comment val) {
-    return null;
-  }
+public class CommentDAOImpl extends AbstractDAO<Comment> implements CommentDAO{
 
-  @Override
-  public Comment delete(Integer id) {
-    return null;
-  }
-
-  @Override
-  public Comment delete(Comment val) {
-    return null;
-  }
-
-  @Override
-  public Comment get(Integer id) {
-    return null;
-  }
-
-
-  @Override
   public Comment add(Comment val) {
 
     Connection con = ConnectionPool.getConnection();
     String query = String.format("INSERT INTO comments (id_project, text, created) VALUES (?, ?, ?)");
-
 
     PreparedStatement pstmt = null;
     try {

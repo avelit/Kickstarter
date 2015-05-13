@@ -5,22 +5,14 @@ import ua.goit.gojava32.kickstarter.connections.ConnectionPool;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.User;
 
+import javax.jws.soap.SOAPBinding;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-@Repository
-public class UserDAOImpl implements UserDAO {
 
-  @Override
-  public User add(User user) {
-    Connection con = ConnectionPool.getConnection();
-    String query = String.format("INSERT INTO users (name,token,email) VALUES ('%s','%s','%s')",
-            user.getName(), user.getToken(),user.getEmail());
-    //AbstractDAO.executeAdd(con, query);
-    ConnectionPool.releaseConnection(con);
-    return user;
-  }
+@Repository
+public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 
   @Override
   public User findUserByToken(String token) {
@@ -35,20 +27,22 @@ public class UserDAOImpl implements UserDAO {
   }
 
   @Override
-  public void update(User user) {
+  public User update(User user) {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("UPDATE users SET name = '%s', active = '%d' WHERE id = '%d'",
             user.getName(), user.isActive()?1:0, user.getId());
     //AbstractDAO.executeUpdate(con, query);
     ConnectionPool.releaseConnection(con);
+    return null;
   }
 
   @Override
-  public void delete(User user) {
+  public User delete(User user) {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("DELETE FROM users WHERE id = '%d'", user.getId());
     //AbstractDAO.executeUpdate(con, query);
     ConnectionPool.releaseConnection(con);
+    return null;
   }
 
   @Override

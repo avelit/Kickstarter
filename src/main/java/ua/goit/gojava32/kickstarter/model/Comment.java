@@ -1,20 +1,27 @@
 package ua.goit.gojava32.kickstarter.model;
 
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Entity
+@Table (name = "comments")
 public class Comment implements Comparable {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
+
+  @Column (name = "comment")
   private String text;
   private Date created;
+
+  @JoinColumn (name = "id", nullable = false, insertable = false, updatable = false)
+  @OneToOne (fetch = FetchType.LAZY)
   private Project project;
 
   public Comment() {
-
   }
-
-
 
   public String getCreatedSimpleFormat(){
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class BlogPostDAOImpl implements BlogPostDAO{
+public class BlogPostDAOImpl extends AbstractDAO<BlogPost> implements BlogPostDAO{
 
   @Override
   public List<BlogPost> getByProject(Project project) {
@@ -36,27 +36,6 @@ public class BlogPostDAOImpl implements BlogPostDAO{
     }
     ConnectionPool.releaseConnection(con);
     return blogPosts;
-  }
-
-
-  @Override
-  public BlogPost update(BlogPost val) {
-    return null;
-  }
-
-  @Override
-  public BlogPost delete(Integer id) {
-    return null;
-  }
-
-  @Override
-  public BlogPost delete(BlogPost val) {
-    return null;
-  }
-
-  @Override
-  public BlogPost get(Integer id) {
-    return null;
   }
 
   @Override

@@ -13,6 +13,7 @@ public class User {
   private String name;
   private String token;
   private String email;
+  private String comment;
 
   @Column (name = "active")
   private boolean isActive;
@@ -73,5 +74,13 @@ public class User {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public String getComment() {
+    return comment;
+  }
+
+  public void setComment(String comment) {
+    this.comment = comment;
   }
 }
