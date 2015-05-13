@@ -1,10 +1,20 @@
 package ua.goit.gojava32.kickstarter.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table (name = "users")
 public class User {
+
+  @Id
+  @GeneratedValue (strategy = GenerationType.AUTO)
   private Integer id;
+
   private String name;
-  private String email;
   private String token;
+  private String email;
+
+  @Column (name = "active")
   private boolean isActive;
 
   public User() {

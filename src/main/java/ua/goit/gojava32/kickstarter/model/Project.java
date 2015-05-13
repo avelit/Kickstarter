@@ -13,13 +13,15 @@ public class Project {
   private String name;
 
   @ManyToOne (fetch = FetchType.LAZY)
-  @JoinColumn (name = "id", nullable = false, insertable = true, updatable = false)
+  @JoinColumn (name = "id", nullable = false, insertable = false, updatable = false)
   private User user;
+
   private String description = "";
 
   @ManyToOne (fetch = FetchType.LAZY)
-  @JoinColumn (name = "id", nullable = false, insertable = true, updatable = false)
+  @JoinColumn (name = "id", nullable = false, insertable = false, updatable = false)
   private Category category;
+
   private Integer moneyNeed;
   private Integer moneyHas;
   private String video;
