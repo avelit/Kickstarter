@@ -3,12 +3,7 @@ package ua.goit.gojava32.kickstarter.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.lang.reflect.ParameterizedType;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public abstract class AbstractDAO<T> implements GenericCRUDDAO<T> {
 
