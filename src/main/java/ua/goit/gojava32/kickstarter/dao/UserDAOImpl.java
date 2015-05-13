@@ -17,7 +17,7 @@ public class UserDAOImpl implements UserDAO {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("INSERT INTO users (name,token,email) VALUES ('%s','%s','%s')",
             user.getName(), user.getToken(),user.getEmail());
-    AbstractDAO.executeAdd(con, query);
+    //AbstractDAO.executeAdd(con, query);
     ConnectionPool.releaseConnection(con);
     return user;
   }
@@ -39,7 +39,7 @@ public class UserDAOImpl implements UserDAO {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("UPDATE users SET name = '%s', active = '%d' WHERE id = '%d'",
             user.getName(), user.isActive()?1:0, user.getId());
-    AbstractDAO.executeUpdate(con, query);
+    //AbstractDAO.executeUpdate(con, query);
     ConnectionPool.releaseConnection(con);
   }
 
@@ -47,7 +47,7 @@ public class UserDAOImpl implements UserDAO {
   public void delete(User user) {
     Connection con = ConnectionPool.getConnection();
     String query = String.format("DELETE FROM users WHERE id = '%d'", user.getId());
-    AbstractDAO.executeUpdate(con, query);
+    //AbstractDAO.executeUpdate(con, query);
     ConnectionPool.releaseConnection(con);
   }
 

@@ -1,11 +1,27 @@
 package ua.goit.gojava32.kickstarter.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table (name = "projects")
 public class Project {
+
+  @Id
+  @GeneratedValue (strategy = GenerationType.AUTO)
   private Integer id;
+
   private String name;
+
+  @ManyToOne (fetch = FetchType.LAZY)
+  @JoinColumn (name = "id", nullable = false, insertable = false, updatable = false)
   private User user;
+
   private String description = "";
+
+  @ManyToOne (fetch = FetchType.LAZY)
+  @JoinColumn (name = "id", nullable = false, insertable = false, updatable = false)
   private Category category;
+
   private Integer moneyNeed;
   private Integer moneyHas;
   private String video;

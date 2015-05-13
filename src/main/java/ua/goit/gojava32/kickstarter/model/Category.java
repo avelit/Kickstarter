@@ -1,15 +1,15 @@
 package ua.goit.gojava32.kickstarter.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table (name = "categories")
 public class Category {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue (strategy = GenerationType.AUTO)
   private Integer id;
+
   private String name;
   private String description = "";
 

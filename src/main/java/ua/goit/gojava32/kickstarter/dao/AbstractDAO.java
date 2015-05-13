@@ -1,51 +1,52 @@
 package ua.goit.gojava32.kickstarter.dao;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import java.lang.reflect.ParameterizedType;
 
-public abstract class AbstractDAO {
+public abstract class AbstractDAO<T> implements GenericCRUDDAO<T> {
 
-  public static Integer executeAdd(Connection con, String query, String queryCheck) {
-    Integer id = 0;
-    try (Statement stUpdate = con.createStatement(); Statement stCheck = con.createStatement()) {
-      ResultSet resultSet = stCheck.executeQuery(queryCheck);
-      if (!resultSet.next()) {
-        int affectedRows = stUpdate.executeUpdate(query);
+  @Autowired
+  SessionFactory sessionFactory;
 
-        if (affectedRows == 0) {
-          throw new SQLException("Creating user failed, no rows affected.");
-        }
-
-        try (ResultSet generatedKeys = stUpdate.getGeneratedKeys()) {
-          if (generatedKeys.next()) {
-            id = generatedKeys.getInt(1);
-          }
-          else {
-            throw new SQLException("Creating user failed, no ID obtained.");
-          }
-        }
-      }
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
-    return id;
+  Session getSession(){
+    return sessionFactory.getCurrentSession();
   }
 
-  public static void executeAdd(Connection con, String query) {
-    try (Statement stUpdate = con.createStatement()) {
-       stUpdate.executeUpdate(query);
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
+  @Override
+  public T add(T val) {
+    Session session = getSession();
+    session.save(val);
+    return val;
   }
 
-  public static void executeUpdate(Connection con, String query) {
-    try (Statement st = con.createStatement()) {
-      st.executeUpdate(query);
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
+  @Override
+  public T update(T val) {
+    Session session = getSession();
+    session.update(val);
+    return val;
+  }
+
+  @Override
+  public T delete(Integer id) {
+    Session session = getSession();
+    T val = get(id);
+    session.delete(val);
+    return val;
+  }
+
+  @Override
+  public T delete(T val) {
+    Session session = getSession();
+    session.delete(val);
+    return val;
+  }
+
+  @Override
+  public T get(Integer id) {
+    Session session = getSession();
+    return (T) session.get((Class<T>) ((ParameterizedType) getClass()
+            .getGenericSuperclass()).getActualTypeArguments()[0], id);
   }
 }
