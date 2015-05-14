@@ -5,6 +5,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ua.goit.gojava32.kickstarter.connections.ConnectionPool;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.Category;
@@ -19,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Transactional
 @Repository
 public class ProjectDAOImpl extends AbstractDAO<Project> implements ProjectDAO {
 

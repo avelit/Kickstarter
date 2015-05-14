@@ -15,8 +15,8 @@ import ua.goit.gojava32.kickstarter.model.Project;
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
-  // @Autowired //not working
-  private ProjectDAO projectDAO = new ProjectDAOImpl();
+  @Autowired
+  private ProjectDAO projectDAO;
   @Autowired
   private CommentDAO commentDAO;
   @Autowired

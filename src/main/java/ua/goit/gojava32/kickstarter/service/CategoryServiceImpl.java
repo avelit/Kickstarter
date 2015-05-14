@@ -14,10 +14,8 @@ import java.util.Set;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
-  //@Autowired  not working
-  //private CategoryDAO categoryDAO;
-
-  private CategoryDAO categoryDAO =new CategoryDAOImpl();
+  @Autowired
+  private CategoryDAO categoryDAO;
 
   @Override
   public Category add(String name, String description) {
