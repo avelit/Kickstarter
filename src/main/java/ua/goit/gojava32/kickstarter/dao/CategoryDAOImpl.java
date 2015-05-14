@@ -32,8 +32,8 @@ public class CategoryDAOImpl extends AbstractDAO<Category> implements CategoryDA
   public List<Category> findFrom(String requestSearch) {
 
     Session session = getSession();
-    Query query = session.createQuery("FROM Category WHERE name LIKE % :requestSearch %");
-    query.setParameter("requestSearch", requestSearch);
+    Query query = session.createQuery("FROM Category WHERE name LIKE :requestSearch");
+    query.setParameter("requestSearch", "%" + requestSearch + "%");
     List<Category> list = query.list();
     return list;
   }
