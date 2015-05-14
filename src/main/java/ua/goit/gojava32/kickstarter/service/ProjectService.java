@@ -10,7 +10,7 @@ import ua.goit.gojava32.kickstarter.model.Project;
 
 public interface ProjectService extends GenericCRUDService<Project>{
   Project add(String name, String description, Category category);
-  Set<Project> findFrom(String searchRequest);
+  List<Project> findFrom(String searchRequest);
 
   List<Comment> getProjectComments(Project project);
   List<BlogPost> getProjectBlogPosts(Project project);
