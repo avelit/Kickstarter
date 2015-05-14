@@ -28,6 +28,7 @@ public class ProjectDAOImpl extends AbstractDAO<Project> implements ProjectDAO {
   public List<Project> findFrom(String requestSearch) {
     Session session = getSession();
     Query query = session.createQuery("FROM Project WHERE name LIKE :requestSearch");
+    query.setParameter("requestSearch", requestSearch);
     List<Project> list = query.list();
     return list;
   }

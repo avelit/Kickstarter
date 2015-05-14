@@ -5,16 +5,13 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.lang.reflect.ParameterizedType;
 
-public class AbstractDAO<T> implements GenericCRUDDAO<T> {
+public abstract class AbstractDAO<T> implements GenericCRUDDAO<T> {
 
   @Autowired
   SessionFactory sessionFactory;
 
   Session getSession(){
     return sessionFactory.getCurrentSession();
-  }
-
-  private AbstractDAO() {
   }
 
   @Override
