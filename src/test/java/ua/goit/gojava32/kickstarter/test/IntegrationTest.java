@@ -27,7 +27,6 @@ public class IntegrationTest {
     FactoryDB.createDB();
   }
 
-  @Ignore
   @Test
   public void check_add_service_with_any_argument() {
     Category category = new Category("test","test");
@@ -38,7 +37,6 @@ public class IntegrationTest {
     assertEquals(category.getName(), "test");
   }
 
-  @Ignore
   @Test
   public void categoryCRUD() {
 
@@ -58,7 +56,6 @@ public class IntegrationTest {
     assertNull(categoryService.get(category.getId()));
   }
 
-  @Ignore
   @Test
   public void projectCRUD() {
 
@@ -82,7 +79,6 @@ public class IntegrationTest {
     categoryService.delete(category);
   }
 
-  @Ignore
   @Test
   public void userCRUD() {
     String name = "test";
