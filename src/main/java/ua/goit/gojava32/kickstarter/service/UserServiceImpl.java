@@ -8,11 +8,10 @@ import ua.goit.gojava32.kickstarter.dao.UserDAOImpl;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.User;
 
-//@Component("userService")//not work
 @Service
 public class UserServiceImpl implements UserService{
-  //@Autowired //not work
-  private UserDAO userDAO = new UserDAOImpl();
+  @Autowired
+  private UserDAO userDAO;
 
   @Override
   public User add(String name, String email, String token, Boolean isActive) {

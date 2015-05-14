@@ -1,76 +1,40 @@
 package ua.goit.gojava32.kickstarter.dao;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
-import ua.goit.gojava32.kickstarter.connections.ConnectionPool;
-import ua.goit.gojava32.kickstarter.factory.FactoryModel;
+import org.springframework.transaction.annotation.Transactional;
 import ua.goit.gojava32.kickstarter.model.User;
 
-import javax.jws.soap.SOAPBinding;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
 
+@Transactional
 @Repository
 public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 
   @Override
   public User findUserByToken(String token) {
-    String query = String.format("SELECT * FROM users WHERE token='%s'", token);
-    return getUser(query);
+
+    Session session = getSession();
+    Query query = session.createQuery("FROM User WHERE token = :token");
+    query.setParameter("token", token);
+    List<User> users = query.list();
+    if (users.size() > 0 ) {
+      return users.get(0);
+    }
+    return null;
   }
 
   @Override
   public User findUserByEmail(String email) {
-    String query = String.format("SELECT * FROM users WHERE email='%s'", email);
-    return getUser(query);
-  }
-
-  @Override
-  public User update(User user) {
-    Connection con = ConnectionPool.getConnection();
-    String query = String.format("UPDATE users SET name = '%s', active = '%d' WHERE id = '%d'",
-            user.getName(), user.isActive()?1:0, user.getId());
-    //AbstractDAO.executeUpdate(con, query);
-    ConnectionPool.releaseConnection(con);
-    return null;
-  }
-
-  @Override
-  public User delete(User user) {
-    Connection con = ConnectionPool.getConnection();
-    String query = String.format("DELETE FROM users WHERE id = '%d'", user.getId());
-    //AbstractDAO.executeUpdate(con, query);
-    ConnectionPool.releaseConnection(con);
-    return null;
-  }
-
-  @Override
-  public User get(Integer id) {
-    String query = String.format("SELECT * FROM users WHERE id='%s'", id);
-    return getUser(query);
-  }
-
-
-  private User getUser(String query) {
-    Connection con = ConnectionPool.getConnection();
-    User user = null;
-    try {
-      Statement statement = con.createStatement();
-      ResultSet result = statement.executeQuery(query);
-      while (result.next()) {
-        Integer id  = result.getInt("id");
-        String name = result.getString("name");
-        String email = result.getString("email");
-        String token = result.getString("token");
-        Integer active = result.getInt("active");
-        boolean isActive = ((active == 1));
-        user = FactoryModel.createUser(id, name, email, token, isActive);
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
+    Session session = getSession();
+    Query query = session.createQuery("FROM User WHERE email = :email");
+    query.setParameter("email", email);
+    List<User> users = query.list();
+    if (users.size() > 0 ) {
+      return users.get(0);
     }
-    ConnectionPool.releaseConnection(con);
-    return user;
+    return null;
   }
+
 }

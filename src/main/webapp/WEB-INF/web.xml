@@ -21,6 +21,16 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
 
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/application-context.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>
+      org.springframework.web.context.ContextLoaderListener
+    </listener-class>
+  </listener>
+
   <servlet>
     <servlet-name>jsp</servlet-name>
     <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
@@ -38,7 +48,7 @@
 
   <filter>
     <filter-name>LoginFilter</filter-name>
-    <filter-class>ua.goit.gojava32.kickstarter.servlet.LoginFilter</filter-class>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>LoginFilter</filter-name>

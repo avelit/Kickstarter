@@ -1,11 +1,12 @@
 package ua.goit.gojava32.kickstarter.servlet;
 
 import org.apache.log4j.Logger;
-import ua.goit.gojava32.kickstarter.factory.FactoryDB;
-import ua.goit.gojava32.kickstarter.factory.ServiceModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ua.goit.gojava32.kickstarter.model.User;
+import ua.goit.gojava32.kickstarter.service.UserService;
+
 import java.io.IOException;
-import java.util.Date;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -15,9 +16,12 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+@Component(value = "LoginFilter")
 public class LoginFilter implements Filter{
   private final String TOKEN = "token";
   private Logger logger = Logger.getLogger(this.getClass());
+  @Autowired
+  UserService userService;
 
   @Override
   public void destroy() {
@@ -43,7 +47,7 @@ public class LoginFilter implements Filter{
     if (cookies != null) {
       for (Cookie cookie : cookies) {
         if (cookie.getName().equals(TOKEN)) {
-          User user = ServiceModel.getUserService().findUserByToken(cookie.getValue());
+          User user = userService.findUserByToken(cookie.getValue());
           req.setAttribute("user", user);
           break;
         }
@@ -59,7 +63,7 @@ public class LoginFilter implements Filter{
       e.printStackTrace();
     }
 
-    FactoryDB.createDB();
+    //FactoryDB.createDB();
   }
 
 }
