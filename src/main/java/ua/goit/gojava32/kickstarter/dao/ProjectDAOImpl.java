@@ -25,61 +25,10 @@ import java.util.Set;
 public class ProjectDAOImpl extends AbstractDAO<Project> implements ProjectDAO {
 
   @Override
-  public List<String> getComments(Project project) {
-    return getList("comments", project);
-  }
-
-  @Override
-  public List<String> getBlogs(Project project) {
-    return getList("blogs", project);
-  }
-
-  private List<String> getList(String table, Project project) {
+  public List<Project> findFrom(String requestSearch) {
     Session session = getSession();
-    Query query = session.createQuery("SELECT comment FROM " + table + " WHERE id_project = " + project.getId());
-    List<String> comments = query.list();
-    return comments;
+    Query query = session.createQuery("FROM Project WHERE name LIKE :requestSearch");
+    List<Project> list = query.list();
+    return list;
   }
-
-  @Override
-  public void addComment(String comment, Project project) {
-    addToList(comment, "comments", project);
-  }
-
-  @Override
-  public void addBlog(String comment,Project project) {
-    addToList(comment, "blogs", project);
-  }
-
-  @Override
-  public Set<Project> findFrom(String requestSearch) {
-    Connection con = ConnectionPool.getConnection();
-    Set<Project> resultSearch = new HashSet<>();
-    try (Statement st = con.createStatement()) {
-      String query = String.format("SELECT * FROM projects WHERE name LIKE '%s'", "%"+requestSearch+"%");
-      ResultSet result = st.executeQuery(query);
-      while (result.next()) {
-        Integer id = result.getInt("id");
-        String name = result.getString("name");
-        String description = result.getString("description");
-        Integer categoryID = result.getInt("id_category");
-        resultSearch.add(FactoryModel.createProject(id, name, description,categoryID));
-      }
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
-    ConnectionPool.releaseConnection(con);
-    return resultSearch;
-  }
-
-  private void addToList(String comment, String table, Project project) {
-    Logger logger = Logger.getLogger(this.getClass());
-    logger.debug("Add comment:" + comment + " project=" + project);
-    Connection con = ConnectionPool.getConnection();
-    String query = String.format("INSERT INTO " + table + " (id_project, comment) VALUES ('%s', '%s')",
-            project.getId(), comment);
-    //AbstractDAO.executeAdd(con, query);
-    ConnectionPool.releaseConnection(con);
-  }
-
 }
