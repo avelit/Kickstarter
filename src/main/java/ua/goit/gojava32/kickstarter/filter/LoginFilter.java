@@ -1,4 +1,4 @@
-package ua.goit.gojava32.kickstarter.servlet;
+package ua.goit.gojava32.kickstarter.filter;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
