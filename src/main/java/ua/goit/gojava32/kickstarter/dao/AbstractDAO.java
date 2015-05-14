@@ -1,8 +1,10 @@
 package ua.goit.gojava32.kickstarter.dao;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.lang.reflect.ParameterizedType;
 
 public abstract class AbstractDAO<T> implements GenericCRUDDAO<T> {
@@ -16,6 +18,8 @@ public abstract class AbstractDAO<T> implements GenericCRUDDAO<T> {
 
   @Override
   public T add(T val) {
+    Logger logger = Logger.getLogger(this.getClass());
+    logger.info("ADD:::::::::" + val);
     Session session = getSession();
     session.save(val);
     return val;

@@ -18,6 +18,7 @@ public class Comment implements Comparable {
 
   @JoinColumn (name = "id_project", nullable = false, insertable = false, updatable = false)
   @ManyToOne (fetch = FetchType.EAGER)
+
   private Project project;
 
   public Comment() {
@@ -52,7 +53,7 @@ public class Comment implements Comparable {
   @Override
   public String toString() {
     SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy hh:mm");
-    return "(" + format.format(getCreated()) + ") " + getText();
+    return "(" + format.format(getCreated()) + ") " + getText() + "project="+ project;
   }
 
 

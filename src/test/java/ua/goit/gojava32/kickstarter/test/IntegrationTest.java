@@ -3,7 +3,7 @@ package ua.goit.gojava32.kickstarter.test;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import ua.goit.gojava32.kickstarter.factory.FactoryDB;
+import ua.goit.gojava32.kickstarter.factory.DBHelper;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 import ua.goit.gojava32.kickstarter.model.User;
@@ -22,7 +22,9 @@ public class IntegrationTest {
 
   @Before
   public void createDB() {
-    FactoryDB.createDB();
+    DBHelper dbHelper = new DBHelper();
+    dbHelper.initDatabase();
+
   }
 
   @Test

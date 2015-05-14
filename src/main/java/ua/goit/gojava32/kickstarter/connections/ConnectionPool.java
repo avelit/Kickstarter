@@ -6,9 +6,6 @@ import java.sql.SQLException;
 import java.util.Deque;
 import java.util.LinkedList;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import ua.goit.gojava32.kickstarter.factory.FactoryDB;
-
 //import javax.sql.DataSource;
 
 public abstract class ConnectionPool {
@@ -35,6 +32,7 @@ public abstract class ConnectionPool {
   private static int size = STANDARD_POOL_SIZE;
   private static int connectionsCreated;
   private static int connectionsUsed;
+  private static final  String CONNECTION_STRING = "jdbc:sqlite:kickstarter.db";
   private static Deque<Connection> connections = new LinkedList<>();
 
   public static void setConnectionPoolSize(int size) {
@@ -49,7 +47,9 @@ public abstract class ConnectionPool {
       return con;
     } else if (connectionsCreated < size) {
       try {
-        Connection con = DriverManager.getConnection(FactoryDB.CONNECTION_STRING);
+
+
+        Connection con = DriverManager.getConnection(CONNECTION_STRING);
         connectionsCreated++;
         connectionsUsed++;
         connections.offer(con);
