@@ -12,12 +12,12 @@ public class BlogPost {
   @GeneratedValue (strategy = GenerationType.AUTO)
   private Integer id;
 
-  @Column (name = "comment")
+ // @Column (name = "comment")
   private String text;
   private Date created;
 
-  @JoinColumn (name = "id", nullable = false, insertable = false, updatable = false)
-  @OneToOne (fetch = FetchType.LAZY)
+  @JoinColumn (name = "id_project", nullable = false, insertable = false, updatable = false)
+  @ManyToOne (fetch = FetchType.EAGER)
   private Project project;
 
   public String getCreatedSimpleFormat(){

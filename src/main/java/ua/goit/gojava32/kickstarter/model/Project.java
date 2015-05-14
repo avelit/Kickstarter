@@ -18,7 +18,7 @@ public class Project {
 
   private String description = "";
 
-  @ManyToOne (fetch = FetchType.LAZY)
+  @ManyToOne (fetch = FetchType.EAGER)
   @JoinColumn (name = "id", nullable = false, insertable = false, updatable = false)
   private Category category;
 
