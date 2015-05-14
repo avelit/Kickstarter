@@ -53,7 +53,7 @@ public class ProjectServiceImpl implements ProjectService {
 
 
   @Override
-  public Set<Project> findFrom(String searchRequest) {
+  public List<Project> findFrom(String searchRequest) {
     return projectDAO.findFrom(searchRequest);
   }
 
