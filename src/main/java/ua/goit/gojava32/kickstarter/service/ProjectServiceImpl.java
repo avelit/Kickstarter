@@ -1,17 +1,19 @@
 package ua.goit.gojava32.kickstarter.service;
 
-import java.util.List;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import ua.goit.gojava32.kickstarter.dao.*;
+import org.springframework.transaction.annotation.Transactional;
+import ua.goit.gojava32.kickstarter.dao.BlogPostDAO;
+import ua.goit.gojava32.kickstarter.dao.CommentDAO;
+import ua.goit.gojava32.kickstarter.dao.ProjectDAO;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.BlogPost;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Comment;
 import ua.goit.gojava32.kickstarter.model.Project;
+
+import java.util.List;
+@Transactional
 @Service
 public class ProjectServiceImpl implements ProjectService {
 

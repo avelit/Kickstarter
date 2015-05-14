@@ -2,13 +2,14 @@ package ua.goit.gojava32.kickstarter.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ua.goit.gojava32.kickstarter.dao.CategoryDAO;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 
 import java.util.List;
-import java.util.Set;
+@Transactional
 @Service
 public class CategoryServiceImpl implements CategoryService {
 

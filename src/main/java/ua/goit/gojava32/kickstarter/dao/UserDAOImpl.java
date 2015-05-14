@@ -8,7 +8,6 @@ import ua.goit.gojava32.kickstarter.model.User;
 
 import java.util.List;
 
-@Transactional
 @Repository
 public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 

@@ -3,11 +3,11 @@ package ua.goit.gojava32.kickstarter.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ua.goit.gojava32.kickstarter.dao.UserDAO;
-import ua.goit.gojava32.kickstarter.dao.UserDAOImpl;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.User;
-
+@Transactional
 @Service
 public class UserServiceImpl implements UserService{
   @Autowired

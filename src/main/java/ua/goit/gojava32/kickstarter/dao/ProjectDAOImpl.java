@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ua.goit.gojava32.kickstarter.model.Project;
 import java.util.List;
 
-@Transactional
 @Repository
 public class ProjectDAOImpl extends AbstractDAO<Project> implements ProjectDAO {
 

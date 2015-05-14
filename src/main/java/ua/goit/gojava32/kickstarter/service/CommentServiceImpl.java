@@ -1,15 +1,14 @@
 package ua.goit.gojava32.kickstarter.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ua.goit.gojava32.kickstarter.dao.CommentDAO;
-import ua.goit.gojava32.kickstarter.dao.CommentDAOImpl;
 import ua.goit.gojava32.kickstarter.model.Comment;
 import ua.goit.gojava32.kickstarter.model.Project;
 
 import java.util.List;
-
+@Transactional
 @Service
 public class CommentServiceImpl implements CommentService {
   @Autowired

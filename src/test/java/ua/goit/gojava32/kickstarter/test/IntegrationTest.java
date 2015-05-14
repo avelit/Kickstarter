@@ -1,21 +1,19 @@
 package ua.goit.gojava32.kickstarter.test;
 
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-
 import ua.goit.gojava32.kickstarter.factory.FactoryDB;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 import ua.goit.gojava32.kickstarter.model.User;
 import ua.goit.gojava32.kickstarter.service.*;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.*;
+@Ignore
 public class IntegrationTest {
   
   private CategoryService categoryService = new CategoryServiceImpl();
