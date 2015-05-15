@@ -14,6 +14,7 @@ public class Project {
 
   @ManyToOne (fetch = FetchType.EAGER)
   @JoinColumn (name = "id_author", nullable = false)
+
   private User user;
 
   private String description = "";

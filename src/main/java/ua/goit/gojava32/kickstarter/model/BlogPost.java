@@ -15,7 +15,7 @@ public class BlogPost {
   private String text;
   private Date created;
 
-  @JoinColumn ( name = "id_project", nullable = false)
+  @JoinColumn ( name = "id_project", nullable = false )
   @ManyToOne (fetch = FetchType.EAGER)
   private Project project;
 

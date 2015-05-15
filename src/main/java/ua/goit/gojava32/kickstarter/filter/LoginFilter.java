@@ -6,15 +6,10 @@ import org.springframework.stereotype.Component;
 import ua.goit.gojava32.kickstarter.model.User;
 import ua.goit.gojava32.kickstarter.service.UserService;
 
-import java.io.IOException;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 @Component(value = "LoginFilter")
 public class LoginFilter implements Filter{
