@@ -8,8 +8,8 @@ import ua.goit.gojava32.kickstarter.model.Project;
 
 public interface CategoryService extends GenericCRUDService<Category>{
   Category add(String name, String description);
-  Set<Category> findAll();
+  List<Category> findAll();
   List<Project> findAllProjects(Category category);
   List<Project> findAllProjects(Integer id);
-  public Set<Category> findFrom(String requestSearch);
+  public List<Category> findFrom(String requestSearch);
 }

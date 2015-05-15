@@ -17,6 +17,7 @@ public class User implements UserDetails{
   private String name;
   private String token;
   private String email;
+  private String comment;
 
   @Column (name = "active")
   private boolean isActive;
@@ -112,5 +113,13 @@ public class User implements UserDetails{
   @Override
   public boolean isEnabled() {
     return false;
+  }
+
+  public String getComment() {
+    return comment;
+  }
+
+  public void setComment(String comment) {
+    this.comment = comment;
   }
 }

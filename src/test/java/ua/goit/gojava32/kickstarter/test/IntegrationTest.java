@@ -1,21 +1,19 @@
 package ua.goit.gojava32.kickstarter.test;
 
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import ua.goit.gojava32.kickstarter.factory.FactoryDB;
+import ua.goit.gojava32.kickstarter.factory.DBHelper;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 import ua.goit.gojava32.kickstarter.model.User;
 import ua.goit.gojava32.kickstarter.service.*;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.*;
+@Ignore
 public class IntegrationTest {
   
   private CategoryService categoryService = new CategoryServiceImpl();
@@ -24,10 +22,11 @@ public class IntegrationTest {
 
   @Before
   public void createDB() {
-    FactoryDB.createDB();
+    DBHelper dbHelper = new DBHelper();
+    dbHelper.initDatabase();
+
   }
 
-  @Ignore
   @Test
   public void check_add_service_with_any_argument() {
     Category category = new Category("test","test");
@@ -38,7 +37,6 @@ public class IntegrationTest {
     assertEquals(category.getName(), "test");
   }
 
-  @Ignore
   @Test
   public void categoryCRUD() {
 
@@ -58,7 +56,6 @@ public class IntegrationTest {
     assertNull(categoryService.get(category.getId()));
   }
 
-  @Ignore
   @Test
   public void projectCRUD() {
 
@@ -82,7 +79,6 @@ public class IntegrationTest {
     categoryService.delete(category);
   }
 
-  @Ignore
   @Test
   public void userCRUD() {
     String name = "test";

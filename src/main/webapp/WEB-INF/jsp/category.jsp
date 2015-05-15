@@ -2,14 +2,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title><%=request.getAttribute("category_name")%></title>
+    <title><c:out value="${category.name}"/></title>
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="wrapper">
 <%@include file='header.jsp' %>
 <div class="container">
-
 <h3>
   Id: <c:out value="${category.id}"/>
   <br>

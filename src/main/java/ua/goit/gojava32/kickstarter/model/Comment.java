@@ -1,20 +1,26 @@
 package ua.goit.gojava32.kickstarter.model;
 
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Entity
+@Table (name = "comments")
 public class Comment implements Comparable {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
+
   private String text;
   private Date created;
+
+  @JoinColumn (name = "id_project", nullable = false)
+  @ManyToOne (fetch = FetchType.EAGER)
   private Project project;
 
   public Comment() {
-
   }
-
-
 
   public String getCreatedSimpleFormat(){
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
@@ -45,7 +51,7 @@ public class Comment implements Comparable {
   @Override
   public String toString() {
     SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy hh:mm");
-    return "(" + format.format(getCreated()) + ") " + getText();
+    return "(" + format.format(getCreated()) + ") " + getText() + "project="+ project;
   }
 
 

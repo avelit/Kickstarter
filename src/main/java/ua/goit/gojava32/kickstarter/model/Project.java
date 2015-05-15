@@ -12,14 +12,14 @@ public class Project {
 
   private String name;
 
-  @ManyToOne (fetch = FetchType.LAZY)
-  @JoinColumn (name = "id", nullable = false, insertable = false, updatable = false)
+  @ManyToOne (fetch = FetchType.EAGER)
+  @JoinColumn (name = "id_author", nullable = false)
   private User user;
 
   private String description = "";
 
-  @ManyToOne (fetch = FetchType.LAZY)
-  @JoinColumn (name = "id", nullable = false, insertable = false, updatable = false)
+  @ManyToOne (fetch = FetchType.EAGER)
+  @JoinColumn (name = "id_category", nullable = false)
   private Category category;
 
   private Integer moneyNeed;

@@ -29,5 +29,6 @@
         <a class="btn btn-warning btn-lg btn-primary btn-block" href="/restore_page">Forgot password</a>
     </form>
 </div>
+<%@include file='footer.jsp' %>
 </body>
 </html>

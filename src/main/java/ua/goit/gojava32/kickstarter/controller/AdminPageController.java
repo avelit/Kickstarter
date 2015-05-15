@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
 
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -28,7 +29,7 @@ public class AdminPageController {
   @ResponseBody
   public ModelAndView editProjects() {
 
-    Set<Category> categories = categoryService.findAll();
+    List<Category> categories = categoryService.findAll();
 
     ModelAndView vm = new ModelAndView("admin_edit_project");
     vm.addObject("categories", categories);
