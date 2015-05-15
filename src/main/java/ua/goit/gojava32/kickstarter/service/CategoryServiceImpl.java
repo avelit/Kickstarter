@@ -1,23 +1,26 @@
 package ua.goit.gojava32.kickstarter.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ua.goit.gojava32.kickstarter.dao.CategoryDAO;
-import ua.goit.gojava32.kickstarter.dao.CategoryDAOImpl;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.model.Project;
 
 import java.util.List;
-import java.util.Set;
-
+@Transactional
+@Service
 public class CategoryServiceImpl implements CategoryService {
 
-  private CategoryDAO categoryDAO = new CategoryDAOImpl();
+  @Autowired
+  private CategoryDAO categoryDAO;
 
   @Override
   public Category add(String name, String description) {
     Category category = FactoryModel.createCategory(name, description);
-    categoryDAO.add(category);
-    return categoryDAO.get(name);
+    category = categoryDAO.add(category);
+    return category;
   }
   @Override
   public Category add(Category category) {
@@ -32,7 +35,7 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public Set<Category> findAll() {
+  public List<Category> findAll() {
     return categoryDAO.findAll();
   }
 
@@ -42,13 +45,13 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public Set<Category> findFrom(String requestSearch) {
+  public List<Category> findFrom(String requestSearch) {
     return categoryDAO.findFrom(requestSearch);
   }
 
   @Override
   public List<Project> findAllProjects(Integer id) {
-    return categoryDAO.findAllProjects(id);
+    return categoryDAO.findAllProjects(categoryDAO.get(id));
   }
 
   @Override
@@ -59,11 +62,6 @@ public class CategoryServiceImpl implements CategoryService {
   @Override
   public Category get(Integer id) {
     return categoryDAO.get(id);
-  }
-
-  @Override
-  public Category get(String name) {
-    return categoryDAO.get(name);
   }
 
 }

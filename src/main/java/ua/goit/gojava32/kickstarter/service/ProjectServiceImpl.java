@@ -1,22 +1,34 @@
 package ua.goit.gojava32.kickstarter.service;
 
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import ua.goit.gojava32.kickstarter.dao.BlogPostDAO;
+import ua.goit.gojava32.kickstarter.dao.CommentDAO;
 import ua.goit.gojava32.kickstarter.dao.ProjectDAO;
-import ua.goit.gojava32.kickstarter.dao.ProjectDAOImpl;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
+import ua.goit.gojava32.kickstarter.model.BlogPost;
 import ua.goit.gojava32.kickstarter.model.Category;
+import ua.goit.gojava32.kickstarter.model.Comment;
 import ua.goit.gojava32.kickstarter.model.Project;
 
+import java.util.List;
+@Transactional
+@Service
 public class ProjectServiceImpl implements ProjectService {
 
-  private ProjectDAO projectDAO = new ProjectDAOImpl();
+  @Autowired
+  private ProjectDAO projectDAO;
+  @Autowired
+  private CommentDAO commentDAO;
+  @Autowired
+  private BlogPostDAO blogPostDAO;
 
   @Override
   public Project add(String name, String description, Category category) {
     Project project = FactoryModel.createProject(name, category, description);
-    projectDAO.add(project);
-    return projectDAO.get(name);
+
+    return  projectDAO.add(project);
   }
 
   @Override
@@ -34,39 +46,27 @@ public class ProjectServiceImpl implements ProjectService {
     return projectDAO.get(id);
   }
 
-  @Override
-  public Project get(String name) {
-    return projectDAO.get(name);
-  }
+
 
   @Override
   public Project add(Project val) {
-    return null;
+    return  projectDAO.add(val);
   }
 
-  @Override
-  public List<String> getComments(Project project) {
-    return projectDAO.getComments(project);
-  }
-
-  @Override
-  public List<String> getBlogs(Project project) {
-    return projectDAO.getBlogs(project);
-  }
-
-  @Override
-  public void addComment(String comment, Project project) {
-    projectDAO.addComment(comment, project);
-  }
-
-  @Override
-  public void addBlog(String comment, Project project) {
-    projectDAO.addBlog(comment, project);
-  }
 
   @Override
   public List<Project> findFrom(String searchRequest) {
     return projectDAO.findFrom(searchRequest);
+  }
+
+  @Override
+  public List<Comment> getProjectComments(Project project) {
+    return commentDAO.getByProject(project);
+  }
+
+  @Override
+  public List<BlogPost> getProjectBlogPosts(Project project) {
+    return blogPostDAO.getByProject(project);
   }
 }
 

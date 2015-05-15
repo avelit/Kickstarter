@@ -1,11 +1,27 @@
 package ua.goit.gojava32.kickstarter.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table (name = "projects")
 public class Project {
+
+  @Id
+  @GeneratedValue (strategy = GenerationType.AUTO)
   private Integer id;
+
   private String name;
+
+  @ManyToOne (fetch = FetchType.EAGER)
+  @JoinColumn (name = "id_author", nullable = false)
   private User user;
+
   private String description = "";
+
+  @ManyToOne (fetch = FetchType.EAGER)
+  @JoinColumn (name = "id_category", nullable = false)
   private Category category;
+
   private Integer moneyNeed;
   private Integer moneyHas;
   private String video;
@@ -24,6 +40,10 @@ public class Project {
   public Project(Integer id, String name, Category category, String description) {
     this(id, name, category);
     this.description = description;
+  }
+
+  public Project() {
+
   }
 
   public void setName(String name){
@@ -81,5 +101,25 @@ public class Project {
 
   public void setVideo(String video) {
     this.video = video;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public void setMoneyNeed(Integer moneyNeed) {
+    this.moneyNeed = moneyNeed;
+  }
+
+  public void setMoneyHas(Integer moneyHas) {
+    this.moneyHas = moneyHas;
   }
 }

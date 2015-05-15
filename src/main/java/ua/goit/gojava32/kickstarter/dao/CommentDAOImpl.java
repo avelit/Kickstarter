@@ -1,46 +1,26 @@
 package ua.goit.gojava32.kickstarter.dao;
 
-import org.apache.log4j.Logger;
-import ua.goit.gojava32.kickstarter.connections.ConnectionPool;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 import ua.goit.gojava32.kickstarter.model.Comment;
+import ua.goit.gojava32.kickstarter.model.Project;
 
-import java.sql.Connection;
+import java.util.List;
 
-public class CommentDAOImpl implements CommentDAO{
-  @Override
-  public void update(Comment val) {
 
-  }
+@Repository
+public class CommentDAOImpl extends AbstractDAO<Comment> implements CommentDAO{
 
-  @Override
-  public void delete(Integer id) {
-
-  }
 
   @Override
-  public void delete(Comment val) {
+  public List<Comment> getByProject(Project project) {
 
+    Session session = getSession();
+    Query query = session.createQuery("SELECT c FROM Comment c WHERE c.project = :project");
+    query.setParameter("project", project);
+    List<Comment> list = query.list();
+    return list;
   }
 
-  @Override
-  public Comment get(Integer id) {
-    return null;
-  }
-
-  @Override
-  public Comment get(String name) {
-    return null;
-  }
-
-  @Override
-  public Comment add(Comment val) {
-    Logger logger = Logger.getLogger(this.getClass());
-    logger.debug("Add comment:" + val.getText() + " project=" + val.getProject());
-    Connection con = ConnectionPool.getConnection();
-    String query = String.format("INSERT INTO comments (id_project, comment) VALUES ('%s', '%s')",
-            val.getProject().getId(), val.getText());
-    AbstractDAO.executeAdd(con, query);
-    ConnectionPool.releaseConnection(con);
-    return val;
-  }
 }

@@ -1,19 +1,22 @@
 package ua.goit.gojava32.kickstarter.service;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ua.goit.gojava32.kickstarter.dao.UserDAO;
-import ua.goit.gojava32.kickstarter.dao.UserDAOImpl;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
 import ua.goit.gojava32.kickstarter.model.User;
-
+@Transactional
+@Service
 public class UserServiceImpl implements UserService{
-
-  UserDAO userDAO = new UserDAOImpl();
+  @Autowired
+  private UserDAO userDAO;
 
   @Override
   public User add(String name, String email, String token, Boolean isActive) {
     User user = FactoryModel.createUser(name, email, token, isActive);
-    userDAO.add(user);
-    return userDAO.get(name);
+    return userDAO.add(user);
   }
 
   @Override
@@ -31,10 +34,6 @@ public class UserServiceImpl implements UserService{
     return userDAO.get(id);
   }
 
-  @Override
-  public User get(String name) {
-    return userDAO.get(name);
-  }
 
   @Override
   public User add(User val) {

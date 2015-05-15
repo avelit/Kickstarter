@@ -1,11 +1,26 @@
 package ua.goit.gojava32.kickstarter.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table (name = "users")
 public class User {
+
+  @Id
+  @GeneratedValue (strategy = GenerationType.AUTO)
   private Integer id;
+
   private String name;
-  private String email;
   private String token;
+  private String email;
+  private String comment;
+
+  @Column (name = "active")
   private boolean isActive;
+
+  public User() {
+    isActive = false;
+  }
 
   public User(String name, String email, String token, Boolean isActive) {
     this.name = name;
@@ -43,5 +58,29 @@ public class User {
 
   public void setIsActive(boolean isActive) {
     this.isActive = isActive;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public void setToken(String token) {
+    this.token = token;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public String getComment() {
+    return comment;
+  }
+
+  public void setComment(String comment) {
+    this.comment = comment;
   }
 }

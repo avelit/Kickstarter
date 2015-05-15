@@ -1,10 +1,20 @@
 package ua.goit.gojava32.kickstarter.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table (name = "categories")
 public class Category {
 
-  private String name;
+  @Id
+  @GeneratedValue (strategy = GenerationType.AUTO)
   private Integer id;
+
+  private String name;
   private String description = "";
+
+  public Category() {
+  }
 
   public Category(String name, String description) {
     this.name = name;
@@ -35,6 +45,10 @@ public class Category {
 
   public String getDescription() {
     return description;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   @Override
