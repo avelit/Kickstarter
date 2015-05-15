@@ -11,6 +11,7 @@ import ua.goit.gojava32.kickstarter.model.Project;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
 import ua.goit.gojava32.kickstarter.service.CommentService;
 import ua.goit.gojava32.kickstarter.service.ProjectService;
+import ua.goit.gojava32.kickstarter.service.UserService;
 
 @Controller
 public class ProjectController {
@@ -19,10 +20,10 @@ public class ProjectController {
   ProjectService projectService;
   @Autowired
   CommentService commentService;
-
   @Autowired
   CategoryService categoryService;
-
+  @Autowired
+  UserService userService;
 
   @RequestMapping(value = "/project/{id}")
   @ResponseBody
@@ -44,7 +45,8 @@ public class ProjectController {
   public ModelAndView addProject(
       @RequestParam("category_id") String strCategoryId,
       @RequestParam("project_description") String projectDescription,
-      @RequestParam("project_name") String projectName){
+      @RequestParam("project_name") String projectName,
+      @RequestParam("user_id") int user_id){
 
     Integer categoryId = Integer.parseInt(strCategoryId);
     Category category = categoryService.get(categoryId);
@@ -52,6 +54,7 @@ public class ProjectController {
     project.setCategory(category);
     project.setDescription(projectDescription);
     project.setName(projectName);
+    project.setUser(userService.get(user_id));
     project = projectService.add(project);
     ModelAndView vm = new ModelAndView("redirect:/project/" + project.getId());
     return vm;
