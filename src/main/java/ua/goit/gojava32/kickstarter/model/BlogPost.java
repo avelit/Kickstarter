@@ -12,10 +12,8 @@ public class BlogPost {
   @GeneratedValue (strategy = GenerationType.AUTO)
   private Integer id;
 
- // @Column (name = "comment")
   private String text;
   private Date created;
-
 
   @JoinColumn ( name = "id_project", nullable = false, insertable = false, updatable = false)
   @ManyToOne (fetch = FetchType.EAGER)
