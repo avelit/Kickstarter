@@ -30,8 +30,9 @@ public class CategoryServiceImpl implements CategoryService {
 
 
   @Override
-  public void update(Category category) {
+  public Category update(Category category) {
     categoryDAO.update(category);
+    return category;
   }
 
   @Override
@@ -55,8 +56,9 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public void delete(Category category) {
+  public Category delete(Category category) {
     categoryDAO.delete(category);
+    return category;
   }
 
   @Override

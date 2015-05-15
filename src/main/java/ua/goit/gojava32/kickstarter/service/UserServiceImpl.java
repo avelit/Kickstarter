@@ -20,13 +20,15 @@ public class UserServiceImpl implements UserService{
   }
 
   @Override
-  public void update(User user) {
+  public User update(User user) {
     userDAO.update(user);
+    return user;
   }
 
   @Override
-  public void delete(User user) {
+  public User delete(User user) {
     userDAO.delete(user);
+    return user;
   }
 
   @Override
