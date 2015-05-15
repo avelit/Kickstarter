@@ -1,17 +1,12 @@
 package ua.goit.gojava32.kickstarter.factory;
 
 import org.apache.log4j.Logger;
-import ua.goit.gojava32.kickstarter.connections.ConnectionPool;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
+import java.sql.*;
 
 
 public class DBHelper {
@@ -20,18 +15,31 @@ public class DBHelper {
   public static final String INSERT_DATA_FILENAME = "/sql/insertData.sql";
 
   Connection connection;
+
   public static void main(String[] args) {
     DBHelper dbHelper = new DBHelper();
     dbHelper.initDatabase();
   }
 
   public void initDatabase() {
-    connection = ConnectionPool.getConnection();
-    executeQueryFromFile(DROP_TABLES_FILENAME);
-    executeQueryFromFile(CREATE_TABLES_FILENAME);
-    executeQueryFromFile(INSERT_DATA_FILENAME);
-    ConnectionPool.releaseConnection(connection);
 
+    final String CONNECTION_STRING = "jdbc:sqlite:kickstarter.db";
+    try {
+      connection = DriverManager.getConnection(CONNECTION_STRING);
+      executeQueryFromFile(DROP_TABLES_FILENAME);
+      executeQueryFromFile(CREATE_TABLES_FILENAME);
+      executeQueryFromFile(INSERT_DATA_FILENAME);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      if (connection != null) {
+        try {
+          connection.close();
+        } catch (SQLException e) {
+          e.printStackTrace();
+        }
+      }
+    }
   }
 
   private void executeQueryFromFile(String filename) {
