@@ -100,21 +100,22 @@
                         </c:forEach>
                     </table>
                     <br>
-
                     <div>
-                        <form action="/blogpost/add" method="post">
-                            <input type="text" name="text"/>
-                            <input type="hidden" name="project"
-                                   value="<c:out value="${project.name}"/>"/>
-                            <input
-                                    type="hidden" name="category"
-                                    value="<c:out value="${category_name}"/>"/>
-                            <input type="hidden" name="project_id"
-                                   value="<c:out value="${project.id}"/>"/>
-                            <input
-                                    class="btn btn-default" type="submit"
-                                    title="add comment"/>
-                        </form>
+                        <c:if test="${user.id == project.user.id}">
+                            <form action="/blogpost/add" method="post">
+                                <input type="text" name="text"/>
+                                <input type="hidden" name="project"
+                                       value="<c:out value="${project.name}"/>"/>
+                                <input
+                                        type="hidden" name="category"
+                                        value="<c:out value="${category_name}"/>"/>
+                                <input type="hidden" name="project_id"
+                                       value="<c:out value="${project.id}"/>"/>
+                                <input
+                                        class="btn btn-default" type="submit"
+                                        title="add comment"/>
+                            </form>
+                        </c:if>
                     </div>
                 </div>
             </div>
