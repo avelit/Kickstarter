@@ -9,6 +9,12 @@ import java.lang.reflect.ParameterizedType;
 
 public abstract class AbstractDAO<T> implements GenericCRUDDAO<T> {
 
+  Class<T> type;
+
+  AbstractDAO(Class<T> type){
+    this.type = type;
+  }
+
   @Autowired
   SessionFactory sessionFactory;
 
@@ -50,7 +56,6 @@ public abstract class AbstractDAO<T> implements GenericCRUDDAO<T> {
   @Override
   public T get(Integer id) {
     Session session = getSession();
-    return (T) session.get((Class<T>) ((ParameterizedType) getClass()
-            .getGenericSuperclass()).getActualTypeArguments()[0], id);
+    return (T) session.get(type, id);
   }
 }
