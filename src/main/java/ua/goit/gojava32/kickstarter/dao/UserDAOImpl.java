@@ -11,6 +11,10 @@ import java.util.List;
 @Repository
 public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 
+  UserDAOImpl() {
+    super(User.class);
+  }
+
   @Override
   public User findUserByToken(String token) {
     Session session = getSession();

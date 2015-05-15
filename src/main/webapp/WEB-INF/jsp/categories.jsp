@@ -3,7 +3,6 @@
 <html>
 <head>
   <title>Discover Projects</title>
-
   <link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>

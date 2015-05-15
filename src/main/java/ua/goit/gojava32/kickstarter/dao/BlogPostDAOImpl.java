@@ -13,6 +13,10 @@ import java.util.List;
 @Repository
 public class BlogPostDAOImpl extends AbstractDAO<BlogPost> implements BlogPostDAO{
 
+  BlogPostDAOImpl() {
+    super(BlogPost.class);
+  }
+
   @Override
   public List<BlogPost> getByProject(Project project) {
     Session session = getSession();
