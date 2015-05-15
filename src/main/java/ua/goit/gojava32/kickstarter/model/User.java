@@ -1,10 +1,15 @@
 package ua.goit.gojava32.kickstarter.model;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import ua.goit.gojava32.kickstarter.model.enums.UserRoleEnum;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table (name = "users")
@@ -15,9 +20,10 @@ public class User implements UserDetails{
   private Integer id;
 
   private String name;
-  private String token;
   private String email;
-  private String comment;
+  private String password;
+  @Transient
+  private List<UserRoleEnum> Authorities;
 
   @Column (name = "active")
   private boolean isActive;
@@ -26,22 +32,19 @@ public class User implements UserDetails{
     isActive = false;
   }
 
-  public User(String name, String email, String token, Boolean isActive) {
+  public User(String name, String email, String password, Boolean isActive) {
     this.name = name;
-    this.token = token;
     this.email = email;
-    this.isActive = isActive;
-  }
-  public User(Integer id, String name, String email, String token, Boolean isActive) {
-    this.id = id;
-    this.name = name;
-    this.token = token;
-    this.email = email;
+    this.password = password;
     this.isActive = isActive;
   }
 
-  public String getToken() {
-    return token;
+  public User(Integer id, String name, String email, String password, Boolean isActive) {
+    this.id = id;
+    this.name = name;
+    this.email = email;
+    this.password = password;
+    this.isActive = isActive;
   }
 
   public Integer getId() {
@@ -56,14 +59,6 @@ public class User implements UserDetails{
     return email;
   }
 
-  public boolean isActive() {
-    return isActive;
-  }
-
-  public void setIsActive(boolean isActive) {
-    this.isActive = isActive;
-  }
-
   public void setName(String name) {
     this.name = name;
   }
@@ -72,66 +67,65 @@ public class User implements UserDetails{
     this.email = email;
   }
 
-  public void setToken(String token) {
-    this.token = token;
-  }
-
   public void setId(Integer id) {
     this.id = id;
   }
 
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
   @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    return null;
+  public Collection<GrantedAuthority> getAuthorities() {
+    Set<GrantedAuthority> roles = new HashSet();
+    roles.add(new SimpleGrantedAuthority(UserRoleEnum.USER.name()));
+
+    return roles;
   }
 
   @Override
   public String getPassword() {
-    return null;
+    return password;
   }
 
   @Override
   public String getUsername() {
-    return null;
+    return email;
   }
 
   @Override
   public boolean isAccountNonExpired() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isAccountNonLocked() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isCredentialsNonExpired() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isEnabled() {
-    return false;
+//    return isActive;
+    return true;
   }
 
-  public String getComment() {
-    return comment;
-  }
-
-  public void setComment(String comment) {
-    this.comment = comment;
-  }
-
+  @Override
   public boolean equals(Object obj) {
-      User user = (User) obj;
-      return this.id == user.getId();
+    User user = (User) obj;
+    return this.id == user.getId();
   }
 
-    public int hashCode(){
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + this.id;
-        return result;
-    }
+  @Override
+  public int hashCode(){
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + this.id;
+    return result;
+  }
+
 }

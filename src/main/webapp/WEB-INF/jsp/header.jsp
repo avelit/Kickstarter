@@ -20,20 +20,8 @@
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <%--<c:choose>--%>
-                    <%--<c:when test="${user == null}">--%>
-                        <%--<li><a href="/registration">Sign up</a></li>--%>
-                        <%--<li><a href="/login">Log in</a></li>--%>
-                    <%--</c:when>--%>
-                    <%--<c:otherwise>--%>
-                        <%--<li><a href="/profile"><c:out value="${user.name}" /></a></li>--%>
-                        <%--<li><a href="/logout">Log out</a></li>--%>
-                    <%--</c:otherwise>--%>
-                <%--</c:choose>--%>
 
-
-
-                <sec:authorize access="hasRole('supervisor')">
+                <sec:authorize access="isAuthenticated()">
                     <li><a href="/profile"><sec:authentication property="principal.username" /></a></li>
                     <li><a href="/logout">Log out</a></li>
                 </sec:authorize>
@@ -42,7 +30,6 @@
                     <li><a href="/registration">Sign up</a></li>
                     <li><a href="/login">Log in</a></li>
                 </sec:authorize>
-
 
             </ul>
         </div>

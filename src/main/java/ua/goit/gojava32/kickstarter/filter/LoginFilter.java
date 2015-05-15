@@ -11,9 +11,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@Component(value = "LoginFilter")
+//@Component(value = "LoginFilter")
 public class LoginFilter implements Filter{
-  private final String TOKEN = "token";
   private Logger logger = Logger.getLogger(this.getClass());
   @Autowired
   UserService userService;
@@ -29,26 +28,10 @@ public class LoginFilter implements Filter{
     String Uri = request.getRequestURI();
     logger.info("filter login: " + Uri);
     long startTime = System.currentTimeMillis();
-
-//    doFilterCookie(req);
     chain.doFilter(req, resp);
 
     logger.info("duration: " + Uri + " " + (System.currentTimeMillis() - startTime) + " ms.");
 
-  }
-
-  private void doFilterCookie(ServletRequest req) {
-
-    Cookie[] cookies = ((HttpServletRequest)req).getCookies();
-    if (cookies != null) {
-      for (Cookie cookie : cookies) {
-        if (cookie.getName().equals(TOKEN)) {
-          User user = userService.findUserByToken(cookie.getValue());
-          req.setAttribute("user", user);
-          break;
-        }
-      }
-    }
   }
 
   @Override
@@ -58,8 +41,6 @@ public class LoginFilter implements Filter{
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
     }
-
-    //FactoryDB.createDB();
   }
 
 }

@@ -4,30 +4,29 @@
     <title>Sign in</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/signin.css" rel="stylesheet">
-    <%@include file='header.jsp' %>
+
 </head>
 <body>
-
+<div class="wrapper">
+    <%@include file='header.jsp' %>
 <div class="container">
     <c:url value="/j_spring_security_check" var="loginUrl" />
     <form class="form-signin" action="${loginUrl}" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <h3 class="alert"><c:out value="${text_failed}"/></h3>
-
-        <input name="j_username" type="text" class="form-control" placeholder="Email address" required autofocus>
+        <h2 class="form-signin-heading">Please sign in:</h2>
+        <input name="j_username" type="email" class="form-control" placeholder="Email address" required autofocus>
         <input name="j_password" type="password" class="form-control" placeholder="Password" required>
 
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="_spring_security_remember_me"> Remember me
+            </label>
+        </div>
+
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-
-
-
-
-        <a class="btn btn-signup btn-lg btn-primary btn-block" href="/registration">Sign up</a>
-
-
-
         <a class="btn btn-warning btn-lg btn-primary btn-block" href="/restore_page">Forgot password</a>
+        <h3 class="alert"><c:out value="${text_failed}"/></h3>
     </form>
+</div>
 </div>
 <%@include file='footer.jsp' %>
 </body>

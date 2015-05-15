@@ -6,27 +6,26 @@
                  http://www.springframework.org/schema/security 
                  http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-
-
     <http auto-config="true" access-denied-page="/">
         <intercept-url pattern="/WEB-INF" access="ROLE_USER,ROLE_ANONYMOUS"/>
         <intercept-url pattern="/" access="ROLE_USER,ROLE_ANONYMOUS"/>
         <intercept-url pattern="/add*" access="ROLE_USER"/>
         <intercept-url pattern="/admin/*" access="ROLE_ADMIN"/>
-        <form-login login-page="/login" default-target-url="/" authentication-failure-url="/registration"/>
-        <logout logout-url="/logout" logout-success-url="/"/>
+        <form-login login-page="/login" default-target-url="/" authentication-failure-url="/login"/>
+        <logout logout-url="/logout" delete-cookies="JSESSIONID" logout-success-url="/"/>
         <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
     </http>
 
+    <global-method-security secured-annotations="enabled" />
+
     <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="admin" password="pass" authorities="ROLE_ADMIN,ROLE_USER"/>
-                <user name="user1" password="1111" authorities="ROLE_USER"/>
-                <user name="user2" password="2222" disabled="true" authorities="ROLE_USER"/>
-            </user-service>
+        <authentication-provider user-service-ref="UserDetailsServiceImpl" >
+            <password-encoder hash="md5" />
         </authentication-provider>
     </authentication-manager>
+
+
+    <beans:bean id="UserDetailsServiceImpl" class="ua.goit.gojava32.kickstarter.service.UserDetailsServiceImpl"/>
 
     <beans:bean id="webSecurityExpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
 
