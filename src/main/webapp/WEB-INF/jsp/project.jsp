@@ -101,7 +101,7 @@
                     </table>
                     <br>
                     <div>
-                        <c:if test="${user.id == project.user.id}">
+                        <c:if test="${(user != null) && (user.id == project.user.id)}">
                             <form action="/blogpost/add" method="post">
                                 <input type="text" name="text"/>
                                 <input type="hidden" name="project"
