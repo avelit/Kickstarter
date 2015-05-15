@@ -17,6 +17,7 @@ public class Comment implements Comparable {
 
   @JoinColumn (name = "id_project", nullable = false, insertable = false, updatable = false)
   @ManyToOne (fetch = FetchType.EAGER)
+
   private Project project;
 
   public Comment() {
