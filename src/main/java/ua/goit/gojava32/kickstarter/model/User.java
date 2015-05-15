@@ -83,4 +83,16 @@ public class User {
   public void setComment(String comment) {
     this.comment = comment;
   }
+
+  public boolean equals(Object obj) {
+      User user = (User) obj;
+      return this.id == user.getId();
+  }
+
+    public int hashCode(){
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + this.id;
+        return result;
+    }
 }
