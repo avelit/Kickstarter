@@ -21,11 +21,8 @@ public class DBHelper {
 
   Connection connection;
   public static void main(String[] args) {
-
-
     DBHelper dbHelper = new DBHelper();
     dbHelper.initDatabase();
-
   }
 
   public void initDatabase() {
