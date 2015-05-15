@@ -116,8 +116,17 @@ public class User implements UserDetails{
 
   @Override
   public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
     User user = (User) obj;
-    return this.id == user.getId();
+    if (user.getId() != this.id){
+      return false;
+    }
+    return true;
   }
 
   @Override
