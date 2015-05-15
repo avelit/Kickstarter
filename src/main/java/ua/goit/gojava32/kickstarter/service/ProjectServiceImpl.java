@@ -32,13 +32,15 @@ public class ProjectServiceImpl implements ProjectService {
   }
 
   @Override
-  public void update(Project project) {
+  public Project update(Project project) {
     projectDAO.update(project);
+    return project;
   }
 
   @Override
-  public void delete(Project project) {
+  public Project delete(Project project) {
     projectDAO.delete(project);
+    return project;
   }
 
   @Override
