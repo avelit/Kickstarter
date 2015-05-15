@@ -10,6 +10,10 @@ import java.util.List;
 @Repository
 public class ProjectDAOImpl extends AbstractDAO<Project> implements ProjectDAO {
 
+  ProjectDAOImpl() {
+    super(Project.class);
+  }
+
   @Override
   public List<Project> findFrom(String requestSearch) {
     Session session = getSession();
