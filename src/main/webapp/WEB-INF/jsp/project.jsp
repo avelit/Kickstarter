@@ -6,9 +6,9 @@
   <link href="/css/bootstrap.min.css" rel="stylesheet">
   <link href="/css/signin.css" rel="stylesheet">
   <script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    src="/js/jquery.min.js"></script>
   <script
-    src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    src="/js/bootstrap.min.js"></script>
 
   <script>$(document).ready(function () {
     /* Automagically jump on good tab based on anchor; for page reloads or links */
