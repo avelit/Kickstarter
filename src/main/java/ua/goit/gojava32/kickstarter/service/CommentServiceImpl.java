@@ -15,12 +15,13 @@ public class CommentServiceImpl implements CommentService {
   CommentDAO commentDAO;
 
   @Override
-  public void update(Comment val) {
+  public Comment update(Comment val) {
+    return val;
   }
 
   @Override
-  public void delete(Comment val) {
-
+  public Comment delete(Comment val) {
+    return val;
   }
 
   @Override
