@@ -77,7 +77,7 @@ public class User implements UserDetails{
   @Override
   public Collection<GrantedAuthority> getAuthorities() {
     Set<GrantedAuthority> roles = new HashSet();
-    roles.add(new SimpleGrantedAuthority(UserRoleEnum.USER.name()));
+    roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 
     return roles;
   }
