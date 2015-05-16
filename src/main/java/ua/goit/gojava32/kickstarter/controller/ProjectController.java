@@ -36,6 +36,7 @@ public class ProjectController {
 
     vm.addObject("comments", projectService.getProjectComments(project));
     vm.addObject("blogs", projectService.getProjectBlogPosts(project));
+    vm.addObject("video", projectService.getProjectVideo(project));
 
     return vm;
   }
@@ -46,7 +47,10 @@ public class ProjectController {
       @RequestParam("category_id") String strCategoryId,
       @RequestParam("project_description") String projectDescription,
       @RequestParam("project_name") String projectName,
-      @RequestParam("user_id") int user_id){
+      @RequestParam("user_id") int user_id,
+      @RequestParam("video_url") String video){
+
+    String videoID = video.split("=")[1];
 
     Integer categoryId = Integer.parseInt(strCategoryId);
     Category category = categoryService.get(categoryId);
@@ -54,6 +58,7 @@ public class ProjectController {
     project.setCategory(category);
     project.setDescription(projectDescription);
     project.setName(projectName);
+    project.setVideo(videoID);
     project.setUser(userService.get(user_id));
     project = projectService.add(project);
     ModelAndView vm = new ModelAndView("redirect:/project/" + project.getId());

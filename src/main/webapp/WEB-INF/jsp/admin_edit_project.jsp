@@ -33,6 +33,11 @@
                            class="form-control" placeholder="Description"
                            width="30%">
                     <br>
+                    <h4>Video:</h4>
+                    <input type="text" name="video_url"
+                           class="form-control" placeholder="Link to video"
+                           width="30%">
+                    <br>
                     <input type="hidden" name="user_id" value="<c:out value="${user.id}"/>">
                     <input type="submit" class="btn btn-success">
 

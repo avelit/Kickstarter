@@ -13,5 +13,6 @@ public interface ProjectService extends GenericCRUDService<Project>{
 
   List<Comment> getProjectComments(Project project);
   List<BlogPost> getProjectBlogPosts(Project project);
+  String getProjectVideo(Project project);
 
 }

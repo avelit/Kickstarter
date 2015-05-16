@@ -70,5 +70,12 @@ public class ProjectServiceImpl implements ProjectService {
   public List<BlogPost> getProjectBlogPosts(Project project) {
     return blogPostDAO.getByProject(project);
   }
+
+  @Override
+  public String getProjectVideo(Project project) {
+      return projectDAO.getVideo(project);
+  }
+
+
 }
 

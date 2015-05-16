@@ -30,6 +30,14 @@
             Project name:
             <c:out value="${project.name}"/>
         </h3>
+<c:choose>
+  <c:when test="${project.video != null}">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/${project.video}"/>" frameborder="0" allowfullscreen></iframe>
+  </c:when>
+  <c:otherwise>
+  </c:otherwise>
+</c:choose>
+
 
         <div role="tabpanel">
             <ul class="nav nav-tabs" role="tablist" id="tabs">
