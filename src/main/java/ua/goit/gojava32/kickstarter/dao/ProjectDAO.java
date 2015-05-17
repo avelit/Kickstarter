@@ -8,4 +8,5 @@ import ua.goit.gojava32.kickstarter.model.Project;
 
 public interface ProjectDAO extends GenericCRUDDAO<Project>{
   List<Project> findFrom(String searchRequest);
+  String getVideo(Project project);
 }

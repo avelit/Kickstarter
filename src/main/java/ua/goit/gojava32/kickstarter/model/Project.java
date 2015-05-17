@@ -74,6 +74,8 @@ public class Project {
     return description;
   }
 
+
+
   @Override
   public String toString() {
     return "id=" + id + ",name=" + name + ",description=" + description + ", category=" + category.getName() ;

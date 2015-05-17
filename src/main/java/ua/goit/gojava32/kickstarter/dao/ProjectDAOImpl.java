@@ -22,4 +22,14 @@ public class ProjectDAOImpl extends AbstractDAO<Project> implements ProjectDAO {
     List<Project> list = query.list();
     return list;
   }
+
+  @Override
+  public String getVideo(Project project){
+    Integer projectID = project.getId();
+    Session session = getSession();
+    Query query = session.createSQLQuery("SELECT video FROM Project WHERE id :projectID");
+    query.setParameter("projectID", "%" + projectID + "%");
+    String result = query.getQueryString();
+    return result;
+  }
 }

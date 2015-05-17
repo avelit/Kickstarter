@@ -9,4 +9,4 @@ INSERT INTO projects (id, name, id_category, id_author, description) VALUES (22,
 
 INSERT INTO blogs (id, author, id_project, text, created) VALUES (1, '1', 1, 'blablabla_blog', '1430946000000');
 
-INSERT INTO users (id, name, token, email, comment, active) VALUES (1, 'test@test.mail pass:123', '333ca8443f6cb1b769fb1cfd0bf5caef', 'test@test.mail', null, 1);
+INSERT INTO users (id, name, password, email, active) VALUES (1, 'test', 'c8837b23ff8aaa8a2dde915473ce0991', 'test@test.mail', 1);
