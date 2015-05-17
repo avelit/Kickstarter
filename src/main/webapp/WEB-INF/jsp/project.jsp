@@ -32,7 +32,7 @@
         </h3>
 <c:choose>
   <c:when test="${project.video != null}">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/${project.video}"/>" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="${project.video}"/>" frameborder="0" allowfullscreen></iframe>
   </c:when>
   <c:otherwise>
   </c:otherwise>

@@ -40,7 +40,6 @@
                     <br>
                     <input type="hidden" name="user_id" value="<c:out value="${user.id}"/>">
                     <input type="submit" class="btn btn-success">
-
                 </form>
             </div>
         </div>
