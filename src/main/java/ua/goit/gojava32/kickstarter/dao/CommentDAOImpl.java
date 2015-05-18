@@ -25,5 +25,4 @@ public class CommentDAOImpl extends AbstractDAO<Comment> implements CommentDAO{
     List<Comment> list = query.list();
     return list;
   }
-
 }
