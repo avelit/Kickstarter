@@ -13,6 +13,8 @@ import ua.goit.gojava32.kickstarter.service.CommentService;
 import ua.goit.gojava32.kickstarter.service.ProjectService;
 import ua.goit.gojava32.kickstarter.service.UserService;
 
+import java.security.Principal;
+
 @Controller
 public class ProjectController {
 
@@ -46,8 +48,8 @@ public class ProjectController {
       @RequestParam("category_id") String strCategoryId,
       @RequestParam("project_description") String projectDescription,
       @RequestParam("project_name") String projectName,
-      @RequestParam("user_id") int user_id,
-      @RequestParam("video_url") String video){
+      @RequestParam("video_url") String video,
+      Principal principal){
 
     Integer categoryId = Integer.parseInt(strCategoryId);
     Category category = categoryService.get(categoryId);
@@ -56,13 +58,10 @@ public class ProjectController {
     project.setDescription(projectDescription);
     project.setName(projectName);
     project.setVideo(video);
-    project.setUser(userService.get(user_id));
+    project.setUser(userService.findUserByEmail(principal.getName()));
     project = projectService.add(project);
     ModelAndView vm = new ModelAndView("redirect:/project/" + project.getId());
     return vm;
   }
-
-
-
 
 }

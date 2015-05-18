@@ -26,5 +26,4 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
     }
     return null;
   }
-
 }

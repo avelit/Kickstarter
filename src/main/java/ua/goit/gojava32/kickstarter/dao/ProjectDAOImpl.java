@@ -22,5 +22,4 @@ public class ProjectDAOImpl extends AbstractDAO<Project> implements ProjectDAO {
     List<Project> list = query.list();
     return list;
   }
-
 }

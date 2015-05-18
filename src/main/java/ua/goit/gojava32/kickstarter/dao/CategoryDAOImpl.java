@@ -12,7 +12,6 @@ import ua.goit.gojava32.kickstarter.model.Project;
 @Repository
 public class CategoryDAOImpl extends AbstractDAO<Category> implements CategoryDAO {
 
-
   CategoryDAOImpl() {
     super(Category.class);
   }

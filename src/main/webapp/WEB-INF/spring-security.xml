@@ -7,9 +7,9 @@
                  http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
     <http auto-config="true" access-denied-page="/">
-        <intercept-url pattern="/WEB-INF" access="ROLE_USER,ROLE_ANONYMOUS"/>
-        <intercept-url pattern="/" access="ROLE_USER,ROLE_ANONYMOUS"/>
-        <intercept-url pattern="/add*" access="ROLE_USER"/>
+        <intercept-url pattern="/WEB-INF" access="ROLE_USER,ROLE_ANONYMOUS,ROLE_ADMIN"/>
+        <intercept-url pattern="/" access="ROLE_USER,ROLE_ANONYMOUS,ROLE_ADMIN"/>
+        <intercept-url pattern="/add*" access="ROLE_USER,ROLE_ADMIN"/>
         <intercept-url pattern="/admin/*" access="ROLE_ADMIN"/>
         <form-login login-page="/login" default-target-url="/" authentication-failure-url="/login"/>
         <logout logout-url="/logout" delete-cookies="JSESSIONID" logout-success-url="/"/>
