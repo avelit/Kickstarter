@@ -30,37 +30,6 @@ public class UserController {
     return new ModelAndView("login_page");
   }
 
-
-//  @RequestMapping(value = "/login", method = RequestMethod.POST)
-//  @ResponseBody
-//  public ModelAndView login(HttpServletResponse response,
-//                            @RequestParam("email") String email,
-//                            @RequestParam("password") String password) {
-//
-//    String token = DigestUtils.md5Hex(email + ":" + password);
-//    User user = userService.findUserByToken(token);
-//
-//    ModelAndView vm;
-//    if (user == null || !user.isActive()) {
-//      vm = new ModelAndView("login_page");
-//      vm.addObject("text_failed", "Wrong user or password or user not active.");
-//    } else {
-//      vm = new ModelAndView("redirect:/category");
-//      vm.addObject("user", user);
-//      response.addCookie(new Cookie("token", token));
-//    }
-//    return vm;
-//  }
-
-//  @RequestMapping(value = "/logout", method = RequestMethod.GET)
-//  @ResponseBody
-//  public ModelAndView logout(HttpServletResponse response) {
-//
-//    ModelAndView vm = new ModelAndView("redirect:/category");
-//    response.addCookie(new Cookie("token", ""));
-//    return vm;
-//  }
-
   @RequestMapping(value = "/registration", method = RequestMethod.POST)
   @ResponseBody
   public ModelAndView registration(HttpServletRequest request,
@@ -72,7 +41,7 @@ public class UserController {
 
     User user = userService.findUserByEmail(email);
     ModelAndView vm;
-    vm = new ModelAndView("registration");
+
     if (user == null) {
       user = new User();
       user.setName(name);
@@ -84,7 +53,9 @@ public class UserController {
 //      domain = domain.substring(0, domain.length() - 13);///registration
 //      SendMail.send(email, "press link below for activating " + name, domain + "/activate?token=" + token);
 //      vm.addObject("text_failed", "Check you mail for activating.");
+      vm = new ModelAndView("redirect:/login");
     } else {
+      vm = new ModelAndView("registration");
       vm.addObject("text_failed", "User with email " + email + " exist.");
     }
     return vm;
@@ -94,7 +65,6 @@ public class UserController {
   @ResponseBody
   public ModelAndView registration(){
     return new ModelAndView("registration");
-
   }
 
 //  @RequestMapping(value = "/activate", method = RequestMethod.GET)

@@ -27,7 +27,6 @@ public class IntegrationTest {
 
   }
 
-  @Ignore
   @Test
   public void check_add_service_with_any_argument() {
     Category category = new Category("test","test");
