@@ -63,5 +63,4 @@ public class ProjectController {
     ModelAndView vm = new ModelAndView("redirect:/project/" + project.getId());
     return vm;
   }
-
 }

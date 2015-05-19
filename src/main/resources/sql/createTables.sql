@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS projects
   description TEXT,
   moneyNeed   INTEGER,
   moneyHas    INTEGER,
+  picture     BLOB,
   video       TEXT,
   FOREIGN KEY (id_author) REFERENCES users (id),
   FOREIGN KEY (id_category) REFERENCES categories (id)

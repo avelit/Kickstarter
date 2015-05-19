@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
-import ua.goit.gojava32.kickstarter.service.ProjectService;
-
 
 @Controller
 public class CategoryController {
