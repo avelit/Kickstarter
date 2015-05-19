@@ -1,5 +1,6 @@
 package ua.goit.gojava32.kickstarter.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,7 @@ public class CategoryController {
   }
 
 
-  @RequestMapping(value = {"/category", "/"})
+  @RequestMapping(value = {"/category"})
   @ResponseBody
   public ModelAndView listAllCategories(){
     Logger logger = Logger.getLogger(this.getClass());
@@ -43,6 +44,13 @@ public class CategoryController {
     ModelAndView vm = new ModelAndView("category");
     vm.addObject("category", category);
     vm.addObject("projects", categoryService.findAllProjects(category));
+    return vm;
+  }
+
+  @RequestMapping(value = "/")
+  @ResponseBody
+  public ModelAndView showIndex(){
+    ModelAndView vm = new ModelAndView("index");
     return vm;
   }
 
