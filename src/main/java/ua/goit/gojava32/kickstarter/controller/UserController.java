@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import ua.goit.gojava32.kickstarter.model.User;
+import ua.goit.gojava32.kickstarter.service.ProjectService;
 import ua.goit.gojava32.kickstarter.service.SendMail;
 import ua.goit.gojava32.kickstarter.service.UserService;
 
-import javax.jws.soap.SOAPBinding;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 
 @Controller
@@ -23,6 +21,9 @@ public class UserController {
 
   @Autowired
   UserService userService;
+
+  @Autowired
+  ProjectService projectService;
 
   @RequestMapping(value = {"/login","/login_page"}, method = RequestMethod.GET)
   @ResponseBody
@@ -88,6 +89,8 @@ public class UserController {
   public ModelAndView profile(HttpServletRequest request, Principal principal){
     ModelAndView mv = new ModelAndView("user_profile");
     mv.addObject("user_name", principal.getName());
+    User user = userService.findUserByEmail(principal.getName());
+    mv.addObject("projects", projectService.findAllProjects(user));
     return mv;
   }
 }

@@ -5,6 +5,8 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ua.goit.gojava32.kickstarter.model.Project;
+import ua.goit.gojava32.kickstarter.model.User;
+
 import java.util.List;
 
 @Repository
@@ -19,6 +21,15 @@ public class ProjectDAOImpl extends AbstractDAO<Project> implements ProjectDAO {
     Session session = getSession();
     Query query = session.createQuery("FROM Project WHERE name LIKE :requestSearch");
     query.setParameter("requestSearch", "%" + requestSearch + "%");
+    List<Project> list = query.list();
+    return list;
+  }
+
+  @Override
+  public List<Project> findAllProjects(User user) {
+    Session session = getSession();
+    Query query = session.createQuery("FROM Project WHERE user = :user");
+    query.setParameter("user", user);
     List<Project> list = query.list();
     return list;
   }

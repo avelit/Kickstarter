@@ -7,17 +7,35 @@
 </head>
 <body>
 <div class="wrapper">
-<%@include file='header.jsp' %>
-<div class="container">
-    <div class="col-sm-3">
-        <h3>Admin menu</h3>
-        <hr>
-        <ul class="nav nav-stacked">
-            <li><a href="/admin/edit_category"><h4>Edit category</h4></a></li>
-            <li><a href="/admin/edit_project"><h4>Edit project</h4></a></li>
-        </ul>
+    <%@include file='header.jsp' %>
+    <div class="container">
+        <div class="col-sm-3">
+            <h3>Admin menu</h3>
+            <hr>
+            <ul class="nav nav-stacked">
+                <li><a href="/admin/edit_category"><h4>Add category</h4></a>
+                </li>
+                <li><a href="/admin/edit_project"><h4>Add project</h4></a></li>
+            </ul>
+        </div>
+        <h3>You projects:</h3>
+        <div class="col-sm-9">
+            <c:forEach var="c" items="${projects}">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="#">
+                            <div class="caption">
+                                <h3>
+                                    <a href="/project/<c:out value="${c.id}"/>"><c:out
+                                            value="${c.name}/${c.category.name}"/></a>
+                                </h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
     </div>
-</div>
 </div>
 <%@include file='footer.jsp' %>
 </body>

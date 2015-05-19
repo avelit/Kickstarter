@@ -18,7 +18,7 @@
 
         <div class="checkbox">
             <label>
-                <input type="checkbox" id="_spring_security_remember_me"> Remember me
+                <input type="checkbox" id="_spring_security_remember_me" name = "_spring_security_remember_me"> Remember me
             </label>
         </div>
 

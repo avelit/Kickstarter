@@ -29,7 +29,7 @@ public class ProjectController {
 
   @RequestMapping(value = "/project/{id}")
   @ResponseBody
-  public ModelAndView showProject(@PathVariable("id") int id){
+  public ModelAndView showProject(@PathVariable("id") int id, Principal principal){
     Project project = projectService.get(id);
     ModelAndView vm = new ModelAndView("project");
 
@@ -37,7 +37,7 @@ public class ProjectController {
     vm.addObject("category", project.getCategory());
     vm.addObject("comments", projectService.getProjectComments(project));
     vm.addObject("blogs", projectService.getProjectBlogPosts(project));
-
+    vm.addObject("user", userService.findUserByEmail(principal.getName()));
 
     return vm;
   }
