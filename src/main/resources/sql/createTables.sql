@@ -56,3 +56,11 @@ CREATE TABLE IF NOT EXISTS persistent_logins (
     last_used TIMESTAMP NOT NULL,
     PRIMARY KEY (series)
 );
+
+CREATE TABLE IF NOT EXISTS pictures
+(
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  id_project  INTEGER,
+  image       BLOB,
+  FOREIGN KEY (id_project) REFERENCES projects (id)
+);
