@@ -59,12 +59,6 @@
             <div role="tabpanel" class="tab-pane active" id="project">
                 <div class="col-md-12">
 
-                    Project id:
-                    <c:out value="${project.id}"/>
-                    <br>
-                    Project name:
-                    <c:out value="${project.name}"/>
-
                     <br> Description:
                     <c:out value="${project.description}"/>
 
