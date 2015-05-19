@@ -61,6 +61,6 @@ CREATE TABLE IF NOT EXISTS pictures
 (
   id          INTEGER PRIMARY KEY AUTOINCREMENT,
   id_project  INTEGER,
-  image       BLOB,
+  picture     BLOB,
   FOREIGN KEY (id_project) REFERENCES projects (id)
 );

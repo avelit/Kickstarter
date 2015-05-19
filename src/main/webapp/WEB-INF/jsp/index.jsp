@@ -9,7 +9,7 @@
 <div class="wrapper">
     <%@include file='header.jsp' %>
     <div class="container">
-       <h3>Hello stranger! Soon there will be the main page of our website.</h3>
+        <h3>Hello stranger! Soon there will be the main page of our website.</h3>
     </div>
 </div>
 <%@include file='footer.jsp' %>
