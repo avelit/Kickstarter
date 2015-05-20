@@ -19,6 +19,7 @@ public class User implements UserDetails {
   private Integer id;
 
   private String name;
+
   private String email;
   private String password;
   @Transient
@@ -109,8 +110,7 @@ public class User implements UserDetails {
 
   @Override
   public boolean isEnabled() {
-//    return isActive;
-    return true;
+    return isActive;
   }
 
   @Override
@@ -145,6 +145,10 @@ public class User implements UserDetails {
       return email;
     }
     return getClass().getName();
+  }
+
+  public void setIsActive(boolean isActive) {
+    this.isActive = isActive;
   }
 
 }

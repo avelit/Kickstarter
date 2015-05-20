@@ -14,6 +14,7 @@ import ua.goit.gojava32.kickstarter.service.SendMail;
 import ua.goit.gojava32.kickstarter.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 
 @Controller
@@ -49,12 +50,11 @@ public class UserController {
       user.setEmail(email);
       user.setPassword(md5password);
       userService.add(user);
-
-//      String domain = request.getRequestURL().toString();
-//      domain = domain.substring(0, domain.length() - 13);///registration
-//      SendMail.send(email, "press link below for activating " + name, domain + "/activate?token=" + token);
-//      vm.addObject("text_failed", "Check you mail for activating.");
-      vm = new ModelAndView("redirect:/login");
+      String domain = request.getRequestURL().toString();
+      domain = domain.substring(0, domain.length() - 13);///registration
+      SendMail.send(email, "press link below for activating " + name, domain + "/activate?token=" + md5password + "&email=" + email);
+      vm = new ModelAndView("registration");
+      vm.addObject("text_failed", "Check you mail for activating.");
     } else {
       vm = new ModelAndView("registration");
       vm.addObject("text_failed", "User with email " + email + " exist.");
@@ -68,21 +68,21 @@ public class UserController {
     return new ModelAndView("registration");
   }
 
-//  @RequestMapping(value = "/activate", method = RequestMethod.GET)
-//  @ResponseBody
-//  public ModelAndView activate(HttpServletResponse response,@RequestParam("token") String token){
-//
-//    User user = userService.findUserByToken(token);
-//    ModelAndView vm = new ModelAndView("redirect:/category");
-//    if (user != null){
-////      user.setIsActive(true);
-////      userService.update(user);
-////      vm.addObject("user", user);
-////
-////      response.addCookie(new Cookie("token", token));
-//    }
-//    return vm;
-//  }
+  @RequestMapping(value = "/activate", method = RequestMethod.GET)
+  @ResponseBody
+  public ModelAndView activate(@RequestParam("email") String email, @RequestParam("token") String token){
+
+    User user = userService.findUserByEmail(email);
+    ModelAndView vm = new ModelAndView("login_page");
+    if (user != null && user.getPassword().equals(token)){
+      user.setIsActive(true);
+      userService.update(user);
+      vm.addObject("text_failed", "User activated.");
+    } else {
+      vm.addObject("text_failed", "Wrong activation token.");
+    }
+    return vm;
+  }
 
   @RequestMapping(value = "/profile", method = RequestMethod.GET)
   @ResponseBody

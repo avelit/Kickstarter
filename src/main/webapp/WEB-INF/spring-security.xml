@@ -11,8 +11,9 @@
         <intercept-url pattern="/" access="ROLE_USER,ROLE_ANONYMOUS,ROLE_ADMIN"/>
         <intercept-url pattern="/add*" access="ROLE_USER,ROLE_ADMIN"/>
         <intercept-url pattern="/admin/*" access="ROLE_ADMIN"/>
-        <form-login login-page="/login" default-target-url="/" authentication-failure-url="/login"/>
-        <logout logout-url="/logout" delete-cookies="JSESSIONID" logout-success-url="/"/>
+        <intercept-url pattern="/profile" access="ROLE_ADMIN"/>
+        <form-login login-page="/login" default-target-url="/profile" authentication-failure-url="/login"/>
+        <logout logout-url="/logout" delete-cookies="JSESSIONID" logout-success-url="/category"/>
         <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
         <!-- enable remember me -->
         <remember-me
