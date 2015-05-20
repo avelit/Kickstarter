@@ -37,7 +37,11 @@ public class ProjectController {
     vm.addObject("category", project.getCategory());
     vm.addObject("comments", projectService.getProjectComments(project));
     vm.addObject("blogs", projectService.getProjectBlogPosts(project));
-    //vm.addObject("user", userService.findUserByEmail(principal.getName()));
+    if (principal != null && (project.getUser().getEmail()).equals(principal.getName())) {
+      vm.addObject("showAddBlog", true);
+    } else {
+      vm.addObject("showAddBlog", false);
+    }
 
     return vm;
   }
