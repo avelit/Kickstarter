@@ -31,14 +31,14 @@
             <c:out value="${project.name}"/>
         </h3>
 <c:choose>
-  <c:when test="${project.video != null}">
-    <iframe width="560" height="315" src="${project.video}"/>" frameborder="0" allowfullscreen></iframe>
+  <c:when test="${project.video == null}">
+  </c:when>
+  <c:when test="${project.video.isEmpty()}">
   </c:when>
   <c:otherwise>
+      <iframe width="560" height="315" src="${project.video}"/>" frameborder="0" allowfullscreen></iframe>
   </c:otherwise>
 </c:choose>
-
-
         <div role="tabpanel">
             <ul class="nav nav-tabs" role="tablist" id="tabs">
                 <li role="presentation" class="active"><a href="#project"
