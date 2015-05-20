@@ -50,6 +50,7 @@
                   value="ua.goit.gojava32.kickstarter.model"/>
         <property name="hibernateProperties">
             <props>
+                <prop key="bytecode.use_reflection_optimizer">false</prop>
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
                 <prop key="hibernate.show_sql">true</prop>
             </props>

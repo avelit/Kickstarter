@@ -16,6 +16,12 @@ public class Image {
 
   private byte[] picture;
 
+  public Image(int id, Project project, byte[] picture) {
+    this.id = id;
+    this.project = project;
+    this.picture = picture;
+  }
+
   public int getId() {
     return id;
   }

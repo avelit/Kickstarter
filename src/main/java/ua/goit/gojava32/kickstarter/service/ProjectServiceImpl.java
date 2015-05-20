@@ -24,20 +24,17 @@ public class ProjectServiceImpl implements ProjectService {
   @Override
   public Project add(String name, String description, Category category) {
     Project project = FactoryModel.createProject(name, category, description);
-
     return  projectDAO.add(project);
   }
 
   @Override
   public Project update(Project project) {
-    projectDAO.update(project);
-    return project;
+    return projectDAO.update(project);
   }
 
   @Override
   public Project delete(Project project) {
-    projectDAO.delete(project);
-    return project;
+    return projectDAO.delete(project);
   }
 
   @Override

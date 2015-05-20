@@ -24,10 +24,8 @@ public class CategoryServiceImpl implements CategoryService {
   }
   @Override
   public Category add(Category category) {
-
     return categoryDAO.add(category);
   }
-
 
   @Override
   public Category update(Category category) {
@@ -65,5 +63,4 @@ public class CategoryServiceImpl implements CategoryService {
   public Category get(Integer id) {
     return categoryDAO.get(id);
   }
-
 }
