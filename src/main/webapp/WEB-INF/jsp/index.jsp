@@ -26,15 +26,15 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="http://avelit.biz/images/20141108.jpg" width="20%" alt="not found">
+                <img src="http://cdn.pocket-lint.com/r/s/728x/images/dynamic/NEWS-34448-c74454d5269e294909a8e0c638a6a0ee.jpg" height="50" width="100%" alt="not found">
                 <div class="carousel-caption">
-                    avelit
+                    pic
                 </div>
             </div>
             <div class="item">
-                <img src="http://avelit.biz/images/20141108.jpg" width="20%" alt="not found">
+                <img src="http://cdn.pocket-lint.com/r/s/728x/images/dynamic/NEWS-34448-e428785dd06ad453e403af71900ada23.jpg" height="50" width="100%" alt="not found">
                 <div class="carousel-caption">
-                    avelit one more time
+                    one more pic
                 </div>
             </div>
         </div>
