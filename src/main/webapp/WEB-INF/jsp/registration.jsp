@@ -12,21 +12,19 @@
         <form class="form-signin" action="/registration" method="post">
             <h2 class="form-signin-heading">Sign up</h2>
 
-            <h3 class="alert"><c:out value="${text_failed}"/></h3>
             <input name="name" class="form-control" id="focusedInput"
                    type="text" placeholder="Name" required autofocus>
 
-            <p></p>
             <input name="email" type="email" id="inputEmail"
-                   class="form-control" placeholder="Email address" required
-                   autofocus>
+                   class="form-control" placeholder="Email address" required>
 
-            <p></p>
             <input name="password" type="password" id="inputPassword"
                    class="form-control" placeholder="Password" required>
-            <button class="btn btn-signup btn-lg btn-primary btn-block"
+
+          <button class="btn btn-signup btn-lg btn-primary btn-block"
                     type="submit">Sign up
             </button>
+          <h3 class="alert"><c:out value="${text_failed}"/></h3>
         </form>
     </div>
 </div>

@@ -12,6 +12,9 @@ import java.util.List;
 @Repository
 public class CommentDAOImpl extends AbstractDAO<Comment> implements CommentDAO{
 
+  CommentDAOImpl() {
+    super(Comment.class);
+  }
 
   @Override
   public List<Comment> getByProject(Project project) {
@@ -22,5 +25,4 @@ public class CommentDAOImpl extends AbstractDAO<Comment> implements CommentDAO{
     List<Comment> list = query.list();
     return list;
   }
-
 }

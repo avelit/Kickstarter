@@ -24,7 +24,6 @@ public class IntegrationTest {
   public void createDB() {
     DBHelper dbHelper = new DBHelper();
     dbHelper.initDatabase();
-
   }
 
   @Ignore

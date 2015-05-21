@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
-
 import java.util.List;
-import java.util.Set;
 
 @Controller
 public class AdminPageController {

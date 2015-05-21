@@ -11,16 +11,8 @@ import java.util.List;
 @Repository
 public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 
-  @Override
-  public User findUserByToken(String token) {
-    Session session = getSession();
-    Query query = session.createQuery("FROM User WHERE token = :token");
-    query.setParameter("token", token);
-    List<User> users = query.list();
-    if (users.size() > 0 ) {
-      return users.get(0);
-    }
-    return null;
+  UserDAOImpl() {
+    super(User.class);
   }
 
   @Override
@@ -34,5 +26,4 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
     }
     return null;
   }
-
 }

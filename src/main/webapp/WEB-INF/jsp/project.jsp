@@ -30,7 +30,15 @@
             Project name:
             <c:out value="${project.name}"/>
         </h3>
-
+<c:choose>
+  <c:when test="${project.video == null}">
+  </c:when>
+  <c:when test="${project.video.isEmpty()}">
+  </c:when>
+  <c:otherwise>
+      <iframe width="560" height="315" src="${project.video}"/>" frameborder="0" allowfullscreen></iframe>
+  </c:otherwise>
+</c:choose>
         <div role="tabpanel">
             <ul class="nav nav-tabs" role="tablist" id="tabs">
                 <li role="presentation" class="active"><a href="#project"
@@ -50,12 +58,6 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="project">
                 <div class="col-md-12">
-
-                    Project id:
-                    <c:out value="${project.id}"/>
-                    <br>
-                    Project name:
-                    <c:out value="${project.name}"/>
 
                     <br> Description:
                     <c:out value="${project.description}"/>
@@ -101,7 +103,7 @@
                     </table>
                     <br>
                     <div>
-                        <c:if test="${user.id == project.user.id}">
+                        <c:if test="${showAddBlog}">
                             <form action="/blogpost/add" method="post">
                                 <input type="text" name="text"/>
                                 <input type="hidden" name="project"

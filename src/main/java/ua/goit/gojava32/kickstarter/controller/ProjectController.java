@@ -13,6 +13,8 @@ import ua.goit.gojava32.kickstarter.service.CommentService;
 import ua.goit.gojava32.kickstarter.service.ProjectService;
 import ua.goit.gojava32.kickstarter.service.UserService;
 
+import java.security.Principal;
+
 @Controller
 public class ProjectController {
 
@@ -27,15 +29,19 @@ public class ProjectController {
 
   @RequestMapping(value = "/project/{id}")
   @ResponseBody
-  public ModelAndView showProject(@PathVariable("id") int id){
+  public ModelAndView showProject(@PathVariable("id") int id, Principal principal){
     Project project = projectService.get(id);
     ModelAndView vm = new ModelAndView("project");
 
     vm.addObject("project", project);
     vm.addObject("category", project.getCategory());
-
     vm.addObject("comments", projectService.getProjectComments(project));
     vm.addObject("blogs", projectService.getProjectBlogPosts(project));
+    if (principal != null && (project.getUser().getEmail()).equals(principal.getName())) {
+      vm.addObject("showAddBlog", true);
+    } else {
+      vm.addObject("showAddBlog", false);
+    }
 
     return vm;
   }
@@ -46,7 +52,8 @@ public class ProjectController {
       @RequestParam("category_id") String strCategoryId,
       @RequestParam("project_description") String projectDescription,
       @RequestParam("project_name") String projectName,
-      @RequestParam("user_id") int user_id){
+      @RequestParam("video_url") String video,
+      Principal principal){
 
     Integer categoryId = Integer.parseInt(strCategoryId);
     Category category = categoryService.get(categoryId);
@@ -54,13 +61,10 @@ public class ProjectController {
     project.setCategory(category);
     project.setDescription(projectDescription);
     project.setName(projectName);
-    project.setUser(userService.get(user_id));
+    project.setVideo(video);
+    project.setUser(userService.findUserByEmail(principal.getName()));
     project = projectService.add(project);
     ModelAndView vm = new ModelAndView("redirect:/project/" + project.getId());
     return vm;
   }
-
-
-
-
 }

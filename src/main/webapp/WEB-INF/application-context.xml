@@ -50,17 +50,27 @@
                   value="ua.goit.gojava32.kickstarter.model"/>
         <property name="hibernateProperties">
             <props>
+                <prop key="bytecode.use_reflection_optimizer">false</prop>
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
                 <prop key="hibernate.show_sql">true</prop>
             </props>
         </property>
     </bean>
 
-    <tx:annotation-driven/>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="transactionManager"
           class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+
+    <!-- If request parameter "targetUrl" is existed, then forward to this url -->
+    <!-- For update login form -->
+    <bean id="savedRequestAwareAuthenticationSuccessHandler"
+          class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+        <property name="targetUrlParameter" value="targetUrl" />
+    </bean>
+
+    <!--<bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />-->
 
 </beans>

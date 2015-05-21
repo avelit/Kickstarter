@@ -8,6 +8,7 @@ import ua.goit.gojava32.kickstarter.model.Comment;
 import ua.goit.gojava32.kickstarter.model.Project;
 
 import java.util.List;
+
 @Transactional
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -15,17 +16,18 @@ public class CommentServiceImpl implements CommentService {
   CommentDAO commentDAO;
 
   @Override
-  public void update(Comment val) {
+  public Comment update(Comment val) {
+    return commentDAO.update(val);
   }
 
   @Override
-  public void delete(Comment val) {
-
+  public Comment delete(Comment val) {
+    return commentDAO.delete(val);
   }
 
   @Override
   public Comment get(Integer id) {
-    return null;
+    return commentDAO.get(id);
   }
 
 
