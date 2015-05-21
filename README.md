@@ -5,7 +5,7 @@ http://kickstarter-gojava.herokuapp.com/
 
 Short documentation.
 
-The project envisaged preparation of the web-application having functionality similar to the Kickstarter web-site (may be accessed at https://www.kickstarter.com/). The application should provide access to a list of categories, and a number of projects in each category with the detailed description.
+The project envisaged development of the web-application having functionality similar to the Kickstarter web-site (may be accessed at https://www.kickstarter.com/). The application should provide access to a list of categories, and a number of projects in each category with the detailed description.
 
 By accessing the main screen of the application guests will be able to see the welcome page containing photos and contact details of the project team.
 
