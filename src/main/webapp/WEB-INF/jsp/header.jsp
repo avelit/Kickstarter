@@ -22,7 +22,14 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <sec:authorize access="isAuthenticated()">
-                    <li><a href="/profile"><sec:authentication property="principal.username" /></a></li>
+                    <li><a href="/profile"><sec:authentication property="principal.username" />
+                        <sec:authorize access="isRememberMe()">
+                            (by 'Remember me')
+                        </sec:authorize>
+                        <sec:authorize access="!isRememberMe()">
+                            (by credentials)
+                        </sec:authorize>
+                    </a></li>
                     <li><a href="/logout">Log out</a></li>
                 </sec:authorize>
 

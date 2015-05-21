@@ -8,6 +8,7 @@ import ua.goit.gojava32.kickstarter.model.BlogPost;
 @Transactional
 @Service
 public class BlogPostServiceImpl implements BlogPostService {
+
   @Autowired
   private BlogPostDAO blogPostDAO;
 

@@ -26,8 +26,6 @@ public class CommentController {
       @RequestParam("project_id") String project_id,
       @RequestParam("text") String text){
 
-
-
     Project project = projectService.get(Integer.parseInt(project_id));
 
     Comment newComment = new Comment();
@@ -39,7 +37,4 @@ public class CommentController {
 
     return vm;
   }
-
-
-
 }

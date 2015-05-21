@@ -7,10 +7,7 @@ import ua.goit.gojava32.kickstarter.dao.BlogPostDAO;
 import ua.goit.gojava32.kickstarter.dao.CommentDAO;
 import ua.goit.gojava32.kickstarter.dao.ProjectDAO;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
-import ua.goit.gojava32.kickstarter.model.BlogPost;
-import ua.goit.gojava32.kickstarter.model.Category;
-import ua.goit.gojava32.kickstarter.model.Comment;
-import ua.goit.gojava32.kickstarter.model.Project;
+import ua.goit.gojava32.kickstarter.model.*;
 
 import java.util.List;
 @Transactional
@@ -27,20 +24,17 @@ public class ProjectServiceImpl implements ProjectService {
   @Override
   public Project add(String name, String description, Category category) {
     Project project = FactoryModel.createProject(name, category, description);
-
     return  projectDAO.add(project);
   }
 
   @Override
   public Project update(Project project) {
-    projectDAO.update(project);
-    return project;
+    return projectDAO.update(project);
   }
 
   @Override
   public Project delete(Project project) {
-    projectDAO.delete(project);
-    return project;
+    return projectDAO.delete(project);
   }
 
   @Override
@@ -70,5 +64,9 @@ public class ProjectServiceImpl implements ProjectService {
     return blogPostDAO.getByProject(project);
   }
 
+  @Override
+  public List<Project> findAllProjects(User user) {
+    return projectDAO.findAllProjects(user);
+  }
 }
 

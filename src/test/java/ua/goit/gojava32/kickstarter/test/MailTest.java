@@ -11,6 +11,5 @@ public class MailTest {
   @Test
   public void SendEmailTest() {
     SendMail.send("avelit@ukr.net", "press for register", "/userActivate?token=");
-
   }
 }

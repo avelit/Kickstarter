@@ -10,15 +10,14 @@
 <div class="wrapper">
     <%@include file='header.jsp' %>
 <div class="container">
-    <c:url value="/j_spring_security_check" var="loginUrl" />
-    <form class="form-signin" action="${loginUrl}" method="post">
+    <form class="form-signin" action="/j_spring_security_check" method="post">
         <h2 class="form-signin-heading">Please sign in:</h2>
         <input name="j_username" type="email" class="form-control" placeholder="Email address" required autofocus>
         <input name="j_password" type="password" class="form-control" placeholder="Password" required>
 
         <div class="checkbox">
             <label>
-                <input type="checkbox" id="_spring_security_remember_me"> Remember me
+                <input type="checkbox" id="_spring_security_remember_me" name = "_spring_security_remember_me"> Remember me
             </label>
         </div>
 

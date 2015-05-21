@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS projects
   description TEXT,
   moneyNeed   INTEGER,
   moneyHas    INTEGER,
+  picture     BLOB,
   video       TEXT,
   FOREIGN KEY (id_author) REFERENCES users (id),
   FOREIGN KEY (id_category) REFERENCES categories (id)
@@ -54,4 +55,12 @@ CREATE TABLE IF NOT EXISTS persistent_logins (
     token VARCHAR(64) NOT NULL,
     last_used TIMESTAMP NOT NULL,
     PRIMARY KEY (series)
+);
+
+CREATE TABLE IF NOT EXISTS pictures
+(
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  id_project  INTEGER,
+  picture     BLOB,
+  FOREIGN KEY (id_project) REFERENCES projects (id)
 );

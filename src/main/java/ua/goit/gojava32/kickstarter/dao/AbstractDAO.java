@@ -5,8 +5,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.lang.reflect.ParameterizedType;
-
 public abstract class AbstractDAO<T> implements GenericCRUDDAO<T> {
 
   Class<T> type;

@@ -5,7 +5,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.goit.gojava32.kickstarter.dao.UserDAO;
 import ua.goit.gojava32.kickstarter.factory.FactoryModel;
+import ua.goit.gojava32.kickstarter.model.Project;
 import ua.goit.gojava32.kickstarter.model.User;
+
+import java.util.List;
+
 @Transactional
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,14 +24,12 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User update(User user) {
-    userDAO.update(user);
-    return user;
+    return userDAO.update(user);
   }
 
   @Override
   public User delete(User user) {
-    userDAO.delete(user);
-    return user;
+    return userDAO.delete(user);
   }
 
   @Override
@@ -44,4 +46,5 @@ public class UserServiceImpl implements UserService {
   public User findUserByEmail(String email){
     return userDAO.findUserByEmail(email);
   }
+
 }
