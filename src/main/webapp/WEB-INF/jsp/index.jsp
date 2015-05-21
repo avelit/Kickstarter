@@ -1,10 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Welcome to our website!</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/signin.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script
             src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
@@ -26,13 +27,17 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="http://cdn.pocket-lint.com/r/s/728x/images/dynamic/NEWS-34448-c74454d5269e294909a8e0c638a6a0ee.jpg" height="50" width="100%" alt="not found">
+                <img src="http://cdn.pocket-lint.com/r/s/728x/images/dynamic/NEWS-34448-c74454d5269e294909a8e0c638a6a0ee.jpg"
+                     height="50" width="100%" alt="not found">
+
                 <div class="carousel-caption">
                     pic
                 </div>
             </div>
             <div class="item">
-                <img src="http://cdn.pocket-lint.com/r/s/728x/images/dynamic/NEWS-34448-e428785dd06ad453e403af71900ada23.jpg" height="50" width="100%" alt="not found">
+                <img src="http://cdn.pocket-lint.com/r/s/728x/images/dynamic/NEWS-34448-e428785dd06ad453e403af71900ada23.jpg"
+                     height="50" width="100%" alt="not found">
+
                 <div class="carousel-caption">
                     one more pic
                 </div>
