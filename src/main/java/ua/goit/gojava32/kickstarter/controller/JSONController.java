@@ -33,7 +33,7 @@ public class JSONController {
     return category;
   }
 
-  @RequestMapping(value = "/category/{id}/project", method = RequestMethod.GET)
+  @RequestMapping(value = "/category/{id}/projects_list", method = RequestMethod.GET)
   public List<Project> getProjectsByCategory(@PathVariable("id") int id) {
     List<Project> projectList = categoryService.findAllProjects(id);
     return projectList;
