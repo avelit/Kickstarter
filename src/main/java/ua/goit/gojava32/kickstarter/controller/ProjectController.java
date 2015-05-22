@@ -14,6 +14,7 @@ import ua.goit.gojava32.kickstarter.service.ProjectService;
 import ua.goit.gojava32.kickstarter.service.UserService;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class ProjectController {
@@ -62,24 +63,14 @@ public class ProjectController {
 
   @RequestMapping(value = "/project/{id}/edit")
   @ResponseBody
-  public ModelAndView editProject(@PathVariable("id") Project project, Principal principal){
-    ModelAndView vm;
-    if (principal != null && (project.getUser().getEmail()).equals(principal.getName())) {
-      project = projectService.update(project);
-      vm = new ModelAndView("redirect:/profile");
-    } else {
-      vm = new ModelAndView("redirect:/error");
-    }
-    return vm;
-  }
-
-  @RequestMapping(value = "/project/{id}/update" , method = RequestMethod.POST)
-  @ResponseBody
-  public ModelAndView updateProject(@PathVariable("id") int id, Principal principal){
+  public ModelAndView editProject(@PathVariable("id") int id, Principal principal){
     Project project = projectService.get(id);
     ModelAndView vm;
     if (principal != null && (project.getUser().getEmail()).equals(principal.getName())) {
-      vm = new ModelAndView("redirect:/profile");
+      vm = new ModelAndView("admin_edit_project");
+      List<Category> categories = categoryService.findAll();
+      vm.addObject("categories", categories);
+      vm.addObject("project",project);
     } else {
       vm = new ModelAndView("redirect:/error");
     }
@@ -93,17 +84,27 @@ public class ProjectController {
       @RequestParam("project_description") String projectDescription,
       @RequestParam("project_name") String projectName,
       @RequestParam("video_url") String video,
+      @RequestParam("project_id") String project_id,
       Principal principal){
 
     Integer categoryId = Integer.parseInt(strCategoryId);
     Category category = categoryService.get(categoryId);
-    Project project = new Project();
+    Project project;
+    if (project_id == "") {
+      project = new Project();
+    } else {
+      project = projectService.get(Integer.parseInt(project_id));
+    }
     project.setCategory(category);
     project.setDescription(projectDescription);
     project.setName(projectName);
     project.setVideo(video);
     project.setUser(userService.findUserByEmail(principal.getName()));
-    project = projectService.add(project);
+    if (project_id == "") {
+      project = projectService.add(project);
+    } else {
+      project = projectService.update(project);
+    }
     ModelAndView vm = new ModelAndView("redirect:/project/" + project.getId());
     return vm;
   }

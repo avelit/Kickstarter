@@ -16,7 +16,7 @@ public class Comment implements Comparable {
   private Date created;
 
   @JoinColumn (name = "id_project", nullable = false)
-  @ManyToOne (fetch = FetchType.EAGER)
+  @ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
   private Project project;
 
   public Comment() {
