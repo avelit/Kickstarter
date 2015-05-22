@@ -46,6 +46,46 @@ public class ProjectController {
     return vm;
   }
 
+  @RequestMapping(value = "/project/{id}/delete")
+  @ResponseBody
+  public ModelAndView deleteProject(@PathVariable("id") int id, Principal principal){
+    Project project = projectService.get(id);
+    ModelAndView vm;
+    if (principal != null && (project.getUser().getEmail()).equals(principal.getName())) {
+      project = projectService.delete(project);
+      vm = new ModelAndView("redirect:/profile");
+    } else {
+      vm = new ModelAndView("redirect:/error");
+    }
+    return vm;
+  }
+
+  @RequestMapping(value = "/project/{id}/edit")
+  @ResponseBody
+  public ModelAndView editProject(@PathVariable("id") Project project, Principal principal){
+    ModelAndView vm;
+    if (principal != null && (project.getUser().getEmail()).equals(principal.getName())) {
+      project = projectService.update(project);
+      vm = new ModelAndView("redirect:/profile");
+    } else {
+      vm = new ModelAndView("redirect:/error");
+    }
+    return vm;
+  }
+
+  @RequestMapping(value = "/project/{id}/update" , method = RequestMethod.POST)
+  @ResponseBody
+  public ModelAndView updateProject(@PathVariable("id") int id, Principal principal){
+    Project project = projectService.get(id);
+    ModelAndView vm;
+    if (principal != null && (project.getUser().getEmail()).equals(principal.getName())) {
+      vm = new ModelAndView("redirect:/profile");
+    } else {
+      vm = new ModelAndView("redirect:/error");
+    }
+    return vm;
+  }
+
   @RequestMapping(value = "/project/add", method = RequestMethod.POST)
   @ResponseBody
   public ModelAndView addProject(

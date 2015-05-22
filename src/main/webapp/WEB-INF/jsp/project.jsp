@@ -2,7 +2,6 @@
 <html>
 <head>
   <title><c:out value="${project.name}"/></title>
-  <%@include file='header.jsp' %>
   <link href="/css/bootstrap.min.css" rel="stylesheet">
   <link href="/css/signin.css" rel="stylesheet">
   <script
