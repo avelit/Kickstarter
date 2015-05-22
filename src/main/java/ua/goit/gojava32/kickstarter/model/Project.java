@@ -1,5 +1,7 @@
 package ua.goit.gojava32.kickstarter.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class Project {
 
   @ManyToOne (fetch = FetchType.EAGER)
   @JoinColumn (name = "id_author", nullable = false)
+  @JsonIgnore
   private User user;
 
   private String description = "";

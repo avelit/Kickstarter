@@ -8,8 +8,10 @@ public interface ProjectService extends GenericCRUDService<Project>{
   Project add(String name, String description, Category category);
   List<Project> findFrom(String searchRequest);
 
-  List<Project> findAllProjects(User user);
+  List<Project> findAllProjectsByUser(User user);
 
   List<Comment> getProjectComments(Project project);
   List<BlogPost> getProjectBlogPosts(Project project);
+
+  List<Project> findAll();
 }
