@@ -65,4 +65,11 @@ public class PasswordRestoreController {
         return vm;
     }
 
+    @RequestMapping(value = "/update_password", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView updatePassword(@RequestParam("password") String password, @RequestParam("password2") String password2){
+        ModelAndView vm = null;
+        return vm;
+    }
+
 }

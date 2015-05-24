@@ -9,7 +9,7 @@
 <div class="wrapper">
     <%@include file='header.jsp' %>
     <div class="container">
-        <form class="form-signin" action="/restore_password" method="post">
+        <form class="form-signin" action="/update_password" method="post">
             <h2 class="form-signin-heading">Type new password</h2>
             <input name="password" class="form-control" id="password1"
                    type="password" placeholder="Password" required>
