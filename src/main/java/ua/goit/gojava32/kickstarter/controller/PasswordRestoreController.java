@@ -33,18 +33,36 @@ public class PasswordRestoreController {
     public ModelAndView search( HttpServletRequest request,
             @RequestParam("search_mail") String searchMail) {
         String domain = request.getRequestURL().toString();
+        domain = domain.substring(0, domain.length() - 21);
         ModelAndView vm = new ModelAndView("search_by_email_page");
         User findUser = userService.findUserByEmail(searchMail);
-        if (findUser == null){
-            vm.addObject("result_search", "Can't find that email, sorry.");
-        } else {
+        if (findUser != null){
             vm.addObject("result_search", "Check you e-mail for reset you password");
             String username = findUser.getUsername();
             String md5password = DigestUtils.md5Hex(findUser.getPassword());
             SendMail.send(searchMail, "press link below for restore password " + username, domain + "/restore?token=" + md5password + "&email=" + searchMail);
+
+        } else {
+            vm.addObject("result_search", "Can't find that email, sorry.");
         }
         return vm;
     }
 
+
+
+    @RequestMapping(value = "/restore", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView restore(@RequestParam("email") String email, @RequestParam("token") String token){
+
+        User user = userService.findUserByEmail(email);
+        ModelAndView vm;
+        String md5password = DigestUtils.md5Hex(user.getPassword());
+        if (user != null && md5password.equals(token)){
+            vm = new ModelAndView("restore_password");
+        } else {
+            vm = new ModelAndView("error_page");
+        }
+        return vm;
+    }
 
 }
