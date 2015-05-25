@@ -84,8 +84,7 @@
                                    value="<c:out value="${project.id}"/>"/>
                             <input type="hidden" name="category"
                                    value="<c:out value="${category_name}"/>"/>
-                            <input class="btn btn-default" type="submit"
-                                   title="add comment"/>
+                            <input class="btn btn-default" type="submit" value="add comment"/>
                         </form>
                     </div>
                 </div>
@@ -115,8 +114,7 @@
                                 <input type="hidden" name="project_id"
                                        value="<c:out value="${project.id}"/>"/>
                                 <input
-                                        class="btn btn-default" type="submit"
-                                        title="add comment"/>
+                                        class="btn btn-default" type="submit" value="add post"/>
                             </form>
                         </c:if>
                     </div>

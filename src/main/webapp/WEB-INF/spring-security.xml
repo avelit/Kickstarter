@@ -19,18 +19,18 @@
         <remember-me
                 token-validity-seconds="1209600"
                 data-source-ref="dataSource"
-                user-service-ref="UserDetailsServiceImpl"/>
+                user-service-ref="userDetailsServiceImpl"/>
     </http>
 
     <global-method-security secured-annotations="enabled" />
 
     <authentication-manager>
-        <authentication-provider user-service-ref="UserDetailsServiceImpl" >
+        <authentication-provider user-service-ref="userDetailsServiceImpl" >
             <password-encoder hash="md5" />
         </authentication-provider>
     </authentication-manager>
 
-    <beans:bean id="UserDetailsServiceImpl" class="ua.goit.gojava32.kickstarter.service.UserDetailsServiceImpl"/>
+    <beans:bean id="userDetailsServiceImpl" class="ua.goit.gojava32.kickstarter.service.UserDetailsServiceImpl"/>
 
     <beans:bean id="webSecurityExpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
 

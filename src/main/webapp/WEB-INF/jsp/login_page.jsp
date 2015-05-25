@@ -22,7 +22,7 @@
         </div>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <a class="btn btn-warning btn-lg btn-primary btn-block" href="/restore_page">Forgot password</a>
+        <a class="btn btn-warning btn-lg btn-primary btn-block" href="/forgot_password">Forgot password</a>
         <h3 class="alert"><c:out value="${text_failed}"/></h3>
     </form>
 </div>

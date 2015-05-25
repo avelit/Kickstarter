@@ -26,7 +26,7 @@
                                class="form-control" placeholder="Description"
                                width="30%">
                         <br>
-                        <input type="submit" class="btn btn-success">
+                        <input type="submit" class="btn btn-success" value="Submit">
                     </form>
                 </div>
             </div>

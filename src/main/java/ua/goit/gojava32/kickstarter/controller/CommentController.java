@@ -23,18 +23,16 @@ public class CommentController {
   @RequestMapping(value = "/comment/add", method = RequestMethod.POST)
   @ResponseBody
   public ModelAndView addComment(
-      @RequestParam("project_id") String project_id,
+      int project_id,
       @RequestParam("text") String text){
 
-    Project project = projectService.get(Integer.parseInt(project_id));
-
+    Project project = projectService.get(project_id);
     Comment newComment = new Comment();
     newComment.setText(text);
     newComment.setProject(project);
     newComment.setCreated(new Date());
     commentService.add(newComment);
     ModelAndView vm = new ModelAndView("redirect:/project/" + project.getId()+"#comments");
-
     return vm;
   }
 }

@@ -26,9 +26,7 @@ public class AdminPageController {
   @RequestMapping(value = "/admin/edit_project", method = RequestMethod.GET)
   @ResponseBody
   public ModelAndView editProjects() {
-
     List<Category> categories = categoryService.findAll();
-
     ModelAndView vm = new ModelAndView("admin_edit_project");
     vm.addObject("categories", categories);
     return vm;

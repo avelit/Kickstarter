@@ -14,49 +14,81 @@ import ua.goit.gojava32.kickstarter.service.ProjectService;
 import ua.goit.gojava32.kickstarter.service.UserService;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class ProjectController {
 
   @Autowired
-  ProjectService projectService;
+  private ProjectService projectService;
+
   @Autowired
-  CommentService commentService;
+  private CategoryService categoryService;
+
   @Autowired
-  CategoryService categoryService;
-  @Autowired
-  UserService userService;
+  private UserService userService;
 
   @RequestMapping(value = "/project/{id}")
   @ResponseBody
-  public ModelAndView showProject(@PathVariable("id") int id, Principal principal){
+  public ModelAndView showProject(@PathVariable("id") int id, Principal principal) {
     Project project = projectService.get(id);
     ModelAndView vm = new ModelAndView("project");
-
     vm.addObject("project", project);
     vm.addObject("category", project.getCategory());
     vm.addObject("comments", projectService.getProjectComments(project));
     vm.addObject("blogs", projectService.getProjectBlogPosts(project));
-    if (principal != null && (project.getUser().getEmail()).equals(principal.getName())) {
+    if (isaOwner(principal, project)) {
       vm.addObject("showAddBlog", true);
     } else {
       vm.addObject("showAddBlog", false);
     }
+    return vm;
+  }
 
+  private boolean isaOwner(Principal principal, Project project) {
+    return principal != null && (project.getUser().getEmail()).equals(principal.getName());
+  }
+
+  @RequestMapping(value = "/project/{id}/delete")
+  @ResponseBody
+  public ModelAndView deleteProject(@PathVariable("id") int id, Principal principal){
+    Project project = projectService.get(id);
+    ModelAndView vm;
+    if (isaOwner(principal, project)) {
+      project = projectService.delete(project);
+      vm = new ModelAndView("redirect:/profile");
+    } else {
+      vm = new ModelAndView("redirect:/error");
+    }
+    return vm;
+  }
+
+  @RequestMapping(value = "/project/{id}/edit")
+  @ResponseBody
+  public ModelAndView editProject(@PathVariable("id") int id, Principal principal) {
+    Project project = projectService.get(id);
+    ModelAndView vm;
+    if (isaOwner(principal, project)) {
+      vm = new ModelAndView("admin_edit_project");
+      List<Category> categories = categoryService.findAll();
+      vm.addObject("categories", categories);
+      vm.addObject("project",project);
+    } else {
+      vm = new ModelAndView("redirect:/error");
+    }
     return vm;
   }
 
   @RequestMapping(value = "/project/add", method = RequestMethod.POST)
   @ResponseBody
   public ModelAndView addProject(
-      @RequestParam("category_id") String strCategoryId,
+      int category_id,
       @RequestParam("project_description") String projectDescription,
       @RequestParam("project_name") String projectName,
       @RequestParam("video_url") String video,
-      Principal principal){
+      Principal principal) {
 
-    Integer categoryId = Integer.parseInt(strCategoryId);
-    Category category = categoryService.get(categoryId);
+    Category category = categoryService.get(category_id);
     Project project = new Project();
     project.setCategory(category);
     project.setDescription(projectDescription);
@@ -65,6 +97,32 @@ public class ProjectController {
     project.setUser(userService.findUserByEmail(principal.getName()));
     project = projectService.add(project);
     ModelAndView vm = new ModelAndView("redirect:/project/" + project.getId());
+    return vm;
+  }
+
+  @RequestMapping(value = "/project/edit", method = RequestMethod.POST)
+  @ResponseBody
+  public ModelAndView editProject(
+          @RequestParam("category_id") String category_id,
+          @RequestParam("project_id") String project_id,
+          @RequestParam("project_description") String projectDescription,
+          @RequestParam("project_name") String projectName,
+          @RequestParam("video_url") String video,
+          Principal principal) {
+
+    Category category = categoryService.get(Integer.parseInt(category_id));
+    Project project = projectService.get(Integer.parseInt(project_id));
+    ModelAndView vm;
+    if (isaOwner(principal, project)) {
+      project.setCategory(category);
+      project.setDescription(projectDescription);
+      project.setName(projectName);
+      project.setVideo(video);
+      project = projectService.update(project);
+      vm = new ModelAndView("redirect:/project/" + project.getId());
+    } else {
+      vm = new ModelAndView("redirect:/error");
+    }
     return vm;
   }
 }

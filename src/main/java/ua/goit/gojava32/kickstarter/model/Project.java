@@ -29,13 +29,13 @@ public class Project {
   private Integer moneyHas;
   private String video;
 
-  public Project (String name, Category category, String description){
+  public Project (String name, Category category, String description) {
     this.name = name;
     this.category = category;
     this.description = description;
   }
 
-  public Project (Integer id, String name, Category category){
+  public Project (Integer id, String name, Category category) {
     this(name, category, "");
     this.id = id;
   }
@@ -46,14 +46,13 @@ public class Project {
   }
 
   public Project() {
-
   }
 
-  public void setName(String name){
+  public void setName(String name) {
     this.name = name;
   }
 
-  public String getName(){
+  public String getName() {
     return name;
   }
 
@@ -69,15 +68,13 @@ public class Project {
     this.category = category;
   }
 
-  public void setDescription(String description){
+  public void setDescription(String description) {
     this.description = description;
   }
 
-  public String getDescription(){
+  public String getDescription() {
     return description;
   }
-
-
 
   @Override
   public String toString() {

@@ -29,7 +29,6 @@ public class JSONController {
   @RequestMapping(value = "/category/{id}", method = RequestMethod.GET)
   public Category getCategory(@PathVariable("id") int id) {
     Category category = categoryService.get(id);
-
     return category;
   }
 
