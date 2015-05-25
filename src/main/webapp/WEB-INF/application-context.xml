@@ -49,12 +49,10 @@
     <mvc:resources mapping="/css/font/**" location="/css/fonts/"/>
     <mvc:resources mapping="/resource/**" location="/resource/"/>
     <mvc:resources mapping="/js/**" location="/js/"/>
-    <!--<mvc:resources mapping="/WEB-INF/jsp/**" location="/WEB-INF/jsp/"/>-->
 
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!--<property name="annotatedClasses" value="ua.goit.gojava32.kickstarter.model.Project"/>-->
         <property name="packagesToScan"
                   value="ua.goit.gojava32.kickstarter.model"/>
         <property name="hibernateProperties">

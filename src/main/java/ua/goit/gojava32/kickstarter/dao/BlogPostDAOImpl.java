@@ -25,5 +25,4 @@ public class BlogPostDAOImpl extends AbstractDAO<BlogPost> implements BlogPostDA
     List<BlogPost> list = query.list();
     return list;
   }
-
 }
