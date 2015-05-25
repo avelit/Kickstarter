@@ -22,8 +22,9 @@
 				<div class="thumbnail">
 					<a href="#">
 						<div class="caption">
-							<h3>
+							<h3><center>
 								<a href="/project/<c:out value="${c.id}"/>" ><c:out value="${c.name}" /></a>
+								</center>
 							</h3>
 						</div>
 					</a>

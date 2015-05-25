@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
+import ua.goit.gojava32.kickstarter.service.CategoryServiceImpl;
 
 @Controller
 public class CategoryController {
@@ -50,9 +51,13 @@ public class CategoryController {
   @RequestMapping(value = "/")
   @ResponseBody
   public ModelAndView showIndex(){
+    Logger logger = Logger.getLogger(this.getClass());
+    logger.trace("listAllCategories");
     ModelAndView vm = new ModelAndView("index");
+    vm.addObject("categories", categoryService.findAll());
     return vm;
   }
+
 
 }
 

@@ -57,6 +57,21 @@
     </div>
 
 
+
+
+<div class="col-sm-3">
+<h4>Categories</h4>
+<hr>
+<dl>
+    <c:forEach var="c" items="${categories}">
+                 <dt><a href="/category/<c:out value="${c.id}"/>"><h4><c:out value="${c.name}"/></h4></a></dt>
+    </c:forEach>
+</dl>
+<div>
+
+
+
+
 </div>
 <%@include file='footer.jsp' %>
 </body>
