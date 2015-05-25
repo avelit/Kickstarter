@@ -26,6 +26,7 @@
                     type="submit">Submit
             </button>
         </form>
+        <center><font color = #ff0000><c:out value="${err}"/></font></center>
     </div>
 </div>
 </div>

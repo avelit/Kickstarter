@@ -80,7 +80,10 @@ public class PasswordRestoreController {
                 vm = new ModelAndView("error_page");
             }
         } else {
-            vm = new ModelAndView("error_page");
+            vm = new ModelAndView("restore_password");
+            vm.addObject("email", email);
+            vm.addObject("token", token);
+            vm.addObject("err", "Entered passwords are not identical");
         }
         return vm;
     }
