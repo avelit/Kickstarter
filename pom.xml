@@ -5,7 +5,7 @@
     <groupId>Kickstarter</groupId>
     <artifactId>Kickstarter</artifactId>
     <version>0.5.1</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>Kickstarter</name>
     <properties>
         <tomcat.version>7.0.57</tomcat.version>
