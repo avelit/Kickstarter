@@ -20,17 +20,17 @@ import java.util.List;
 public class ProjectController {
 
   @Autowired
-  ProjectService projectService;
+  private ProjectService projectService;
+
   @Autowired
-  CommentService commentService;
+  private CategoryService categoryService;
+
   @Autowired
-  CategoryService categoryService;
-  @Autowired
-  UserService userService;
+  private UserService userService;
 
   @RequestMapping(value = "/project/{id}")
   @ResponseBody
-  public ModelAndView showProject(@PathVariable("id") int id, Principal principal){
+  public ModelAndView showProject(@PathVariable("id") int id, Principal principal) {
     Project project = projectService.get(id);
     ModelAndView vm = new ModelAndView("project");
 
@@ -63,7 +63,7 @@ public class ProjectController {
 
   @RequestMapping(value = "/project/{id}/edit")
   @ResponseBody
-  public ModelAndView editProject(@PathVariable("id") int id, Principal principal){
+  public ModelAndView editProject(@PathVariable("id") int id, Principal principal) {
     Project project = projectService.get(id);
     ModelAndView vm;
     if (principal != null && (project.getUser().getEmail()).equals(principal.getName())) {
@@ -85,7 +85,7 @@ public class ProjectController {
       @RequestParam("project_name") String projectName,
       @RequestParam("video_url") String video,
       @RequestParam("project_id") String project_id,
-      Principal principal){
+      Principal principal) {
 
     Integer categoryId = Integer.parseInt(strCategoryId);
     Category category = categoryService.get(categoryId);
