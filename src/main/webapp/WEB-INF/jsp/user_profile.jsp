@@ -16,7 +16,6 @@
                 <li><a href="/admin/edit_category"><h4>Add category</h4></a>
                 </li>
                 <li><a href="/admin/edit_project"><h4>Add project</h4></a></li>
-                <li>for</li>
             </ul>
         </div>
         <h3>You projects:</h3>

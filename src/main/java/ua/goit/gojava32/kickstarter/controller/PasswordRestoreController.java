@@ -27,7 +27,6 @@ public class PasswordRestoreController {
         return vm;
     }
 
-
     @RequestMapping(value = "/search_by_email_page", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView search( HttpServletRequest request,
@@ -35,20 +34,17 @@ public class PasswordRestoreController {
         String domain = request.getRequestURL().toString();
         domain = domain.substring(0, domain.length() - 21);
         ModelAndView vm = new ModelAndView("search_by_email_page");
-        User findUser = userService.findUserByEmail(searchMail);
-        if (findUser != null){
+        User user = userService.findUserByEmail(searchMail);
+        if (user != null){
             vm.addObject("result_search", "Check you e-mail for reset you password");
-            String username = findUser.getUsername();
-            String md5password = DigestUtils.md5Hex(findUser.getPassword());
+            String username = user.getUsername();
+            String md5password = DigestUtils.md5Hex(user.getPassword());
             SendMail.send(searchMail, "press link below for restore password " + username, domain + "/restore?token=" + md5password + "&email=" + searchMail);
-
         } else {
             vm.addObject("result_search", "Can't find that email, sorry.");
         }
         return vm;
     }
-
-
 
     @RequestMapping(value = "/restore", method = RequestMethod.GET)
     @ResponseBody
@@ -59,16 +55,33 @@ public class PasswordRestoreController {
         String md5password = DigestUtils.md5Hex(user.getPassword());
         if (user != null && md5password.equals(token)){
             vm = new ModelAndView("restore_password");
+            vm.addObject("token",token);
+            vm.addObject("email",email);
         } else {
             vm = new ModelAndView("error_page");
         }
         return vm;
     }
 
-    @RequestMapping(value = "/update_password", method = RequestMethod.GET)
+    @RequestMapping(value = "/update_password", method = RequestMethod.POST)
     @ResponseBody
-    public ModelAndView updatePassword(@RequestParam("password") String password, @RequestParam("password2") String password2){
-        ModelAndView vm = null;
+    public ModelAndView updatePassword(@RequestParam("password") String password,
+                                       @RequestParam("password2") String password2,
+                                       @RequestParam("token") String token,
+                                       @RequestParam("email") String email){
+        ModelAndView vm;
+        if (password.equals(password2)) {
+            User user = userService.findUserByEmail(email);
+            if (user != null && DigestUtils.md5Hex(user.getPassword()).equals(token)){
+                user.setPassword(DigestUtils.md5Hex(password2));
+                userService.update(user);
+                vm = new ModelAndView("login_page");
+            } else {
+                vm = new ModelAndView("error_page");
+            }
+        } else {
+            vm = new ModelAndView("error_page");
+        }
         return vm;
     }
 
