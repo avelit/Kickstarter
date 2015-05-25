@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Edit category</title>
-    <link href="/css/signin.css" rel="stylesheet">
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resource/css/signin.css" rel="stylesheet">
+    <link href="/resource/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="wrapper">

@@ -3,7 +3,7 @@
 <html>
 <head>
     <title><c:out value="${category.name}"/></title>
-	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/resource/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="wrapper">

@@ -3,8 +3,8 @@
 <html>
 <head>
     <title>Welcome to our website!</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/signin.css" rel="stylesheet">
+    <link href="/resource/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resource/css/signin.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script
             src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>

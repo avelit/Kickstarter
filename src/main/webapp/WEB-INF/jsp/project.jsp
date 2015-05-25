@@ -3,12 +3,12 @@
 <head>
   <title><c:out value="${project.name}"/></title>
   <%@include file='header.jsp' %>
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/css/signin.css" rel="stylesheet">
+  <link href="/resource/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/resource/css/signin.css" rel="stylesheet">
   <script
-    src="/js/jquery.min.js"></script>
+    src="/resource/js/jquery.min.js"></script>
   <script
-    src="/js/bootstrap.min.js"></script>
+    src="/resource/js/bootstrap.min.js"></script>
 
     <script>$(document).ready(function () {
         /* Automagically jump on good tab based on anchor; for page reloads or links */
@@ -20,7 +20,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <%@include file='header.jsp' %>
+    <%--<%@include file='header.jsp' %>--%>
     <div class="container">
 
         <h3>

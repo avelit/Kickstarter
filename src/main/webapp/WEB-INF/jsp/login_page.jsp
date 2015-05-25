@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Sign in</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/signin.css" rel="stylesheet">
+    <link href="/resource/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resource/css/signin.css" rel="stylesheet">
 
 </head>
 <body>
