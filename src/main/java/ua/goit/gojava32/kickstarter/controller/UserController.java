@@ -87,8 +87,9 @@ public class UserController {
   @ResponseBody
   public ModelAndView profile(HttpServletRequest request, Principal principal){
     ModelAndView mv = new ModelAndView("user_profile");
-    mv.addObject("user_name", principal.getName());
     User user = userService.findUserByEmail(principal.getName());
+    mv.addObject("email", principal.getName());
+    mv.addObject("token",DigestUtils.md5Hex(user.getPassword()));
     mv.addObject("projects", projectService.findAllProjectsByUser(user));
     return mv;
   }
