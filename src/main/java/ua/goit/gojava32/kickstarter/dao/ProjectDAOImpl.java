@@ -26,10 +26,18 @@ public class ProjectDAOImpl extends AbstractDAO<Project> implements ProjectDAO {
   }
 
   @Override
-  public List<Project> findAllProjects(User user) {
+  public List<Project> findAllProjectsByUser(User user) {
     Session session = getSession();
     Query query = session.createQuery("FROM Project WHERE user = :user");
     query.setParameter("user", user);
+    List<Project> list = query.list();
+    return list;
+  }
+
+  @Override
+  public List<Project> findAll() {
+    Session session = getSession();
+    Query query = session.createQuery("FROM Project");
     List<Project> list = query.list();
     return list;
   }

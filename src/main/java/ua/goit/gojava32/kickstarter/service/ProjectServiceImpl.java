@@ -65,8 +65,13 @@ public class ProjectServiceImpl implements ProjectService {
   }
 
   @Override
-  public List<Project> findAllProjects(User user) {
-    return projectDAO.findAllProjects(user);
+  public List<Project> findAllProjectsByUser(User user) {
+    return projectDAO.findAllProjectsByUser(user);
   }
+  @Override
+  public List<Project> findAll() {
+    return projectDAO.findAll();
+  }
+
 }
 

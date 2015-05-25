@@ -2,6 +2,7 @@ package ua.goit.gojava32.kickstarter.model;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table (name = "categories")
 public class Category {

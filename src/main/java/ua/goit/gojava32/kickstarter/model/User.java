@@ -22,14 +22,11 @@ public class User implements UserDetails {
 
   private String email;
   private String password;
-  @Transient
-  private List<UserRoleEnum> Authorities;
 
   @Column (name = "active")
   private boolean isActive;
 
   public User() {
-    isActive = false;
   }
 
   public User(String name, String email, String password, Boolean isActive) {
@@ -79,7 +76,6 @@ public class User implements UserDetails {
   public Collection<GrantedAuthority> getAuthorities() {
     Set<GrantedAuthority> roles = new HashSet();
     roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-
     return roles;
   }
 

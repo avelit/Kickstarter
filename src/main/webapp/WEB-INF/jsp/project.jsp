@@ -1,13 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <html>
 <head>
-    <title><c:out value="${project.name}"/></title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/signin.css" rel="stylesheet">
-    <script
-            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script
-            src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <title><c:out value="${project.name}"/></title>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/signin.css" rel="stylesheet">
+  <script
+    src="/js/jquery.min.js"></script>
+  <script
+    src="/js/bootstrap.min.js"></script>
 
     <script>$(document).ready(function () {
         /* Automagically jump on good tab based on anchor; for page reloads or links */
@@ -83,8 +83,7 @@
                                    value="<c:out value="${project.id}"/>"/>
                             <input type="hidden" name="category"
                                    value="<c:out value="${category_name}"/>"/>
-                            <input class="btn btn-default" type="submit"
-                                   title="add comment"/>
+                            <input class="btn btn-default" type="submit" value="add comment"/>
                         </form>
                     </div>
                 </div>
@@ -114,8 +113,7 @@
                                 <input type="hidden" name="project_id"
                                        value="<c:out value="${project.id}"/>"/>
                                 <input
-                                        class="btn btn-default" type="submit"
-                                        title="add comment"/>
+                                        class="btn btn-default" type="submit" value="add post"/>
                             </form>
                         </c:if>
                     </div>

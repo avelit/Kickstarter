@@ -14,7 +14,6 @@ import ua.goit.gojava32.kickstarter.service.SendMail;
 import ua.goit.gojava32.kickstarter.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 
 @Controller
@@ -90,7 +89,7 @@ public class UserController {
     ModelAndView mv = new ModelAndView("user_profile");
     mv.addObject("user_name", principal.getName());
     User user = userService.findUserByEmail(principal.getName());
-    mv.addObject("projects", projectService.findAllProjects(user));
+    mv.addObject("projects", projectService.findAllProjectsByUser(user));
     return mv;
   }
 }

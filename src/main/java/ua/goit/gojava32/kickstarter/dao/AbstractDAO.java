@@ -22,8 +22,6 @@ public abstract class AbstractDAO<T> implements GenericCRUDDAO<T> {
 
   @Override
   public T add(T val) {
-    Logger logger = Logger.getLogger(this.getClass());
-    logger.info("ADD:::::::::" + val);
     Session session = getSession();
     session.save(val);
     return val;

@@ -1,21 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Welcome to our website!</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/signin.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script
-            src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="wrapper">
     <%@include file='header.jsp' %>
-    <div class="container">
-        <h3>Hello stranger! Soon there will be the main page of our website.</h3>
-    </div>
-
-
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -26,15 +21,25 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="http://cdn.pocket-lint.com/r/s/728x/images/dynamic/NEWS-34448-c74454d5269e294909a8e0c638a6a0ee.jpg" height="50" width="100%" alt="not found">
+                <img src="http://mcstore.ru/images/brimg_srchttpfdstarcomfdedatas200810211224573609music-not.gif"
+                     height="50" width="100%" alt="not found">
+
                 <div class="carousel-caption">
-                    pic
+                    <p>Musical project 1
+                    <p><a class="btn btn-danger" href="/project/1">
+                        View project
+                    </a>
                 </div>
             </div>
             <div class="item">
-                <img src="http://cdn.pocket-lint.com/r/s/728x/images/dynamic/NEWS-34448-e428785dd06ad453e403af71900ada23.jpg" height="50" width="100%" alt="not found">
+                <img src="https://g-a.d-cd.net/24b150cs-960.jpg"
+                     height="50" width="100%" alt="not found">
+
                 <div class="carousel-caption">
-                    one more pic
+                    <p>Musical testproject 2
+                    <p><a class="btn btn-danger" href="/project/22">
+                        View project
+                    </a>
                 </div>
             </div>
         </div>

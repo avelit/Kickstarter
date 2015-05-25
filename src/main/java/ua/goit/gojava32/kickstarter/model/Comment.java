@@ -8,6 +8,7 @@ import java.util.Date;
 @Table (name = "comments")
 public class Comment implements Comparable {
 
+  public final static String DATE_FORMAT = "dd.MM.yyyy HH:mm:ss";
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
@@ -16,28 +17,25 @@ public class Comment implements Comparable {
   private Date created;
 
   @JoinColumn (name = "id_project", nullable = false)
-  @ManyToOne (fetch = FetchType.EAGER)
+  @ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
   private Project project;
 
   public Comment() {
   }
 
   public String getCreatedSimpleFormat(){
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+    SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
     return dateFormat.format(created);
   }
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-
     Comment comment = (Comment) o;
-
-    if (id != comment.id) return false;
+    if (!id.equals(comment.id)) return false;
     if (getText() != null ? !getText().equals(comment.getText()) : comment.getText() != null)
       return false;
     return !(created != null ? !created.equals(comment.created) : comment.created != null);
-
   }
 
   @Override
@@ -50,10 +48,9 @@ public class Comment implements Comparable {
 
   @Override
   public String toString() {
-    SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+    SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
     return "(" + format.format(getCreated()) + ") " + getText() + "project="+ project;
   }
-
 
   public void setId(Integer id) {
     this.id = id;

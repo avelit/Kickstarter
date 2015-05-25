@@ -18,16 +18,18 @@
                 <li><a href="/admin/edit_project"><h4>Add project</h4></a></li>
             </ul>
         </div>
-        <h3>You projects:</h3>
+        <h3>Your projects:</h3>
         <div class="col-sm-9">
             <c:forEach var="c" items="${projects}">
-                <div class="col-md-4">
+                <div class="row">
                     <div class="thumbnail">
                         <a href="#">
                             <div class="caption">
                                 <h3>
                                     <a href="/project/<c:out value="${c.id}"/>"><c:out
-                                            value="${c.name}/${c.category.name}"/></a>
+                                            value="${c.name}, category ${c.category.name}"/></a> |
+                                    <a href="/project/<c:out value="${c.id}"/>/edit">edit</a> |
+                                    <a href="/project/<c:out value="${c.id}"/>/delete">delete </a>
                                 </h3>
                             </div>
                         </a>

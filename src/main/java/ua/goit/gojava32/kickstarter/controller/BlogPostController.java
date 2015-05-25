@@ -28,20 +28,16 @@ public class BlogPostController {
   @RequestMapping(value = "/blogpost/add", method = RequestMethod.POST)
   @ResponseBody
   public ModelAndView addBlogPost(
-      @RequestParam("project_id") String project_id,
+      int project_id,
       @RequestParam("text") String text) {
 
-    Project project = projectService.get(Integer.parseInt(project_id));
+    Project project = projectService.get(project_id);
     BlogPost blogPost = new BlogPost();
     blogPost.setText(text);
     blogPost.setProject(project);
     blogPost.setCreated(new Date());
     blogPostService.addProjectBlog(blogPost);
-
     ModelAndView vm = new ModelAndView("redirect:/project/" + project.getId() + "#blogposts");
-
     return vm;
-
-
   }
 }
