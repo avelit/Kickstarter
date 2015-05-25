@@ -18,7 +18,7 @@
                 <li><a href="/admin/edit_project"><h4>Add project</h4></a></li>
             </ul>
         </div>
-        <h3>You projects:</h3>
+        <h3>Your projects:</h3>
         <div class="col-sm-9">
             <c:forEach var="c" items="${projects}">
                 <div class="row">
