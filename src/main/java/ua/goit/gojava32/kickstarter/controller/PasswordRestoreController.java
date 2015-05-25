@@ -39,7 +39,7 @@ public class PasswordRestoreController {
             vm.addObject("result_search", "Check you e-mail for reset you password");
             String username = user.getUsername();
             String md5password = DigestUtils.md5Hex(user.getPassword());
-            SendMail.send(searchMail, "press link below for restore password " + username, domain + "/restore?token=" + md5password + "&email=" + searchMail);
+            SendMail.send(searchMail, "press link below for restore password " + username, domain + "/change_password?token=" + md5password + "&email=" + searchMail);
         } else {
             vm.addObject("result_search", "Can't find that email, sorry.");
         }
