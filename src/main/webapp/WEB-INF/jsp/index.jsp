@@ -21,19 +21,25 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="http://cdn.pocket-lint.com/r/s/728x/images/dynamic/NEWS-34448-c74454d5269e294909a8e0c638a6a0ee.jpg"
+                <img src="http://mcstore.ru/images/brimg_srchttpfdstarcomfdedatas200810211224573609music-not.gif"
                      height="50" width="100%" alt="not found">
 
                 <div class="carousel-caption">
-                    pic
+                    <p>Musical project 1
+                    <p><a class="btn btn-danger" href="/project/1">
+                        View project
+                    </a>
                 </div>
             </div>
             <div class="item">
-                <img src="http://cdn.pocket-lint.com/r/s/728x/images/dynamic/NEWS-34448-e428785dd06ad453e403af71900ada23.jpg"
+                <img src="https://g-a.d-cd.net/24b150cs-960.jpg"
                      height="50" width="100%" alt="not found">
 
                 <div class="carousel-caption">
-                    one more pic
+                    <p>Musical testproject 2
+                    <p><a class="btn btn-danger" href="/project/22">
+                        View project
+                    </a>
                 </div>
             </div>
         </div>
