@@ -20,7 +20,6 @@
 </head>
 <body>
 <div class="wrapper">
-    <%--<%@include file='header.jsp' %>--%>
     <div class="container">
 
         <h3>
@@ -31,6 +30,20 @@
             Project name:
             <c:out value="${project.name}"/>
         </h3>
+
+        <c:choose>
+            <c:when test="${image == null}">
+                <form method="POST" action="uploadFile" enctype="multipart/form-data">
+                    Add picture to project: <input type="file" name="file"><br/>
+                    <input type="hidden" name="project_id" value="<c:out value="${project.id}"/>"/>
+                    <input type="submit" value="Upload"> Press here to upload the picture!
+                </form>
+            </c:when>
+            <c:otherwise>
+                <img src="/image/${project.id}" alt="car_image"/>
+            </c:otherwise>
+        </c:choose>
+
 <c:choose>
   <c:when test="${project.video == null}">
   </c:when>

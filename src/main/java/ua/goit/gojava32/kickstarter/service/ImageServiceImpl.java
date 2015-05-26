@@ -31,4 +31,9 @@ public class ImageServiceImpl implements ImageService {
     public Image add(Image val) {
         return imageDAO.add(val);
     }
+
+    @Override
+    public Image getByProjectId(int id) {
+        return imageDAO.getByProjectId(id);
+    }
 }

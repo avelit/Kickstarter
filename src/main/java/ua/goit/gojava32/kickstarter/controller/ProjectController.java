@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import ua.goit.gojava32.kickstarter.model.Category;
+import ua.goit.gojava32.kickstarter.model.Image;
 import ua.goit.gojava32.kickstarter.model.Project;
-import ua.goit.gojava32.kickstarter.service.CategoryService;
-import ua.goit.gojava32.kickstarter.service.CommentService;
-import ua.goit.gojava32.kickstarter.service.ProjectService;
-import ua.goit.gojava32.kickstarter.service.UserService;
+import ua.goit.gojava32.kickstarter.service.*;
 
 import java.security.Principal;
 import java.util.List;
@@ -28,16 +26,21 @@ public class ProjectController {
   @Autowired
   private UserService userService;
 
+  @Autowired
+  ImageService imageService;
+
   @RequestMapping(value = "/project/{id}")
   @ResponseBody
   public ModelAndView showProject(@PathVariable("id") int id, Principal principal) {
     Project project = projectService.get(id);
+    Image image = imageService.getByProjectId(id);
     ModelAndView vm = new ModelAndView("project");
     vm.addObject("project", project);
+    vm.addObject("image", image);
     vm.addObject("category", project.getCategory());
     vm.addObject("comments", projectService.getProjectComments(project));
     vm.addObject("blogs", projectService.getProjectBlogPosts(project));
-    if (isaOwner(principal, project)) {
+    if (isOwner(principal, project)) {
       vm.addObject("showAddBlog", true);
     } else {
       vm.addObject("showAddBlog", false);
@@ -45,7 +48,7 @@ public class ProjectController {
     return vm;
   }
 
-  private boolean isaOwner(Principal principal, Project project) {
+  private boolean isOwner(Principal principal, Project project) {
     return principal != null && (project.getUser().getEmail()).equals(principal.getName());
   }
 
@@ -54,7 +57,7 @@ public class ProjectController {
   public ModelAndView deleteProject(@PathVariable("id") int id, Principal principal){
     Project project = projectService.get(id);
     ModelAndView vm;
-    if (isaOwner(principal, project)) {
+    if (isOwner(principal, project)) {
       project = projectService.delete(project);
       vm = new ModelAndView("redirect:/profile");
     } else {
@@ -68,7 +71,7 @@ public class ProjectController {
   public ModelAndView editProject(@PathVariable("id") int id, Principal principal) {
     Project project = projectService.get(id);
     ModelAndView vm;
-    if (isaOwner(principal, project)) {
+    if (isOwner(principal, project)) {
       vm = new ModelAndView("admin_edit_project");
       List<Category> categories = categoryService.findAll();
       vm.addObject("categories", categories);
@@ -113,7 +116,7 @@ public class ProjectController {
     Category category = categoryService.get(Integer.parseInt(category_id));
     Project project = projectService.get(Integer.parseInt(project_id));
     ModelAndView vm;
-    if (isaOwner(principal, project)) {
+    if (isOwner(principal, project)) {
       project.setCategory(category);
       project.setDescription(projectDescription);
       project.setName(projectName);
