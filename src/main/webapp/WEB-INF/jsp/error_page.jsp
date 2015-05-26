@@ -8,7 +8,7 @@
     <%@include file='header.jsp' %>
     <link href="/resource/css/bootstrap.min.css" rel="stylesheet">
     <div class="top-left">
-        ERROR! Page not found.
+        ERROR! ${error_name}
     </div>
 </div>
 <%@include file='footer.jsp' %>

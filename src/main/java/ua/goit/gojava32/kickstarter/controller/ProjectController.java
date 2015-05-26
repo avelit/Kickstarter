@@ -31,24 +31,23 @@ public class ProjectController {
 
   @RequestMapping(value = "/project/{id}")
   @ResponseBody
-  public ModelAndView showProject(@PathVariable("id") int id, Principal principal) {
+  public ModelAndView showProject(@PathVariable("id") int id, Principal principal) throws Exception {
     Project project = projectService.get(id);
     ModelAndView vm;
-    if (project !=null) {
-      Image image = imageService.getByProjectId(id);
-      vm = new ModelAndView("project");
-      vm.addObject("project", project);
-      vm.addObject("image", image);
-      vm.addObject("category", project.getCategory());
-      vm.addObject("comments", projectService.getProjectComments(project));
-      vm.addObject("blogs", projectService.getProjectBlogPosts(project));
-      if (isOwner(principal, project)) {
-        vm.addObject("showAddBlog", true);
-      } else {
-        vm.addObject("showAddBlog", false);
-      }
+    if (project == null) {
+      throw new Exception("No such project.");
+    }
+    Image image = imageService.getByProjectId(id);
+    vm = new ModelAndView("project");
+    vm.addObject("project", project);
+    vm.addObject("image", image);
+    vm.addObject("category", project.getCategory());
+    vm.addObject("comments", projectService.getProjectComments(project));
+    vm.addObject("blogs", projectService.getProjectBlogPosts(project));
+    if (isOwner(principal, project)) {
+      vm.addObject("showAddBlog", true);
     } else {
-      vm = new ModelAndView("error_page");
+      vm.addObject("showAddBlog", false);
     }
     return vm;
   }
@@ -73,8 +72,11 @@ public class ProjectController {
 
   @RequestMapping(value = "/project/{id}/edit")
   @ResponseBody
-  public ModelAndView editProject(@PathVariable("id") int id, Principal principal) {
+  public ModelAndView editProject(@PathVariable("id") int id, Principal principal) throws Exception{
     Project project = projectService.get(id);
+    if (project == null) {
+      throw new Exception("No such project.");
+    }
     ModelAndView vm;
     if (isOwner(principal, project)) {
       vm = new ModelAndView("admin_edit_project");
@@ -133,4 +135,10 @@ public class ProjectController {
     }
     return vm;
   }
+
+  @ExceptionHandler(Exception.class)
+  public ModelAndView exceptionHndler(Exception ex) {
+    return new ModelAndView("error_page", "error_name", ex.getMessage());
+  }
+
 }

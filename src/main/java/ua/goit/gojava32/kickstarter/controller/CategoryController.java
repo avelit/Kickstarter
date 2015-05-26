@@ -40,29 +40,29 @@ public class CategoryController {
 
   @RequestMapping(value = "/category/{id}")
   @ResponseBody
-  public ModelAndView showCategory(@PathVariable("id") int id){
+  public ModelAndView showCategory(@PathVariable("id") int id) throws Exception {
     Category category = categoryService.get(id);
     ModelAndView vm;
-    if (category !=null) {
-      vm = new ModelAndView("category");
-      vm.addObject("category", category);
-      vm.addObject("projects", categoryService.findAllProjects(category));
-    } else {
-      vm = new ModelAndView("error_page");
+    if (category == null) {
+      throw new Exception("No such category.");
     }
+    vm = new ModelAndView("category");
+    vm.addObject("category", category);
+    vm.addObject("projects", categoryService.findAllProjects(category));
     return vm;
   }
 
   @RequestMapping(value = "/")
   @ResponseBody
   public ModelAndView showIndex(){
-    Logger logger = Logger.getLogger(this.getClass());
-    logger.trace("listAllCategories");
     ModelAndView vm = new ModelAndView("index");
     vm.addObject("categories", categoryService.findAll());
     return vm;
   }
 
-
+  @ExceptionHandler(Exception.class)
+  public ModelAndView exceptionHndler(Exception ex) {
+    return new ModelAndView("error_page", "error_name", ex.getMessage());
+  }
 }
 
