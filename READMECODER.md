@@ -4,12 +4,12 @@ Short documentation.
 
 Project use Spring IoC, MVC, Security @ Hibernate (see)
 
-Project tiers:
-1. DB - Sqlite in test & MySQL in production.
-2. DAO - package dao
-3. Business logic - package service
-4. UI - jsp`s
-5. Controllers - package controller
+Project tiers:<br>
+1. DB - Sqlite in test & MySQL in production.<br>
+2. DAO - package dao<br>
+3. Business logic - package service<br>
+4. UI - jsp`s<br>
+5. Controllers - package controller<br>
 
 Spring create connection pool bean & give it to session factory. Transaction manager receive session factory.
 Transactions are created by annotations.
