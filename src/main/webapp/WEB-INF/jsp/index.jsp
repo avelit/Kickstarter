@@ -61,7 +61,7 @@
 
 <div class="container url">
     <div class="col-sm-3">
-        <h5><center>Categories</center></h5>
+        <h5><center><b>Categories</b></center></h5>
             <hr>
                 <ul class="nav nav-stacked url">
                     <c:forEach var="c" items="${categories}">
