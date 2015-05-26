@@ -20,10 +20,15 @@ public class CategoryController {
   @ResponseBody
   public ModelAndView addCategory(
       @RequestParam("category_name") String categoryName,
-      @RequestParam("category_description") String description) {
-
-    categoryService.add(categoryName, description);
-    ModelAndView vm = new ModelAndView("redirect:/category");
+      @RequestParam("category_description") String description) throws Exception {
+    ModelAndView vm;
+    if (categoryName.isEmpty()) {
+      vm = new ModelAndView("error_page");
+      throw new Exception("Invalid value in the 'category name'");
+    } else {
+      categoryService.add(categoryName, description);
+      vm = new ModelAndView("redirect:/category");
+    }
     return vm;
   }
 
@@ -54,7 +59,7 @@ public class CategoryController {
 
   @RequestMapping(value = "/")
   @ResponseBody
-  public ModelAndView showIndex(){
+  public ModelAndView showIndex() {
     ModelAndView vm = new ModelAndView("index");
     vm.addObject("categories", categoryService.findAll());
     return vm;

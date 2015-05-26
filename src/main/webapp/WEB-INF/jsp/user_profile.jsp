@@ -17,7 +17,8 @@
                 <li><a href="/admin/edit_category"><h4>Add category</h4></a>
                 </li>
                 <li><a href="/admin/edit_project"><h4>Add project</h4></a>
-                </li><a href="/change_password?token=<c:out value="${token}"/>&email=<c:out value="${email}"/>"><h4>Change password</h4></a></li>
+                </li>
+                <li><a href="/change_password?token=${token}&email=${email}"><h4>Change password</h4></a></li>
             </ul>
         </div>
         <h3>Your projects:</h3>

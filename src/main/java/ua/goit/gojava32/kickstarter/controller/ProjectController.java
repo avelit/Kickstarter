@@ -4,6 +4,7 @@ package ua.goit.gojava32.kickstarter.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import ua.goit.gojava32.kickstarter.model.Category;
@@ -37,10 +38,10 @@ public class ProjectController {
     if (project == null) {
       throw new Exception("No such project.");
     }
-    Image image = imageService.getByProjectId(id);
     vm = new ModelAndView("project");
     vm.addObject("project", project);
-    vm.addObject("image", image);
+    Image image = imageService.getByProjectId(id);
+    vm.addObject("image", image != null);
     vm.addObject("category", project.getCategory());
     vm.addObject("comments", projectService.getProjectComments(project));
     vm.addObject("blogs", projectService.getProjectBlogPosts(project));
@@ -98,18 +99,36 @@ public class ProjectController {
       int category_id,
       @RequestParam("project_description") String projectDescription,
       @RequestParam("project_name") String projectName,
+      @RequestParam("file") MultipartFile file,
       @RequestParam("video_url") String video,
-      Principal principal) {
+      Principal principal) throws Exception {
+    ModelAndView vm;
 
-    Category category = categoryService.get(category_id);
-    Project project = new Project();
-    project.setCategory(category);
-    project.setDescription(projectDescription);
-    project.setName(projectName);
-    project.setVideo(video);
-    project.setUser(userService.findUserByEmail(principal.getName()));
-    project = projectService.add(project);
-    ModelAndView vm = new ModelAndView("redirect:/project/" + project.getId());
+    if (projectName.isEmpty()) {
+      vm = new ModelAndView("error_page");
+      throw new Exception("Invalid value in the 'project name'");
+    } else {
+      Category category = categoryService.get(category_id);
+      Project project = new Project();
+      project.setCategory(category);
+      project.setDescription(projectDescription);
+      project.setName(projectName);
+      project.setVideo(video);
+      project.setUser(userService.findUserByEmail(principal.getName()));
+      project = projectService.add(project);
+      if (!file.isEmpty()) {
+        try {
+          byte[] bytes = file.getBytes();
+          Image image = new Image();
+          image.setProject(project);
+          image.setPicture(bytes);
+          imageService.add(image);
+        } catch (Exception e) {
+          throw new RuntimeException("Failed to upload file => " + e.getMessage());
+        }
+      }
+      vm = new ModelAndView("redirect:/project/" + project.getId());
+    }
     return vm;
   }
 
@@ -120,6 +139,7 @@ public class ProjectController {
           @RequestParam("project_id") String project_id,
           @RequestParam("project_description") String projectDescription,
           @RequestParam("project_name") String projectName,
+          @RequestParam("file") MultipartFile file,
           @RequestParam("video_url") String video,
           Principal principal) {
 
@@ -132,6 +152,17 @@ public class ProjectController {
       project.setName(projectName);
       project.setVideo(video);
       project = projectService.update(project);
+      if (!file.isEmpty()) {
+        try {
+          byte[] bytes = file.getBytes();
+          Image image = new Image();
+          image.setProject(project);
+          image.setPicture(bytes);
+          imageService.add(image);
+        } catch (Exception e) {
+          throw new RuntimeException("Failed to upload file => " + e.getMessage());
+        }
+      }
       vm = new ModelAndView("redirect:/project/" + project.getId());
     } else {
       vm = new ModelAndView("redirect:/error");

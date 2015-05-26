@@ -39,7 +39,7 @@
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize"
-                  value="100000"/>
+                  value="1000000"/>
     </bean>
 
     <context:annotation-config/>

@@ -16,7 +16,7 @@
                 <c:when test="${project == null}">
                 <h1>Add project:</h1>
                 <hr>
-                <form name="add_project" action="/project/add" method="post">
+                <form name="add_project" action="/project/add" method="post" enctype="multipart/form-data">
                     <h4>Category:</h4>
                     <select name="category_id" class="form-control">
                         <c:forEach var="category" items="${categories}">
@@ -33,7 +33,10 @@
                     <input type="text" name="project_description"
                            class="form-control" placeholder="Description"
                            width="30%">
-                    <br>
+
+                    <h4>Picture:</h4>
+                        <input type="file" name="file">
+
                     <h4>Video:</h4>
                     <input type="text" name="video_url"
                            class="form-control" placeholder="Link to video"
@@ -43,7 +46,7 @@
                     <h1>Edit project: ${project.name}, id: ${project.id}</h1>
                     <hr>
                     <form name="edit_project" action="/project/edit"
-                          method="post">
+                          method="post" enctype="multipart/form-data">
                         <input type="hidden" name="project_id"
                                value="<c:out value="${project.id}"/>">
                         <h4>Category:</h4>
@@ -66,8 +69,9 @@
                         <input type="text" name="project_description"
                                class="form-control" placeholder="Description"
                                width="30%"
-                               value="<c:out value="${project.description}"/>">
-                        <br>
+                               value="${project.description}">
+                        <h4>Picture:</h4>
+                        <input type="file" name="file">
                         <h4>Video:</h4>
                         <input type="text" name="video_url"
                                class="form-control" placeholder="Link to video"

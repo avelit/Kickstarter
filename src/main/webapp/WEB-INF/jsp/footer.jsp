@@ -2,6 +2,6 @@
 <link href="/resource/css/footer.css" rel="stylesheet">
 <div class="footer" id="footer">
     <%--<div class="container">--%>
-     <h3><center> Kickstarter 2015 (c) </center></h3>
+     <h5><center> JavaStarter 2015 (c) </center></h5>
     <%--</div>--%>
 </div>
