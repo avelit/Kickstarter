@@ -64,7 +64,7 @@
 <hr>
 <dl>
     <c:forEach var="c" items="${categories}">
-                 <dt><a href="/category/<c:out value="${c.id}"/>"><h4><c:out value="${c.name}"/></h4></a></dt>
+                 <dt><a href="/category/${c.id}"><h4><c:out value="${c.name}"/></h4></a></dt>
     </c:forEach>
 </dl>
 </div>
