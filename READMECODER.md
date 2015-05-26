@@ -2,7 +2,7 @@ Kickstarter project
 
 Short documentation.
 
-Project use Spring IoC, MVC, Security @ Hibernate (see)
+Project use Spring IoC, MVC, Security & Hibernate (see settings files)
 
 Project tiers:<br>
 1. DB - Sqlite in test & MySQL in production.<br>
