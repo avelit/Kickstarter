@@ -33,7 +33,7 @@
 
         <c:choose>
             <c:when test="${image == null}">
-                <form method="POST" action="uploadFile" enctype="multipart/form-data">
+                <form method="POST" action="/uploadFile" enctype="multipart/form-data">
                     Add picture to project: <input type="file" name="file"><br/>
                     <input type="hidden" name="project_id" value="<c:out value="${project.id}"/>"/>
                     <input type="submit" value="Upload"> Press here to upload the picture!
