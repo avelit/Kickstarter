@@ -10,16 +10,15 @@
             src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper" id="wrapper">
     <%@include file='header.jsp' %>
+    <div class="container">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
-        <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
         </ol>
 
-        <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <img src="http://mcstore.ru/images/brimg_srchttpfdstarcomfdedatas200810211224573609music-not.gif"
@@ -55,11 +54,12 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    </div>
 
 
 
 
-<div class="col-sm-3">
+<div class="container">
 <h4>Categories</h4>
 <hr>
 <dl>
@@ -67,12 +67,10 @@
                  <dt><a href="/category/<c:out value="${c.id}"/>"><h4><c:out value="${c.name}"/></h4></a></dt>
     </c:forEach>
 </dl>
-<div>
-
-
-
-
 </div>
+</div>
+
 <%@include file='footer.jsp' %>
+
 </body>
 </html>

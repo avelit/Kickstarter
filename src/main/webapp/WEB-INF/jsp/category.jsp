@@ -6,7 +6,7 @@
 	<link href="/resource/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper" id="wrapper">
 <%@include file='header.jsp' %>
 <div class="container">
 <h3>
@@ -33,6 +33,7 @@
 		</c:forEach>
 	</div>
 </div>
+	<div class="push" id="push"></div>
 </div>
 <%@include file='footer.jsp' %>
 </body>
