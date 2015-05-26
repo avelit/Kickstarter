@@ -47,7 +47,7 @@
 
 
     <mvc:resources mapping="/resource/**" location="/resource/"/>
-    <!--<mvc:resources mapping="/WEB-INF/jsp/**" location="/WEB-INF/jsp/"/>-->
+
 
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
