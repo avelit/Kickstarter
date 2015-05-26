@@ -54,7 +54,7 @@ public class CategoryController {
 
   @RequestMapping(value = "/")
   @ResponseBody
-  public ModelAndView showIndex(){
+  public ModelAndView showIndex() {
     ModelAndView vm = new ModelAndView("index");
     vm.addObject("categories", categoryService.findAll());
     return vm;

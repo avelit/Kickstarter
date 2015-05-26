@@ -1,6 +1,5 @@
 package ua.goit.gojava32.kickstarter.dao;
 
-import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;

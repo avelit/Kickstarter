@@ -66,7 +66,7 @@
                         <input type="text" name="project_description"
                                class="form-control" placeholder="Description"
                                width="30%"
-                               value="<c:out value="${project.description}"/>">
+                               value="${project.description}">
                         <br>
                         <h4>Video:</h4>
                         <input type="text" name="video_url"
