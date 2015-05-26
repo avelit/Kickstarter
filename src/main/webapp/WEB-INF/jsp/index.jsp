@@ -4,10 +4,10 @@
 <head>
     <title>Welcome to our website!</title>
     <link href="/resource/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/resource/css/signin.css" rel="stylesheet">
+    <link href="/resource/css/url.css" rel="stylesheet">
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script
-            src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="wrapper" id="wrapper">
@@ -56,18 +56,19 @@
     </div>
     </div>
 
+<br>
 
 
-
-<div class="container">
-<h4>Categories</h4>
-<hr>
-<dl>
-    <c:forEach var="c" items="${categories}">
-                 <dt><a href="/category/${c.id}"><h4><c:out value="${c.name}"/></h4></a></dt>
-    </c:forEach>
-</dl>
-</div>
+<div class="container url">
+    <div class="col-sm-3">
+        <h5><center>Categories</center></h5>
+            <hr>
+                <ul class="nav nav-stacked url">
+                    <c:forEach var="c" items="${categories}">
+                        <li><a href="/category/${c.id}"><h5><center><c:out value="${c.name}"/></center></h5></a></li>
+                    </c:forEach>
+                </ul>
+    </div>
 </div>
 
 <%@include file='footer.jsp' %>

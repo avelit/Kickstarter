@@ -101,28 +101,34 @@ public class ProjectController {
       @RequestParam("project_name") String projectName,
       @RequestParam("file") MultipartFile file,
       @RequestParam("video_url") String video,
-      Principal principal) {
+      Principal principal) throws Exception {
+    ModelAndView vm;
 
-    Category category = categoryService.get(category_id);
-    Project project = new Project();
-    project.setCategory(category);
-    project.setDescription(projectDescription);
-    project.setName(projectName);
-    project.setVideo(video);
-    project.setUser(userService.findUserByEmail(principal.getName()));
-    project = projectService.add(project);
-    if (!file.isEmpty()) {
-      try {
-        byte[] bytes = file.getBytes();
-        Image image = new Image();
-        image.setProject(project);
-        image.setPicture(bytes);
-        imageService.add(image);
-      } catch (Exception e) {
-        throw new RuntimeException("Failed to upload file => " + e.getMessage());
+    if (projectName.isEmpty()) {
+      vm = new ModelAndView("error_page");
+      throw new Exception("Invalid value in the 'project name'");
+    } else {
+      Category category = categoryService.get(category_id);
+      Project project = new Project();
+      project.setCategory(category);
+      project.setDescription(projectDescription);
+      project.setName(projectName);
+      project.setVideo(video);
+      project.setUser(userService.findUserByEmail(principal.getName()));
+      project = projectService.add(project);
+      if (!file.isEmpty()) {
+        try {
+          byte[] bytes = file.getBytes();
+          Image image = new Image();
+          image.setProject(project);
+          image.setPicture(bytes);
+          imageService.add(image);
+        } catch (Exception e) {
+          throw new RuntimeException("Failed to upload file => " + e.getMessage());
+        }
       }
+      vm = new ModelAndView("redirect:/project/" + project.getId());
     }
-    ModelAndView vm = new ModelAndView("redirect:/project/" + project.getId());
     return vm;
   }
 
