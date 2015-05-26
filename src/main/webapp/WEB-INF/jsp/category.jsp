@@ -10,8 +10,6 @@
 <%@include file='header.jsp' %>
 <div class="container">
 <h3>
-  Id: <c:out value="${category.id}"/>
-  <br>
   Category: <c:out value="${category.name}"/>
   <br>
   Description: <c:out value="${category.description}"/>
