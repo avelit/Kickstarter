@@ -42,9 +42,14 @@ public class CategoryController {
   @ResponseBody
   public ModelAndView showCategory(@PathVariable("id") int id){
     Category category = categoryService.get(id);
-    ModelAndView vm = new ModelAndView("category");
-    vm.addObject("category", category);
-    vm.addObject("projects", categoryService.findAllProjects(category));
+    ModelAndView vm;
+    if (category !=null) {
+      vm = new ModelAndView("category");
+      vm.addObject("category", category);
+      vm.addObject("projects", categoryService.findAllProjects(category));
+    } else {
+      vm = new ModelAndView("error_page");
+    }
     return vm;
   }
 

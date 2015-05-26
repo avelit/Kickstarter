@@ -33,17 +33,22 @@ public class ProjectController {
   @ResponseBody
   public ModelAndView showProject(@PathVariable("id") int id, Principal principal) {
     Project project = projectService.get(id);
-    Image image = imageService.getByProjectId(id);
-    ModelAndView vm = new ModelAndView("project");
-    vm.addObject("project", project);
-    vm.addObject("image", image);
-    vm.addObject("category", project.getCategory());
-    vm.addObject("comments", projectService.getProjectComments(project));
-    vm.addObject("blogs", projectService.getProjectBlogPosts(project));
-    if (isOwner(principal, project)) {
-      vm.addObject("showAddBlog", true);
+    ModelAndView vm;
+    if (project !=null) {
+      Image image = imageService.getByProjectId(id);
+      vm = new ModelAndView("project");
+      vm.addObject("project", project);
+      vm.addObject("image", image);
+      vm.addObject("category", project.getCategory());
+      vm.addObject("comments", projectService.getProjectComments(project));
+      vm.addObject("blogs", projectService.getProjectBlogPosts(project));
+      if (isOwner(principal, project)) {
+        vm.addObject("showAddBlog", true);
+      } else {
+        vm.addObject("showAddBlog", false);
+      }
     } else {
-      vm.addObject("showAddBlog", false);
+      vm = new ModelAndView("error_page");
     }
     return vm;
   }
