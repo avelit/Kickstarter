@@ -61,7 +61,7 @@ public class CategoryController {
   }
 
   @ExceptionHandler(Exception.class)
-  public ModelAndView exceptionHndler(Exception ex) {
+  public ModelAndView exceptionHandler(Exception ex) {
     return new ModelAndView("error_page", "error_name", ex.getMessage());
   }
 }

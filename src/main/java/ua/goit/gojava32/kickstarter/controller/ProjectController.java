@@ -58,8 +58,11 @@ public class ProjectController {
 
   @RequestMapping(value = "/project/{id}/delete")
   @ResponseBody
-  public ModelAndView deleteProject(@PathVariable("id") int id, Principal principal){
+  public ModelAndView deleteProject(@PathVariable("id") int id, Principal principal) throws Exception {
     Project project = projectService.get(id);
+    if (project == null) {
+      throw new Exception("No such project.");
+    }
     ModelAndView vm;
     if (isOwner(principal, project)) {
       project = projectService.delete(project);
@@ -72,7 +75,7 @@ public class ProjectController {
 
   @RequestMapping(value = "/project/{id}/edit")
   @ResponseBody
-  public ModelAndView editProject(@PathVariable("id") int id, Principal principal) throws Exception{
+  public ModelAndView editProject(@PathVariable("id") int id, Principal principal) throws Exception {
     Project project = projectService.get(id);
     if (project == null) {
       throw new Exception("No such project.");
@@ -137,7 +140,7 @@ public class ProjectController {
   }
 
   @ExceptionHandler(Exception.class)
-  public ModelAndView exceptionHndler(Exception ex) {
+  public ModelAndView exceptionHandler(Exception ex) {
     return new ModelAndView("error_page", "error_name", ex.getMessage());
   }
 
