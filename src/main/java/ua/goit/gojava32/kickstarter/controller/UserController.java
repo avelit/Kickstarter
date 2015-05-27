@@ -28,7 +28,7 @@ public class UserController {
   @RequestMapping(value = {"/login","/login_page"}, method = RequestMethod.GET)
   @ResponseBody
   public ModelAndView login(){
-    return new ModelAndView("arch/login_page");
+    return new ModelAndView("login_page");
   }
 
   @RequestMapping(value = "/registration", method = RequestMethod.POST)
@@ -52,10 +52,10 @@ public class UserController {
       String domain = request.getRequestURL().toString();
       domain = domain.substring(0, domain.length() - 13);///registration
       SendMail.send(email, "press link below for activating " + name, domain + "/activate?token=" + md5password + "&email=" + email);
-      vm = new ModelAndView("arch/registration");
+      vm = new ModelAndView("registration");
       vm.addObject("text_failed", "Check you mail for activating.");
     } else {
-      vm = new ModelAndView("arch/registration");
+      vm = new ModelAndView("registration");
       vm.addObject("text_failed", "User with email " + email + " exist.");
     }
     return vm;
@@ -64,7 +64,7 @@ public class UserController {
   @RequestMapping(value = "/registration", method = RequestMethod.GET)
   @ResponseBody
   public ModelAndView registration(){
-    return new ModelAndView("arch/registration");
+    return new ModelAndView("registration");
   }
 
   @RequestMapping(value = "/activate", method = RequestMethod.GET)
@@ -72,7 +72,7 @@ public class UserController {
   public ModelAndView activate(@RequestParam("email") String email, @RequestParam("token") String token){
 
     User user = userService.findUserByEmail(email);
-    ModelAndView vm = new ModelAndView("arch/login_page");
+    ModelAndView vm = new ModelAndView("login_page");
     if (user != null && user.getPassword().equals(token)){
       user.setIsActive(true);
       userService.update(user);
@@ -86,7 +86,7 @@ public class UserController {
   @RequestMapping(value = "/profile", method = RequestMethod.GET)
   @ResponseBody
   public ModelAndView profile(HttpServletRequest request, Principal principal){
-    ModelAndView mv = new ModelAndView("arch/user_profile");
+    ModelAndView mv = new ModelAndView("user_profile");
     User user = userService.findUserByEmail(principal.getName());
     mv.addObject("email", principal.getName());
     mv.addObject("token",DigestUtils.md5Hex(user.getPassword()));

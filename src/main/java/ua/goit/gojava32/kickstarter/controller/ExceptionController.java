@@ -8,6 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class ExceptionController {
   @ExceptionHandler(Exception.class)
   public ModelAndView exceptionHandler(Exception ex) {
-    return new ModelAndView("arch/error_page", "error_name", ex.getMessage());
+    return new ModelAndView("error_page", "error_name", ex.getMessage());
   }
 }

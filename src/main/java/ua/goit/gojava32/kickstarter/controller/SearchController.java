@@ -21,7 +21,7 @@ public class SearchController {
   @RequestMapping(value = "/search", method = RequestMethod.GET)
   @ResponseBody
   public ModelAndView search(@RequestParam("search_text") String searchText) {
-    ModelAndView vm = new ModelAndView("arch/search");
+    ModelAndView vm = new ModelAndView("search");
     vm.addObject("resultCategoriesSearch", categoryService.findFrom(searchText));
     vm.addObject("resultProjectsSearch", projectService.findFrom(searchText));
     return vm;

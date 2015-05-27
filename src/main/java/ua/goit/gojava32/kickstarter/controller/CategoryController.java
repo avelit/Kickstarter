@@ -58,14 +58,14 @@ public class CategoryController {
   @RequestMapping(value = "/")
   @ResponseBody
   public ModelAndView showIndex() {
-    ModelAndView vm = new ModelAndView("arch/index");
+    ModelAndView vm = new ModelAndView("index");
     vm.addObject("categories", categoryService.findAll());
     return vm;
   }
 
   @ExceptionHandler(Exception.class)
   public ModelAndView exceptionHandler(Exception ex) {
-    return new ModelAndView("arch/error_page", "error_name", ex.getMessage());
+    return new ModelAndView("error_page", "error_name", ex.getMessage());
   }
 }
 

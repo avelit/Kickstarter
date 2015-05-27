@@ -19,7 +19,7 @@ public class AdminPageController {
   @RequestMapping(value = "/admin/edit_category", method = RequestMethod.GET)
   @ResponseBody
   public ModelAndView editCategory() {
-    ModelAndView vm = new ModelAndView("arch/admin_edit_category");
+    ModelAndView vm = new ModelAndView("admin_edit_category");
     return vm;
   }
 
@@ -27,7 +27,7 @@ public class AdminPageController {
   @ResponseBody
   public ModelAndView editProjects() {
     List<Category> categories = categoryService.findAll();
-    ModelAndView vm = new ModelAndView("arch/admin_edit_project");
+    ModelAndView vm = new ModelAndView("admin_edit_project");
     vm.addObject("categories", categories);
     return vm;
   }

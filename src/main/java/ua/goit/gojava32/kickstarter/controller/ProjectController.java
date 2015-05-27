@@ -38,7 +38,7 @@ public class ProjectController {
     if (project == null) {
       throw new Exception("No such project.");
     }
-    vm = new ModelAndView("arch/project");
+    vm = new ModelAndView("project");
     vm.addObject("project", project);
     Image image = imageService.getByProjectId(id);
     vm.addObject("image", image != null);
@@ -83,7 +83,7 @@ public class ProjectController {
     }
     ModelAndView vm;
     if (isOwner(principal, project)) {
-      vm = new ModelAndView("arch/admin_edit_project");
+      vm = new ModelAndView("admin_edit_project");
       List<Category> categories = categoryService.findAll();
       vm.addObject("categories", categories);
       vm.addObject("project",project);
@@ -105,7 +105,7 @@ public class ProjectController {
     ModelAndView vm;
 
     if (projectName.isEmpty()) {
-      vm = new ModelAndView("arch/error_page");
+      vm = new ModelAndView("error_page");
       throw new Exception("Invalid value in the 'project name'");
     } else {
       Category category = categoryService.get(category_id);
@@ -172,7 +172,7 @@ public class ProjectController {
 
   @ExceptionHandler(Exception.class)
   public ModelAndView exceptionHandler(Exception ex) {
-    return new ModelAndView("arch/error_page", "error_name", ex.getMessage());
+    return new ModelAndView("error_page", "error_name", ex.getMessage());
   }
 
 }

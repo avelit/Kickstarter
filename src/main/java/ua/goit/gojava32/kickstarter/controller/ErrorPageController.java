@@ -11,7 +11,7 @@ public class ErrorPageController {
   @RequestMapping(value = "/error")
   @ResponseBody
   public ModelAndView error(HttpServletRequest request) {
-    ModelAndView mv = new ModelAndView("arch/error_page");
+    ModelAndView mv = new ModelAndView("error_page");
     mv.addObject("error_name", "404 not found");
     return mv;
   }

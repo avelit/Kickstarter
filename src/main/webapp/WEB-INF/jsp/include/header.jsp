@@ -1,3 +1,4 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <header>
   <div class="navbar navbar-default navbar-static-top">
     <div class="container">
@@ -7,7 +8,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html"><span>Go</span>java 3.2</a>
+        <a class="navbar-brand" href="/"><span>Go</span>java 3.2</a>
       </div>
       <div class="navbar-collapse collapse ">
         <ul class="nav navbar-nav">
