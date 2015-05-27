@@ -23,7 +23,7 @@ public class PasswordRestoreController {
     @RequestMapping(value = "/forgot_password", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView redirect() {
-        ModelAndView vm = new ModelAndView("forgot_password");
+        ModelAndView vm = new ModelAndView("arch/forgot_password");
         return vm;
     }
 
@@ -33,7 +33,7 @@ public class PasswordRestoreController {
             @RequestParam("search_mail") String searchMail) {
         String domain = request.getRequestURL().toString();
         domain = domain.substring(0, domain.length() - 21);
-        ModelAndView vm = new ModelAndView("search_by_email_page");
+        ModelAndView vm = new ModelAndView("arch/search_by_email_page");
         User user = userService.findUserByEmail(searchMail);
         if (user != null){
             vm.addObject("result_search", "Check you e-mail for reset you password");
@@ -54,11 +54,11 @@ public class PasswordRestoreController {
         ModelAndView vm;
         String md5password = DigestUtils.md5Hex(user.getPassword());
         if (user != null && md5password.equals(token)){
-            vm = new ModelAndView("change_password");
+            vm = new ModelAndView("arch/change_password");
             vm.addObject("token",token);
             vm.addObject("email",email);
         } else {
-            vm = new ModelAndView("error_page");
+            vm = new ModelAndView("arch/error_page");
         }
         return vm;
     }
@@ -75,12 +75,12 @@ public class PasswordRestoreController {
             if (user != null && DigestUtils.md5Hex(user.getPassword()).equals(token)){
                 user.setPassword(DigestUtils.md5Hex(password2));
                 userService.update(user);
-                vm = new ModelAndView("login_page");
+                vm = new ModelAndView("arch/login_page");
             } else {
-                vm = new ModelAndView("error_page");
+                vm = new ModelAndView("arch/error_page");
             }
         } else {
-            vm = new ModelAndView("change_password");
+            vm = new ModelAndView("arch/change_password");
             vm.addObject("email", email);
             vm.addObject("token", token);
             vm.addObject("err", "Entered passwords are not identical");

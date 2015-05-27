@@ -1,6 +1,5 @@
 package ua.goit.gojava32.kickstarter.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
-import ua.goit.gojava32.kickstarter.service.CategoryServiceImpl;
 
 @Controller
 public class CategoryController {
@@ -23,7 +21,7 @@ public class CategoryController {
       @RequestParam("category_description") String description) throws Exception {
     ModelAndView vm;
     if (categoryName.isEmpty()) {
-      vm = new ModelAndView("error_page");
+      vm = new ModelAndView("arch/error_page");
       throw new Exception("Invalid value in the 'category name'");
     } else {
       categoryService.add(categoryName, description);
@@ -38,7 +36,7 @@ public class CategoryController {
   public ModelAndView listAllCategories(){
     Logger logger = Logger.getLogger(this.getClass());
     logger.trace("listAllCategories");
-    ModelAndView vm = new ModelAndView("categories");
+    ModelAndView vm = new ModelAndView("arch/categories");
     vm.addObject("categories", categoryService.findAll());
     return vm;
   }
@@ -51,7 +49,7 @@ public class CategoryController {
     if (category == null) {
       throw new Exception("No such category.");
     }
-    vm = new ModelAndView("category");
+    vm = new ModelAndView("arch/category");
     vm.addObject("category", category);
     vm.addObject("projects", categoryService.findAllProjects(category));
     return vm;
@@ -60,14 +58,14 @@ public class CategoryController {
   @RequestMapping(value = "/")
   @ResponseBody
   public ModelAndView showIndex() {
-    ModelAndView vm = new ModelAndView("index");
+    ModelAndView vm = new ModelAndView("arch/index");
     vm.addObject("categories", categoryService.findAll());
     return vm;
   }
 
   @ExceptionHandler(Exception.class)
   public ModelAndView exceptionHandler(Exception ex) {
-    return new ModelAndView("error_page", "error_name", ex.getMessage());
+    return new ModelAndView("arch/error_page", "error_name", ex.getMessage());
   }
 }
 
