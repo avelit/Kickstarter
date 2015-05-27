@@ -20,20 +20,8 @@
         </h3>
 
         <div class="row">
-            <c:forEach var="c" items="${projects}">
-                <div class="col-md-2">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <div class="caption">
-                                <h3>
-                                    <center>
-                                        <a href="/project/<c:out value="${c.id}"/>"><c:out value="${c.name}"/></a>
-                                    </center>
-                                </h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+            <c:forEach var="project" items="${projects}">
+                <%@include file='include/project_box.jsp' %>
             </c:forEach>
         </div>
     </div>

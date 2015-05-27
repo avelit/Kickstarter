@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,31 +8,30 @@
 <body>
 <div class="wrapper">
     <%@include file='include/header.jsp' %>
-<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+                <form class="form-signin" action="/j_spring_security_check" method="post">
+                    <h2 class="form-signin-heading">Please sign in:</h2>
+                    <input name="j_username" type="email" class="form-control" placeholder="Email address" required
+                           autofocus>
+                    <input name="j_password" type="password" class="form-control" placeholder="Password" required>
 
-    <form class="main-header-search" method="post" action="search">
-        <div class="form-group form-group-icon-left">
-            <i class="fa fa-search input-icon"></i>
-            <input name="search_text" type="text" class="form-control">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="_spring_security_remember_me"
+                                   name="_spring_security_remember_me"> Remember me
+                        </label>
+                    </div>
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    <a class="btn btn-warning btn-lg btn-primary btn-block" href="/forgot_password">Forgot password</a>
+
+                    <h3 class="alert"><c:out value="${text_failed}"/></h3>
+                </form>
+            </div>
         </div>
-    </form>
-
-    <form class="form-signin" action="/j_spring_security_check" method="post">
-        <h2 class="form-signin-heading">Please sign in:</h2>
-        <input name="j_username" type="email" class="form-control" placeholder="Email address" required autofocus>
-        <input name="j_password" type="password" class="form-control" placeholder="Password" required>
-
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" id="_spring_security_remember_me" name = "_spring_security_remember_me"> Remember me
-            </label>
-        </div>
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <a class="btn btn-warning btn-lg btn-primary btn-block" href="/forgot_password">Forgot password</a>
-        <h3 class="alert"><c:out value="${text_failed}"/></h3>
-    </form>
-</div>
+    </div>
 </div>
 <%@include file='include/footer.jsp' %>
 </body>

@@ -5,37 +5,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Empty</title>
-  <%@include file='include/head.jsp' %>
+    <title>Empty</title>
+    <%@include file='include/head.jsp' %>
 </head>
 <body>
 <div id="wrapper">
-  <%@include file='include/header.jsp' %>
+    <%@include file='include/header.jsp' %>
     <div class="container">
-      <%-- CONTENT --%>
-          <div class="row">
-              <c:forEach var="c" items="${categories}">
-                  <div class="col-md-4">
-                      <div class="thumbnail">
-                          <a href="#">
-                              <div class="caption">
-                                  <h3>
-                                      <center>
-                                          <a href="/category/<c:out value="${c.id}"/>"><c:out value="${c.name}"/></a>
-                                      </center>
-                                  </h3>
-                              </div>
-                          </a>
-                      </div>
-                  </div>
-              </c:forEach>
-          </div>
+        <div class="row">
+
+            <%-- CONTENT --%>
+            <%--<div class="col-sm-6 col-md-3">--%>
+            <c:forEach var="c" items="${categories}">
+                <%@include file='include/category_box.jsp' %>
+            </c:forEach>
+        </div>
     </div>
-      <%-- /CONTENT --%>
-    </div>
-<%@include file='include/footer.jsp' %>
+    <%-- /CONTENT --%>
+    <%@include file='include/footer.jsp' %>
 </div>
 <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
- <%@include file='include/bottom_scripts.jsp' %>
- </body>
+<%@include file='include/bottom_scripts.jsp' %>
+</body>
 </html>

@@ -33,8 +33,6 @@
                          <h5 class="widgetheading">Latest posts</h5>
                          <ul class="link-list">
                               <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                              <li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
-                              <li><a href="#">Natus error sit voluptatem accusantium doloremque</a></li>
                          </ul>
                     </div>
                </div>
@@ -56,7 +54,7 @@
                     <div class="col-lg-6">
                          <div class="copyright">
                               <p>
-                                   <span>&copy; GoIt 2015 </span><a href="http://goit.ua" target="_blank">GoIt</a>
+                                   <span>&copy; <a href="http://goit.com.ua" target="_blank">GoIt</a> 2015 </span>
                               </p>
                          </div>
                     </div>
