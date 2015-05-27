@@ -7,6 +7,8 @@ import javax.persistence.*;
 @Table (name = "categories")
 public class Category {
 
+  private static final int MAX_SHORT_NAME_LENGTH = 15;
+  private static final int MAX_SHORT_DESC_LENGTH = 15;
   @Id
   @GeneratedValue (strategy = GenerationType.AUTO)
   private Integer id;
@@ -57,4 +59,21 @@ public class Category {
     return " id=" + id + ",name=" + name + ",description=" + description;
   }
 
+
+
+  public String getShortName() {
+    String res = name;
+    if(name.length() >= MAX_SHORT_NAME_LENGTH){
+       res = name.substring(0, MAX_SHORT_NAME_LENGTH - 3) + "...";
+    }
+    return res;
+  }
+
+  public String getShortDescription() {
+    String res = description;
+    if(description.length() >= MAX_SHORT_DESC_LENGTH){
+      res = description.substring(0, MAX_SHORT_DESC_LENGTH - 3) + "...";
+    }
+    return res;
+  }
 }

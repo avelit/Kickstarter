@@ -13,21 +13,21 @@
     <%@include file='include/header.jsp' %>
     <div class="container">
         <%-- CONTENT --%>
-            <%@include file='include/slide_bar.jsp' %>
+            <%--<%@include file='include/slide_bar.jsp' %>--%>
 
             <div class="row">
                 <div class="col-md-2">
                     <div class="container url">
                         <div class="col-sm-3">
                             <h5>
-                                <center><b>Categories</b></center>
+                                <b><a href="/category">Categories</a></b>
                             </h5>
                             <hr>
                             <ul class="nav nav-stacked url">
                                 <c:forEach var="c" items="${categories}">
                                     <li><a href="/category/${c.id}">
                                         <h5>
-                                            <center><c:out value="${c.name}"/></center>
+                                            <center><c:out value="${c.shortName}"/></center>
                                         </h5>
                                     </a></li>
                                 </c:forEach>
