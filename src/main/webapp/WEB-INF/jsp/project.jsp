@@ -90,11 +90,9 @@
                     </table>
                     <div>
                         <form action="/comment/add" method="post">
-                            <input type="text" name="text"/>
+                            <input type="text" name="text" required/>
                             <input type="hidden" name="project_id"
                                    value="<c:out value="${project.id}"/>"/>
-                            <input type="hidden" name="category"
-                                   value="<c:out value="${category_name}"/>"/>
                             <input class="btn btn-default" type="submit" value="add comment"/>
                         </form>
                     </div>
@@ -116,12 +114,9 @@
                     <div>
                         <c:if test="${showAddBlog}">
                             <form action="/blogpost/add" method="post">
-                                <input type="text" name="text"/>
+                                <input type="text" name="text" required/>
                                 <input type="hidden" name="project"
                                        value="<c:out value="${project.name}"/>"/>
-                                <input
-                                        type="hidden" name="category"
-                                        value="<c:out value="${category_name}"/>"/>
                                 <input type="hidden" name="project_id"
                                        value="<c:out value="${project.id}"/>"/>
                                 <input
