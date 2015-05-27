@@ -8,6 +8,14 @@
 <div class="wrapper">
     <%@include file='include/header.jsp' %>
 <div class="container">
+
+    <form class="main-header-search" method="post" action="search">
+        <div class="form-group form-group-icon-left">
+            <i class="fa fa-search input-icon"></i>
+            <input name="search_text" type="text" class="form-control">
+        </div>
+    </form>
+
     <form class="form-signin" action="/j_spring_security_check" method="post">
         <h2 class="form-signin-heading">Please sign in:</h2>
         <input name="j_username" type="email" class="form-control" placeholder="Email address" required autofocus>

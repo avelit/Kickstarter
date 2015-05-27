@@ -21,7 +21,7 @@ public class CategoryController {
       @RequestParam("category_description") String description) throws Exception {
     ModelAndView vm;
     if (categoryName.isEmpty()) {
-      vm = new ModelAndView("arch/error_page");
+      vm = new ModelAndView("error_page");
       throw new Exception("Invalid value in the 'category name'");
     } else {
       categoryService.add(categoryName, description);
@@ -36,7 +36,7 @@ public class CategoryController {
   public ModelAndView listAllCategories(){
     Logger logger = Logger.getLogger(this.getClass());
     logger.trace("listAllCategories");
-    ModelAndView vm = new ModelAndView("arch/categories");
+    ModelAndView vm = new ModelAndView("categories");
     vm.addObject("categories", categoryService.findAll());
     return vm;
   }
@@ -49,7 +49,7 @@ public class CategoryController {
     if (category == null) {
       throw new Exception("No such category.");
     }
-    vm = new ModelAndView("arch/category");
+    vm = new ModelAndView("category");
     vm.addObject("category", category);
     vm.addObject("projects", categoryService.findAllProjects(category));
     return vm;
