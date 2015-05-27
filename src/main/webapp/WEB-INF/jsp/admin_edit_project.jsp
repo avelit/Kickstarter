@@ -64,7 +64,7 @@
                         <input type="text" name="project_name"
                                class="form-control"
                                placeholder="Name" width="30%"
-                               value="<c:out value="${project.name}"/> required">
+                               value="<c:out value="${project.name}"/>" required>
                         <h4>Description:</h4>
                         <input type="text" name="project_description"
                                class="form-control" placeholder="Description"
