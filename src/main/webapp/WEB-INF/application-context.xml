@@ -39,16 +39,14 @@
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize"
-                  value="100000"/>
+                  value="1000000"/>
     </bean>
 
     <context:annotation-config/>
     <context:component-scan base-package="ua.goit.gojava32.kickstarter.*"/>
 
-    <mvc:resources mapping="/css/**" location="/css/"/>
-    <mvc:resources mapping="/css/font/**" location="/css/fonts/"/>
+
     <mvc:resources mapping="/resource/**" location="/resource/"/>
-    <mvc:resources mapping="/js/**" location="/js/"/>
 
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">

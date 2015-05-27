@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Edit category</title>
-    <link href="/css/signin.css" rel="stylesheet">
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resource/css/signin.css" rel="stylesheet">
+    <link href="/resource/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="wrapper">
@@ -20,7 +20,7 @@
                         <input type="text" name="category_name"
                                class="form-control"
                                placeholder="Name"
-                               width="30%">
+                               width="30%" required>
                         <h4>Description:</h4>
                         <input type="text" name="category_description"
                                class="form-control" placeholder="Description"

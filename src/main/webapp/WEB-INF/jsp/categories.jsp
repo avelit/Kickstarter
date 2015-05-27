@@ -3,7 +3,7 @@
 <html>
 <head>
   <title>Discover Projects</title>
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/resource/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="wrapper">
@@ -16,7 +16,9 @@
             <a href="#">
               <div class="caption">
                 <h3>
+                <center>
                   <a href="/category/<c:out value="${c.id}"/>"><c:out value="${c.name}"/></a>
+                </center>
                 </h3>
               </div>
             </a>

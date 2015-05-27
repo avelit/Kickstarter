@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
+import ua.goit.gojava32.kickstarter.service.CategoryServiceImpl;
 
 @Controller
 public class CategoryController {
@@ -19,10 +20,15 @@ public class CategoryController {
   @ResponseBody
   public ModelAndView addCategory(
       @RequestParam("category_name") String categoryName,
-      @RequestParam("category_description") String description) {
-
-    categoryService.add(categoryName, description);
-    ModelAndView vm = new ModelAndView("redirect:/category");
+      @RequestParam("category_description") String description) throws Exception {
+    ModelAndView vm;
+    if (categoryName.isEmpty()) {
+      vm = new ModelAndView("error_page");
+      throw new Exception("Invalid value in the 'category name'");
+    } else {
+      categoryService.add(categoryName, description);
+      vm = new ModelAndView("redirect:/category");
+    }
     return vm;
   }
 
@@ -39,9 +45,13 @@ public class CategoryController {
 
   @RequestMapping(value = "/category/{id}")
   @ResponseBody
-  public ModelAndView showCategory(@PathVariable("id") int id){
+  public ModelAndView showCategory(@PathVariable("id") int id) throws Exception {
     Category category = categoryService.get(id);
-    ModelAndView vm = new ModelAndView("category");
+    ModelAndView vm;
+    if (category == null) {
+      throw new Exception("No such category.");
+    }
+    vm = new ModelAndView("category");
     vm.addObject("category", category);
     vm.addObject("projects", categoryService.findAllProjects(category));
     return vm;
@@ -49,10 +59,15 @@ public class CategoryController {
 
   @RequestMapping(value = "/")
   @ResponseBody
-  public ModelAndView showIndex(){
+  public ModelAndView showIndex() {
     ModelAndView vm = new ModelAndView("index");
+    vm.addObject("categories", categoryService.findAll());
     return vm;
   }
 
+  @ExceptionHandler(Exception.class)
+  public ModelAndView exceptionHandler(Exception ex) {
+    return new ModelAndView("error_page", "error_name", ex.getMessage());
+  }
 }
 

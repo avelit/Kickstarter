@@ -3,8 +3,8 @@
 <html>
 <head>
     <title>Edit project</title>
-    <link href="/css/signin.css" rel="stylesheet">
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resource/css/signin.css" rel="stylesheet">
+    <link href="/resource/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="wrapper">
@@ -16,7 +16,7 @@
                 <c:when test="${project == null}">
                 <h1>Add project:</h1>
                 <hr>
-                <form name="add_project" action="/project/add" method="post">
+                <form name="add_project" action="/project/add" method="post" enctype="multipart/form-data">
                     <h4>Category:</h4>
                     <select name="category_id" class="form-control">
                         <c:forEach var="category" items="${categories}">
@@ -27,13 +27,16 @@
 
                     <h4>Project name: </h4>
                     <input type="text" name="project_name" class="form-control"
-                           placeholder="Name" width="30%">
+                           placeholder="Name" width="30%" required>
 
                     <h4>Description:</h4>
                     <input type="text" name="project_description"
                            class="form-control" placeholder="Description"
                            width="30%">
-                    <br>
+
+                    <h4>Picture:</h4>
+                        <input type="file" name="file">
+
                     <h4>Video:</h4>
                     <input type="text" name="video_url"
                            class="form-control" placeholder="Link to video"
@@ -43,9 +46,9 @@
                     <h1>Edit project: ${project.name}, id: ${project.id}</h1>
                     <hr>
                     <form name="edit_project" action="/project/edit"
-                          method="post">
+                          method="post" enctype="multipart/form-data">
                         <input type="hidden" name="project_id"
-                               value="<c:out value="${project.id}"/>">
+                               value="<c:out value="${project.id}" />">
                         <h4>Category:</h4>
                         <select name="category_id" class="form-control">
                             <option value="<c:out value="${project.category.id}" />">
@@ -61,13 +64,14 @@
                         <input type="text" name="project_name"
                                class="form-control"
                                placeholder="Name" width="30%"
-                               value="<c:out value="${project.name}"/>">
+                               value="<c:out value="${project.name}"/> required">
                         <h4>Description:</h4>
                         <input type="text" name="project_description"
                                class="form-control" placeholder="Description"
                                width="30%"
-                               value="<c:out value="${project.description}"/>">
-                        <br>
+                               value="${project.description}">
+                        <h4>Picture:</h4>
+                        <input type="file" name="file">
                         <h4>Video:</h4>
                         <input type="text" name="video_url"
                                class="form-control" placeholder="Link to video"

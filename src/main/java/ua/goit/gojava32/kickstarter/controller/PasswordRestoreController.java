@@ -39,14 +39,14 @@ public class PasswordRestoreController {
             vm.addObject("result_search", "Check you e-mail for reset you password");
             String username = user.getUsername();
             String md5password = DigestUtils.md5Hex(user.getPassword());
-            SendMail.send(searchMail, "press link below for restore password " + username, domain + "/restore?token=" + md5password + "&email=" + searchMail);
+            SendMail.send(searchMail, "press link below for restore password " + username, domain + "/change_password?token=" + md5password + "&email=" + searchMail);
         } else {
             vm.addObject("result_search", "Can't find that email, sorry.");
         }
         return vm;
     }
 
-    @RequestMapping(value = "/restore", method = RequestMethod.GET)
+    @RequestMapping(value = "/change_password", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView restore(@RequestParam("email") String email, @RequestParam("token") String token){
 
@@ -54,7 +54,7 @@ public class PasswordRestoreController {
         ModelAndView vm;
         String md5password = DigestUtils.md5Hex(user.getPassword());
         if (user != null && md5password.equals(token)){
-            vm = new ModelAndView("restore_password");
+            vm = new ModelAndView("change_password");
             vm.addObject("token",token);
             vm.addObject("email",email);
         } else {
@@ -80,7 +80,7 @@ public class PasswordRestoreController {
                 vm = new ModelAndView("error_page");
             }
         } else {
-            vm = new ModelAndView("restore_password");
+            vm = new ModelAndView("change_password");
             vm.addObject("email", email);
             vm.addObject("token", token);
             vm.addObject("err", "Entered passwords are not identical");

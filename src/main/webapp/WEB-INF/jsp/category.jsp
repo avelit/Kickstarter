@@ -3,15 +3,13 @@
 <html>
 <head>
     <title><c:out value="${category.name}"/></title>
-	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/resource/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper" id="wrapper">
 <%@include file='header.jsp' %>
 <div class="container">
 <h3>
-  Id: <c:out value="${category.id}"/>
-  <br>
   Category: <c:out value="${category.name}"/>
   <br>
   Description: <c:out value="${category.description}"/>
@@ -22,8 +20,9 @@
 				<div class="thumbnail">
 					<a href="#">
 						<div class="caption">
-							<h3>
+							<h3><center>
 								<a href="/project/<c:out value="${c.id}"/>" ><c:out value="${c.name}" /></a>
+								</center>
 							</h3>
 						</div>
 					</a>
@@ -32,6 +31,7 @@
 		</c:forEach>
 	</div>
 </div>
+	<div class="push" id="push"></div>
 </div>
 <%@include file='footer.jsp' %>
 </body>
