@@ -2,27 +2,29 @@ Kickstarter project
 
 Short documentation.
 
-Project use Spring IoC, MVC, Security & Hibernate (see settings files)
+Project uses Spring IoC, Spring MVC, Spring Security, ORM Hibernate frameworks. Configuration for these frameworks is provided in the files "application-context.xml", "spring-security.xml".
 
-Project tiers:<br>
-1. DB - Sqlite in test & MySQL in production.<br>
-2. DAO - package dao<br>
-3. Business logic - package service<br>
-4. UI - jsp`s<br>
-5. Controllers - package controller<br>
+Project components:<br>
+1. DB - SQLite for tests, MySQL for production version. Dialect used - MySQL.<br>
+2. DAO - package "dao".<br>
+3. Model - package "model".<br>
+4. Controllers - package "controller".<br>
+5. Business logic - package "service".<br>
+6. UI - JSPs.<br>
+7. Integration and Unit tests - package "test".<br>
 
-Spring create connection pool bean & give it to session factory. Transaction manager receive session factory.
-Transactions are created by annotations.
-Beans are created by annotations (@Repository, @Service, @Component).
-Beans are injected by annotations.
-Controllers are mapped by annotations.
+During installation of the project, integration test creates the database and all the necessary tables. Several test categories and projects are put in the database after the creation for test purposes. In case of reinstalling the application, all tables in the database are dropped.
 
-User send request to Spring. Spring resolve it via controllers (-service (-dao)) (if needed), create response and send it back.
+Spring IoC, Spring MVC and ORM Hibernate frameworks are configured to work using annotations (@Repository for DAO, @Service for Services, @Controller for Controllers, @Entity for Model items). All Spring beans are singletons, injected using the annotation @Autowired.
 
-Spring use ORM Hibernate.
-Hibernate use annotations in model package & operations in dao package.
-All class in model have own table in database & dao & service class
+All classes provided in the package "model" have their table represenation in the database. There are also specific DAO, Service and Controller classes for each such class.
 
-Security resolve by Spring security filter.
+Connection pool and session factory are created by Spring and used by DAO classes.
 
-jsp`s use bootstrap themes.
+All requests from user are handled by the Spring DispatcherServlet, and then redirected to the required controller. Controllers return ModelAndView objects with the reference to the appropriate JSP page, and additional prarmeters (if needed).
+
+All security issues (log in / log out, remembering the password) are resolved by the Spring security filter.
+
+JSPs use Bootstrap themes.
+
+All logs are traced using Log4J framework. All log information is displayed on the console and copied to file "logging.log"

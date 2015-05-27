@@ -27,7 +27,7 @@
 
                     <h4>Project name: </h4>
                     <input type="text" name="project_name" class="form-control"
-                           placeholder="Name" width="30%">
+                           placeholder="Name" width="30%" required>
 
                     <h4>Description:</h4>
                     <input type="text" name="project_description"
@@ -48,7 +48,7 @@
                     <form name="edit_project" action="/project/edit"
                           method="post" enctype="multipart/form-data">
                         <input type="hidden" name="project_id"
-                               value="<c:out value="${project.id}"/>">
+                               value="<c:out value="${project.id}" />">
                         <h4>Category:</h4>
                         <select name="category_id" class="form-control">
                             <option value="<c:out value="${project.category.id}" />">
@@ -64,7 +64,7 @@
                         <input type="text" name="project_name"
                                class="form-control"
                                placeholder="Name" width="30%"
-                               value="<c:out value="${project.name}"/>">
+                               value="<c:out value="${project.name}"/>" required>
                         <h4>Description:</h4>
                         <input type="text" name="project_description"
                                class="form-control" placeholder="Description"
