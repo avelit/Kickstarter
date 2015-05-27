@@ -8,17 +8,12 @@
 <body>
 <div id="wrapper">
   <%@include file='include/header.jsp' %>
+    <div class="container">
+      <%-- CONTENT --%>
 
-
-
-  <%-- CONTENT --%>
-
-
-
-
-  <%-- /CONTENT --%>
-
-  <%@include file='include/footer.jsp' %>
+      <%-- /CONTENT --%>
+    </div>
+<%@include file='include/footer.jsp' %>
 </div>
 <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
  <%@include file='include/bottom_scripts.jsp' %>

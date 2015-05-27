@@ -6,23 +6,24 @@
     <%@include file='include/head.jsp' %>
 </head>
 <body>
-<p id="wrapper">
+<div id="wrapper">
     <%@include file='include/header.jsp' %>
-    < id="container">
+    <div id="container">
 
 
     <%-- CONTENT --%>
 
 
-<p>
+    <p>
 
-<h1>Sorry, something went wrong ;(</h1></p>
-<p>
+    <h2>Sorry, something went wrong ;(</h2>
+    </p>
+    <p>
 
-<h2>${error_name} </h2></p>
+    <h1>${error_name} </h1></p>
 
 
-<%-- /CONTENT --%>
+    <%-- /CONTENT --%>
 </div>
 <%@include file='include/footer.jsp' %>
 </div>
