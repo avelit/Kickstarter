@@ -10,6 +10,13 @@
         </button>
         <a class="navbar-brand" href="/"><span>Go</span>java 3.2</a>
       </div>
+      <form class="navbar-form navbar-left" role="search" action="/search">
+        <div class="form-group">
+          <input name="search_text" type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+      </form>
+
       <div class="navbar-collapse collapse ">
         <ul class="nav navbar-nav">
 
