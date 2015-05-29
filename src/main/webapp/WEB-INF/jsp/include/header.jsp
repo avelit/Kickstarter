@@ -2,10 +2,10 @@
 <header>
     <div class="navbar navbar-default navbar-static-top">
         <div class="container">
-            <div class="col-lg-2">
+            <div class="col-lg-1">
                 <a class="navbar-brand" href="/"><span>Go</span>java 3.2</a>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-4">
                 <form class="navbar-form" role="search"
                       action="/search">
                     <input name="search_text" type="text"
@@ -14,7 +14,7 @@
                     </button>
                 </form>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-7">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">Home</a></li>
                     <li class="active"><a href="/category">Discover</a></li>
