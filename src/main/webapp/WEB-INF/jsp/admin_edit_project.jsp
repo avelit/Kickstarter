@@ -7,6 +7,30 @@
 <head>
   <title>Empty</title>
   <%@include file='include/head.jsp' %>
+
+    <%--TinyMCE--%>
+    <script type="text/javascript" src="/resource/js/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea",
+            theme: "modern",
+            plugins: [
+                "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars code fullscreen",
+                "insertdatetime media nonbreaking save table contextmenu directionality",
+                "emoticons template paste textcolor colorpicker textpattern"
+            ],
+            toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            toolbar2: "print preview media | forecolor backcolor emoticons",
+            image_advtab: true,
+            templates: [
+                {title: 'Test template 1', content: 'Test 1'},
+                {title: 'Test template 2', content: 'Test 2'}
+            ]
+        });
+    </script>
+    <%--/TinyMCE--%>
+
 </head>
 <body>
 <div id="wrapper">
@@ -69,10 +93,16 @@
                                  placeholder="Name" width="30%"
                                  value="<c:out value="${project.name}"/>" required>
                           <h4>Description:</h4>
-                          <input type="text" name="project_description"
-                                 class="form-control" placeholder="Description"
-                                 width="30%"
-                                 value="${project.description}">
+
+                          <%--<input type="text" name="project_description"--%>
+                                 <%--class="form-control" placeholder="Description"--%>
+                                 <%--width="30%"--%>
+                                 <%--value="${project.description}">--%>
+
+
+                              <textarea name="project_description">${project.description}</textarea>
+
+
                           <h4>Picture:</h4>
                           <input type="file" name="file">
                           <h4>Video:</h4>
