@@ -45,9 +45,8 @@
     <context:annotation-config/>
     <context:component-scan base-package="ua.goit.gojava32.kickstarter.*"/>
 
-
     <mvc:resources mapping="/resource/**" location="/resource/"/>
-
+    <mvc:resources mapping="/html/**" location="/WEB-INF/html/"/>
 
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
