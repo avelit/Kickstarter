@@ -8,14 +8,7 @@
                     <a href="/project/${project.id}">${project.name}</a>
                 </h4>
                 <div class="icon">
-                    <c:choose>
-                        <c:when test="${image == false} />">
-                        </c:when>
-                        <c:otherwise>
-                            <img src="/image/${project.id}" alt="projet_image"/>
-                            <div><br></div>
-                        </c:otherwise>
-                    </c:choose>
+                      <img src="/image/${project.id}" alt="projet_image" width="100%" height="100%"/>
                 </div>
                 <p>
                     <a href="/project/${project.id}"> ${project.name}</a>
