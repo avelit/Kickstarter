@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div class="col-md-3">
+<div class="col-md-3 row-fluid" height="100%">
     <div class="thumbnail">
         <div class="box">
             <div class="box-gray aligncenter">
