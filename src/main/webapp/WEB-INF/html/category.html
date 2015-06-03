@@ -1,31 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Discover</title>
-</head>
-<body>
-<div id="wrapper">
-    <div class="container" ng-controller = "CategoryListCtrl as categories">
-        <%-- CONTENT --%>
-        <h3>
-            Category: <c:out value="${category.name}"/>
-            <br>
-            Description: <c:out value="${category.description}"/>
-        </h3>
+<div class="container" ng-controller="CategoryCtrl as category">
+    <h3>
+        Category: {{category.name}}
+        <br>
+        Description: {{category.description}}
+    </h3>
 
-        <div class="row">
-            <c:forEach var="project" items="${projects}">
-                <%@include file='include/project_box.jsp' %>
-            </c:forEach>
-        </div>
+    <div class="row" ng-repeat="project in category.projects">
+        {{project.name}}
+        {{project.description}}
     </div>
-    <div class="push" id="push"></div>
 </div>
-<%-- /CONTENT --%>
-</div>
-<%@include file='include/footer.jsp' %>
-</div>
-<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
-<%@include file='include/bottom_scripts.jsp' %>
-</body>
-</html>
+<div class="push" id="push"></div>
