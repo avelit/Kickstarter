@@ -4,7 +4,21 @@
         <div ng-controller="CategoryListCtrl as categories">
             <div class="row">
                 <div class="col-sm-6 col-md-3" ng-repeat="category in categories.list">
-                    <a href="/html/category/{{category.id}}">{{category.name}}</a>
+                        <div class="thumbnail">
+                            <div class="box">
+                                <div class="box-gray aligncenter">
+                                    <h4>
+                                        <a href="/html/category/{{category.id}}">{{category.shortName}}</a>
+                                    </h4>
+                                    <div class="icon">
+                                        <i class="fa fa-desktop fa-3x"></i>
+                                    </div>
+                                </div>
+                                <div class="box-bottom">
+                                    <a href="/html/category/{{category.id}}">Go</a>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

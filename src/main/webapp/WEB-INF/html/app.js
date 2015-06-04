@@ -10,6 +10,7 @@
             $routeProvider
                 .when('/html', {templateUrl: '/html/categories.html',controller:'CategoryListCtrl'})
                 .when('/html/category/:categoryId', {templateUrl: '/html/category.html',controller:'CategoryCtrl'})
+                .when('/html/project/:projectId', {templateUrl: '/html/project.html',controller:'ProjectCtrl'})
                 .otherwise({redirectTo: '/html'});
 
             $locationProvider.html5Mode({enabled: true, requireBase: false});
@@ -34,6 +35,14 @@
         });
         $http.get('/webapi/category/' + this.categoryId + '/projects_list').success(function (data) {
             ctrl.projects = data;
+        });
+    });
+
+    app.controller('ProjectCtrl', function ($http,$routeParams) {
+        this.projectId = $routeParams.projectId;
+        var ctrl = this;
+        $http.get('/webapi/project/' + this.projectId).success(function (data) {
+            ctrl.data = data;
         });
     });
 
