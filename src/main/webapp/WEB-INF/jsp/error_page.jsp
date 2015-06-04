@@ -1,16 +1,39 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>${error_name}</title>
+    <title>Empty</title>
+    <%@include file='include/head.jsp' %>
 </head>
 <body>
-<div class="wrapper">
-    <%@include file='header.jsp' %>
-    <link href="/resource/css/bootstrap.min.css" rel="stylesheet">
-    <div class="top-left">
-        ERROR! ${error_name}
-    </div>
+<div id="wrapper">
+    <%@include file='include/header.jsp' %>
+    <div id="container">
+
+
+    <%-- CONTENT --%>
+
+
+    <p>
+
+    <h2>Sorry, something went wrong ;(</h2>
+    </p>
+    <p>
+
+    <h1>${error_name} </h1></p>
+
+
+    <%-- /CONTENT --%>
 </div>
-<%@include file='footer.jsp' %>
+<%@include file='include/footer.jsp' %>
+</div>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+<%@include file='include/bottom_scripts.jsp' %>
 </body>
 </html>
+
+
+
+
+
+

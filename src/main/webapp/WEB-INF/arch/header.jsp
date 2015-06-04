@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <link href="/resource/css/header.css" rel="stylesheet">
 
@@ -22,7 +22,7 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <sec:authorize access="isAuthenticated()">
-                    <li><a href="/profile"><sec:authentication property="principal.username" />
+                    <li><a href="/profile"><sec:authentication property="principal.username"/>
                         <sec:authorize access="isRememberMe()">
                             (by 'Remember me')
                         </sec:authorize>
@@ -37,7 +37,6 @@
                     <li><a href="/registration">Sign up</a></li>
                     <li><a href="/login">Log in</a></li>
                 </sec:authorize>
-
             </ul>
         </div>
     </div>

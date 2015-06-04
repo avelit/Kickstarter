@@ -25,8 +25,8 @@ public class Project {
   @JoinColumn (name = "id_category", nullable = false)
   private Category category;
 
-  private Integer moneyNeed;
-  private Integer moneyHas;
+  private Integer moneyNeed = 0;
+  private Integer moneyHas = 0;
   private String video;
 
   public Project (String name, Category category, String description) {

@@ -1,6 +1,5 @@
 package ua.goit.gojava32.kickstarter.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ua.goit.gojava32.kickstarter.model.Category;
 import ua.goit.gojava32.kickstarter.service.CategoryService;
-import ua.goit.gojava32.kickstarter.service.CategoryServiceImpl;
 
 @Controller
 public class CategoryController {
