@@ -29,16 +29,26 @@
             <c:forEach var="c" items="${projects}">
                 <div class="row">
                     <div class="thumbnail">
-                        <a href="#">
                             <div class="caption">
                                 <h3>
                                     <a href="/project/<c:out value="${c.id}"/>"><c:out
-                                            value="${c.name}, category ${c.category.name}"/></a> |
-                                    <a href="/project/<c:out value="${c.id}"/>/edit">edit</a> |
-                                    <a href="/project/<c:out value="${c.id}"/>/delete">delete </a>
+                                            value="${c.name}, category ${c.category.name}"/></a>
+                                    <form>
+                                    <button class="btn btn-xs btn-primary"
+                                            formmethod="get"
+                                            formaction="/project/<c:out value="${c.id}"/>/edit"
+                                            type="submit">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>
+                                    <button class="btn btn-xs btn-danger"
+                                            formmethod="post"
+                                            formaction="/project/<c:out value="${c.id}"/>/delete"
+                                            type="submit">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                    </form>
                                 </h3>
                             </div>
-                        </a>
                     </div>
                 </div>
             </c:forEach>
