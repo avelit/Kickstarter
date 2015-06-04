@@ -23,17 +23,11 @@
                     Project name:
                     <c:out value="${project.name}"/>
                 </h3>
-
-                <c:choose>
-                    <c:when test="${image == false}">
-                    </c:when>
-                    <c:otherwise>
-                        <img src="/image/${project.id}" alt="car_image"/>
-
-                        <div><br></div>
-                    </c:otherwise>
-                </c:choose>
-
+                <div>
+                    <img src="/image/${project.id}" alt="No picture"/>
+                    <br>
+                    <br>
+                </div>
 
                 <c:choose>
                     <c:when test="${project.video == null}">
