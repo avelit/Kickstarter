@@ -1,0 +1,12 @@
+
+<div id="wrapper">
+    <div class="container">
+        <div ng-controller="CategoryListCtrl as categories">
+            <div class="row">
+                <div class="col-sm-6 col-md-3" ng-repeat="category in categories.list">
+                    <a href="/html/category/{{category.id}}">{{category.name}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

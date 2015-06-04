@@ -15,7 +15,7 @@ Project components:<br>
 
 During installation of the project, integration test creates the database and all the necessary tables. Several test categories and projects are put in the database after the creation for test purposes. In case of reinstalling the application, all tables in the database are dropped.
 
-Spring IoC, Spring MVC and ORM Hibernate frameworks work by the way of using annotations (@Repository for DAO, @Service for Services, @Controller for Controllers, @Entity for Model items). All Spring beans are singletons, injected using the annotation @Autowired.
+Spring IoC, Spring MVC and ORM Hibernate frameworks are configured to work using annotations (@Repository for DAO, @Service for Services, @Controller for Controllers, @Entity for Model items). All Spring beans are singletons, injected using the annotation @Autowired.
 
 All classes provided in the package "model" have their table represenation in the database. There are also specific DAO, Service and Controller classes for each such class.
 

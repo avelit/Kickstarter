@@ -1,35 +1,39 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Restore password</title>
-    <link href="/resource/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/resource/css/signin.css" rel="stylesheet">
+  <title>Empty</title>
+  <%@include file='include/head.jsp' %>
 </head>
 <body>
-<div class="wrapper">
-    <%@include file='header.jsp' %>
+<div id="wrapper">
+  <%@include file='include/header.jsp' %>
     <div class="container">
-        <form class="form-signin" action="/update_password" method="post">
-            <h2 class="form-signin-heading">Type new password</h2>
-            <input type="hidden" name="token" value="<c:out value="${token}"/>">
-            <input type="hidden" name="email" value="<c:out value="${email}"/>">
-            <input name="password" class="form-control" id="password1"
-                   type="password" placeholder="Password" required>
+      <%-- CONTENT --%>
+          <form class="form-signin" action="/update_password" method="post">
+              <h2 class="form-signin-heading">Type new password</h2>
+              <input type="hidden" name="token" value="<c:out value="${token}"/>">
+              <input type="hidden" name="email" value="<c:out value="${email}"/>">
+              <input name="password" class="form-control" id="password1"
+                     type="password" placeholder="Password" required>
 
-            <p></p>
-            <input name="password2" type="password" id="password2"
-                   class="form-control" placeholder="Repeat password" required>
+              <p></p>
+              <input name="password2" type="password" id="password2"
+                     class="form-control" placeholder="Repeat password" required>
 
-            <p></p>
-            <button class="btn btn-signup btn-lg btn-primary btn-block"
-                    type="submit">Submit
-            </button>
-        </form>
-        <center><font color = #ff0000><c:out value="${err}"/></font></center>
+              <p></p>
+              <button class="btn btn-signup btn-lg btn-primary btn-block"
+                      type="submit">Submit
+              </button>
+          </form>
+      <%-- /CONTENT --%>
     </div>
+<%@include file='include/footer.jsp' %>
 </div>
-</div>
-<%@include file='footer.jsp' %>
-</body>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+ <%@include file='include/bottom_scripts.jsp' %>
+ </body>
 </html>

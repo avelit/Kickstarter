@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `persistent_logins` (
 --
 
 CREATE TABLE IF NOT EXISTS `pictures` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_project` int(11) DEFAULT NULL,
   `picture` blob,
   PRIMARY KEY (`id`),
