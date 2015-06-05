@@ -1,4 +1,4 @@
-<div class="container" ng-controller="projectCtrl as project">
+<div class="container" ng-controller="ProjectCtrl as project">
     <div class="wrapper">
         <div class="container">
 
@@ -15,11 +15,8 @@
                 <br>
                 <br>
             </div>
-
-                    <iframe width="560" height="315" src="{{project.data.video}}"/>
-                    " frameborder="0" allowfullscreen></iframe>
-                    <div><br></div>
-            </c:choose>
+            <iframe width="560" height="315" src="{{project.data.video}}" frameborder="0" allowfullscreen></iframe>
+            <div><br></div>
             <div role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist" id="tabs">
                     <li role="presentation" class="active"><a href="#project"
@@ -42,7 +39,7 @@
 
                         <br> Description:
                         <br>
-                        ${project.description}
+                        {{project.data.description}}
 
                     </div>
                 </div>
