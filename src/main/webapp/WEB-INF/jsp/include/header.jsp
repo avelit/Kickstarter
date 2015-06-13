@@ -34,7 +34,7 @@
                         <li><a href="/registration">Sign up</a></li>
                         <li><a href="/login">Log in</a></li>
                     </sec:authorize>
-                    <li><a href="/">Contact us</a></li>
+                    <li><a href="/html">Try Angular</a></li>
                 </ul>
             </div>
         </div>
